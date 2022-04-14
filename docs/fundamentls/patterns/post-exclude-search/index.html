@@ -324,7 +324,10 @@
 
 <p class="notice--info"><strong>Note:</strong> this is an example od decorator patterns, its will be a series for implement all patterns in java / python / go</p>
 
-<p>To exclude files when using Algolia as a search provider add an array to <code class="language-plaintext highlighter-rouge">algolia.files_to_exclude</code> in your <code class="language-plaintext highlighter-rouge">_config.yml</code>. For more configuration options be sure to check their <a href="https://community.algolia.com/jekyll-algolia/options.html">full documentation</a>.</p>
+<p>in the next classes you can see the implementation for apply the decorator patter and how in the MainClass 
+you can see the flexibility for use this strcuture in the problem for OOP on Stabuzz coffe</p>
+
+<p>abstraccions</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AbstactBeverage</span> <span class="o">{</span>
     <span class="kd">protected</span> <span class="kd">abstract</span> <span class="nc">String</span> <span class="nf">getDescription</span><span class="o">();</span>
@@ -335,6 +338,8 @@
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AbstractCondiment</span> <span class="kd">extends</span> <span class="nc">AbstactBeverage</span> <span class="o">{</span>
 <span class="o">}</span>
 </code></pre></div></div>
+
+<p>Usage</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Blacktea</span> <span class="kd">extends</span> <span class="nc">AbstactBeverage</span> <span class="o">{</span>
     <span class="nd">@Override</span>
