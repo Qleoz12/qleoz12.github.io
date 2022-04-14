@@ -13,7 +13,10 @@ This is an example for implementation for decorator patter
 **Note:** this is an example od decorator patterns, its will be a series for implement all patterns in java / python / go
 {: .notice--info}
 
-To exclude files when using Algolia as a search provider add an array to `algolia.files_to_exclude` in your `_config.yml`. For more configuration options be sure to check their [full documentation](https://community.algolia.com/jekyll-algolia/options.html).
+in the next classes you can see the implementation for apply the decorator patter and how in the MainClass 
+you can see the flexibility for use this strcuture in the problem for OOP on Stabuzz coffe 
+
+abstraccions 
 
 ```java
   public abstract class AbstactBeverage {
@@ -26,6 +29,8 @@ To exclude files when using Algolia as a search provider add an array to `algoli
 public abstract class AbstractCondiment extends AbstactBeverage {
 }
 ```
+
+Usage
 
 ```java
 public class Blacktea extends AbstactBeverage {
