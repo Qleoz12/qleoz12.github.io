@@ -3,7 +3,8 @@ title:  "Factory pattern"
 search: false
 categories: 
   - Fundamentals/patterns
-last_modified_at: 2022-04-14T08:06:00-05:00
+date: 2022-04-16
+last_modified_at: 2022-04-16T08:06:00-05:00
 ---
 
 This is an example for implementation for factory pattern
@@ -15,12 +16,14 @@ Method Patter encapsulates object creation by letting subclasses
 decide what objects to create. Let’s check out these class diagrams to
 see who the players are in this pattern
 
+important: 
+- simple factory is not considered a patterns
 
 
 **Note:** this is an example of factory patterns, its will be a series for implement all patterns in java / python / go
 {: .notice--info}
 
-in the next classes you can see the implementation for apply the decorator patter and how in the MainClass 
+in the next classes you can see the implementation for apply the factory patter and how in the MainClass call all implamantation for show usage, 
 you can see the flexibility for use this structure in the problem for OOP on Pizzeria 
 
 ## abstraccions 

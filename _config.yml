@@ -9,7 +9,8 @@
 #
 # Review documentation to determine if you should use `theme` or `remote_theme`
 # https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
-
+#TODO look for a methos for publush in normal directory
+destination: docs/
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
 minimal_mistakes_skin    :  "mint" # "default" "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
@@ -288,3 +289,4 @@ defaults:
       comments: # true
       share: true
       related: true
+      show_date: true

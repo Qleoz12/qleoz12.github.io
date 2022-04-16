@@ -1,4 +1,326 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-16T15:27:40-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Factory pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-factory/" rel="alternate" type="text/html" title="Factory pattern" /><published>2022-04-16T00:00:00-05:00</published><updated>2022-04-16T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-factory</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-factory/"><![CDATA[<p>This is an example for implementation for factory pattern</p>
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Factory pattern - Dann Brown Adventures</title>
+<meta name="description" content="This is an example for implementation for factory pattern">
+
+
+  <meta name="author" content="Dann brown">
+  
+  <meta property="article:author" content="Dann brown">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dann Brown Adventures">
+<meta property="og:title" content="Factory pattern">
+<meta property="og:url" content="http://localhost:4000/fundamentals/patterns/patterns-factory/">
+
+
+  <meta property="og:description" content="This is an example for implementation for factory pattern">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-04-16T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2022-04-16T08:06:00-05:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/fundamentals/patterns/patterns-factory/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Leonardo L Sanchez- Dann Brown",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dann Brown Adventures Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--archive">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Dann Brown Adventures
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/docs/quick-start-guide/">Quick-Start Guide</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#fundamentals" itemprop="item"><span itemprop="name">Fundamentals</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#patterns" itemprop="item"><span itemprop="name">Patterns</span></a>
+          <meta itemprop="position" content="3" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Factory pattern</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/1577552827279.jpg" alt="Dann brown" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Dann brown</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">CO</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Qleoz12" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kintaroloop@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="kintaroloop@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">Factory pattern</h1>
+    
+    <p>This is an example for implementation for factory pattern</p>
 
 <h2 id="concept">concept</h2>
 
@@ -208,91 +530,63 @@ you can see the flexibility for use this structure in the problem for OOP on Piz
 
 	<span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for factory pattern]]></summary></entry><entry><title type="html">Decorator pattern</title><link href="http://localhost:4000/fundamentals/patterns/post-exclude-search/" rel="alternate" type="text/html" title="Decorator pattern" /><published>2022-04-14T00:00:00-05:00</published><updated>2022-04-14T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/post-exclude-search</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/post-exclude-search/"><![CDATA[<p>This is an example for implementation for decorator patter</p>
-
-<p class="notice--info"><strong>Note:</strong> this is an example od decorator patterns, its will be a series for implement all patterns in java / python / go</p>
-
-<p>in the next classes you can see the implementation for apply the decorator patter and how in the MainClass 
-you can see the flexibility for use this strcuture in the problem for OOP on Stabuzz coffe</p>
-
-<p>abstraccions</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AbstactBeverage</span> <span class="o">{</span>
-    <span class="kd">protected</span> <span class="kd">abstract</span> <span class="nc">String</span> <span class="nf">getDescription</span><span class="o">();</span>
-    <span class="kd">protected</span> <span class="kd">abstract</span> <span class="nc">Double</span> <span class="nf">cost</span><span class="o">();</span>
-<span class="o">}</span>
 </code></pre></div></div>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AbstractCondiment</span> <span class="kd">extends</span> <span class="nc">AbstactBeverage</span> <span class="o">{</span>
-<span class="o">}</span>
-</code></pre></div></div>
+  </div>
+</div>
+    </div>
 
-<p>Usage</p>
+    
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Blacktea</span> <span class="kd">extends</span> <span class="nc">AbstactBeverage</span> <span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="nc">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="s">"???"</span><span class="o">;</span>
-    <span class="o">}</span>
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
 
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="nc">Double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nf">Double</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Coffeetea</span> <span class="kd">extends</span> <span class="nc">AbstactBeverage</span> <span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="nc">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="s">"????"</span><span class="o">;</span>
-    <span class="o">}</span>
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
 
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="nc">Double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nf">Double</span><span class="o">(</span><span class="mi">2000</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Greentea</span> <span class="kd">extends</span> <span class="nc">AbstactBeverage</span> <span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="nc">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="s">"???"</span><span class="o">;</span>
-    <span class="o">}</span>
+<div class="page__footer-copyright">&copy; 2022 Leonardo L Sanchez- Dann Brown. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="nc">Double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nf">Double</span><span class="o">(</span><span class="mi">200</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
+      </footer>
+    </div>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Lemon</span> <span class="kd">extends</span> <span class="nc">AbstractCondiment</span> <span class="o">{</span>
-    <span class="nc">AbstactBeverage</span> <span class="n">abstactBeverage</span><span class="o">;</span>
+    
+  <script src="/assets/js/main.min.js"></script>
 
-    <span class="kd">public</span> <span class="nf">Lemon</span><span class="o">(</span><span class="nc">AbstactBeverage</span> <span class="n">abstactBeverage</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">abstactBeverage</span><span class="o">=</span>  <span class="n">abstactBeverage</span><span class="o">;</span>
-    <span class="o">}</span>
 
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="nc">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">abstactBeverage</span><span class="o">.</span><span class="na">getDescription</span><span class="o">()+</span><span class="s">"??????"</span><span class="o">;</span>
-    <span class="o">}</span>
 
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="nc">Double</span> <span class="nf">cost</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">abstactBeverage</span><span class="o">.</span><span class="na">cost</span><span class="o">()+</span><span class="mi">11</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainClass</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">Blacktea</span> <span class="n">blacktea</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Blacktea</span><span class="o">();</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"???=="</span><span class="o">+</span><span class="n">blacktea</span><span class="o">.</span><span class="na">getDescription</span><span class="o">()+</span><span class="s">",???"</span><span class="o">+</span><span class="n">blacktea</span><span class="o">.</span><span class="na">cost</span><span class="o">());</span>
-        <span class="nc">Lemon</span> <span class="n">lemon</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Lemon</span><span class="o">(</span><span class="n">blacktea</span><span class="o">);</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"???????????=="</span><span class="o">+</span><span class="n">lemon</span><span class="o">.</span><span class="na">getDescription</span><span class="o">()+</span><span class="s">",???"</span><span class="o">+</span><span class="n">lemon</span><span class="o">.</span><span class="na">cost</span><span class="o">());</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for decorator patter]]></summary></entry></feed>
+
+
+
+
+
+
+  </body>
+</html>
