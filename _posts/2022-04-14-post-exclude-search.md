@@ -2,8 +2,8 @@
 title:  "Decorator pattern"
 search: false
 categories: 
-  - Fundamentls/patterns
-last_modified_at: 2018-02-19T08:06:00-05:00
+  - Fundamentals/patterns
+last_modified_at: 2022-04-14T08:06:00-05:00
 ---
 
 This is an example for implementation for decorator patter 
