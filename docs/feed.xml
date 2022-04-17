@@ -1,4 +1,148 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-16T15:27:40-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Factory pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-factory/" rel="alternate" type="text/html" title="Factory pattern" /><published>2022-04-16T00:00:00-05:00</published><updated>2022-04-16T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-factory</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-factory/"><![CDATA[<p>This is an example for implementation for factory pattern</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-17T13:00:46-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Command pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-command/" rel="alternate" type="text/html" title="Command pattern" /><published>2022-04-17T00:00:00-05:00</published><updated>2022-04-17T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-command</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-command/"><![CDATA[<p>This is an example for implementation for Command pattern</p>
+
+<h2 id="concept">concept</h2>
+
+<p>the command patterns encapsulates a request as an object, thereby letting you parameterize 
+other objects with differet requests,queue or log requets and suport ubdoable operations.</p>
+
+<p class="notice--info"><strong>Note:</strong> this is an example of Command patterns, its will be a series for implement all patterns in java / python / go</p>
+
+<p>in the next classes you can see the implementation for apply the Command pattern and how in the MainClass call all implamantation for show usage, 
+you can see the flexibility for use this structure in the problem for OOP on Pizzeria</p>
+
+<h2 id="abstraccions">abstraccions</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RemoteControlWithUndo</span> <span class="o">{</span>
+ <span class="nc">Command</span><span class="o">[]</span> <span class="n">onCommands</span><span class="o">;</span>
+ <span class="nc">Command</span><span class="o">[]</span> <span class="n">offCommands</span><span class="o">;</span>
+ <span class="nc">Command</span> <span class="n">undoCommand</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">RemoteControlWithUndo</span><span class="o">()</span> <span class="o">{</span>
+	<span class="n">onCommands</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Command</span><span class="o">[</span><span class="mi">7</span><span class="o">];</span>
+	<span class="n">offCommands</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Command</span><span class="o">[</span><span class="mi">7</span><span class="o">];</span>
+	<span class="nc">Command</span> <span class="n">noCommand</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NoCommand</span><span class="o">();</span>
+	<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">7</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+	<span class="n">onCommands</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">noCommand</span><span class="o">;</span>
+	<span class="n">offCommands</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">noCommand</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="n">undoCommand</span> <span class="o">=</span> <span class="n">noCommand</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCommand</span><span class="o">(</span><span class="kt">int</span> <span class="n">slot</span><span class="o">,</span> <span class="nc">Command</span> <span class="n">onCommand</span><span class="o">,</span> <span class="nc">Command</span> <span class="n">offCommand</span><span class="o">)</span> <span class="o">{</span>
+ <span class="n">onCommands</span><span class="o">[</span><span class="n">slot</span><span class="o">]</span> <span class="o">=</span> <span class="n">onCommand</span><span class="o">;</span>
+ <span class="n">offCommands</span><span class="o">[</span><span class="n">slot</span><span class="o">]</span> <span class="o">=</span> <span class="n">offCommand</span><span class="o">;</span>
+ <span class="o">}</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onButtonWasPushed</span><span class="o">(</span><span class="kt">int</span> <span class="n">slot</span><span class="o">)</span> <span class="o">{</span>
+ <span class="n">onCommands</span><span class="o">[</span><span class="n">slot</span><span class="o">].</span><span class="na">execute</span><span class="o">();</span>
+ <span class="n">undoCommand</span> <span class="o">=</span> <span class="n">onCommands</span><span class="o">[</span><span class="n">slot</span><span class="o">];</span>
+ <span class="o">}</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">offButtonWasPushed</span><span class="o">(</span><span class="kt">int</span> <span class="n">slot</span><span class="o">)</span> <span class="o">{</span>
+ <span class="n">offCommands</span><span class="o">[</span><span class="n">slot</span><span class="o">].</span><span class="na">execute</span><span class="o">();</span>
+ <span class="n">undoCommand</span> <span class="o">=</span> <span class="n">offCommands</span><span class="o">[</span><span class="n">slot</span><span class="o">];</span>
+ <span class="o">}</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">undoButtonWasPushed</span><span class="o">()</span> <span class="o">{</span>
+ <span class="n">undoCommand</span><span class="o">.</span><span class="na">undo</span><span class="o">();</span>
+ <span class="o">}</span>
+ 
+ <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+ <span class="c1">// toString code here...</span>
+ <span class="o">}</span>
+
+ <span class="o">}</span>
+
+</code></pre></div></div>
+
+<h2 id="usage">Usage</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Light</span> <span class="o">{</span>
+	<span class="nc">String</span> <span class="n">location</span><span class="o">;</span>
+	<span class="kt">int</span> <span class="n">level</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">Light</span><span class="o">(</span><span class="nc">String</span> <span class="n">location</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">location</span> <span class="o">=</span> <span class="n">location</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">on</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">level</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Light is on"</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">off</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">level</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Light is off"</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">dim</span><span class="o">(</span><span class="kt">int</span> <span class="n">level</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">level</span> <span class="o">=</span> <span class="n">level</span><span class="o">;</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">level</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">off</span><span class="o">();</span>
+		<span class="o">}</span>
+		<span class="k">else</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Light is dimmed to "</span> <span class="o">+</span> <span class="n">level</span> <span class="o">+</span> <span class="s">"%"</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getLevel</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">level</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LightOffCommand</span> <span class="kd">implements</span> <span class="nc">Command</span> <span class="o">{</span>
+	<span class="nc">Light</span> <span class="n">light</span><span class="o">;</span>
+	<span class="kt">int</span> <span class="n">level</span><span class="o">;</span>
+	<span class="kd">public</span> <span class="nf">LightOffCommand</span><span class="o">(</span><span class="nc">Light</span> <span class="n">light</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">light</span> <span class="o">=</span> <span class="n">light</span><span class="o">;</span>
+	<span class="o">}</span>
+ 
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">level</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="na">getLevel</span><span class="o">();</span>
+		<span class="n">light</span><span class="o">.</span><span class="na">off</span><span class="o">();</span>
+	<span class="o">}</span>
+ 
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">undo</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">light</span><span class="o">.</span><span class="na">dim</span><span class="o">(</span><span class="n">level</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LightOnCommand</span> <span class="kd">implements</span> <span class="nc">Command</span> <span class="o">{</span>
+	<span class="nc">Light</span> <span class="n">light</span><span class="o">;</span>
+	<span class="kt">int</span> <span class="n">level</span><span class="o">;</span>
+	<span class="kd">public</span> <span class="nf">LightOnCommand</span><span class="o">(</span><span class="nc">Light</span> <span class="n">light</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">light</span> <span class="o">=</span> <span class="n">light</span><span class="o">;</span>
+	<span class="o">}</span>
+ 
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">level</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="na">getLevel</span><span class="o">();</span>
+		<span class="n">light</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>
+	<span class="o">}</span>
+ 
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">undo</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">light</span><span class="o">.</span><span class="na">dim</span><span class="o">(</span><span class="n">level</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainClass</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		
+		<span class="nc">RemoteControlWithUndo</span> <span class="n">remoteControl</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RemoteControlWithUndo</span><span class="o">();</span>
+		<span class="nc">Light</span> <span class="n">livingRoomLight</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Light</span><span class="o">(</span><span class="s">"Living Room"</span><span class="o">);</span>
+		<span class="nc">LightOnCommand</span> <span class="n">livingRoomLightOn</span> <span class="o">=</span>  <span class="k">new</span> <span class="nc">LightOnCommand</span><span class="o">(</span><span class="n">livingRoomLight</span><span class="o">);</span>
+		<span class="nc">LightOffCommand</span> <span class="n">livingRoomLightOff</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LightOffCommand</span><span class="o">(</span><span class="n">livingRoomLight</span><span class="o">);</span>
+		<span class="n">remoteControl</span><span class="o">.</span><span class="na">setCommand</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">livingRoomLightOn</span><span class="o">,</span> <span class="n">livingRoomLightOff</span><span class="o">);</span>
+		<span class="n">remoteControl</span><span class="o">.</span><span class="na">onButtonWasPushed</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+		<span class="n">remoteControl</span><span class="o">.</span><span class="na">offButtonWasPushed</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">remoteControl</span><span class="o">);</span>
+		<span class="n">remoteControl</span><span class="o">.</span><span class="na">undoButtonWasPushed</span><span class="o">();</span>
+		<span class="n">remoteControl</span><span class="o">.</span><span class="na">offButtonWasPushed</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+		<span class="n">remoteControl</span><span class="o">.</span><span class="na">onButtonWasPushed</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">remoteControl</span><span class="o">);</span>
+		<span class="n">remoteControl</span><span class="o">.</span><span class="na">undoButtonWasPushed</span><span class="o">();</span>
+
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Command pattern]]></summary></entry><entry><title type="html">Factory pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-factory/" rel="alternate" type="text/html" title="Factory pattern" /><published>2022-04-16T00:00:00-05:00</published><updated>2022-04-16T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-factory</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-factory/"><![CDATA[<p>This is an example for implementation for factory pattern</p>
 
 <h2 id="concept">concept</h2>
 
