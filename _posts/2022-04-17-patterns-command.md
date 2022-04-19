@@ -19,7 +19,7 @@ other objects with differet requests,queue or log requets and suport ubdoable op
 **Note:** this is an example of Command patterns, its will be a series for implement all patterns in java / python / go
 {: .notice--info}
 
-in the next classes you can see the implementation for apply the Command pattern and how in the MainClass call all implamantation for show usage, 
+in the next classes you can see the implementation for apply the Command pattern and how in the MainClass call all implemantationfor show usage, 
 you can see the flexibility for use this structure in the problem for OOP on Pizzeria 
 
 ## abstraccions 

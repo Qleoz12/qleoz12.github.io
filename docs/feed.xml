@@ -1,4 +1,235 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-17T13:00:46-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Command pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-command/" rel="alternate" type="text/html" title="Command pattern" /><published>2022-04-17T00:00:00-05:00</published><updated>2022-04-17T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-command</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-command/"><![CDATA[<p>This is an example for implementation for Command pattern</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-19T13:06:20-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Singleton Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-singleton/" rel="alternate" type="text/html" title="Singleton Pattern" /><published>2022-04-18T00:00:00-05:00</published><updated>2022-04-18T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-singleton</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-singleton/"><![CDATA[<p>This is an example for implementation for singleton pattern</p>
+
+<h2 id="concept">Concept</h2>
+
+<p>The Singleton Pattern ensures a class has only one instance,
+and provides a global point of access to it. this pattern prevent the classes 
+create new instances of the class designed for be singleton.</p>
+
+<p>singleton is often aplied for create a global resource and all uses of that requiered resource use the same instance,
+for improve de handle of memory, performarce or avoid overuse, singleton is a good aproach if you must to control the number of instances you’re creating</p>
+
+<p class="notice--info"><strong>Note:</strong> this is an example of singleton patterns, its will be a series for implement all patterns in java / python / go</p>
+
+<p>in the next classes you can see the implementation for apply the singleton pattern and how in the MainClass call all implemantationfor show usage, 
+you can see the flexibility for use this structure in the problem for OOP</p>
+
+<h2 id="abstraccions">abstraccions</h2>
+
+<p>clasical abstraccion</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Singleton</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="kd">static</span> <span class="nc">Singleton</span> <span class="n">uniqueInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Singleton</span><span class="o">();</span>
+ 
+	<span class="kd">private</span> <span class="nf">Singleton</span><span class="o">()</span> <span class="o">{}</span>
+ 
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Singleton</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">uniqueInstance</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="c1">// other useful methods here</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="s">"I'm a statically initialized Singleton!"</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>for handle multithreading , you must “synchronized” the acces for avoid locks</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Singleton</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="kd">static</span> <span class="nc">Singleton</span> <span class="n">uniqueInstance</span><span class="o">;</span>
+ 
+	<span class="c1">// other useful instance variables here</span>
+ 
+	<span class="kd">private</span> <span class="nf">Singleton</span><span class="o">()</span> <span class="o">{}</span>
+ 
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">synchronized</span> <span class="nc">Singleton</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">uniqueInstance</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">uniqueInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Singleton</span><span class="o">();</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">uniqueInstance</span><span class="o">;</span>
+	<span class="o">}</span>
+ 
+	<span class="c1">// other useful methods here</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="s">"I'm a thread safe Singleton!"</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="usage">Usage</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainClass</span> <span class="o">{</span>
+    
+	<span class="n">ppublic</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Singleton</span> <span class="n">singleton</span> <span class="o">=</span> <span class="nc">Singleton</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">singleton</span><span class="o">.</span><span class="na">getDescription</span><span class="o">());</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// for safe threadsafe</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainClass2</span> <span class="o">{</span>
+    
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">//the code is the same , but try it from different instances</span>
+		<span class="nc">Singleton</span> <span class="n">singleton</span> <span class="o">=</span> <span class="nc">Singleton</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">singleton</span><span class="o">.</span><span class="na">getDescription</span><span class="o">());</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for singleton pattern]]></summary></entry><entry><title type="html">Adapter Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-adapter/" rel="alternate" type="text/html" title="Adapter Pattern" /><published>2022-04-18T00:00:00-05:00</published><updated>2022-04-18T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-adapter</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-adapter/"><![CDATA[<p>This is an example for implementation for Adapter pattern</p>
+
+<h2 id="concept">concept</h2>
+
+<p>The Adapter Pattern converts the interface of a class into
+another interface the clients expect. Adapter lets classes work
+together that couldn’t otherwise because of incompatible
+interfaces</p>
+
+<p class="notice--info"><strong>Note:</strong> this is an example of Adapter patterns, its will be a series for implement all patterns in java / python / go</p>
+
+<p>in the next classes you can see the implementation for apply the Adapter pattern and how in the MainClass call all implemantationfor show usage, 
+you can see the flexibility for use this structure in the problem ducks and turkeys</p>
+
+<h2 id="abstraccions">abstraccions</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Duck</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">quack</span><span class="o">();</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">fly</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Turkey</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">gobble</span><span class="o">();</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">fly</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TurkeyAdapter</span> <span class="kd">implements</span> <span class="nc">Duck</span> <span class="o">{</span>
+	<span class="nc">Turkey</span> <span class="n">turkey</span><span class="o">;</span>
+ 
+	<span class="kd">public</span> <span class="nf">TurkeyAdapter</span><span class="o">(</span><span class="nc">Turkey</span> <span class="n">turkey</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">turkey</span> <span class="o">=</span> <span class="n">turkey</span><span class="o">;</span>
+	<span class="o">}</span>
+    
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">quack</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">turkey</span><span class="o">.</span><span class="na">gobble</span><span class="o">();</span>
+	<span class="o">}</span>
+  
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">fly</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="n">turkey</span><span class="o">.</span><span class="na">fly</span><span class="o">();</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DuckAdapter</span> <span class="kd">implements</span> <span class="nc">Turkey</span> <span class="o">{</span>
+	<span class="nc">Duck</span> <span class="n">duck</span><span class="o">;</span>
+	<span class="nc">Random</span> <span class="n">rand</span><span class="o">;</span>
+ 
+	<span class="kd">public</span> <span class="nf">DuckAdapter</span><span class="o">(</span><span class="nc">Duck</span> <span class="n">duck</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">duck</span> <span class="o">=</span> <span class="n">duck</span><span class="o">;</span>
+		<span class="n">rand</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Random</span><span class="o">();</span>
+	<span class="o">}</span>
+    
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">gobble</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">duck</span><span class="o">.</span><span class="na">quack</span><span class="o">();</span>
+	<span class="o">}</span>
+  
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">fly</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">rand</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="mi">5</span><span class="o">)</span>  <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+		     <span class="n">duck</span><span class="o">.</span><span class="na">fly</span><span class="o">();</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Drone</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">beep</span><span class="o">();</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">spin_rotors</span><span class="o">();</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">take_off</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DroneAdapter</span> <span class="kd">implements</span> <span class="nc">Duck</span> <span class="o">{</span>
+	<span class="nc">Drone</span> <span class="n">drone</span><span class="o">;</span>
+ 
+	<span class="kd">public</span> <span class="nf">DroneAdapter</span><span class="o">(</span><span class="nc">Drone</span> <span class="n">drone</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">drone</span> <span class="o">=</span> <span class="n">drone</span><span class="o">;</span>
+	<span class="o">}</span>
+    
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">quack</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">drone</span><span class="o">.</span><span class="na">beep</span><span class="o">();</span>
+	<span class="o">}</span>
+  
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">fly</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">drone</span><span class="o">.</span><span class="na">spin_rotors</span><span class="o">();</span>
+		<span class="n">drone</span><span class="o">.</span><span class="na">take_off</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<h2 id="usage">Usage</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MallardDuck</span> <span class="kd">implements</span> <span class="nc">Duck</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">quack</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Quack"</span><span class="o">);</span>
+	<span class="o">}</span>
+ 
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">fly</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"I'm flying"</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WildTurkey</span> <span class="kd">implements</span> <span class="nc">Turkey</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">gobble</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Gobble gobble"</span><span class="o">);</span>
+	<span class="o">}</span>
+ 
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">fly</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"I'm flying a short distance"</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SuperDrone</span> <span class="kd">implements</span> <span class="nc">Drone</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">beep</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Beep beep beep"</span><span class="o">);</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">spin_rotors</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Rotors are spinning"</span><span class="o">);</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">take_off</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Taking off"</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainClass</span> <span class="o">{</span>
+    
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Duck</span> <span class="n">duck</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MallardDuck</span><span class="o">();</span>
+
+		<span class="nc">Turkey</span> <span class="n">turkey</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WildTurkey</span><span class="o">();</span>
+		<span class="nc">Duck</span> <span class="n">turkeyAdapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TurkeyAdapter</span><span class="o">(</span><span class="n">turkey</span><span class="o">);</span>
+
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The Turkey says..."</span><span class="o">);</span>
+		<span class="n">turkey</span><span class="o">.</span><span class="na">gobble</span><span class="o">();</span>
+		<span class="n">turkey</span><span class="o">.</span><span class="na">fly</span><span class="o">();</span>
+
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\nThe Duck says..."</span><span class="o">);</span>
+		<span class="n">testDuck</span><span class="o">(</span><span class="n">duck</span><span class="o">);</span>
+
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\nThe TurkeyAdapter says..."</span><span class="o">);</span>
+		<span class="n">testDuck</span><span class="o">(</span><span class="n">turkeyAdapter</span><span class="o">);</span>
+		
+		<span class="c1">// Challenge</span>
+		<span class="nc">Drone</span> <span class="n">drone</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SuperDrone</span><span class="o">();</span>
+		<span class="nc">Duck</span> <span class="n">droneAdapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DroneAdapter</span><span class="o">(</span><span class="n">drone</span><span class="o">);</span>
+		<span class="n">testDuck</span><span class="o">(</span><span class="n">droneAdapter</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">static</span> <span class="kt">void</span> <span class="nf">testDuck</span><span class="o">(</span><span class="nc">Duck</span> <span class="n">duck</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">duck</span><span class="o">.</span><span class="na">quack</span><span class="o">();</span>
+		<span class="n">duck</span><span class="o">.</span><span class="na">fly</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Adapter pattern]]></summary></entry><entry><title type="html">Command pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-command/" rel="alternate" type="text/html" title="Command pattern" /><published>2022-04-17T00:00:00-05:00</published><updated>2022-04-17T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-command</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-command/"><![CDATA[<p>This is an example for implementation for Command pattern</p>
 
 <h2 id="concept">concept</h2>
 
@@ -7,7 +238,7 @@ other objects with differet requests,queue or log requets and suport ubdoable op
 
 <p class="notice--info"><strong>Note:</strong> this is an example of Command patterns, its will be a series for implement all patterns in java / python / go</p>
 
-<p>in the next classes you can see the implementation for apply the Command pattern and how in the MainClass call all implamantation for show usage, 
+<p>in the next classes you can see the implementation for apply the Command pattern and how in the MainClass call all implemantationfor show usage, 
 you can see the flexibility for use this structure in the problem for OOP on Pizzeria</p>
 
 <h2 id="abstraccions">abstraccions</h2>
@@ -158,7 +389,7 @@ see who the players are in this pattern</p>
 
 <p class="notice--info"><strong>Note:</strong> this is an example of factory patterns, its will be a series for implement all patterns in java / python / go</p>
 
-<p>in the next classes you can see the implementation for apply the factory patter and how in the MainClass call all implamantation for show usage, 
+<p>in the next classes you can see the implementation for apply the factory patter and how in the MainClass call all implemantationfor show usage, 
 you can see the flexibility for use this structure in the problem for OOP on Pizzeria</p>
 
 <h2 id="abstraccions">abstraccions</h2>
