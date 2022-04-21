@@ -1,4 +1,324 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-19T14:14:20-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Singleton Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-singleton/" rel="alternate" type="text/html" title="Singleton Pattern" /><published>2022-04-19T00:00:00-05:00</published><updated>2022-04-19T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-singleton</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-singleton/"><![CDATA[<p>This is an example for implementation for singleton pattern</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-21T00:25:20-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Facade Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-Facade/" rel="alternate" type="text/html" title="Facade Pattern" /><published>2022-04-21T00:00:00-05:00</published><updated>2022-04-21T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-Facade</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-Facade/"><![CDATA[<p>This is an example for implementation for Facade pattern</p>
+
+<h2 id="concept">Concept</h2>
+
+<p>The Facade Pattern provides a unified interface to a set of
+interfaces in a subsystem. Facade defines a higher-level
+interface that makes the subsystem easier to use.</p>
+
+<p>the next picture ilustrase easy the main idea.</p>
+
+<p><img src="http://localhost:4000/assets/images/pattern_facade.png" alt="alt" /></p>
+
+<p>bese on the book “Head First Design Patterns Building Extensible and Maintainable Object-Oriented Software 
+(Eric Freeman Elisabeth Robson) “ it describe how the aproach is reduce the interaction between object and 
+pass the respoability to comunicate oit to a facade. it inforces to reduce the chain of objects you mus to
+interact for rech some functionality</p>
+
+<p>for example</p>
+
+<p><img src="http://localhost:4000/assets/images/pattern_facade2.png" alt="alt" /></p>
+
+<p class="notice--info"><strong>Note:</strong> this is an example of Facade patterns, its will be a series for implement all patterns in java / python / go</p>
+
+<p>in the next classes you can see the implementation for apply the Facade pattern and how in the MainClass call all implemantationfor show usage, 
+you can see the flexibility for use this structure in the problem for OOP</p>
+
+<h2 id="abstraccions">abstraccions</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomeTheaterFacade</span> <span class="o">{</span>
+	<span class="nc">Amplifier</span> <span class="n">amp</span><span class="o">;</span>
+	<span class="nc">Tuner</span> <span class="n">tuner</span><span class="o">;</span>
+	<span class="nc">StreamingPlayer</span> <span class="n">player</span><span class="o">;</span>
+	<span class="nc">CdPlayer</span> <span class="n">cd</span><span class="o">;</span>
+	<span class="nc">Projector</span> <span class="n">projector</span><span class="o">;</span>
+	<span class="nc">TheaterLights</span> <span class="n">lights</span><span class="o">;</span>
+	<span class="nc">Screen</span> <span class="n">screen</span><span class="o">;</span>
+	<span class="nc">PopcornPopper</span> <span class="n">popper</span><span class="o">;</span>
+ 
+	<span class="kd">public</span> <span class="nf">HomeTheaterFacade</span><span class="o">(</span><span class="nc">Amplifier</span> <span class="n">amp</span><span class="o">,</span> 
+				 <span class="nc">Tuner</span> <span class="n">tuner</span><span class="o">,</span> 
+				 <span class="nc">StreamingPlayer</span> <span class="n">player</span><span class="o">,</span> 
+				 <span class="nc">Projector</span> <span class="n">projector</span><span class="o">,</span> 
+				 <span class="nc">Screen</span> <span class="n">screen</span><span class="o">,</span>
+				 <span class="nc">TheaterLights</span> <span class="n">lights</span><span class="o">,</span>
+				 <span class="nc">PopcornPopper</span> <span class="n">popper</span><span class="o">)</span> <span class="o">{</span>
+ 
+		<span class="k">this</span><span class="o">.</span><span class="na">amp</span> <span class="o">=</span> <span class="n">amp</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">tuner</span> <span class="o">=</span> <span class="n">tuner</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">player</span> <span class="o">=</span> <span class="n">player</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">projector</span> <span class="o">=</span> <span class="n">projector</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">screen</span> <span class="o">=</span> <span class="n">screen</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">lights</span> <span class="o">=</span> <span class="n">lights</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">popper</span> <span class="o">=</span> <span class="n">popper</span><span class="o">;</span>
+	<span class="o">}</span>
+ 
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">watchMovie</span><span class="o">(</span><span class="nc">String</span> <span class="n">movie</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Get ready to watch a movie..."</span><span class="o">);</span>
+		<span class="n">popper</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>
+		<span class="n">popper</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+		<span class="n">lights</span><span class="o">.</span><span class="na">dim</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+		<span class="n">screen</span><span class="o">.</span><span class="na">down</span><span class="o">();</span>
+		<span class="n">projector</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>
+		<span class="n">projector</span><span class="o">.</span><span class="na">wideScreenMode</span><span class="o">();</span>
+		<span class="n">amp</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>
+		<span class="n">amp</span><span class="o">.</span><span class="na">setStreamingPlayer</span><span class="o">(</span><span class="n">player</span><span class="o">);</span>
+		<span class="n">amp</span><span class="o">.</span><span class="na">setSurroundSound</span><span class="o">();</span>
+		<span class="n">amp</span><span class="o">.</span><span class="na">setVolume</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+		<span class="n">player</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>
+		<span class="n">player</span><span class="o">.</span><span class="na">play</span><span class="o">(</span><span class="n">movie</span><span class="o">);</span>
+	<span class="o">}</span>
+ 
+ 
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">endMovie</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Shutting movie theater down..."</span><span class="o">);</span>
+		<span class="n">popper</span><span class="o">.</span><span class="na">off</span><span class="o">();</span>
+		<span class="n">lights</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>
+		<span class="n">screen</span><span class="o">.</span><span class="na">up</span><span class="o">();</span>
+		<span class="n">projector</span><span class="o">.</span><span class="na">off</span><span class="o">();</span>
+		<span class="n">amp</span><span class="o">.</span><span class="na">off</span><span class="o">();</span>
+		<span class="n">player</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span>
+		<span class="n">player</span><span class="o">.</span><span class="na">off</span><span class="o">();</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">listenToRadio</span><span class="o">(</span><span class="kt">double</span> <span class="n">frequency</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Tuning in the airwaves..."</span><span class="o">);</span>
+		<span class="n">tuner</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>
+		<span class="n">tuner</span><span class="o">.</span><span class="na">setFrequency</span><span class="o">(</span><span class="n">frequency</span><span class="o">);</span>
+		<span class="n">amp</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>
+		<span class="n">amp</span><span class="o">.</span><span class="na">setVolume</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+		<span class="n">amp</span><span class="o">.</span><span class="na">setTuner</span><span class="o">(</span><span class="n">tuner</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">endRadio</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Shutting down the tuner..."</span><span class="o">);</span>
+		<span class="n">tuner</span><span class="o">.</span><span class="na">off</span><span class="o">();</span>
+		<span class="n">amp</span><span class="o">.</span><span class="na">off</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="usage">Usage</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">ImageComponent</span> <span class="kd">extends</span> <span class="nc">JComponent</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">Icon</span> <span class="n">icon</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">ImageComponent</span><span class="o">(</span><span class="nc">Icon</span> <span class="n">icon</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">icon</span> <span class="o">=</span> <span class="n">icon</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setIcon</span><span class="o">(</span><span class="nc">Icon</span> <span class="n">icon</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">icon</span> <span class="o">=</span> <span class="n">icon</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">paintComponent</span><span class="o">(</span><span class="nc">Graphics</span> <span class="n">g</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kd">super</span><span class="o">.</span><span class="na">paintComponent</span><span class="o">(</span><span class="n">g</span><span class="o">);</span>
+		<span class="kt">int</span> <span class="n">w</span> <span class="o">=</span> <span class="n">icon</span><span class="o">.</span><span class="na">getIconWidth</span><span class="o">();</span>
+		<span class="kt">int</span> <span class="n">h</span> <span class="o">=</span> <span class="n">icon</span><span class="o">.</span><span class="na">getIconHeight</span><span class="o">();</span>
+		<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="o">(</span><span class="mi">800</span> <span class="o">-</span> <span class="n">w</span><span class="o">)/</span><span class="mi">2</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="o">(</span><span class="mi">600</span> <span class="o">-</span> <span class="n">h</span><span class="o">)/</span><span class="mi">2</span><span class="o">;</span>
+		<span class="n">icon</span><span class="o">.</span><span class="na">paintIcon</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">g</span><span class="o">,</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainClass</span> <span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Amplifier</span> <span class="n">amp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Amplifier</span><span class="o">(</span><span class="s">"Amplifier"</span><span class="o">);</span>
+		<span class="nc">Tuner</span> <span class="n">tuner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Tuner</span><span class="o">(</span><span class="s">"AM/FM Tuner"</span><span class="o">,</span> <span class="n">amp</span><span class="o">);</span>
+		<span class="nc">StreamingPlayer</span> <span class="n">player</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StreamingPlayer</span><span class="o">(</span><span class="s">"Streaming Player"</span><span class="o">,</span> <span class="n">amp</span><span class="o">);</span>
+		<span class="nc">CdPlayer</span> <span class="n">cd</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CdPlayer</span><span class="o">(</span><span class="s">"CD Player"</span><span class="o">,</span> <span class="n">amp</span><span class="o">);</span>
+		<span class="nc">Projector</span> <span class="n">projector</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Projector</span><span class="o">(</span><span class="s">"Projector"</span><span class="o">,</span> <span class="n">player</span><span class="o">);</span>
+		<span class="nc">TheaterLights</span> <span class="n">lights</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TheaterLights</span><span class="o">(</span><span class="s">"Theater Ceiling Lights"</span><span class="o">);</span>
+		<span class="nc">Screen</span> <span class="n">screen</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Screen</span><span class="o">(</span><span class="s">"Theater Screen"</span><span class="o">);</span>
+		<span class="nc">PopcornPopper</span> <span class="n">popper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PopcornPopper</span><span class="o">(</span><span class="s">"Popcorn Popper"</span><span class="o">);</span>
+ 
+		<span class="nc">HomeTheaterFacade</span> <span class="n">homeTheater</span> <span class="o">=</span> 
+				<span class="k">new</span> <span class="nf">HomeTheaterFacade</span><span class="o">(</span><span class="n">amp</span><span class="o">,</span> <span class="n">tuner</span><span class="o">,</span> <span class="n">player</span><span class="o">,</span> 
+						<span class="n">projector</span><span class="o">,</span> <span class="n">screen</span><span class="o">,</span> <span class="n">lights</span><span class="o">,</span> <span class="n">popper</span><span class="o">);</span>
+ 
+		<span class="n">homeTheater</span><span class="o">.</span><span class="na">watchMovie</span><span class="o">(</span><span class="s">"Raiders of the Lost Ark"</span><span class="o">);</span>
+		<span class="n">homeTheater</span><span class="o">.</span><span class="na">endMovie</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Facade pattern]]></summary></entry><entry><title type="html">Proxy Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-proxy/" rel="alternate" type="text/html" title="Proxy Pattern" /><published>2022-04-20T00:00:00-05:00</published><updated>2022-04-20T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-proxy</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-proxy/"><![CDATA[<p>This is an example for implementation for Proxy pattern</p>
+
+<h2 id="concept">Concept</h2>
+
+<p>The Proxy Pattern provides a surrogate or placeholder for
+another object to control access to it.</p>
+
+<p>The pattern illustrates how a proxy class can interact with another and, internally,
+it connects to the real service or implementation class that provides the functionality.</p>
+
+<p><img src="http://localhost:4000/assets/images/pattern_proxy.png" alt="alt" /></p>
+
+<p>the software talks with proxy class, proxy class connects with the service over network</p>
+
+<h3 id="java">java</h3>
+<p>Java exposes a technology called RMI (Remote Method Invocation), it allows connect the proxy client class
+with the real service class throught net, its permits make remote calls from the local class to remote class
+keeping in mind the estrcture you must to folow</p>
+
+<p class="notice--info"><strong>Note:</strong> this is an example of Proxy patterns, its will be a series for implement all patterns in java / python / go</p>
+
+<p>in the next classes you can see the implementation for apply the Proxy pattern and how in the MainClass call all implemantationfor show usage, 
+you can see the flexibility for use this structure in the problem for OOP</p>
+
+<h2 id="abstraccions">abstraccions</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.net.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">ImageProxy</span> <span class="kd">implements</span> <span class="nc">Icon</span> <span class="o">{</span>
+	<span class="kd">volatile</span> <span class="nc">ImageIcon</span> <span class="n">imageIcon</span><span class="o">;</span>
+	<span class="kd">final</span> <span class="no">URL</span> <span class="n">imageURL</span><span class="o">;</span>
+	<span class="nc">Thread</span> <span class="n">retrievalThread</span><span class="o">;</span>
+	<span class="kt">boolean</span> <span class="n">retrieving</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+     
+	<span class="kd">public</span> <span class="nf">ImageProxy</span><span class="o">(</span><span class="no">URL</span> <span class="n">url</span><span class="o">)</span> <span class="o">{</span> <span class="n">imageURL</span> <span class="o">=</span> <span class="n">url</span><span class="o">;</span> <span class="o">}</span>
+     
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getIconWidth</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">imageIcon</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">imageIcon</span><span class="o">.</span><span class="na">getIconWidth</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="mi">800</span><span class="o">;</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+ 
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getIconHeight</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">imageIcon</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">imageIcon</span><span class="o">.</span><span class="na">getIconHeight</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="mi">600</span><span class="o">;</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+	
+	<span class="kd">synchronized</span> <span class="kt">void</span> <span class="nf">setImageIcon</span><span class="o">(</span><span class="nc">ImageIcon</span> <span class="n">imageIcon</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">imageIcon</span> <span class="o">=</span> <span class="n">imageIcon</span><span class="o">;</span>
+	<span class="o">}</span>
+     
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">paintIcon</span><span class="o">(</span><span class="kd">final</span> <span class="nc">Component</span> <span class="n">c</span><span class="o">,</span> <span class="nc">Graphics</span>  <span class="n">g</span><span class="o">,</span> <span class="kt">int</span> <span class="n">x</span><span class="o">,</span>  <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">imageIcon</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">imageIcon</span><span class="o">.</span><span class="na">paintIcon</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="n">g</span><span class="o">,</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">);</span>
+		<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+			<span class="n">g</span><span class="o">.</span><span class="na">drawString</span><span class="o">(</span><span class="s">"Loading album cover, please wait..."</span><span class="o">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">300</span><span class="o">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">190</span><span class="o">);</span>
+			<span class="k">if</span> <span class="o">(!</span><span class="n">retrieving</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">retrieving</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+				
+				<span class="n">retrievalThread</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Thread</span><span class="o">(</span><span class="k">new</span> <span class="nc">Runnable</span><span class="o">()</span> <span class="o">{</span>
+					<span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+						<span class="k">try</span> <span class="o">{</span>
+							<span class="n">setImageIcon</span><span class="o">(</span><span class="k">new</span> <span class="nc">ImageIcon</span><span class="o">(</span><span class="n">imageURL</span><span class="o">,</span> <span class="s">"Album Cover"</span><span class="o">));</span>
+							<span class="n">c</span><span class="o">.</span><span class="na">repaint</span><span class="o">();</span>
+						<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+							<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+						<span class="o">}</span>
+					<span class="o">}</span>
+				<span class="o">});</span>
+				
+				<span class="n">retrievalThread</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Thread</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+						<span class="k">try</span> <span class="o">{</span>
+							<span class="n">setImageIcon</span><span class="o">(</span><span class="k">new</span> <span class="nc">ImageIcon</span><span class="o">(</span><span class="n">imageURL</span><span class="o">,</span> <span class="s">"Album Cover"</span><span class="o">));</span>
+							<span class="n">c</span><span class="o">.</span><span class="na">repaint</span><span class="o">();</span>
+						<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+							<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+						<span class="o">}</span>
+				<span class="o">});</span>
+				<span class="n">retrievalThread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+				
+			<span class="o">}</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h2 id="usage">Usage</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">ImageComponent</span> <span class="kd">extends</span> <span class="nc">JComponent</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">Icon</span> <span class="n">icon</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">ImageComponent</span><span class="o">(</span><span class="nc">Icon</span> <span class="n">icon</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">icon</span> <span class="o">=</span> <span class="n">icon</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setIcon</span><span class="o">(</span><span class="nc">Icon</span> <span class="n">icon</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">icon</span> <span class="o">=</span> <span class="n">icon</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">paintComponent</span><span class="o">(</span><span class="nc">Graphics</span> <span class="n">g</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kd">super</span><span class="o">.</span><span class="na">paintComponent</span><span class="o">(</span><span class="n">g</span><span class="o">);</span>
+		<span class="kt">int</span> <span class="n">w</span> <span class="o">=</span> <span class="n">icon</span><span class="o">.</span><span class="na">getIconWidth</span><span class="o">();</span>
+		<span class="kt">int</span> <span class="n">h</span> <span class="o">=</span> <span class="n">icon</span><span class="o">.</span><span class="na">getIconHeight</span><span class="o">();</span>
+		<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="o">(</span><span class="mi">800</span> <span class="o">-</span> <span class="n">w</span><span class="o">)/</span><span class="mi">2</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="o">(</span><span class="mi">600</span> <span class="o">-</span> <span class="n">h</span><span class="o">)/</span><span class="mi">2</span><span class="o">;</span>
+		<span class="n">icon</span><span class="o">.</span><span class="na">paintIcon</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">g</span><span class="o">,</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainClass</span> <span class="o">{</span>
+
+	<span class="nc">ImageComponent</span> <span class="n">imageComponent</span><span class="o">;</span>
+	<span class="nc">JFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JFrame</span><span class="o">(</span><span class="s">"Album Cover Viewer"</span><span class="o">);</span>
+	<span class="nc">JMenuBar</span> <span class="n">menuBar</span><span class="o">;</span>
+	<span class="nc">JMenu</span> <span class="n">menu</span><span class="o">;</span>
+	<span class="nc">Hashtable</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">albums</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Hashtable</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;();</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="nc">ImageProxyTestDrive</span> <span class="n">testDrive</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ImageProxyTestDrive</span><span class="o">();</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="nf">ImageProxyTestDrive</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="n">albums</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"Buddha Bar"</span><span class="o">,</span><span class="s">"http://images.amazon.com/images/P/B00009XBYK.01.LZZZZZZZ.jpg"</span><span class="o">);</span>
+		<span class="n">albums</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"Ima"</span><span class="o">,</span><span class="s">"http://images.amazon.com/images/P/B000005IRM.01.LZZZZZZZ.jpg"</span><span class="o">);</span>
+		<span class="n">albums</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"Karma"</span><span class="o">,</span><span class="s">"http://images.amazon.com/images/P/B000005DCB.01.LZZZZZZZ.gif"</span><span class="o">);</span>
+		<span class="n">albums</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"MCMXC a.D."</span><span class="o">,</span><span class="s">"http://images.amazon.com/images/P/B000002URV.01.LZZZZZZZ.jpg"</span><span class="o">);</span>
+		<span class="n">albums</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"Northern Exposure"</span><span class="o">,</span><span class="s">"http://images.amazon.com/images/P/B000003SFN.01.LZZZZZZZ.jpg"</span><span class="o">);</span>
+		<span class="n">albums</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"Selected Ambient Works, Vol. 2"</span><span class="o">,</span><span class="s">"http://images.amazon.com/images/P/B000002MNZ.01.LZZZZZZZ.jpg"</span><span class="o">);</span>
+
+		<span class="no">URL</span> <span class="n">initialURL</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">((</span><span class="nc">String</span><span class="o">)</span><span class="n">albums</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"Selected Ambient Works, Vol. 2"</span><span class="o">));</span>
+		<span class="n">menuBar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JMenuBar</span><span class="o">();</span>
+		<span class="n">menu</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JMenu</span><span class="o">(</span><span class="s">"Favorite Albums"</span><span class="o">);</span>
+		<span class="n">menuBar</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">menu</span><span class="o">);</span>
+		<span class="n">frame</span><span class="o">.</span><span class="na">setJMenuBar</span><span class="o">(</span><span class="n">menuBar</span><span class="o">);</span>
+
+		<span class="k">for</span> <span class="o">(</span><span class="nc">Enumeration</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="n">albums</span><span class="o">.</span><span class="na">keys</span><span class="o">();</span> <span class="n">e</span><span class="o">.</span><span class="na">hasMoreElements</span><span class="o">();)</span> <span class="o">{</span>
+			<span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span><span class="n">e</span><span class="o">.</span><span class="na">nextElement</span><span class="o">();</span>
+			<span class="nc">JMenuItem</span> <span class="n">menuItem</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JMenuItem</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+			<span class="n">menu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">menuItem</span><span class="o">);</span> 
+			<span class="n">menuItem</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="n">event</span> <span class="o">-&gt;</span> <span class="o">{</span>
+				<span class="n">imageComponent</span><span class="o">.</span><span class="na">setIcon</span><span class="o">(</span><span class="k">new</span> <span class="nc">ImageProxy</span><span class="o">(</span><span class="n">getAlbumUrl</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getActionCommand</span><span class="o">())));</span>
+				<span class="n">frame</span><span class="o">.</span><span class="na">repaint</span><span class="o">();</span>
+			<span class="o">});</span>
+		<span class="o">}</span>
+
+		<span class="c1">// set up frame and menus</span>
+
+		<span class="nc">Icon</span> <span class="n">icon</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ImageProxy</span><span class="o">(</span><span class="n">initialURL</span><span class="o">);</span>
+		<span class="n">imageComponent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ImageComponent</span><span class="o">(</span><span class="n">icon</span><span class="o">);</span>
+		<span class="n">frame</span><span class="o">.</span><span class="na">getContentPane</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">imageComponent</span><span class="o">);</span>
+		<span class="n">frame</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+		<span class="n">frame</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">800</span><span class="o">,</span><span class="mi">600</span><span class="o">);</span>
+		<span class="n">frame</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+	<span class="o">}</span>
+
+	<span class="no">URL</span> <span class="nf">getAlbumUrl</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="k">new</span> <span class="nf">URL</span><span class="o">((</span><span class="nc">String</span><span class="o">)</span><span class="n">albums</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">name</span><span class="o">));</span>
+		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">MalformedURLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+			<span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Proxy pattern]]></summary></entry><entry><title type="html">Singleton Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-singleton/" rel="alternate" type="text/html" title="Singleton Pattern" /><published>2022-04-19T00:00:00-05:00</published><updated>2022-04-19T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-singleton</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-singleton/"><![CDATA[<p>This is an example for implementation for singleton pattern</p>
 
 <h2 id="concept">Concept</h2>
 
