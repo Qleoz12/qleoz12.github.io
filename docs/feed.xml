@@ -1,4 +1,118 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-21T00:25:20-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Facade Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-Facade/" rel="alternate" type="text/html" title="Facade Pattern" /><published>2022-04-21T00:00:00-05:00</published><updated>2022-04-21T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-Facade</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-Facade/"><![CDATA[<p>This is an example for implementation for Facade pattern</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-22T12:43:27-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Bridge Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-bridge/" rel="alternate" type="text/html" title="Bridge Pattern" /><published>2022-04-21T00:00:00-05:00</published><updated>2022-04-21T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-bridge</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-bridge/"><![CDATA[<p>This is an example for implementation for Bridge pattern</p>
+
+<h2 id="concept">Concept</h2>
+
+<p>Use the Bridge Pattern to vary not only your implementations but also your abstractions.</p>
+
+<p>the next picture ilustrase easy the main idea.</p>
+
+<p><img src="http://localhost:4000/assets/images/pattern-bridge-1.png" alt="alt" /></p>
+
+<p>when you have Abstraction and implementation(in the future it becomes in another abstraction), 
+we can face we are creating a cartesian product, which is hell because it increments exponentially the code 
+and That’s a very common issue with class inheritance, then came the bridge pattern for saving the sake, 
+for avoiding that, the bridge pattern specifies the dependency implementation switch the inheritance 
+for object composition, it allows changes on the implementation and the abstraction regardless</p>
+
+<p>for example</p>
+
+<p><img src="http://localhost:4000/assets/images/pattern-bridge-2.png" alt="alt" /></p>
+
+<p class="notice--info"><strong>Note:</strong> this is an example of bridge patterns, its will be a series for implement all patterns in java / python / go</p>
+
+<p>in the next classes you can see the implementation for apply the bridge pattern and how in the MainClass call all implemantation
+for show usage, you can see the flexibility for use this structure in the problem for OOP</p>
+
+<h2 id="abstraccions">abstraccions</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Shape</span> <span class="o">{</span>
+
+    <span class="kd">protected</span> <span class="nc">Color</span> <span class="n">color</span><span class="o">;</span>
+
+    <span class="kd">protected</span> <span class="nf">Shape</span><span class="o">(</span><span class="nc">Color</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">color</span> <span class="o">=</span> <span class="nc">Color</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">abstract</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyColor</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Color</span> <span class="o">{</span>
+
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">color</span><span class="o">;</span>
+    
+    <span class="kd">protected</span> <span class="nf">Color</span><span class="o">(</span><span class="nc">String</span> <span class="nc">Color</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">color</span> <span class="o">=</span> <span class="nc">Color</span><span class="o">;</span>
+    <span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyColor</span><span class="o">();</span>
+
+	<span class="c1">//getters</span>
+	<span class="c1">//seters</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="usage">Usage</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Triangle</span> <span class="kd">extends</span> <span class="nc">Shape</span><span class="o">{</span>
+
+	<span class="kd">public</span> <span class="nf">Triangle</span><span class="o">(</span><span class="nc">Color</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kd">super</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyColor</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Triangle filled with color "</span><span class="o">);</span>
+		<span class="n">color</span><span class="o">.</span><span class="na">applyColor</span><span class="o">();</span>
+	<span class="o">}</span> 
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Pentagon</span> <span class="kd">extends</span> <span class="nc">Shape</span><span class="o">{</span>
+
+	<span class="kd">public</span> <span class="nf">Pentagon</span><span class="o">(</span><span class="nc">Color</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kd">super</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyColor</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Pentagon filled with color "</span><span class="o">);</span>
+		<span class="n">color</span><span class="o">.</span><span class="na">applyColor</span><span class="o">();</span>
+	<span class="o">}</span> 
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RedColor</span> <span class="kd">implements</span> <span class="nc">Color</span><span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyColor</span><span class="o">(){</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"red."</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GreenColor</span> <span class="kd">implements</span> <span class="nc">Color</span><span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyColor</span><span class="o">(){</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"green."</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainClass</span> <span class="o">{</span>
+
+	 <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+		<span class="nc">Shape</span> <span class="n">tri</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Triangle</span><span class="o">(</span><span class="k">new</span> <span class="nc">RedColor</span><span class="o">());</span>
+		<span class="n">tri</span><span class="o">.</span><span class="na">applyColor</span><span class="o">();</span>
+
+		<span class="nc">Shape</span> <span class="n">pent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Pentagon</span><span class="o">(</span><span class="k">new</span> <span class="nc">GreenColor</span><span class="o">());</span>
+		<span class="n">pent</span><span class="o">.</span><span class="na">applyColor</span><span class="o">();</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Bridge pattern]]></summary></entry><entry><title type="html">Facade Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-Facade/" rel="alternate" type="text/html" title="Facade Pattern" /><published>2022-04-21T00:00:00-05:00</published><updated>2022-04-21T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-Facade</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-Facade/"><![CDATA[<p>This is an example for implementation for Facade pattern</p>
 
 <h2 id="concept">Concept</h2>
 
