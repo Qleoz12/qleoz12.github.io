@@ -1,0 +1,580 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Builder Pattern - Dann Brown Adventures</title>
+<meta name="description" content="This is an example for implementation for Builder pattern">
+
+
+  <meta name="author" content="Dann brown">
+  
+  <meta property="article:author" content="Dann brown">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dann Brown Adventures">
+<meta property="og:title" content="Builder Pattern">
+<meta property="og:url" content="http://localhost:4000/fundamentals/patterns/patterns-builder/">
+
+
+  <meta property="og:description" content="This is an example for implementation for Builder pattern">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-04-21T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2022-04-21T08:06:00-05:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/fundamentals/patterns/patterns-builder/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Leonardo L Sanchez- Dann Brown",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dann Brown Adventures Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--archive">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Dann Brown Adventures
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/docs/quick-start-guide/">Quick-Start Guide</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#fundamentals" itemprop="item"><span itemprop="name">Fundamentals</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#patterns" itemprop="item"><span itemprop="name">Patterns</span></a>
+          <meta itemprop="position" content="3" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Builder Pattern</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/1577552827279.jpg" alt="Dann brown" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Dann brown</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">CO</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/leonardo-sanchez-89590b127/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">linkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://www.youtube.com/channel/UCoROtxDQYfIgjXBDcORK5zw/videos" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-youtube" aria-hidden="true"></i><span class="label">Youtube</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Qleoz12" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kintaroloop@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="kintaroloop@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">Builder Pattern</h1>
+    
+    <p>This is an example for implementation for Builder pattern</p>
+
+<h2 id="concept">Concept</h2>
+<p>Use the BuilderPattern to encapsulate the construction of a
+product and allow it to be constructed in steps.</p>
+
+<p>the situation is when you must to face several ways to create some kind element depeding combination of several parameters 
+<img src="http://localhost:4000/assets/images/pattern_builder.png" alt="alt" /></p>
+
+<p>Separate the construction of a complex object from its representation so that the
+same construction process can create different representations</p>
+
+<p>it´s looks similar at umls repreentation but its focus an abstraction how exposes the easy way for set all needs for create the object requiered
+<img src="http://localhost:4000/assets/images/pattern_builder-1.png" alt="alt" /></p>
+
+<p class="notice--info"><strong>Note:</strong> this is an example of builder patterns, its will be a series for implement all patterns in java / python / go</p>
+
+<p>in the next classes you can see the implementation for apply the builder pattern and how in the MainClass call all implemantation
+for show usage, you can see the flexibility for use this structure in the problem for OOP</p>
+
+<h2 id="abstraccions">abstraccions</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">VacationBuilder</span> <span class="o">{</span>
+	<span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Accommodation</span><span class="o">&gt;</span> <span class="n">accommodations</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Accommodation</span><span class="o">&gt;();</span>
+	<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">events</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
+	
+	<span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">();</span>
+	<span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">);</span>
+	<span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">year</span><span class="o">,</span> <span class="kt">int</span> <span class="n">month</span><span class="o">,</span> <span class="kt">int</span> <span class="n">day</span><span class="o">,</span> <span class="kt">int</span> <span class="n">nights</span><span class="o">,</span> <span class="kt">int</span> <span class="n">location</span><span class="o">);</span>
+	<span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">VacationBuilder</span> <span class="nf">addEvent</span><span class="o">(</span><span class="nc">String</span> <span class="n">event</span><span class="o">);</span>
+	
+	<span class="kd">public</span> <span class="nc">Vacation</span> <span class="nf">getVacation</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">Vacation</span> <span class="n">vacation</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Vacation</span><span class="o">();</span>
+		<span class="n">vacation</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+		<span class="n">vacation</span><span class="o">.</span><span class="na">setAccommodations</span><span class="o">(</span><span class="n">accommodations</span><span class="o">);</span>
+		<span class="n">vacation</span><span class="o">.</span><span class="na">setEvents</span><span class="o">(</span><span class="n">events</span><span class="o">);</span>
+		<span class="k">return</span> <span class="n">vacation</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Vacation</span> <span class="o">{</span>
+	<span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Accommodation</span><span class="o">&gt;</span> <span class="n">accommodations</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Accommodation</span><span class="o">&gt;();</span>
+	<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">events</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
+ 
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAccommodations</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Accommodation</span><span class="o">&gt;</span> <span class="n">accommodations</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">accommodations</span> <span class="o">=</span> <span class="n">accommodations</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setEvents</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">events</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">events</span> <span class="o">=</span> <span class="n">events</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">StringBuffer</span> <span class="n">display</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
+		<span class="n">display</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"---- "</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">+</span> <span class="s">" ----\n"</span><span class="o">);</span>
+		<span class="k">for</span> <span class="o">(</span><span class="nc">Accommodation</span> <span class="n">a</span> <span class="o">:</span> <span class="n">accommodations</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">display</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">e</span> <span class="o">:</span> <span class="n">events</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">display</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">e</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">display</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Tent</span> <span class="kd">extends</span> <span class="nc">Accommodation</span> <span class="o">{</span>
+	<span class="kt">int</span> <span class="n">siteNumber</span><span class="o">;</span>
+	<span class="kd">public</span> <span class="nf">Tent</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"Tent"</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nf">Tent</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setSiteNumber</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">siteNumber</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getSiteNumber</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">siteNumber</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getLocation</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">siteNumber</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="s">""</span><span class="o">;</span>
+		<span class="k">else</span> <span class="k">return</span> <span class="s">"Site number "</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">siteNumber</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="usage">Usage</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Triangle</span> <span class="kd">extends</span> <span class="nc">Shape</span><span class="o">{</span>
+
+	<span class="kd">public</span> <span class="nf">Triangle</span><span class="o">(</span><span class="nc">Color</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kd">super</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyColor</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Triangle filled with color "</span><span class="o">);</span>
+		<span class="n">color</span><span class="o">.</span><span class="na">applyColor</span><span class="o">();</span>
+	<span class="o">}</span> 
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">OutdoorsVacationBuilder</span> <span class="kd">extends</span> <span class="nc">VacationBuilder</span> <span class="o">{</span>	
+	<span class="kd">public</span> <span class="nf">OutdoorsVacationBuilder</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"Outdoorsy Vacation Builder"</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">accommodations</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Tent</span><span class="o">());</span>
+		<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">accommodations</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Tent</span><span class="o">(</span><span class="n">name</span><span class="o">));</span>
+		<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">year</span><span class="o">,</span> <span class="kt">int</span> <span class="n">month</span><span class="o">,</span> <span class="kt">int</span> <span class="n">day</span><span class="o">,</span> <span class="kt">int</span> <span class="n">nights</span><span class="o">,</span> <span class="kt">int</span> <span class="n">location</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Reservation</span> <span class="n">reservation</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Reservation</span><span class="o">();</span>
+		<span class="n">reservation</span><span class="o">.</span><span class="na">setArrivalDate</span><span class="o">(</span><span class="n">year</span><span class="o">,</span> <span class="n">month</span><span class="o">,</span> <span class="n">day</span><span class="o">);</span>
+		<span class="n">reservation</span><span class="o">.</span><span class="na">setNights</span><span class="o">(</span><span class="n">nights</span><span class="o">);</span>
+		
+		<span class="nc">Tent</span> <span class="n">tent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Tent</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+		<span class="n">tent</span><span class="o">.</span><span class="na">setReservation</span><span class="o">(</span><span class="n">reservation</span><span class="o">);</span>
+		<span class="n">tent</span><span class="o">.</span><span class="na">setSiteNumber</span><span class="o">(</span><span class="n">location</span><span class="o">);</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">accommodations</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">tent</span><span class="o">);</span>
+		<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addEvent</span><span class="o">(</span><span class="nc">String</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">events</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"Hike: "</span> <span class="o">+</span> <span class="n">event</span><span class="o">);</span>
+		<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CityVacationBuilder</span> <span class="kd">extends</span> <span class="nc">VacationBuilder</span> <span class="o">{</span>	
+	<span class="kd">public</span> <span class="nf">CityVacationBuilder</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"City Vacation Builder"</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">accommodations</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Hotel</span><span class="o">());</span>
+		<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">accommodations</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Hotel</span><span class="o">(</span><span class="n">name</span><span class="o">));</span>
+		<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">year</span><span class="o">,</span> <span class="kt">int</span> <span class="n">month</span><span class="o">,</span> <span class="kt">int</span> <span class="n">day</span><span class="o">,</span> <span class="kt">int</span> <span class="n">nights</span><span class="o">,</span> <span class="kt">int</span> <span class="n">location</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Reservation</span> <span class="n">reservation</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Reservation</span><span class="o">();</span>
+		<span class="n">reservation</span><span class="o">.</span><span class="na">setArrivalDate</span><span class="o">(</span><span class="n">year</span><span class="o">,</span> <span class="n">month</span><span class="o">,</span> <span class="n">day</span><span class="o">);</span>
+		<span class="n">reservation</span><span class="o">.</span><span class="na">setNights</span><span class="o">(</span><span class="n">nights</span><span class="o">);</span>
+		
+		<span class="nc">Hotel</span> <span class="n">hotel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Hotel</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+		<span class="n">hotel</span><span class="o">.</span><span class="na">setReservation</span><span class="o">(</span><span class="n">reservation</span><span class="o">);</span>
+		<span class="n">hotel</span><span class="o">.</span><span class="na">setRoomNumber</span><span class="o">(</span><span class="n">location</span><span class="o">);</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">accommodations</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">hotel</span><span class="o">);</span>
+		<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addEvent</span><span class="o">(</span><span class="nc">String</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">events</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"See the "</span> <span class="o">+</span> <span class="n">event</span> <span class="o">+</span> <span class="s">" show"</span><span class="o">);</span>
+		<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainClass</span> <span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">VacationBuilder</span> <span class="n">outdoorsyVacationBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OutdoorsVacationBuilder</span><span class="o">();</span>
+		<span class="nc">Vacation</span> <span class="n">outdoorsyVacation</span> <span class="o">=</span> <span class="n">outdoorsyVacationBuilder</span>
+				<span class="o">.</span><span class="na">addAccommodation</span><span class="o">(</span><span class="s">"Two person tent"</span><span class="o">,</span> <span class="mi">2020</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">34</span><span class="o">)</span>
+				<span class="o">.</span><span class="na">addEvent</span><span class="o">(</span><span class="s">"Beach"</span><span class="o">)</span>
+				<span class="o">.</span><span class="na">addAccommodation</span><span class="o">(</span><span class="s">"Two person tent"</span><span class="o">)</span>
+				<span class="o">.</span><span class="na">addEvent</span><span class="o">(</span><span class="s">"Mountains"</span><span class="o">)</span>
+				<span class="o">.</span><span class="na">getVacation</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">outdoorsyVacation</span><span class="o">);</span>
+		
+		<span class="nc">VacationBuilder</span> <span class="n">cityVacationBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CityVacationBuilder</span><span class="o">();</span>
+		<span class="nc">Vacation</span> <span class="n">cityVacation</span> <span class="o">=</span> <span class="n">cityVacationBuilder</span>
+				<span class="o">.</span><span class="na">addAccommodation</span><span class="o">(</span><span class="s">"Grand Facadian"</span><span class="o">,</span> <span class="mi">2020</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span>
+				<span class="o">.</span><span class="na">addAccommodation</span><span class="o">(</span><span class="s">"Hotel Commander"</span><span class="o">,</span> <span class="mi">2020</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span>
+				<span class="o">.</span><span class="na">addEvent</span><span class="o">(</span><span class="s">"Cirque du Soleil"</span><span class="o">)</span>
+				<span class="o">.</span><span class="na">getVacation</span><span class="o">();</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cityVacation</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+  </div>
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Leonardo L Sanchez- Dann Brown. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
