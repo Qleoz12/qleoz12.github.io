@@ -16,7 +16,8 @@ another interface the clients expect. Adapter lets classes work
 together that couldn’t otherwise because of incompatible
 interfaces
 
-![alt]({{ site.url }}{{ site.baseurl }}/assets/images/adapter.png)
+the situation is when you must to face several ways to create som kind element depeding combination of several parameters 
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/pattern_builder.png)
 
 **Note:** this is an example of Adapter patterns, its will be a series for implement all patterns in java / python / go
 {: .notice--info}
