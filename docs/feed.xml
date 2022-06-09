@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-09T12:29:33-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Iterator Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-iterator/" rel="alternate" type="text/html" title="Iterator Pattern" /><published>2022-04-25T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-iterator</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-iterator/"><![CDATA[<p>This is an example for implementation for Iterator pattern</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-09T12:56:39-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Iterator Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-iterator/" rel="alternate" type="text/html" title="Iterator Pattern" /><published>2022-04-25T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-iterator</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-iterator/"><![CDATA[<p>This is an example for implementation for Iterator pattern</p>
 
 <h2 id="concept">Concept</h2>
 <p>the Iterator Pattern provides a way to access the elements
@@ -176,12 +176,12 @@ for show usage, you can see the flexibility for use this structure in the proble
 </code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Iterator pattern]]></summary></entry><entry><title type="html">Strategy Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-strategy/" rel="alternate" type="text/html" title="Strategy Pattern" /><published>2022-04-25T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-strategy</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-strategy/"><![CDATA[<p>This is an example for implementation for Strategy pattern</p>
 
 <h2 id="concept">Concept</h2>
-<p>the Strategy Pattern, which lets you define a family of algorithms, encapsulate each algorithm
+<p>The Strategy Pattern, which lets you define a family of algorithms, encapsulate each algorithm
 (called a strategy), and select an algorithm at run time. An example for several filter on a farmer app 
-for get apples base on criteria, you can see these criteria as different behaviors for the filter method. for more info check strategy design pattern 
+to get apples base on criteria, you can see these criteria as different behaviors for the filter method. For more info, check strategy design pattern 
 (see http://en.wikipedia.org/wiki/Strategy_pattern)</p>
 
-<p>the situation is when you must to face several ways to filter the apples base on criteria like weight or color or both and also another ways wil be requiered</p>
+<p>the situation is when you must face several ways to filter the apples base on criteria like weight or color or both and also another ways wil be required</p>
 
 <p><img src="http://localhost:4000/assets/images/pattern-strategy_z1.png" alt="alt" />
 simple filter by color</p>
@@ -192,17 +192,24 @@ simple parametrized filter by color</p>
 <p><img src="http://localhost:4000/assets/images/pattern-strategy_z3.png" alt="alt" />
 simple parametrized filter by weight</p>
 
-<p>in the previus images you can see the easy way to resolve the problem , implicates to repeat the code less the bold text
-it´s looks fits but it breaks the DRY (don’t repeat yourself) principle of software engineering. 
-So if you must to mix the filters or opend the code for new filter unknow currently</p>
+<p>in the previous images you can see the easy way to resolve the problem , implicates to repeat the code less the bold text
+it’s looks fits, but it breaks the DRY (don’t repeat yourself) principle of software engineering. 
+So if you must mix the filters or opend the code for new filter unknow currently</p>
 
 <p><img src="http://localhost:4000/assets/images/pattern-strategy_z4.png" alt="alt" />
-this image show a bad implemantation for conbine the filters of color and weight</p>
+this image show a bad implementation for conbine the filters of color and weight</p>
 
-<p class="notice--info"><strong>Note:</strong> this is an example of Strategy patterns, its will be a series for implement all patterns in java / python / go</p>
+<p>perhaps, if you re-think the problem a decouple the behavior you requiered you can realize this strategy pattern applied to this situation 
+<img src="http://localhost:4000/assets/images/pattern-strategy_z6.png" alt="alt" /></p>
+
+<p>But it implies you must create a new class for each new requirement you have to add to the farmer app, but if it class is for single use
+then you could use lambda expressions for simplify more the code and get more cleaner and less complexity on development
+check the las lines on main class for see the new improvement.</p>
+
+<p class="notice--info"><strong>Note:</strong> this is an example of Strategy patterns, it will be a series to implement all patterns in java / python / go</p>
 
 <p>in the next classes you can see the implementation for apply the builder pattern and how in the MainClass call all implemantation
-for show usage, you can see the flexibility for use this structure in the problem for OOP with functional programing like lambdas functions</p>
+for show usage, you can see the flexibility for use this structure in the problem for OOP with functional programming like lambdas functions</p>
 
 <h2 id="abstraccions">abstraccions</h2>
 
@@ -267,7 +274,7 @@ for show usage, you can see the flexibility for use this structure in the proble
 	
 <span class="o">}</span>
 </code></pre></div></div>
-<p>finally I add this picture for resume the idea of strategy pattern to conclude the topic
+<p>finally I add this picture to resume the idea of strategy pattern to conclude the topic
 <img src="http://localhost:4000/assets/images/pattern-strategy_z5.png" alt="alt" /></p>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Strategy pattern]]></summary></entry><entry><title type="html">Builder Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-builder/" rel="alternate" type="text/html" title="Builder Pattern" /><published>2022-04-24T00:00:00-05:00</published><updated>2022-04-24T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-builder</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-builder/"><![CDATA[<p>This is an example for implementation for Builder pattern</p>
 
 <h2 id="concept">Concept</h2>
