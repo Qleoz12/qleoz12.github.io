@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-09T13:06:42-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Iterator Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-iterator/" rel="alternate" type="text/html" title="Iterator Pattern" /><published>2022-04-25T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-iterator</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-iterator/"><![CDATA[<p>This is an example for implementation for Iterator pattern</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-06-09T16:58:27-05:00</updated><id>/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Iterator Pattern</title><link href="/fundamentals/patterns/patterns-iterator/" rel="alternate" type="text/html" title="Iterator Pattern" /><published>2022-04-25T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-iterator</id><content type="html" xml:base="/fundamentals/patterns/patterns-iterator/"><![CDATA[<p>This is an example for implementation for Iterator pattern</p>
 
 <h2 id="concept">Concept</h2>
 <p>the Iterator Pattern provides a way to access the elements
@@ -6,13 +6,13 @@ of an aggregate object sequentially without exposing its
 underlying representation.</p>
 
 <p>the situation is when you must to face several ways to create some kind element depeding combination of several parameters 
-<img src="http://localhost:4000/assets/images/pattern_builder.png" alt="alt" /></p>
+<img src="/assets/images/pattern_builder.png" alt="alt" /></p>
 
 <p>Separate the construction of a complex object from its representation so that the
 same construction process can create different representations</p>
 
 <p>it´s looks similar at umls repreentation but its focus an abstraction how exposes the easy way for set all needs for create the object requiered
-<img src="http://localhost:4000/assets/images/pattern_builder-1.png" alt="alt" /></p>
+<img src="/assets/images/pattern_builder-1.png" alt="alt" /></p>
 
 <p class="notice--info"><strong>Note:</strong> this is an example of builder patterns, its will be a series for implement all patterns in java / python / go</p>
 
@@ -173,7 +173,7 @@ for show usage, you can see the flexibility for use this structure in the proble
 		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cityVacation</span><span class="o">);</span>
 	<span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Iterator pattern]]></summary></entry><entry><title type="html">Strategy Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-strategy/" rel="alternate" type="text/html" title="Strategy Pattern" /><published>2022-04-25T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-strategy</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-strategy/"><![CDATA[<p>This is an example for implementation for Strategy pattern</p>
+</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Iterator pattern]]></summary></entry><entry><title type="html">Strategy Pattern</title><link href="/fundamentals/patterns/patterns-strategy/" rel="alternate" type="text/html" title="Strategy Pattern" /><published>2022-04-25T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-strategy</id><content type="html" xml:base="/fundamentals/patterns/patterns-strategy/"><![CDATA[<p>This is an example for implementation for Strategy pattern</p>
 
 <h2 id="concept">Concept</h2>
 <p>The Strategy Pattern, which lets you define a family of algorithms, encapsulate each algorithm
@@ -183,24 +183,24 @@ to get apples base on criteria, you can see these criteria as different behavior
 
 <p>the situation is when you must face several ways to filter the apples base on criteria like weight or color or both and also another ways wil be required</p>
 
-<p><img src="http://localhost:4000/assets/images/pattern-strategy_z1.png" alt="alt" />
+<p><img src="/assets/images/pattern-strategy_z1.png" alt="alt" />
 simple filter by color</p>
 
-<p><img src="http://localhost:4000/assets/images/pattern-strategy_z2.png" alt="alt" />
+<p><img src="/assets/images/pattern-strategy_z2.png" alt="alt" />
 simple parametrized filter by color</p>
 
-<p><img src="http://localhost:4000/assets/images/pattern-strategy_z3.png" alt="alt" />
+<p><img src="/assets/images/pattern-strategy_z3.png" alt="alt" />
 simple parametrized filter by weight</p>
 
 <p>in the previous images you can see the easy way to resolve the problem , implicates to repeat the code less the bold text
 it’s looks fits, but it breaks the DRY (don’t repeat yourself) principle of software engineering. 
 So if you must mix the filters or opend the code for new filter unknow currently</p>
 
-<p><img src="http://localhost:4000/assets/images/pattern-strategy_z4.png" alt="alt" />
+<p><img src="/assets/images/pattern-strategy_z4.png" alt="alt" />
 this image show a bad implementation for conbine the filters of color and weight</p>
 
 <p>perhaps, if you re-think the problem a decouple the behavior you requiered you can realize this strategy pattern applied to this situation 
-<img src="http://localhost:4000/assets/images/pattern-strategy_z6.png" alt="alt" /></p>
+<img src="/assets/images/pattern-strategy_z6.png" alt="alt" /></p>
 
 <p>But it implies you must create a new class for each new requirement you have to add to the farmer app, but if it class is for single use
 then you could use lambda expressions for simplify more the code and get more cleaner and less complexity on development
@@ -275,20 +275,20 @@ for show usage, you can see the flexibility for use this structure in the proble
 <span class="o">}</span>
 </code></pre></div></div>
 <p>finally I add this picture to resume the idea of strategy pattern to conclude the topic
-<img src="http://localhost:4000/assets/images/pattern-strategy_z5.png" alt="alt" /></p>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Strategy pattern]]></summary></entry><entry><title type="html">Builder Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-builder/" rel="alternate" type="text/html" title="Builder Pattern" /><published>2022-04-24T00:00:00-05:00</published><updated>2022-04-24T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-builder</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-builder/"><![CDATA[<p>This is an example for implementation for Builder pattern</p>
+<img src="/assets/images/pattern-strategy_z5.png" alt="alt" /></p>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Strategy pattern]]></summary></entry><entry><title type="html">Builder Pattern</title><link href="/fundamentals/patterns/patterns-builder/" rel="alternate" type="text/html" title="Builder Pattern" /><published>2022-04-24T00:00:00-05:00</published><updated>2022-04-24T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-builder</id><content type="html" xml:base="/fundamentals/patterns/patterns-builder/"><![CDATA[<p>This is an example for implementation for Builder pattern</p>
 
 <h2 id="concept">Concept</h2>
 <p>Use the BuilderPattern to encapsulate the construction of a
 product and allow it to be constructed in steps.</p>
 
 <p>the situation is when you must to face several ways to create some kind element depeding combination of several parameters 
-<img src="http://localhost:4000/assets/images/pattern_builder.png" alt="alt" /></p>
+<img src="/assets/images/pattern_builder.png" alt="alt" /></p>
 
 <p>Separate the construction of a complex object from its representation so that the
 same construction process can create different representations</p>
 
 <p>it´s looks similar at umls repreentation but its focus an abstraction how exposes the easy way for set all needs for create the object requiered
-<img src="http://localhost:4000/assets/images/pattern_builder-1.png" alt="alt" /></p>
+<img src="/assets/images/pattern_builder-1.png" alt="alt" /></p>
 
 <p class="notice--info"><strong>Note:</strong> this is an example of builder patterns, its will be a series for implement all patterns in java / python / go</p>
 
@@ -449,7 +449,7 @@ for show usage, you can see the flexibility for use this structure in the proble
 		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cityVacation</span><span class="o">);</span>
 	<span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Builder pattern]]></summary></entry><entry><title type="html">Facade Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-Facade/" rel="alternate" type="text/html" title="Facade Pattern" /><published>2022-04-21T00:00:00-05:00</published><updated>2022-04-21T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-Facade</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-Facade/"><![CDATA[<p>This is an example for implementation for Facade pattern</p>
+</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Builder pattern]]></summary></entry><entry><title type="html">Facade Pattern</title><link href="/fundamentals/patterns/patterns-Facade/" rel="alternate" type="text/html" title="Facade Pattern" /><published>2022-04-21T00:00:00-05:00</published><updated>2022-04-21T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-Facade</id><content type="html" xml:base="/fundamentals/patterns/patterns-Facade/"><![CDATA[<p>This is an example for implementation for Facade pattern</p>
 
 <h2 id="concept">Concept</h2>
 
@@ -459,7 +459,7 @@ interface that makes the subsystem easier to use.</p>
 
 <p>the next picture ilustrase easy the main idea.</p>
 
-<p><img src="http://localhost:4000/assets/images/pattern_facade.png" alt="alt" /></p>
+<p><img src="/assets/images/pattern_facade.png" alt="alt" /></p>
 
 <p>bese on the book “Head First Design Patterns Building Extensible and Maintainable Object-Oriented Software 
 (Eric Freeman Elisabeth Robson) “ it describe how the aproach is reduce the interaction between object and 
@@ -468,7 +468,7 @@ interact for rech some functionality</p>
 
 <p>for example</p>
 
-<p><img src="http://localhost:4000/assets/images/pattern_facade2.png" alt="alt" /></p>
+<p><img src="/assets/images/pattern_facade2.png" alt="alt" /></p>
 
 <p class="notice--info"><strong>Note:</strong> this is an example of Facade patterns, its will be a series for implement all patterns in java / python / go</p>
 
@@ -594,7 +594,7 @@ you can see the flexibility for use this structure in the problem for OOP</p>
 		<span class="n">homeTheater</span><span class="o">.</span><span class="na">endMovie</span><span class="o">();</span>
 	<span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Facade pattern]]></summary></entry><entry><title type="html">Bridge Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-bridge/" rel="alternate" type="text/html" title="Bridge Pattern" /><published>2022-04-21T00:00:00-05:00</published><updated>2022-04-21T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-bridge</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-bridge/"><![CDATA[<p>This is an example for implementation for Bridge pattern</p>
+</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Facade pattern]]></summary></entry><entry><title type="html">Bridge Pattern</title><link href="/fundamentals/patterns/patterns-bridge/" rel="alternate" type="text/html" title="Bridge Pattern" /><published>2022-04-21T00:00:00-05:00</published><updated>2022-04-21T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-bridge</id><content type="html" xml:base="/fundamentals/patterns/patterns-bridge/"><![CDATA[<p>This is an example for implementation for Bridge pattern</p>
 
 <h2 id="concept">Concept</h2>
 
@@ -602,7 +602,7 @@ you can see the flexibility for use this structure in the problem for OOP</p>
 
 <p>the next picture ilustrase easy the main idea.</p>
 
-<p><img src="http://localhost:4000/assets/images/pattern-bridge-1.png" alt="alt" /></p>
+<p><img src="/assets/images/pattern-bridge-1.png" alt="alt" /></p>
 
 <p>when you have Abstraction and implementation(in the future it becomes in another abstraction), 
 we can face we are creating a cartesian product, which is hell because it increments exponentially the code 
@@ -612,7 +612,7 @@ for object composition, it allows changes on the implementation and the abstract
 
 <p>for example</p>
 
-<p><img src="http://localhost:4000/assets/images/pattern-bridge-2.png" alt="alt" /></p>
+<p><img src="/assets/images/pattern-bridge-2.png" alt="alt" /></p>
 
 <p class="notice--info"><strong>Note:</strong> this is an example of bridge patterns, its will be a series for implement all patterns in java / python / go</p>
 
@@ -708,7 +708,7 @@ for show usage, you can see the flexibility for use this structure in the proble
 
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Bridge pattern]]></summary></entry><entry><title type="html">Proxy Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-proxy/" rel="alternate" type="text/html" title="Proxy Pattern" /><published>2022-04-20T00:00:00-05:00</published><updated>2022-04-20T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-proxy</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-proxy/"><![CDATA[<p>This is an example for implementation for Proxy pattern</p>
+</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Bridge pattern]]></summary></entry><entry><title type="html">Proxy Pattern</title><link href="/fundamentals/patterns/patterns-proxy/" rel="alternate" type="text/html" title="Proxy Pattern" /><published>2022-04-20T00:00:00-05:00</published><updated>2022-04-20T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-proxy</id><content type="html" xml:base="/fundamentals/patterns/patterns-proxy/"><![CDATA[<p>This is an example for implementation for Proxy pattern</p>
 
 <h2 id="concept">Concept</h2>
 
@@ -718,7 +718,7 @@ another object to control access to it.</p>
 <p>The pattern illustrates how a proxy class can interact with another and, internally,
 it connects to the real service or implementation class that provides the functionality.</p>
 
-<p><img src="http://localhost:4000/assets/images/pattern_proxy.png" alt="alt" /></p>
+<p><img src="/assets/images/pattern_proxy.png" alt="alt" /></p>
 
 <p>the software talks with proxy class, proxy class connects with the service over network</p>
 
@@ -883,7 +883,7 @@ you can see the flexibility for use this structure in the problem for OOP</p>
 		<span class="o">}</span>
 	<span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Proxy pattern]]></summary></entry><entry><title type="html">Singleton Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-singleton/" rel="alternate" type="text/html" title="Singleton Pattern" /><published>2022-04-19T00:00:00-05:00</published><updated>2022-04-19T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-singleton</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-singleton/"><![CDATA[<p>This is an example for implementation for singleton pattern</p>
+</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Proxy pattern]]></summary></entry><entry><title type="html">Singleton Pattern</title><link href="/fundamentals/patterns/patterns-singleton/" rel="alternate" type="text/html" title="Singleton Pattern" /><published>2022-04-19T00:00:00-05:00</published><updated>2022-04-19T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-singleton</id><content type="html" xml:base="/fundamentals/patterns/patterns-singleton/"><![CDATA[<p>This is an example for implementation for singleton pattern</p>
 
 <h2 id="concept">Concept</h2>
 
@@ -959,7 +959,7 @@ you can see the flexibility for use this structure in the problem for OOP</p>
 		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">singleton</span><span class="o">.</span><span class="na">getDescription</span><span class="o">());</span>
 	<span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for singleton pattern]]></summary></entry><entry><title type="html">Adapter Pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-adapter/" rel="alternate" type="text/html" title="Adapter Pattern" /><published>2022-04-18T00:00:00-05:00</published><updated>2022-04-18T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-adapter</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-adapter/"><![CDATA[<p>This is an example for implementation for Adapter pattern</p>
+</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for singleton pattern]]></summary></entry><entry><title type="html">Adapter Pattern</title><link href="/fundamentals/patterns/patterns-adapter/" rel="alternate" type="text/html" title="Adapter Pattern" /><published>2022-04-18T00:00:00-05:00</published><updated>2022-04-18T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-adapter</id><content type="html" xml:base="/fundamentals/patterns/patterns-adapter/"><![CDATA[<p>This is an example for implementation for Adapter pattern</p>
 
 <h2 id="concept">concept</h2>
 
@@ -969,7 +969,7 @@ together that couldn’t otherwise because of incompatible
 interfaces</p>
 
 <p>the situation is when you must to face several ways to create som kind element depeding combination of several parameters 
-<img src="http://localhost:4000/assets/images/pattern_builder.png" alt="alt" /></p>
+<img src="/assets/images/pattern_builder.png" alt="alt" /></p>
 
 <p class="notice--info"><strong>Note:</strong> this is an example of Adapter patterns, its will be a series for implement all patterns in java / python / go</p>
 
@@ -1117,7 +1117,7 @@ you can see the flexibility for use this structure in the problem ducks and turk
 		<span class="n">duck</span><span class="o">.</span><span class="na">fly</span><span class="o">();</span>
 	<span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Adapter pattern]]></summary></entry><entry><title type="html">Command pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-command/" rel="alternate" type="text/html" title="Command pattern" /><published>2022-04-17T00:00:00-05:00</published><updated>2022-04-17T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-command</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-command/"><![CDATA[<p>This is an example for implementation for Command pattern</p>
+</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Adapter pattern]]></summary></entry><entry><title type="html">Command pattern</title><link href="/fundamentals/patterns/patterns-command/" rel="alternate" type="text/html" title="Command pattern" /><published>2022-04-17T00:00:00-05:00</published><updated>2022-04-17T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-command</id><content type="html" xml:base="/fundamentals/patterns/patterns-command/"><![CDATA[<p>This is an example for implementation for Command pattern</p>
 
 <h2 id="concept">concept</h2>
 
@@ -1261,7 +1261,7 @@ you can see the flexibility for use this structure in the problem for OOP on Piz
 
 	<span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Command pattern]]></summary></entry><entry><title type="html">Factory pattern</title><link href="http://localhost:4000/fundamentals/patterns/patterns-factory/" rel="alternate" type="text/html" title="Factory pattern" /><published>2022-04-16T00:00:00-05:00</published><updated>2022-04-16T08:06:00-05:00</updated><id>http://localhost:4000/fundamentals/patterns/patterns-factory</id><content type="html" xml:base="http://localhost:4000/fundamentals/patterns/patterns-factory/"><![CDATA[<p>This is an example for implementation for factory pattern</p>
+</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Command pattern]]></summary></entry><entry><title type="html">Factory pattern</title><link href="/fundamentals/patterns/patterns-factory/" rel="alternate" type="text/html" title="Factory pattern" /><published>2022-04-16T00:00:00-05:00</published><updated>2022-04-16T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-factory</id><content type="html" xml:base="/fundamentals/patterns/patterns-factory/"><![CDATA[<p>This is an example for implementation for factory pattern</p>
 
 <h2 id="concept">concept</h2>
 
