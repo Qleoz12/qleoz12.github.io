@@ -1,17 +1,19 @@
 ---
-title:  "Builder Pattern"
+title:  "Iterator Pattern"
 search: false
 categories: 
   - Fundamentals/patterns
-date: 2022-04-21
-last_modified_at: 2022-04-21T08:06:00-05:00
+date: 2022-04-25
+last_modified_at: 2022-04-25T08:06:00-05:00
 ---
 
-This is an example for implementation for Builder pattern
+This is an example for implementation for Iterator pattern
 
 ## Concept
-Use the BuilderPattern to encapsulate the construction of a
-product and allow it to be constructed in steps.
+the Iterator Pattern provides a way to access the elements
+of an aggregate object sequentially without exposing its
+underlying representation.
+
 
 
 the situation is when you must to face several ways to create some kind element depeding combination of several parameters 
@@ -81,6 +83,7 @@ public class Vacation {
 	}
 }
 ```
+
 ```java
 public class Tent extends Accommodation {
 	int siteNumber;
@@ -105,22 +108,6 @@ public class Tent extends Accommodation {
 
 
 ## Usage
-
-```java
-public class Triangle extends Shape{
-
-	public Triangle(Color c) {
-		super(c);
-	}
-
-	@Override
-	public void applyColor() {
-		System.out.print("Triangle filled with color ");
-		color.applyColor();
-	} 
-
-}
-```
 
 ```java
 public class OutdoorsVacationBuilder extends VacationBuilder {	
