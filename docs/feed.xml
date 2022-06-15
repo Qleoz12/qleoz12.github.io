@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-06-13T23:05:35-05:00</updated><id>/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Iterator Pattern</title><link href="/fundamentals/patterns/patterns-iterator/" rel="alternate" type="text/html" title="Iterator Pattern" /><published>2022-04-25T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-iterator</id><content type="html" xml:base="/fundamentals/patterns/patterns-iterator/"><![CDATA[<p>This is an example for implementation for Iterator pattern</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-06-15T17:09:26-05:00</updated><id>/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Iterator Pattern</title><link href="/fundamentals/patterns/patterns-iterator/" rel="alternate" type="text/html" title="Iterator Pattern" /><published>2022-04-25T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-iterator</id><content type="html" xml:base="/fundamentals/patterns/patterns-iterator/"><![CDATA[<p>This is an example for implementation for Iterator pattern</p>
 
 <h2 id="concept">Concept</h2>
 <p>the Iterator Pattern provides a way to access the elements
@@ -173,15 +173,16 @@ for show usage, you can see the flexibility for use this structure in the proble
 		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cityVacation</span><span class="o">);</span>
 	<span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Iterator pattern]]></summary></entry><entry><title type="html">Strategy Pattern</title><link href="/fundamentals/patterns/patterns-strategy/" rel="alternate" type="text/html" title="Strategy Pattern" /><published>2022-04-25T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-strategy</id><content type="html" xml:base="/fundamentals/patterns/patterns-strategy/"><![CDATA[<p>This is an example for implementation for Strategy pattern</p>
+</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Iterator pattern]]></summary></entry><entry><title type="html">Strategy Pattern</title><link href="/fundamentals/patterns/patterns-strategy/" rel="alternate" type="text/html" title="Strategy Pattern" /><published>2022-04-25T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-strategy</id><content type="html" xml:base="/fundamentals/patterns/patterns-strategy/"><![CDATA[<p>This is an example implementation of the Strategy pattern</p>
 
 <h2 id="concept">Concept</h2>
-<p>The Strategy Pattern, which lets you define a family of algorithms, encapsulate each algorithm
-(called a strategy), and select an algorithm at run time. An example for several filter on a farmer app 
-to get apples base on criteria, you can see these criteria as different behaviors for the filter method. For more info, check strategy design pattern 
+<p>The Strategy Pattern, lets you define a family of algorithms, encapsulate each algorithm
+(called a strategy), and select an algorithm at run time. The example below shows a farmer app with several filters<br />
+to get apples based on criteria. You can see these criteria as different behaviors in the filter method. For more info, check strategy design pattern 
 (see http://en.wikipedia.org/wiki/Strategy_pattern)</p>
 
-<p>the situation is when you must face several ways to filter the apples base on criteria like weight or color or both and also another ways wil be required</p>
+<p>In this situation you have several ways to filter apples based on criteria like 
+weight, color, or other factors.</p>
 
 <p><img src="/assets/images/pattern-strategy_z1.png" alt="alt" />
 simple filter by color</p>
@@ -192,14 +193,13 @@ simple parametrized filter by color</p>
 <p><img src="/assets/images/pattern-strategy_z3.png" alt="alt" />
 simple parametrized filter by weight</p>
 
-<p>in the previous images you can see the easy way to resolve the problem , implicates to repeat the code less the bold text
-it’s looks fits, but it breaks the DRY (don’t repeat yourself) principle of software engineering. 
-So if you must mix the filters or opend the code for new filter unknow currently</p>
+<p>in the previous images you can see the easy way to resolve the problem , It works, but it repeats the non-bold code 
+and breaks the DRY (don’t repeat yourself) principle of software engineering.You will need to repeat the code again if you want to mix filters or add new filters.</p>
 
 <p><img src="/assets/images/pattern-strategy_z4.png" alt="alt" />
-this image show a bad implementation for conbine the filters of color and weight</p>
+this image show a bad implementation for combining the filters of color and weight</p>
 
-<p>perhaps, if you re-think the problem a decouple the behavior you requiered you can realize this strategy pattern applied to this situation 
+<p>perhaps, if you re-think the problem to decouple the behavior you requiered you can use this strategy pattern in this situation 
 <img src="/assets/images/pattern-strategy_z6.png" alt="alt" /></p>
 
 <p>But it implies you must create a new class for each new requirement you have to add to the farmer app, but if it class is for single use
@@ -211,7 +211,7 @@ check the las lines on main class for see the new improvement.</p>
 <p>in the next classes you can see the implementation for apply the builder pattern and how in the MainClass call all implemantation
 for show usage, you can see the flexibility for use this structure in the problem for OOP with functional programming like lambdas functions</p>
 
-<h2 id="abstraccions">abstraccions</h2>
+<h2 id="abstractions">Abstractions</h2>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">ApplePredicate</span> <span class="o">{</span>
     <span class="kt">boolean</span> <span class="nf">test</span><span class="o">(</span><span class="nc">Apple</span> <span class="n">a</span><span class="o">);</span>
@@ -274,8 +274,8 @@ for show usage, you can see the flexibility for use this structure in the proble
 	
 <span class="o">}</span>
 </code></pre></div></div>
-<p>finally I add this picture to resume the idea of strategy pattern to conclude the topic
-<img src="/assets/images/pattern-strategy_z5.png" alt="alt" /></p>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Strategy pattern]]></summary></entry><entry><title type="html">Builder Pattern</title><link href="/fundamentals/patterns/patterns-builder/" rel="alternate" type="text/html" title="Builder Pattern" /><published>2022-04-24T00:00:00-05:00</published><updated>2022-04-24T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-builder</id><content type="html" xml:base="/fundamentals/patterns/patterns-builder/"><![CDATA[<p>This is an example for implementation for Builder pattern</p>
+<p>finally I add this picture to review the idea of strategy pattern to conclude the topic
+<img src="/assets/images/pattern-strategy_z5.png" alt="alt" /></p>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example implementation of the Strategy pattern]]></summary></entry><entry><title type="html">Builder Pattern</title><link href="/fundamentals/patterns/patterns-builder/" rel="alternate" type="text/html" title="Builder Pattern" /><published>2022-04-24T00:00:00-05:00</published><updated>2022-04-24T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-builder</id><content type="html" xml:base="/fundamentals/patterns/patterns-builder/"><![CDATA[<p>This is an example for implementation for Builder pattern</p>
 
 <h2 id="concept">Concept</h2>
 <p>Use the BuilderPattern to encapsulate the construction of a

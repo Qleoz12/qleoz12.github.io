@@ -10,7 +10,7 @@ feature_row:
     title: "Modern Java in Action"
     excerpt: "Lambda, streams, functional and reactive programming by Raoul-Gabriel Urma Mario Fusco Alan Mycroft 
     <br />
-    **STATUS** : [![read](https://img.shields.io/badge/read-in progress-yellow.svg?style=flat)](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)"
+    **STATUS** : [![read](https://img.shields.io/badge/read-in progress-yellow.svg?style=flat)](https://www.amazon.com/Modern-Java-Action-functional-programming/dp/1617293563){:target='_blank' rel='noopener'}"
 
   - image_path: https://images-na.ssl-images-amazon.com/images/I/31N95BlSwUL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg
     alt: "Learn Blockchain by Building One: A Concise Path to Understanding Cryptocurrencies 1st ed. Edición"
