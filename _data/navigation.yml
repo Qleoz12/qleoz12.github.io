@@ -8,7 +8,7 @@ main:
     url: /year-archive/
   - title: "Reading List"
     url: /books/reading
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
+  - title: "looking"
+    url: /reading
   # - title: "Sitemap"
   #   url: /sitemap/
