@@ -1,0 +1,22 @@
+{% if include.id %}
+  {% assign w_circular = page[include.id] %}
+{% else %}
+  {% assign w_circular = page.w_circular %}
+{% endif %}
+
+<div class="feature__wrapper">
+
+  {% for f in w_circular %}
+    <div >
+      <div class="archive__item">
+        {% if f.input %}
+          <div class="archive__item-teaser">
+            <p style="display: inline;">{{ f.input }}</p>
+            <div role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="--value:{{ f.percent }}"></div>
+          </div>
+        {% endif %}
+        </div>
+    </div>
+  {% endfor %}
+
+</div>
