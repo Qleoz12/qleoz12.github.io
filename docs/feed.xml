@@ -1,4 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-06-18T16:02:02-05:00</updated><id>/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Iterator Pattern</title><link href="/fundamentals/patterns/patterns-iterator/" rel="alternate" type="text/html" title="Iterator Pattern" /><published>2022-04-25T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-iterator</id><content type="html" xml:base="/fundamentals/patterns/patterns-iterator/"><![CDATA[<p>This is an example for implementation for Iterator pattern</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-06-22T21:27:45-05:00</updated><id>/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Java Spring-cloud sleuth</title><link href="/java/spring/cloud/sleuth/java-spring-cloud-sleuth/" rel="alternate" type="text/html" title="Java Spring-cloud sleuth" /><published>2022-06-22T00:00:00-05:00</published><updated>2022-06-22T08:06:00-05:00</updated><id>/java/spring/cloud/sleuth/java-spring-cloud-sleuth</id><content type="html" xml:base="/java/spring/cloud/sleuth/java-spring-cloud-sleuth/"><![CDATA[<p>This is an post for ilustrate how works Spring Cloud Sleuth for track request throught several microservices</p>
+
+<h2 id="concept">Concept</h2>
+<p>Sleuth, it’s api module contains all necessary interfaces to be implemented by a tracer.
+Spring Cloud Sleuth is able to trace your requests and messages so that you can correlate that communication to corresponding log entries. 
+You can also export the tracing information to an external system to visualize latency. 
+Spring Cloud Sleuth supports OpenZipkin compatible systems directly</p>
+
+<p><em>Spring Cloud Sleuth borrows Dapper’s terminology.</em></p>
+
+<p><strong>Span</strong>: The basic unit of work. For example, sending an RPC is a new span, as is sending a response to an RPC. Spans also have other data, such as descriptions, timestamped events, key-value annotations (tags), the ID of the span that caused them, and process IDs (normally IP addresses).</p>
+
+<p>Spans can be started and stopped, and they keep track of their timing information. Once you create a span, you must stop it at some point in the future.</p>
+
+<p><strong>Trace</strong>: A set of spans forming a tree-like structure. For example, if you run a distributed big-data store, a trace might be formed by a PUT request.</p>
+
+<p><strong>Annotation/Event</strong>: Used to record the existence of an event in time.</p>
+
+<p>Conceptually in a typical RPC scenario we mark these events to highlight what kind of an action took place (it doesn’t mean that physically such an event will be set on a span).</p>
+
+<p>cs: Client Sent. The client has made a request. This annotation indicates the start of the span.</p>
+
+<p>sr: Server Received: The server side got the request and started processing it. Subtracting the cs timestamp from this timestamp reveals the network latency.</p>
+
+<p>ss: Server Sent. Annotated upon completion of request processing (when the response got sent back to the client). Subtracting the sr timestamp from this timestamp reveals the time needed by the server side to process the request.</p>
+
+<p>cr: Client Received. Signifies the end of the span. The client has successfully received the response from the server side. Subtracting the cs timestamp from this timestamp reveals the whole time needed by the client to receive the response from the server.</p>
+
+<p>In the next image you can check the behavior of track ID and span ID between each service and how you could easily identity the same request through the complex microservices structure,
+in the case, trace ID is X for just one request and each service adds snap ID for the same request, it’s identify the flow the request on in and back
+<img src="/assets/images/spring/sleuth-trace-id.jpg" alt="alt" /></p>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="java/spring/cloud/sleuth" /><summary type="html"><![CDATA[This is an post for ilustrate how works Spring Cloud Sleuth for track request throught several microservices]]></summary></entry><entry><title type="html">Iterator Pattern</title><link href="/fundamentals/patterns/patterns-iterator/" rel="alternate" type="text/html" title="Iterator Pattern" /><published>2022-04-25T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-iterator</id><content type="html" xml:base="/fundamentals/patterns/patterns-iterator/"><![CDATA[<p>This is an example for implementation for Iterator pattern</p>
 
 <h2 id="concept">Concept</h2>
 <p>the Iterator Pattern provides a way to access the elements
@@ -1261,214 +1291,4 @@ you can see the flexibility for use this structure in the problem for OOP on Piz
 
 	<span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Command pattern]]></summary></entry><entry><title type="html">Factory pattern</title><link href="/fundamentals/patterns/patterns-factory/" rel="alternate" type="text/html" title="Factory pattern" /><published>2022-04-16T00:00:00-05:00</published><updated>2022-04-16T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-factory</id><content type="html" xml:base="/fundamentals/patterns/patterns-factory/"><![CDATA[<p>This is an example for implementation for factory pattern</p>
-
-<h2 id="concept">concept</h2>
-
-<p>All factory patter encapsulate object creation. The Factory
-Method Patter encapsulates object creation by letting subclasses
-decide what objects to create. Let’s check out these class diagrams to
-see who the players are in this pattern</p>
-
-<p>important:</p>
-<ul>
-  <li>simple factory is not considered a patterns</li>
-</ul>
-
-<p class="notice--info"><strong>Note:</strong> this is an example of factory patterns, its will be a series for implement all patterns in java / python / go</p>
-
-<p>in the next classes you can see the implementation for apply the factory patter and how in the MainClass call all implemantationfor show usage, 
-you can see the flexibility for use this structure in the problem for OOP on Pizzeria</p>
-
-<h2 id="abstraccions">abstraccions</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">PizzaStore</span> <span class="o">{</span>
- 
-	<span class="kd">abstract</span> <span class="nc">Pizza</span> <span class="nf">createPizza</span><span class="o">(</span><span class="nc">String</span> <span class="n">item</span><span class="o">);</span>
- 
-	<span class="kd">public</span> <span class="nc">Pizza</span> <span class="nf">orderPizza</span><span class="o">(</span><span class="nc">String</span> <span class="n">type</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">Pizza</span> <span class="n">pizza</span> <span class="o">=</span> <span class="n">createPizza</span><span class="o">(</span><span class="n">type</span><span class="o">);</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"--- Making a "</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">" ---"</span><span class="o">);</span>
-		<span class="n">pizza</span><span class="o">.</span><span class="na">prepare</span><span class="o">();</span>
-		<span class="n">pizza</span><span class="o">.</span><span class="na">bake</span><span class="o">();</span>
-		<span class="n">pizza</span><span class="o">.</span><span class="na">cut</span><span class="o">();</span>
-		<span class="n">pizza</span><span class="o">.</span><span class="na">box</span><span class="o">();</span>
-		<span class="k">return</span> <span class="n">pizza</span><span class="o">;</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Pizza</span> <span class="o">{</span>
-	<span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
-	<span class="nc">String</span> <span class="n">dough</span><span class="o">;</span>
-	<span class="nc">String</span> <span class="n">sauce</span><span class="o">;</span>
-	<span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">toppings</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
- 
-	<span class="kt">void</span> <span class="nf">prepare</span><span class="o">()</span> <span class="o">{</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Prepare "</span> <span class="o">+</span> <span class="n">name</span><span class="o">);</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Tossing dough..."</span><span class="o">);</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Adding sauce..."</span><span class="o">);</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Adding toppings: "</span><span class="o">);</span>
-		<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">topping</span> <span class="o">:</span> <span class="n">toppings</span><span class="o">)</span> <span class="o">{</span>
-			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"   "</span> <span class="o">+</span> <span class="n">topping</span><span class="o">);</span>
-		<span class="o">}</span>
-	<span class="o">}</span>
-  
-	<span class="kt">void</span> <span class="nf">bake</span><span class="o">()</span> <span class="o">{</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Bake for 25 minutes at 350"</span><span class="o">);</span>
-	<span class="o">}</span>
- 
-	<span class="kt">void</span> <span class="nf">cut</span><span class="o">()</span> <span class="o">{</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Cut the pizza into diagonal slices"</span><span class="o">);</span>
-	<span class="o">}</span>
-  
-	<span class="kt">void</span> <span class="nf">box</span><span class="o">()</span> <span class="o">{</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Place pizza in official PizzaStore box"</span><span class="o">);</span>
-	<span class="o">}</span>
- 
-	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">name</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
-		<span class="nc">StringBuffer</span> <span class="n">display</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
-		<span class="n">display</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"---- "</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">" ----\n"</span><span class="o">);</span>
-		<span class="n">display</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">dough</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
-		<span class="n">display</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">sauce</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
-		<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">topping</span> <span class="o">:</span> <span class="n">toppings</span><span class="o">)</span> <span class="o">{</span>
-			<span class="n">display</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">topping</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">display</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">PizzaStore</span> <span class="o">{</span>
- 
-	<span class="kd">abstract</span> <span class="nc">Pizza</span> <span class="nf">createPizza</span><span class="o">(</span><span class="nc">String</span> <span class="n">item</span><span class="o">);</span>
- 
-	<span class="kd">public</span> <span class="nc">Pizza</span> <span class="nf">orderPizza</span><span class="o">(</span><span class="nc">String</span> <span class="n">type</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">Pizza</span> <span class="n">pizza</span> <span class="o">=</span> <span class="n">createPizza</span><span class="o">(</span><span class="n">type</span><span class="o">);</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"--- Making a "</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">" ---"</span><span class="o">);</span>
-		<span class="n">pizza</span><span class="o">.</span><span class="na">prepare</span><span class="o">();</span>
-		<span class="n">pizza</span><span class="o">.</span><span class="na">bake</span><span class="o">();</span>
-		<span class="n">pizza</span><span class="o">.</span><span class="na">cut</span><span class="o">();</span>
-		<span class="n">pizza</span><span class="o">.</span><span class="na">box</span><span class="o">();</span>
-		<span class="k">return</span> <span class="n">pizza</span><span class="o">;</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre></div></div>
-
-<h2 id="usage">Usage</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ChicagoPizzaStore</span> <span class="kd">extends</span> <span class="nc">PizzaStore</span> <span class="o">{</span>
-
-	<span class="nc">Pizza</span> <span class="nf">createPizza</span><span class="o">(</span><span class="nc">String</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
-        	<span class="k">if</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"cheese"</span><span class="o">))</span> <span class="o">{</span>
-            		<span class="k">return</span> <span class="k">new</span> <span class="nf">ChicagoStyleCheesePizza</span><span class="o">();</span>
-        	<span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"veggie"</span><span class="o">))</span> <span class="o">{</span>
-        	    	<span class="k">return</span> <span class="k">new</span> <span class="nf">ChicagoStyleVeggiePizza</span><span class="o">();</span>
-        	<span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"clam"</span><span class="o">))</span> <span class="o">{</span>
-        	    	<span class="k">return</span> <span class="k">new</span> <span class="nf">ChicagoStyleClamPizza</span><span class="o">();</span>
-        	<span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"pepperoni"</span><span class="o">))</span> <span class="o">{</span>
-            		<span class="k">return</span> <span class="k">new</span> <span class="nf">ChicagoStylePepperoniPizza</span><span class="o">();</span>
-        	<span class="o">}</span> <span class="k">else</span> <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NYPizzaStore</span> <span class="kd">extends</span> <span class="nc">PizzaStore</span> <span class="o">{</span>
-
-	<span class="nc">Pizza</span> <span class="nf">createPizza</span><span class="o">(</span><span class="nc">String</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">if</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"cheese"</span><span class="o">))</span> <span class="o">{</span>
-			<span class="k">return</span> <span class="k">new</span> <span class="nf">NYStyleCheesePizza</span><span class="o">();</span>
-		<span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"veggie"</span><span class="o">))</span> <span class="o">{</span>
-			<span class="k">return</span> <span class="k">new</span> <span class="nf">NYStyleVeggiePizza</span><span class="o">();</span>
-		<span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"clam"</span><span class="o">))</span> <span class="o">{</span>
-			<span class="k">return</span> <span class="k">new</span> <span class="nf">NYStyleClamPizza</span><span class="o">();</span>
-		<span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"pepperoni"</span><span class="o">))</span> <span class="o">{</span>
-			<span class="k">return</span> <span class="k">new</span> <span class="nf">NYStylePepperoniPizza</span><span class="o">();</span>
-		<span class="o">}</span> <span class="k">else</span> <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ChicagoStyleCheesePizza</span> <span class="kd">extends</span> <span class="nc">Pizza</span> <span class="o">{</span>
-
-	<span class="kd">public</span> <span class="nf">ChicagoStyleCheesePizza</span><span class="o">()</span> <span class="o">{</span> 
-		<span class="n">name</span> <span class="o">=</span> <span class="s">"Chicago Style Deep Dish Cheese Pizza"</span><span class="o">;</span>
-		<span class="n">dough</span> <span class="o">=</span> <span class="s">"Extra Thick Crust Dough"</span><span class="o">;</span>
-		<span class="n">sauce</span> <span class="o">=</span> <span class="s">"Plum Tomato Sauce"</span><span class="o">;</span>
- 
-		<span class="n">toppings</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"Shredded Mozzarella Cheese"</span><span class="o">);</span>
-	<span class="o">}</span>
- 
-	<span class="kt">void</span> <span class="nf">cut</span><span class="o">()</span> <span class="o">{</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Cutting the pizza into square slices"</span><span class="o">);</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ChicagoStyleClamPizza</span> <span class="kd">extends</span> <span class="nc">Pizza</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="nf">ChicagoStyleClamPizza</span><span class="o">()</span> <span class="o">{</span>
-		<span class="n">name</span> <span class="o">=</span> <span class="s">"Chicago Style Clam Pizza"</span><span class="o">;</span>
-		<span class="n">dough</span> <span class="o">=</span> <span class="s">"Extra Thick Crust Dough"</span><span class="o">;</span>
-		<span class="n">sauce</span> <span class="o">=</span> <span class="s">"Plum Tomato Sauce"</span><span class="o">;</span>
- 
-		<span class="n">toppings</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"Shredded Mozzarella Cheese"</span><span class="o">);</span>
-		<span class="n">toppings</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"Frozen Clams from Chesapeake Bay"</span><span class="o">);</span>
-	<span class="o">}</span>
- 
-	<span class="kt">void</span> <span class="nf">cut</span><span class="o">()</span> <span class="o">{</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Cutting the pizza into square slices"</span><span class="o">);</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NYStyleCheesePizza</span> <span class="kd">extends</span> <span class="nc">Pizza</span> <span class="o">{</span>
-
-	<span class="kd">public</span> <span class="nf">NYStyleCheesePizza</span><span class="o">()</span> <span class="o">{</span> 
-		<span class="n">name</span> <span class="o">=</span> <span class="s">"NY Style Sauce and Cheese Pizza"</span><span class="o">;</span>
-		<span class="n">dough</span> <span class="o">=</span> <span class="s">"Thin Crust Dough"</span><span class="o">;</span>
-		<span class="n">sauce</span> <span class="o">=</span> <span class="s">"Marinara Sauce"</span><span class="o">;</span>
- 
-		<span class="n">toppings</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"Grated Reggiano Cheese"</span><span class="o">);</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NYStyleClamPizza</span> <span class="kd">extends</span> <span class="nc">Pizza</span> <span class="o">{</span>
-
-	<span class="kd">public</span> <span class="nf">NYStyleClamPizza</span><span class="o">()</span> <span class="o">{</span>
-		<span class="n">name</span> <span class="o">=</span> <span class="s">"NY Style Clam Pizza"</span><span class="o">;</span>
-		<span class="n">dough</span> <span class="o">=</span> <span class="s">"Thin Crust Dough"</span><span class="o">;</span>
-		<span class="n">sauce</span> <span class="o">=</span> <span class="s">"Marinara Sauce"</span><span class="o">;</span>
- 
-		<span class="n">toppings</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"Grated Reggiano Cheese"</span><span class="o">);</span>
-		<span class="n">toppings</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"Fresh Clams from Long Island Sound"</span><span class="o">);</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainClass</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">PizzaStore</span> <span class="n">nyStore</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NYPizzaStore</span><span class="o">();</span>
-		<span class="nc">PizzaStore</span> <span class="n">chicagoStore</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ChicagoPizzaStore</span><span class="o">();</span>
- 
-		<span class="nc">Pizza</span> <span class="n">pizza</span> <span class="o">=</span> <span class="n">nyStore</span><span class="o">.</span><span class="na">orderPizza</span><span class="o">(</span><span class="s">"cheese"</span><span class="o">);</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Ethan ordered a "</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
- 
-		<span class="n">pizza</span> <span class="o">=</span> <span class="n">chicagoStore</span><span class="o">.</span><span class="na">orderPizza</span><span class="o">(</span><span class="s">"cheese"</span><span class="o">);</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Joel ordered a "</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
-
-		<span class="n">pizza</span> <span class="o">=</span> <span class="n">nyStore</span><span class="o">.</span><span class="na">orderPizza</span><span class="o">(</span><span class="s">"clam"</span><span class="o">);</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Ethan ordered a "</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
- 
-		<span class="n">pizza</span> <span class="o">=</span> <span class="n">chicagoStore</span><span class="o">.</span><span class="na">orderPizza</span><span class="o">(</span><span class="s">"clam"</span><span class="o">);</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Joel ordered a "</span> <span class="o">+</span> <span class="n">pizza</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
-
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for factory pattern]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Command pattern]]></summary></entry></feed>
