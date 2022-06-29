@@ -9,30 +9,36 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Dann Brown Adventures - Page 3</title>
-<meta name="description" content="An amazing website.">
+<!-- begin _includes/seo.html --><title>Java SplitIterator - Dann Brown Adventures</title>
+<meta name="description" content="Concept SplitIterator is a new interface, it comes with JDK 8, the main functionalities of split iterator is">
 
 
   <meta name="author" content="Dann brown">
   
+  <meta property="article:author" content="Dann brown">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Dann Brown Adventures">
-<meta property="og:title" content="Dann Brown Adventures">
-<meta property="og:url" content="/page3/">
+<meta property="og:title" content="Java SplitIterator">
+<meta property="og:url" content="/java/jdk8/java-Splititerator/">
 
 
-  <meta property="og:description" content="An amazing website.">
-
-
-
+  <meta property="og:description" content="Concept SplitIterator is a new interface, it comes with JDK 8, the main functionalities of split iterator is">
 
 
 
 
 
+
+
+  <meta property="article:published_time" content="2022-06-25T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2022-06-25T08:06:00-05:00">
 
 
 
@@ -41,10 +47,8 @@
   
 
 
-<link rel="canonical" href="/page3/">
+<link rel="canonical" href="/java/jdk8/java-Splititerator/">
 
-
-  <link rel="prev" href="/page2/">
 
 
 
@@ -94,7 +98,7 @@
 
   </head>
 
-  <body class="layout--home">
+  <body class="layout--archive">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -144,6 +148,51 @@
     <div class="initial-content">
       
 
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#java" itemprop="item"><span itemprop="name">Java</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#jdk8" itemprop="item"><span itemprop="name">Jdk8</span></a>
+          <meta itemprop="position" content="3" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Java SplitIterator</li>
+      
+    
+  </ol>
+</nav>
 
   
 
@@ -283,254 +332,59 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title"></h1>
+      <h1 id="page-title" class="page__title">Java SplitIterator</h1>
     
-    
+    <h2 id="concept">Concept</h2>
+<p>SplitIterator is a new interface, it comes with JDK 8, the main functionalities of split iterator is</p>
 
-<h3 class="archive__subtitle">Recent posts</h3>
+<ul>
+  <li>split the data-structure</li>
+  <li>iterate the chunks</li>
+</ul>
 
+<p>Split iterator was create for sake to improve the way to implement parallelism because, 
+if you use SplitIterator API with Stream API, you could get an advance 
+‘<em>Internal iteration allows you to process a stream in parallel without the need to
+explicitly use and coordinate different threads in your code.</em>’</p>
 
+<p>Spliterator itself does not provide the parallel programming behavior. However, 
+it provides some methods to support it. 
+Developers should utilize Spliterator interface methods and implement 
+parallel programming by using Fork/Join Framework (one good approach).</p>
 
+<p>It is an Iterator for whole Collection API.	It is an Iterator for both Collection and Stream API, except Map implemented classes.
+It is an Universal Iterator.	It is NOT an Universal Iterator.
+It does NOT support Parallel Programming.	It supports Parallel Programming.</p>
 
-<div class="entries-list">
-  
-    
+<table>
+  <thead>
+    <tr>
+      <th>Iterator</th>
+      <th>Spliterator</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Introduced in Java 1.2.</td>
+      <td>Introduced in Java 1.8.</td>
+    </tr>
+    <tr>
+      <td>It is an Iterator for whole Collection API.</td>
+      <td>It is an Iterator for both Collection and Stream API, except Map implemented classes.</td>
+    </tr>
+    <tr>
+      <td>It is an Universal Iterator.</td>
+      <td>It is NOT an Universal Iterator.</td>
+    </tr>
+    <tr>
+      <td>It does NOT support Parallel Programming.</td>
+      <td>It supports Parallel Programming.</td>
+    </tr>
+  </tbody>
+</table>
 
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/fundamentals/patterns/patterns-adapter/" rel="permalink">Adapter Pattern
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-04-18T00:00:00-05:00">April 18, 2022</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This is an example for implementation for Adapter pattern
-</p>
-  </article>
-</div>
-
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/fundamentals/patterns/patterns-command/" rel="permalink">Command pattern
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-04-17T00:00:00-05:00">April 17, 2022</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This is an example for implementation for Command pattern
-</p>
-  </article>
-</div>
-
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/fundamentals/patterns/patterns-factory/" rel="permalink">Factory pattern
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-04-16T00:00:00-05:00">April 16, 2022</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          3 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This is an example for implementation for factory pattern
-</p>
-  </article>
-</div>
-
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/fundamentals/patterns/patterns-decorator/" rel="permalink">Decorator pattern
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-04-14T00:00:00-05:00">April 14, 2022</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This is an example for implementation for decorator patter
-</p>
-  </article>
-</div>
-
-  
-</div>
-
-
-<nav class="pagination">
-  
-  <ul>
-    
-    
-      
-        <li><a href="/page2/">Previous</a></li>
-      
-    
-
-    
-    
-      <li><a href="/">1</a></li>
-    
-
-    
-    
-
-    
-    
-    
-
-    
-      
-        
-        
-        
-        <li><a href="/page2/">2</a></li>
-      
-    
-
-    
-    
-
-    
-      <li><a href="#" class="disabled current">3</a></li>
-    
-
-    
-    
-      <li><a href="#" class="disabled"><span aria-hidden="true">Next</span></a></li>
-    
-  </ul>
-</nav>
-
-
+<p>in the next interface image, we can see the methods oof the Splititerator
+<img src="/assets/images/java/splititerator.png" alt="alt" /></p>
 
   </div>
 </div>
