@@ -1,20 +1,38 @@
 ---
+layout: archive
 permalink: /about/
 title: "About"
-excerpt: "Minimal Mistakes is a flexible two-column Jekyll theme."
-layouts_gallery:
 
 last_modified_at: 2021-05-11T10:23:16-04:00
 toc: true
+author_profile: true
 ---
 
-Minimal Mistakes is a flexible two-column Jekyll theme. Perfect for hosting your personal site, blog, or portfolio on GitHub or self-hosting on your own server. As the name implies --- styling is purposely minimalistic to be enhanced and customized by you :smile:.
+Systems Technologist, currently studying Systems
+Engineering, deepening knowledge of the best practices of
+web development and Architectures that allow better
+performance and ease when developing projects or making
+improvements, continuous and self-taught learning.
+Fullstack JAVA Developer (JAVA EE)
 
-{% include gallery id="layouts_gallery" caption="Examples of included layouts `splash`, `single`, and `archive`." %}
 
-[Install the Theme]({{ "/docs/quick-start-guide/" | relative_url }}){: .btn .btn--success .btn--large}
+## social
 
+<a href="https://stackoverflow.com/users/7258885/qleoz12"><img src="https://stackoverflow.com/users/flair/7258885.png?theme=dark" width="208" height="58" alt="profile for qleoz12 at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for qleoz12 at Stack Overflow, Q&amp;A for professional and enthusiast programmers"></a>
 
----
+<a href="https://codepen.io/qleoz12">
+codepen
+</a>
 
-Minimal Mistakes is designed, developed, and maintained by Michael Rose. Just another boring, tattooed, designer from Buffalo New York.
+<a href="https://www.beecrowd.com.br/judge/en/profile/388592">
+beecrowd
+</a>
+
+<a href="https://www.codecademy.com/profiles/Qleoz12">
+codeAcademy
+</a>
+
+Spanish
+<embed src="{{ site.url }}{{ site.baseurl }}/assets/cv/formato hoja de vida.pdf" type="application/pdf" />
+English
+<embed src="{{ site.url }}{{ site.baseurl }}/assets/cv/my-cv.pdf" type="application/pdf" />
