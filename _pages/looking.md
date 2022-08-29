@@ -7,6 +7,9 @@ w_circular:
     percent: "70"
   - input: "Spring cloud Sleuth"
     percent: "10"
+  - input: "Service Locator pattern"
+    percent: "0"
+  
 
 
 ---

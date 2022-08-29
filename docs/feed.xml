@@ -1,4 +1,86 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-07-15T11:56:15-05:00</updated><id>/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Lambdas y Streams Practica</title><link href="/java/jdk8/java-Lambdas_Streams_Practica/" rel="alternate" type="text/html" title="Lambdas y Streams Practica" /><published>2022-06-28T00:00:00-05:00</published><updated>2022-06-28T08:06:00-05:00</updated><id>/java/jdk8/java-Lambdas_Streams_Practica</id><content type="html" xml:base="/java/jdk8/java-Lambdas_Streams_Practica/"><![CDATA[<h2 id="concept">Concept</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-08-29T15:14:54-05:00</updated><id>/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Monitorizando logs con spring - prometheus - grafana - grafana-loki -micrometer</title><link href="/microservicios/java-Reactive-streams-and-the-Flow-API-copy/" rel="alternate" type="text/html" title="Monitorizando logs con spring - prometheus - grafana - grafana-loki -micrometer" /><published>2022-08-25T00:00:00-05:00</published><updated>2022-08-25T08:06:00-05:00</updated><id>/microservicios/java-Reactive%20streams%20and%20the%20Flow%20API%20copy</id><content type="html" xml:base="/microservicios/java-Reactive-streams-and-the-Flow-API-copy/"><![CDATA[<h2 id="concept">Concept</h2>
+
+<p><q>how to follow request throught the complex services interaction?</q></p>
+
+<p><q> how watch and create alerts for any events in your apps</q></p>
+
+<p><q>how create custom metrics ?</q></p>
+
+<p>the companies with Cloud arquitectures, them must to watch the variety arquitectures of several solutions 
+and how them interact between them, and detect errors fast and easier,in ald days you must to check the logs files 
+but is not a good aproach when you have a lot or microservices and you are checkin a transaction among different
+paths it could be take, hence the next aplications will show the way to handle this kind of situations</p>
+
+<p><img src="https://raw.githubusercontent.com/grafana/grafana/main/docs/logo-horizontal.png" alt="" /></p>
+
+<h3 id="grafana">Grafana</h3>
+<p>allows you to query, visualize, alert on and understand your metrics no matter where they are stored. Create, explore, and share dashboards with your team and foster a data-driven culture:</p>
+
+<p>Visualizations: Fast and flexible client side graphs with a multitude of options. Panel plugins offer many different ways to visualize metrics and logs.</p>
+
+<p>Dynamic Dashboards: Create dynamic &amp; reusable dashboards with template variables that appear as dropdowns at the top of the dashboard.
+Explore Metrics: Explore your data through ad-hoc queries and dynamic drilldown. Split view and compare different time ranges, queries and data sources side by side.
+Explore Logs: Experience the magic of switching from metrics to logs with preserved label filters. Quickly search through all your logs or streaming them live.
+Alerting: Visually define alert rules for your most important metrics. Grafana will continuously evaluate and send notifications to systems like Slack, PagerDuty, VictorOps, OpsGenie.
+Mixed Data Sources: Mix different data sources in the same graph! You can specify a data source on a per-query basis. This works for even custom datasources.</p>
+
+<h3 id="grafana-loki">Grafana loki</h3>
+
+<p><img src="https://raw.githubusercontent.com/grafana/loki/main/docs/sources/logo_and_name.png" alt="" /></p>
+
+<p>Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus. It is designed to be very cost effective and easy to operate. It does not index the contents of the logs, but rather a set of labels for each log stream.</p>
+
+<p>A Loki-based logging stack consists of 3 components:</p>
+
+<ul>
+  <li>promtail is the agent, responsible for gathering logs and sending them to Loki.</li>
+  <li>loki is the main server, responsible for storing logs and processing queries.</li>
+  <li>Grafana for querying and displaying the logs.</li>
+</ul>
+
+<h3 id="prometheus">Prometheus</h3>
+
+<p><img src="https://raw.githubusercontent.com/prometheus/prometheus/8cc7b7e57798553f026c1b6f3085f81f4661ede7/web/ui/react-app/src/images/prometheus_logo_grey.svg" alt="" style="background: #DF5430;" /></p>
+
+<p>prometheus.io
+Prometheus is an open-source systems monitoring and alerting toolkit originally built at SoundCloud. Since its inception in 2012, many companies and organizations have adopted Prometheus, and the project has a very active developer and user community. It is now a standalone open source project and maintained independently of any company. To emphasize this, and to clarify the project’s governance structure, Prometheus joined the Cloud Native Computing Foundation in 2016 as the second hosted project, after Kubernetes.</p>
+
+<p>usual after 2016
+Prometheus, a Cloud Native Computing Foundation project, is a systems and service monitoring system. It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts when specified conditions are observed.</p>
+
+<div class="responsive-wrap">
+<!-- this is the embed code provided by Google -->
+  <iframe src="https://docs.google.com/presentation/d/1Kugmmwna7YEz7gCah9IFGPsnOcLGYv3E5IdXjMFzReI/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<!-- Google embed ends -->
+</div>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>https://github.com/prometheus/prometheus</li>
+  <li>https://github.com/grafana/grafana</li>
+  <li>https://github.com/Qleoz12/spring-monitoring-demo?organization=Qleoz12&amp;organization=Qleoz12</li>
+  <li>https://github.com/thbrunzendorf/monitoring-demo</li>
+</ul>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="microservicios" /><summary type="html"><![CDATA[Concept]]></summary></entry><entry><title type="html">Reactive streams and the Flow API</title><link href="/java/jdk9/java-Reactive-streams-and-the-Flow-API/" rel="alternate" type="text/html" title="Reactive streams and the Flow API" /><published>2022-07-31T00:00:00-05:00</published><updated>2022-07-31T08:06:00-05:00</updated><id>/java/jdk9/java-Reactive%20streams%20and%20the%20Flow%20API</id><content type="html" xml:base="/java/jdk9/java-Reactive-streams-and-the-Flow-API/"><![CDATA[<h2 id="concept">Concept</h2>
+
+<p>the reactive programmaing it’s helpful to clarify why this new paradigm is of growing importance. 
+with libraries as Rxjs used by alot of framworks at frontedn for process streams, but before, it’s required to give some defanitions for treath future concepts</p>
+
+<h3 id="streams">streams</h3>
+<p>a streams is a queue of events, who is received by a system to be processed,the main diferent with tradicional
+set of data, the stream is conveyed element by element, its allows to interact with each elemen before to reach the end of the data</p>
+
+<p>Publisher
+Subscriber
+Subscription
+Processor</p>
+
+<p>marbaleable diagrams</p>
+
+<p>java main libraries
+example</p>
+
+<h2 id="references">references</h2>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Java/JDK9" /><summary type="html"><![CDATA[Concept]]></summary></entry><entry><title type="html">Lambdas y Streams Practica</title><link href="/java/jdk8/java-Lambdas_Streams_Practica/" rel="alternate" type="text/html" title="Lambdas y Streams Practica" /><published>2022-06-28T00:00:00-05:00</published><updated>2022-06-28T08:06:00-05:00</updated><id>/java/jdk8/java-Lambdas_Streams_Practica</id><content type="html" xml:base="/java/jdk8/java-Lambdas_Streams_Practica/"><![CDATA[<h2 id="concept">Concept</h2>
 
 <p><strong>lambda</strong>: A lambda expression (also called an anonymous function)
 is a function without a name identifier. For example,
@@ -565,7 +647,121 @@ for show usage, you can see the flexibility for use this structure in the proble
 		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cityVacation</span><span class="o">);</span>
 	<span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Builder pattern]]></summary></entry><entry><title type="html">Facade Pattern</title><link href="/fundamentals/patterns/patterns-Facade/" rel="alternate" type="text/html" title="Facade Pattern" /><published>2022-04-21T00:00:00-05:00</published><updated>2022-04-21T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-Facade</id><content type="html" xml:base="/fundamentals/patterns/patterns-Facade/"><![CDATA[<p>This is an example for implementation for Facade pattern</p>
+</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Builder pattern]]></summary></entry><entry><title type="html">Bridge Pattern</title><link href="/fundamentals/patterns/patterns-bridge/" rel="alternate" type="text/html" title="Bridge Pattern" /><published>2022-04-21T00:00:00-05:00</published><updated>2022-04-21T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-bridge</id><content type="html" xml:base="/fundamentals/patterns/patterns-bridge/"><![CDATA[<p>This is an example for implementation for Bridge pattern</p>
+
+<h2 id="concept">Concept</h2>
+
+<p>Use the Bridge Pattern to vary not only your implementations but also your abstractions.</p>
+
+<p>the next picture ilustrase easy the main idea.</p>
+
+<p><img src="/assets/images/pattern-bridge-1.png" alt="alt" /></p>
+
+<p>when you have Abstraction and implementation(in the future it becomes in another abstraction), 
+we can face we are creating a cartesian product, which is hell because it increments exponentially the code 
+and That’s a very common issue with class inheritance, then came the bridge pattern for saving the sake, 
+for avoiding that, the bridge pattern specifies the dependency implementation switch the inheritance 
+for object composition, it allows changes on the implementation and the abstraction regardless</p>
+
+<p>for example</p>
+
+<p><img src="/assets/images/pattern-bridge-2.png" alt="alt" /></p>
+
+<p class="notice--info"><strong>Note:</strong> this is an example of bridge patterns, its will be a series for implement all patterns in java / python / go</p>
+
+<p>in the next classes you can see the implementation for apply the bridge pattern and how in the MainClass call all implemantation
+for show usage, you can see the flexibility for use this structure in the problem for OOP</p>
+
+<h2 id="abstraccions">abstraccions</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Shape</span> <span class="o">{</span>
+
+    <span class="kd">protected</span> <span class="nc">Color</span> <span class="n">color</span><span class="o">;</span>
+
+    <span class="kd">protected</span> <span class="nf">Shape</span><span class="o">(</span><span class="nc">Color</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">color</span> <span class="o">=</span> <span class="nc">Color</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">abstract</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyColor</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Color</span> <span class="o">{</span>
+
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">color</span><span class="o">;</span>
+    
+    <span class="kd">protected</span> <span class="nf">Color</span><span class="o">(</span><span class="nc">String</span> <span class="nc">Color</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">color</span> <span class="o">=</span> <span class="nc">Color</span><span class="o">;</span>
+    <span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyColor</span><span class="o">();</span>
+
+	<span class="c1">//getters</span>
+	<span class="c1">//seters</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="usage">Usage</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Triangle</span> <span class="kd">extends</span> <span class="nc">Shape</span><span class="o">{</span>
+
+	<span class="kd">public</span> <span class="nf">Triangle</span><span class="o">(</span><span class="nc">Color</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kd">super</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyColor</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Triangle filled with color "</span><span class="o">);</span>
+		<span class="n">color</span><span class="o">.</span><span class="na">applyColor</span><span class="o">();</span>
+	<span class="o">}</span> 
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Pentagon</span> <span class="kd">extends</span> <span class="nc">Shape</span><span class="o">{</span>
+
+	<span class="kd">public</span> <span class="nf">Pentagon</span><span class="o">(</span><span class="nc">Color</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kd">super</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyColor</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Pentagon filled with color "</span><span class="o">);</span>
+		<span class="n">color</span><span class="o">.</span><span class="na">applyColor</span><span class="o">();</span>
+	<span class="o">}</span> 
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RedColor</span> <span class="kd">implements</span> <span class="nc">Color</span><span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyColor</span><span class="o">(){</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"red."</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GreenColor</span> <span class="kd">implements</span> <span class="nc">Color</span><span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyColor</span><span class="o">(){</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"green."</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainClass</span> <span class="o">{</span>
+
+	 <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+		<span class="nc">Shape</span> <span class="n">tri</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Triangle</span><span class="o">(</span><span class="k">new</span> <span class="nc">RedColor</span><span class="o">());</span>
+		<span class="n">tri</span><span class="o">.</span><span class="na">applyColor</span><span class="o">();</span>
+
+		<span class="nc">Shape</span> <span class="n">pent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Pentagon</span><span class="o">(</span><span class="k">new</span> <span class="nc">GreenColor</span><span class="o">());</span>
+		<span class="n">pent</span><span class="o">.</span><span class="na">applyColor</span><span class="o">();</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Bridge pattern]]></summary></entry><entry><title type="html">Facade Pattern</title><link href="/fundamentals/patterns/patterns-Facade/" rel="alternate" type="text/html" title="Facade Pattern" /><published>2022-04-21T00:00:00-05:00</published><updated>2022-04-21T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-Facade</id><content type="html" xml:base="/fundamentals/patterns/patterns-Facade/"><![CDATA[<p>This is an example for implementation for Facade pattern</p>
 
 <h2 id="concept">Concept</h2>
 
@@ -710,369 +906,4 @@ you can see the flexibility for use this structure in the problem for OOP</p>
 		<span class="n">homeTheater</span><span class="o">.</span><span class="na">endMovie</span><span class="o">();</span>
 	<span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Facade pattern]]></summary></entry><entry><title type="html">Bridge Pattern</title><link href="/fundamentals/patterns/patterns-bridge/" rel="alternate" type="text/html" title="Bridge Pattern" /><published>2022-04-21T00:00:00-05:00</published><updated>2022-04-21T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-bridge</id><content type="html" xml:base="/fundamentals/patterns/patterns-bridge/"><![CDATA[<p>This is an example for implementation for Bridge pattern</p>
-
-<h2 id="concept">Concept</h2>
-
-<p>Use the Bridge Pattern to vary not only your implementations but also your abstractions.</p>
-
-<p>the next picture ilustrase easy the main idea.</p>
-
-<p><img src="/assets/images/pattern-bridge-1.png" alt="alt" /></p>
-
-<p>when you have Abstraction and implementation(in the future it becomes in another abstraction), 
-we can face we are creating a cartesian product, which is hell because it increments exponentially the code 
-and That’s a very common issue with class inheritance, then came the bridge pattern for saving the sake, 
-for avoiding that, the bridge pattern specifies the dependency implementation switch the inheritance 
-for object composition, it allows changes on the implementation and the abstraction regardless</p>
-
-<p>for example</p>
-
-<p><img src="/assets/images/pattern-bridge-2.png" alt="alt" /></p>
-
-<p class="notice--info"><strong>Note:</strong> this is an example of bridge patterns, its will be a series for implement all patterns in java / python / go</p>
-
-<p>in the next classes you can see the implementation for apply the bridge pattern and how in the MainClass call all implemantation
-for show usage, you can see the flexibility for use this structure in the problem for OOP</p>
-
-<h2 id="abstraccions">abstraccions</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Shape</span> <span class="o">{</span>
-
-    <span class="kd">protected</span> <span class="nc">Color</span> <span class="n">color</span><span class="o">;</span>
-
-    <span class="kd">protected</span> <span class="nf">Shape</span><span class="o">(</span><span class="nc">Color</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">color</span> <span class="o">=</span> <span class="nc">Color</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">abstract</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyColor</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Color</span> <span class="o">{</span>
-
-	<span class="kd">private</span> <span class="nc">String</span> <span class="n">color</span><span class="o">;</span>
-    
-    <span class="kd">protected</span> <span class="nf">Color</span><span class="o">(</span><span class="nc">String</span> <span class="nc">Color</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">color</span> <span class="o">=</span> <span class="nc">Color</span><span class="o">;</span>
-    <span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyColor</span><span class="o">();</span>
-
-	<span class="c1">//getters</span>
-	<span class="c1">//seters</span>
-
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h2 id="usage">Usage</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Triangle</span> <span class="kd">extends</span> <span class="nc">Shape</span><span class="o">{</span>
-
-	<span class="kd">public</span> <span class="nf">Triangle</span><span class="o">(</span><span class="nc">Color</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
-		<span class="kd">super</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
-	<span class="o">}</span>
-
-	<span class="nd">@Override</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyColor</span><span class="o">()</span> <span class="o">{</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Triangle filled with color "</span><span class="o">);</span>
-		<span class="n">color</span><span class="o">.</span><span class="na">applyColor</span><span class="o">();</span>
-	<span class="o">}</span> 
-
-<span class="o">}</span>
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Pentagon</span> <span class="kd">extends</span> <span class="nc">Shape</span><span class="o">{</span>
-
-	<span class="kd">public</span> <span class="nf">Pentagon</span><span class="o">(</span><span class="nc">Color</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
-		<span class="kd">super</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
-	<span class="o">}</span>
-
-	<span class="nd">@Override</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyColor</span><span class="o">()</span> <span class="o">{</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Pentagon filled with color "</span><span class="o">);</span>
-		<span class="n">color</span><span class="o">.</span><span class="na">applyColor</span><span class="o">();</span>
-	<span class="o">}</span> 
-
-<span class="o">}</span>
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RedColor</span> <span class="kd">implements</span> <span class="nc">Color</span><span class="o">{</span>
-
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyColor</span><span class="o">(){</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"red."</span><span class="o">);</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GreenColor</span> <span class="kd">implements</span> <span class="nc">Color</span><span class="o">{</span>
-
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyColor</span><span class="o">(){</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"green."</span><span class="o">);</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainClass</span> <span class="o">{</span>
-
-	 <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
-		<span class="nc">Shape</span> <span class="n">tri</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Triangle</span><span class="o">(</span><span class="k">new</span> <span class="nc">RedColor</span><span class="o">());</span>
-		<span class="n">tri</span><span class="o">.</span><span class="na">applyColor</span><span class="o">();</span>
-
-		<span class="nc">Shape</span> <span class="n">pent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Pentagon</span><span class="o">(</span><span class="k">new</span> <span class="nc">GreenColor</span><span class="o">());</span>
-		<span class="n">pent</span><span class="o">.</span><span class="na">applyColor</span><span class="o">();</span>
-
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Bridge pattern]]></summary></entry><entry><title type="html">Proxy Pattern</title><link href="/fundamentals/patterns/patterns-proxy/" rel="alternate" type="text/html" title="Proxy Pattern" /><published>2022-04-20T00:00:00-05:00</published><updated>2022-04-20T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-proxy</id><content type="html" xml:base="/fundamentals/patterns/patterns-proxy/"><![CDATA[<p>This is an example for implementation for Proxy pattern</p>
-
-<h2 id="concept">Concept</h2>
-
-<p>The Proxy Pattern provides a surrogate or placeholder for
-another object to control access to it.</p>
-
-<p>The pattern illustrates how a proxy class can interact with another and, internally,
-it connects to the real service or implementation class that provides the functionality.</p>
-
-<p><img src="/assets/images/pattern_proxy.png" alt="alt" /></p>
-
-<p>the software talks with proxy class, proxy class connects with the service over network</p>
-
-<h3 id="java">java</h3>
-<p>Java exposes a technology called RMI (Remote Method Invocation), it allows connect the proxy client class
-with the real service class throught net, its permits make remote calls from the local class to remote class
-keeping in mind the estrcture you must to folow</p>
-
-<p class="notice--info"><strong>Note:</strong> this is an example of Proxy patterns, its will be a series for implement all patterns in java / python / go</p>
-
-<p>in the next classes you can see the implementation for apply the Proxy pattern and how in the MainClass call all implemantationfor show usage, 
-you can see the flexibility for use this structure in the problem for OOP</p>
-
-<h2 id="abstraccions">abstraccions</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.net.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
-
-<span class="kd">class</span> <span class="nc">ImageProxy</span> <span class="kd">implements</span> <span class="nc">Icon</span> <span class="o">{</span>
-	<span class="kd">volatile</span> <span class="nc">ImageIcon</span> <span class="n">imageIcon</span><span class="o">;</span>
-	<span class="kd">final</span> <span class="no">URL</span> <span class="n">imageURL</span><span class="o">;</span>
-	<span class="nc">Thread</span> <span class="n">retrievalThread</span><span class="o">;</span>
-	<span class="kt">boolean</span> <span class="n">retrieving</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-     
-	<span class="kd">public</span> <span class="nf">ImageProxy</span><span class="o">(</span><span class="no">URL</span> <span class="n">url</span><span class="o">)</span> <span class="o">{</span> <span class="n">imageURL</span> <span class="o">=</span> <span class="n">url</span><span class="o">;</span> <span class="o">}</span>
-     
-	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getIconWidth</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">if</span> <span class="o">(</span><span class="n">imageIcon</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="n">imageIcon</span><span class="o">.</span><span class="na">getIconWidth</span><span class="o">();</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-			<span class="k">return</span> <span class="mi">800</span><span class="o">;</span>
-		<span class="o">}</span>
-	<span class="o">}</span>
- 
-	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getIconHeight</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">if</span> <span class="o">(</span><span class="n">imageIcon</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="n">imageIcon</span><span class="o">.</span><span class="na">getIconHeight</span><span class="o">();</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-			<span class="k">return</span> <span class="mi">600</span><span class="o">;</span>
-		<span class="o">}</span>
-	<span class="o">}</span>
-	
-	<span class="kd">synchronized</span> <span class="kt">void</span> <span class="nf">setImageIcon</span><span class="o">(</span><span class="nc">ImageIcon</span> <span class="n">imageIcon</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">imageIcon</span> <span class="o">=</span> <span class="n">imageIcon</span><span class="o">;</span>
-	<span class="o">}</span>
-     
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">paintIcon</span><span class="o">(</span><span class="kd">final</span> <span class="nc">Component</span> <span class="n">c</span><span class="o">,</span> <span class="nc">Graphics</span>  <span class="n">g</span><span class="o">,</span> <span class="kt">int</span> <span class="n">x</span><span class="o">,</span>  <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">if</span> <span class="o">(</span><span class="n">imageIcon</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-			<span class="n">imageIcon</span><span class="o">.</span><span class="na">paintIcon</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="n">g</span><span class="o">,</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">);</span>
-		<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-			<span class="n">g</span><span class="o">.</span><span class="na">drawString</span><span class="o">(</span><span class="s">"Loading album cover, please wait..."</span><span class="o">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">300</span><span class="o">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">190</span><span class="o">);</span>
-			<span class="k">if</span> <span class="o">(!</span><span class="n">retrieving</span><span class="o">)</span> <span class="o">{</span>
-				<span class="n">retrieving</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-				
-				<span class="n">retrievalThread</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Thread</span><span class="o">(</span><span class="k">new</span> <span class="nc">Runnable</span><span class="o">()</span> <span class="o">{</span>
-					<span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-						<span class="k">try</span> <span class="o">{</span>
-							<span class="n">setImageIcon</span><span class="o">(</span><span class="k">new</span> <span class="nc">ImageIcon</span><span class="o">(</span><span class="n">imageURL</span><span class="o">,</span> <span class="s">"Album Cover"</span><span class="o">));</span>
-							<span class="n">c</span><span class="o">.</span><span class="na">repaint</span><span class="o">();</span>
-						<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-							<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-						<span class="o">}</span>
-					<span class="o">}</span>
-				<span class="o">});</span>
-				
-				<span class="n">retrievalThread</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Thread</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
-						<span class="k">try</span> <span class="o">{</span>
-							<span class="n">setImageIcon</span><span class="o">(</span><span class="k">new</span> <span class="nc">ImageIcon</span><span class="o">(</span><span class="n">imageURL</span><span class="o">,</span> <span class="s">"Album Cover"</span><span class="o">));</span>
-							<span class="n">c</span><span class="o">.</span><span class="na">repaint</span><span class="o">();</span>
-						<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-							<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-						<span class="o">}</span>
-				<span class="o">});</span>
-				<span class="n">retrievalThread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
-				
-			<span class="o">}</span>
-		<span class="o">}</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre></div></div>
-
-<h2 id="usage">Usage</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">ImageComponent</span> <span class="kd">extends</span> <span class="nc">JComponent</span> <span class="o">{</span>
-	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">Icon</span> <span class="n">icon</span><span class="o">;</span>
-
-	<span class="kd">public</span> <span class="nf">ImageComponent</span><span class="o">(</span><span class="nc">Icon</span> <span class="n">icon</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">icon</span> <span class="o">=</span> <span class="n">icon</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setIcon</span><span class="o">(</span><span class="nc">Icon</span> <span class="n">icon</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">icon</span> <span class="o">=</span> <span class="n">icon</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">paintComponent</span><span class="o">(</span><span class="nc">Graphics</span> <span class="n">g</span><span class="o">)</span> <span class="o">{</span>
-		<span class="kd">super</span><span class="o">.</span><span class="na">paintComponent</span><span class="o">(</span><span class="n">g</span><span class="o">);</span>
-		<span class="kt">int</span> <span class="n">w</span> <span class="o">=</span> <span class="n">icon</span><span class="o">.</span><span class="na">getIconWidth</span><span class="o">();</span>
-		<span class="kt">int</span> <span class="n">h</span> <span class="o">=</span> <span class="n">icon</span><span class="o">.</span><span class="na">getIconHeight</span><span class="o">();</span>
-		<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="o">(</span><span class="mi">800</span> <span class="o">-</span> <span class="n">w</span><span class="o">)/</span><span class="mi">2</span><span class="o">;</span>
-		<span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="o">(</span><span class="mi">600</span> <span class="o">-</span> <span class="n">h</span><span class="o">)/</span><span class="mi">2</span><span class="o">;</span>
-		<span class="n">icon</span><span class="o">.</span><span class="na">paintIcon</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">g</span><span class="o">,</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">);</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainClass</span> <span class="o">{</span>
-
-	<span class="nc">ImageComponent</span> <span class="n">imageComponent</span><span class="o">;</span>
-	<span class="nc">JFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JFrame</span><span class="o">(</span><span class="s">"Album Cover Viewer"</span><span class="o">);</span>
-	<span class="nc">JMenuBar</span> <span class="n">menuBar</span><span class="o">;</span>
-	<span class="nc">JMenu</span> <span class="n">menu</span><span class="o">;</span>
-	<span class="nc">Hashtable</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">albums</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Hashtable</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;();</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-		<span class="nc">ImageProxyTestDrive</span> <span class="n">testDrive</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ImageProxyTestDrive</span><span class="o">();</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="nf">ImageProxyTestDrive</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-		<span class="n">albums</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"Buddha Bar"</span><span class="o">,</span><span class="s">"http://images.amazon.com/images/P/B00009XBYK.01.LZZZZZZZ.jpg"</span><span class="o">);</span>
-		<span class="n">albums</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"Ima"</span><span class="o">,</span><span class="s">"http://images.amazon.com/images/P/B000005IRM.01.LZZZZZZZ.jpg"</span><span class="o">);</span>
-		<span class="n">albums</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"Karma"</span><span class="o">,</span><span class="s">"http://images.amazon.com/images/P/B000005DCB.01.LZZZZZZZ.gif"</span><span class="o">);</span>
-		<span class="n">albums</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"MCMXC a.D."</span><span class="o">,</span><span class="s">"http://images.amazon.com/images/P/B000002URV.01.LZZZZZZZ.jpg"</span><span class="o">);</span>
-		<span class="n">albums</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"Northern Exposure"</span><span class="o">,</span><span class="s">"http://images.amazon.com/images/P/B000003SFN.01.LZZZZZZZ.jpg"</span><span class="o">);</span>
-		<span class="n">albums</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"Selected Ambient Works, Vol. 2"</span><span class="o">,</span><span class="s">"http://images.amazon.com/images/P/B000002MNZ.01.LZZZZZZZ.jpg"</span><span class="o">);</span>
-
-		<span class="no">URL</span> <span class="n">initialURL</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">((</span><span class="nc">String</span><span class="o">)</span><span class="n">albums</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"Selected Ambient Works, Vol. 2"</span><span class="o">));</span>
-		<span class="n">menuBar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JMenuBar</span><span class="o">();</span>
-		<span class="n">menu</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JMenu</span><span class="o">(</span><span class="s">"Favorite Albums"</span><span class="o">);</span>
-		<span class="n">menuBar</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">menu</span><span class="o">);</span>
-		<span class="n">frame</span><span class="o">.</span><span class="na">setJMenuBar</span><span class="o">(</span><span class="n">menuBar</span><span class="o">);</span>
-
-		<span class="k">for</span> <span class="o">(</span><span class="nc">Enumeration</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="n">albums</span><span class="o">.</span><span class="na">keys</span><span class="o">();</span> <span class="n">e</span><span class="o">.</span><span class="na">hasMoreElements</span><span class="o">();)</span> <span class="o">{</span>
-			<span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span><span class="n">e</span><span class="o">.</span><span class="na">nextElement</span><span class="o">();</span>
-			<span class="nc">JMenuItem</span> <span class="n">menuItem</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JMenuItem</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
-			<span class="n">menu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">menuItem</span><span class="o">);</span> 
-			<span class="n">menuItem</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="n">event</span> <span class="o">-&gt;</span> <span class="o">{</span>
-				<span class="n">imageComponent</span><span class="o">.</span><span class="na">setIcon</span><span class="o">(</span><span class="k">new</span> <span class="nc">ImageProxy</span><span class="o">(</span><span class="n">getAlbumUrl</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getActionCommand</span><span class="o">())));</span>
-				<span class="n">frame</span><span class="o">.</span><span class="na">repaint</span><span class="o">();</span>
-			<span class="o">});</span>
-		<span class="o">}</span>
-
-		<span class="c1">// set up frame and menus</span>
-
-		<span class="nc">Icon</span> <span class="n">icon</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ImageProxy</span><span class="o">(</span><span class="n">initialURL</span><span class="o">);</span>
-		<span class="n">imageComponent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ImageComponent</span><span class="o">(</span><span class="n">icon</span><span class="o">);</span>
-		<span class="n">frame</span><span class="o">.</span><span class="na">getContentPane</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">imageComponent</span><span class="o">);</span>
-		<span class="n">frame</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
-		<span class="n">frame</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">800</span><span class="o">,</span><span class="mi">600</span><span class="o">);</span>
-		<span class="n">frame</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-
-	<span class="o">}</span>
-
-	<span class="no">URL</span> <span class="nf">getAlbumUrl</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">try</span> <span class="o">{</span>
-			<span class="k">return</span> <span class="k">new</span> <span class="nf">URL</span><span class="o">((</span><span class="nc">String</span><span class="o">)</span><span class="n">albums</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">name</span><span class="o">));</span>
-		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">MalformedURLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-			<span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-		<span class="o">}</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Proxy pattern]]></summary></entry><entry><title type="html">Singleton Pattern</title><link href="/fundamentals/patterns/patterns-singleton/" rel="alternate" type="text/html" title="Singleton Pattern" /><published>2022-04-19T00:00:00-05:00</published><updated>2022-04-19T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-singleton</id><content type="html" xml:base="/fundamentals/patterns/patterns-singleton/"><![CDATA[<p>This is an example for implementation for singleton pattern</p>
-
-<h2 id="concept">Concept</h2>
-
-<p>The Singleton Pattern ensures a class has only one instance,
-and provides a global point of access to it. this pattern prevent the classes 
-create new instances of the class designed for be singleton.</p>
-
-<p>singleton is often aplied for create a global resource and all uses of that requiered resource use the same instance,
-for improve de handle of memory, performarce or avoid overuse, singleton is a good aproach if you must to control the number of instances you’re creating</p>
-
-<p class="notice--info"><strong>Note:</strong> this is an example of singleton patterns, its will be a series for implement all patterns in java / python / go</p>
-
-<p>in the next classes you can see the implementation for apply the singleton pattern and how in the MainClass call all implemantationfor show usage, 
-you can see the flexibility for use this structure in the problem for OOP</p>
-
-<h2 id="abstraccions">abstraccions</h2>
-
-<p>clasical abstraccion</p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Singleton</span> <span class="o">{</span>
-	<span class="kd">private</span> <span class="kd">static</span> <span class="nc">Singleton</span> <span class="n">uniqueInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Singleton</span><span class="o">();</span>
- 
-	<span class="kd">private</span> <span class="nf">Singleton</span><span class="o">()</span> <span class="o">{}</span>
- 
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Singleton</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">uniqueInstance</span><span class="o">;</span>
-	<span class="o">}</span>
-	
-	<span class="c1">// other useful methods here</span>
-	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="s">"I'm a statically initialized Singleton!"</span><span class="o">;</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>for handle multithreading , you must “synchronized” the acces for avoid locks</p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Singleton</span> <span class="o">{</span>
-	<span class="kd">private</span> <span class="kd">static</span> <span class="nc">Singleton</span> <span class="n">uniqueInstance</span><span class="o">;</span>
- 
-	<span class="c1">// other useful instance variables here</span>
- 
-	<span class="kd">private</span> <span class="nf">Singleton</span><span class="o">()</span> <span class="o">{}</span>
- 
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">synchronized</span> <span class="nc">Singleton</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">if</span> <span class="o">(</span><span class="n">uniqueInstance</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-			<span class="n">uniqueInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Singleton</span><span class="o">();</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">uniqueInstance</span><span class="o">;</span>
-	<span class="o">}</span>
- 
-	<span class="c1">// other useful methods here</span>
-	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="s">"I'm a thread safe Singleton!"</span><span class="o">;</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h2 id="usage">Usage</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainClass</span> <span class="o">{</span>
-    
-	<span class="n">ppublic</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">Singleton</span> <span class="n">singleton</span> <span class="o">=</span> <span class="nc">Singleton</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">singleton</span><span class="o">.</span><span class="na">getDescription</span><span class="o">());</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-
-<span class="c1">// for safe threadsafe</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainClass2</span> <span class="o">{</span>
-    
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-		<span class="c1">//the code is the same , but try it from different instances</span>
-		<span class="nc">Singleton</span> <span class="n">singleton</span> <span class="o">=</span> <span class="nc">Singleton</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">singleton</span><span class="o">.</span><span class="na">getDescription</span><span class="o">());</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for singleton pattern]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Facade pattern]]></summary></entry></feed>
