@@ -1,8 +1,8 @@
 ---
-title:  "Monitorizando logs con spring - prometheus - grafana - grafana-loki -micrometer "
+title:  "Monitoring Spring apps with prometheus grafana and grafana-loki bonus-micrometer "
 search: false
 categories: 
-  - microservicios
+  - java/spring/cloud/grafana-overview
 date: 2022-08-25
 last_modified_at: 2022-08-25T08:06:00-05:00
 ---
