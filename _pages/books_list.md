@@ -34,6 +34,15 @@ feature_row:
     <br />
     **STATUS** : [![read](https://img.shields.io/badge/read-completed-green.svg?style=flat)](https://www.amazon.com/-/es/Brandon-Atkinson-ebook/dp/B07FKF52SH/ref=sr_1_1?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3EO7POTS0DTAW&keywords=Generic+Pipelines+Using+Docker&qid=1655179099&sprefix=generic+pipelines+using+docker%2Caps%2C115&sr=8-1)"
 
+  - image_path: assets/images/books/elgranlibro HTML5,CSS3,Javascript.jpg
+    alt: "El gran libro de HTML5, CSS3 y Javascript"
+    title: "El gran libro de HTML5, CSS3 y Javascript"
+    excerpt: "En la conclusión del libro exploramos diferentes alternativas para hacer sus sitios webs y
+    aplicaciones accesibles desde viejos navegadores e incluso aquellos que aún no están
+    preparados para HTML5.. 
+    <br />
+    **STATUS** : [![read](https://img.shields.io/badge/read-completed-green.svg?style=flat)](https://www.amazon.com/libro-HTML5-JavaScript-Edici%C3%B3n-Spanish/dp/8426724639)"
+
 
     
   

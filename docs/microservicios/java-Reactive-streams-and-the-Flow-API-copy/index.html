@@ -9,30 +9,36 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Reading List - Dann Brown Adventures</title>
-<meta name="description" content="An amazing website.">
+<!-- begin _includes/seo.html --><title>Monitorizando logs con spring - prometheus - grafana - grafana-loki -micrometer  - Dann Brown Adventures</title>
+<meta name="description" content="Concept">
 
 
   <meta name="author" content="Dann brown">
   
+  <meta property="article:author" content="Dann brown">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Dann Brown Adventures">
-<meta property="og:title" content="Reading List">
-<meta property="og:url" content="/books/reading">
+<meta property="og:title" content="Monitorizando logs con spring - prometheus - grafana - grafana-loki -micrometer">
+<meta property="og:url" content="/microservicios/java-Reactive-streams-and-the-Flow-API-copy/">
 
 
-  <meta property="og:description" content="An amazing website.">
-
-
-
+  <meta property="og:description" content="Concept">
 
 
 
 
 
+
+
+  <meta property="article:published_time" content="2022-08-25T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2022-08-25T08:06:00-05:00">
 
 
 
@@ -41,7 +47,7 @@
   
 
 
-<link rel="canonical" href="/books/reading">
+<link rel="canonical" href="/microservicios/java-Reactive-streams-and-the-Flow-API-copy/">
 
 
 
@@ -162,7 +168,7 @@
       
         
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/books" itemprop="item"><span itemprop="name">Books</span></a>
+          <a href="/categories/#microservicios" itemprop="item"><span itemprop="name">Microservicios</span></a>
           <meta itemprop="position" content="2" />
         </li>
         <span class="sep">/</span>
@@ -170,7 +176,7 @@
     
       
       
-        <li class="current">Reading List</li>
+        <li class="current">Monitorizando logs con spring - prometheus - grafana - grafana-loki -micrometer </li>
       
     
   </ol>
@@ -314,144 +320,72 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">Reading List</h1>
+      <h1 id="page-title" class="page__title">Monitorizando logs con spring - prometheus - grafana - grafana-loki -micrometer </h1>
     
-    
-<div class="feature__wrapper">
+    <h2 id="concept">Concept</h2>
 
-  
-    <div class="feature__item">
-      <div class="archive__item">
-        
-          <div class="archive__item-teaser">
-            <img src="/assets/images/books/Urma-Java-HI.png" alt="Modern Java in Action" />
-            
-          </div>
-        
+<p><q>how to follow request throught the complex services interaction?</q></p>
 
-        <div class="archive__item-body">
-          
-            <h2 class="archive__item-title">Modern Java in Action</h2>
-          
+<p><q> how watch and create alerts for any events in your apps</q></p>
 
-          
-            <div class="archive__item-excerpt">
-              <p>Lambda, streams, functional and reactive programming by Raoul-Gabriel Urma Mario Fusco Alan Mycroft <br /> <strong>STATUS</strong> : <a href="https://www.amazon.com/Modern-Java-Action-functional-programming/dp/1617293563" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/read-in progress-yellow.svg?style=flat" alt="read" /></a></p>
+<p><q>how create custom metrics ?</q></p>
 
-            </div>
-          
+<p>the companies with Cloud arquitectures, them must to watch the variety arquitectures of several solutions 
+and how them interact between them, and detect errors fast and easier,in ald days you must to check the logs files 
+but is not a good aproach when you have a lot or microservices and you are checkin a transaction among different
+paths it could be take, hence the next aplications will show the way to handle this kind of situations</p>
 
-          
-        </div>
-      </div>
-    </div>
-  
-    <div class="feature__item">
-      <div class="archive__item">
-        
-          <div class="archive__item-teaser">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/31N95BlSwUL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg" alt="Learn Blockchain by Building One: A Concise Path to Understanding Cryptocurrencies 1st ed. Edición" />
-            
-          </div>
-        
+<p><img src="https://raw.githubusercontent.com/grafana/grafana/main/docs/logo-horizontal.png" alt="" /></p>
 
-        <div class="archive__item-body">
-          
-            <h2 class="archive__item-title">Learn Blockchain by Building One: A Concise Path to Understanding Cryptocurrencies 1st ed. Edición</h2>
-          
+<h3 id="grafana">Grafana</h3>
+<p>allows you to query, visualize, alert on and understand your metrics no matter where they are stored. Create, explore, and share dashboards with your team and foster a data-driven culture:</p>
 
-          
-            <div class="archive__item-excerpt">
-              <p>As cryptocurrencies and their underlying data structure, blockchains, become further intertwined in our daily lives, <br /> <strong>STATUS</strong> : <a href="https://www.amazon.com/-/es/Daniel-van-Flymen/dp/1484251709/ref=sr_1_1?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&amp;crid=NESCJDTLZJIQ&amp;keywords=learn+blockchain&amp;qid=1655179151&amp;sprefix=learn+block+chain%2Caps%2C125&amp;sr=8-1"><img src="https://img.shields.io/badge/read-completed-green.svg?style=flat" alt="read" /></a></p>
+<p>Visualizations: Fast and flexible client side graphs with a multitude of options. Panel plugins offer many different ways to visualize metrics and logs.</p>
 
-            </div>
-          
+<p>Dynamic Dashboards: Create dynamic &amp; reusable dashboards with template variables that appear as dropdowns at the top of the dashboard.
+Explore Metrics: Explore your data through ad-hoc queries and dynamic drilldown. Split view and compare different time ranges, queries and data sources side by side.
+Explore Logs: Experience the magic of switching from metrics to logs with preserved label filters. Quickly search through all your logs or streaming them live.
+Alerting: Visually define alert rules for your most important metrics. Grafana will continuously evaluate and send notifications to systems like Slack, PagerDuty, VictorOps, OpsGenie.
+Mixed Data Sources: Mix different data sources in the same graph! You can specify a data source on a per-query basis. This works for even custom datasources.</p>
 
-          
-        </div>
-      </div>
-    </div>
-  
-    <div class="feature__item">
-      <div class="archive__item">
-        
-          <div class="archive__item-teaser">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/41xShlnTZTL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg" alt="Clean Code: A Handbook of Agile Software Craftsmanship 1st" />
-            
-          </div>
-        
+<h3 id="grafana-loki">Grafana loki</h3>
 
-        <div class="archive__item-body">
-          
-            <h2 class="archive__item-title">Clean Code: A Handbook of Agile Software Craftsmanship 1st</h2>
-          
+<p><img src="https://raw.githubusercontent.com/grafana/loki/main/docs/sources/logo_and_name.png" alt="" /></p>
 
-          
-            <div class="archive__item-excerpt">
-              <p>Lambda, streams, functional and reactive programming by Raoul-Gabriel Urma Mario Fusco Alan Mycroft <br /> <strong>STATUS</strong> : <a href="https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882"><img src="https://img.shields.io/badge/read-in progress-yellow.svg?style=flat" alt="read" /></a></p>
+<p>Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus. It is designed to be very cost effective and easy to operate. It does not index the contents of the logs, but rather a set of labels for each log stream.</p>
 
-            </div>
-          
+<p>A Loki-based logging stack consists of 3 components:</p>
 
-          
-        </div>
-      </div>
-    </div>
-  
-    <div class="feature__item">
-      <div class="archive__item">
-        
-          <div class="archive__item-teaser">
-            <img src="https://m.media-amazon.com/images/I/51AELKpAoWL.jpg" alt="Generic Pipelines Using Docker: The DevOps Guide to Building Reusable, Platform Agnostic CI/CD Frameworks 1st ed. Edición," />
-            
-          </div>
-        
+<ul>
+  <li>promtail is the agent, responsible for gathering logs and sending them to Loki.</li>
+  <li>loki is the main server, responsible for storing logs and processing queries.</li>
+  <li>Grafana for querying and displaying the logs.</li>
+</ul>
 
-        <div class="archive__item-body">
-          
-            <h2 class="archive__item-title">Generic Pipelines Using Docker: The DevOps Guide to Building Reusable, Platform Agnostic CI/CD Frameworks 1st ed. Edición,</h2>
-          
+<h3 id="prometheus">Prometheus</h3>
 
-          
-            <div class="archive__item-excerpt">
-              <p>Generic Pipelines Using Docker explores the principles and implementations that allow you to do just that,pipelines that any team can use. <br /> <strong>STATUS</strong> : <a href="https://www.amazon.com/-/es/Brandon-Atkinson-ebook/dp/B07FKF52SH/ref=sr_1_1?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&amp;crid=3EO7POTS0DTAW&amp;keywords=Generic+Pipelines+Using+Docker&amp;qid=1655179099&amp;sprefix=generic+pipelines+using+docker%2Caps%2C115&amp;sr=8-1"><img src="https://img.shields.io/badge/read-completed-green.svg?style=flat" alt="read" /></a></p>
+<p><img src="https://raw.githubusercontent.com/prometheus/prometheus/8cc7b7e57798553f026c1b6f3085f81f4661ede7/web/ui/react-app/src/images/prometheus_logo_grey.svg" alt="" style="background: #DF5430;" /></p>
 
-            </div>
-          
+<p>prometheus.io
+Prometheus is an open-source systems monitoring and alerting toolkit originally built at SoundCloud. Since its inception in 2012, many companies and organizations have adopted Prometheus, and the project has a very active developer and user community. It is now a standalone open source project and maintained independently of any company. To emphasize this, and to clarify the project’s governance structure, Prometheus joined the Cloud Native Computing Foundation in 2016 as the second hosted project, after Kubernetes.</p>
 
-          
-        </div>
-      </div>
-    </div>
-  
-    <div class="feature__item">
-      <div class="archive__item">
-        
-          <div class="archive__item-teaser">
-            <img src="/assets/images/books/elgranlibro%20HTML5,CSS3,Javascript.jpg" alt="El gran libro de HTML5, CSS3 y Javascript" />
-            
-          </div>
-        
+<p>usual after 2016
+Prometheus, a Cloud Native Computing Foundation project, is a systems and service monitoring system. It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts when specified conditions are observed.</p>
 
-        <div class="archive__item-body">
-          
-            <h2 class="archive__item-title">El gran libro de HTML5, CSS3 y Javascript</h2>
-          
-
-          
-            <div class="archive__item-excerpt">
-              <p>En la conclusión del libro exploramos diferentes alternativas para hacer sus sitios webs y aplicaciones accesibles desde viejos navegadores e incluso aquellos que aún no están preparados para HTML5.. <br /> <strong>STATUS</strong> : <a href="https://www.amazon.com/libro-HTML5-JavaScript-Edici%C3%B3n-Spanish/dp/8426724639"><img src="https://img.shields.io/badge/read-completed-green.svg?style=flat" alt="read" /></a></p>
-
-            </div>
-          
-
-          
-        </div>
-      </div>
-    </div>
-  
-
+<div class="responsive-wrap">
+<!-- this is the embed code provided by Google -->
+  <iframe src="https://docs.google.com/presentation/d/1Kugmmwna7YEz7gCah9IFGPsnOcLGYv3E5IdXjMFzReI/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<!-- Google embed ends -->
 </div>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>https://github.com/prometheus/prometheus</li>
+  <li>https://github.com/grafana/grafana</li>
+  <li>https://github.com/Qleoz12/spring-monitoring-demo?organization=Qleoz12&amp;organization=Qleoz12</li>
+  <li>https://github.com/thbrunzendorf/monitoring-demo</li>
+</ul>
 
 
   </div>
