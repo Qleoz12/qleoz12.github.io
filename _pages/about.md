@@ -32,7 +32,9 @@ beecrowd
 codeAcademy
 </a>
 
+
+
 Spanish
-<embed src="{{ site.url }}{{ site.baseurl }}/assets/cv/formato hoja de vida.pdf" type="application/pdf" />
+<iframe src="https://drive.google.com/file/d/19o0gQ1FnUOlQeV8OZwOt-JVxson2IpHm/preview" width="100%" height="480" ></iframe>
 English
-<embed src="{{ site.url }}{{ site.baseurl }}/assets/cv/my-cv.pdf" type="application/pdf" />
+<iframe src="https://drive.google.com/file/d/19o0gQ1FnUOlQeV8OZwOt-JVxson2IpHm/preview" width="100%" height="480"></iframe>
