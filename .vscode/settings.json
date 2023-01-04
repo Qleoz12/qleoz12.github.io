@@ -1,0 +1,7 @@
+{
+    "workbench.settings.useSplitJSON": true,
+    "editor.rulers": [80,96,120],
+    "workbench.colorCustomizations": {
+        "editorRuler.foreground": "#ff4081"
+    }
+}

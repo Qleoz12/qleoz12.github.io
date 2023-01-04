@@ -8,5 +8,7 @@ main:
     url: /books/reading
   - title: "looking"
     url: /reading
+  - title: "knowledge"
+    url: /knowledge
   # - title: "Sitemap"
   #   url: /sitemap/
