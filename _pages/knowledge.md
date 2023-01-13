@@ -30,60 +30,63 @@ toc: true
       <label for="02">Datastructures</label>
       <input id="03" type="checkbox" name="r" value="3" checked>
       <label for="03">OOP, Interfaces, Classes</label>
-      <input id="03" type="checkbox" name="r" value="3" checked>
-      <label for="03">Common Packages</label>
-      <input id="03" type="checkbox" name="r" value="3" checked>
-      <label for="03">Files and APIs</label>
-      <input id="03" type="checkbox" name="r" value="3" checked>
-      <label for="03">OOP, Interfaces, Classes</label>
+      <input id="04" type="checkbox" name="r" value="3" checked>
+      <label for="04">Common Packages</label>
+      <input id="05" type="checkbox" name="r" value="3" checked>
+      <label for="05">Files and APIs</label>
+      <input id="06" type="checkbox" name="r" value="3" checked>
+      <label for="06">OOP, Interfaces, Classes</label>
     </div>
     <h2><i class="fab fa-java"></i> Spring boot Core</h2> 
     <div id="checklist">
-      <input id="01" type="checkbox" name="r" value="1" checked>
-      <label for="01">Bean Life Cycle </label>
-      <input id="02" type="checkbox" name="r" value="2" checked>
-      <label for="02">Dependency Injection</label>
-      <input id="03" type="checkbox" name="r" value="3" checked>
-      <label for="03">Inversion of Control</label>
-      <input id="03" type="checkbox" name="r" value="3" checked>
-      <label for="03">Application Context</label>      
+      <input id="07" type="checkbox" name="r" value="1" checked>
+      <label for="07">Bean Life Cycle </label>
+      <input id="08" type="checkbox" name="r" value="2" checked>
+      <label for="08">Dependency Injection</label>
+      <input id="09" type="checkbox" name="r" value="3" checked>
+      <label for="09">Inversion of Control</label>
+      <input id="10" type="checkbox" name="r" value="3" checked>
+      <label for="10">Application Context</label>      
     </div>
 
     <h2><i class="fab fa-java"></i> Spring boot Data</h2> 
     <div id="checklist">
-      <input id="01" type="checkbox" name="r" value="1" checked>
-      <label for="01">Spring Data JPA</label>
-      <input id="01" type="checkbox" name="r" value="1" checked>
-      <label for="01">Spring Data MongoDB</label>
-      <input id="01" type="checkbox" name="r" value="1" checked>
-      <label for="01">Spring Data JDBC</label>
+      <input id="11" type="checkbox" name="r" value="1" checked>
+      <label for="11">Spring Data JPA</label>
+      <input id="12" type="checkbox" name="r" value="1" checked>
+      <label for="12">Spring Data MongoDB</label>
+      <input id="13" type="checkbox" name="r" value="1" checked>
+      <label for="13">Spring Data JDBC</label>
       
     </div>
     <h2><i class="fab fa-java"></i> Spring boot Security</h2> 
     <div id="checklist">
-      <input id="01" type="checkbox" name="r" value="1" checked>
-      <label for="01">Authentication </label>
-      <input id="02" type="checkbox" name="r" value="2" checked>
-      <label for="02">Authorization</label>
-      <input id="03" type="checkbox" name="r" value="3" checked>
-      <label for="03">JWT</label>
+      <input id="14" type="checkbox" name="r" value="1" checked>
+      <label for="14">Authentication </label>
+      <input id="15" type="checkbox" name="r" value="2" checked>
+      <label for="15">Authorization</label>
+      <input id="16" type="checkbox" name="r" value="3" checked>
+      <label for="16">JWT</label>
     </div>
 
     <h2><i class="fab fa-java"></i> Spring Cloud Sleuth</h2> 
     <div id="checklist">
-      <input id="01" type="checkbox" name="r" value="1" checked>
-      <label for="01">configuration </label>
-      <input id="01" type="checkbox" name="r" value="1" checked>
-      <label for="01">traces </label>
+      <input id="17" type="checkbox" name="r" value="1" checked>
+      <label for="17">configuration </label>
+      <input id="18" type="checkbox" name="r" value="1" checked>
+      <label for="18">traces </label>
     </div>
 
     <h2><i class="fab fa-java"></i> Spring Cloud Config</h2> 
     <div id="checklist">
-      <input id="01" type="checkbox" name="r" value="1" checked>
-      <label for="01">github configs </label>
-      <input id="01" type="checkbox" name="r" value="1" checked>
-      <label for="01">Vault secrets </label>
+      <input id="19" type="checkbox" name="r" value="1" checked>
+      <label for="19">github configs </label>
+      <input id="20" type="checkbox" name="r" value="1" checked>
+      <label for="20">Vault secrets </label>
     </div>
+
+    <h2><i class="fab fa-java"></i> Spring Cloud Eureka(Registry)</h2>
+    <h2><i class="fab fa-java"></i> Spring Cloud Hystrix</h2> 
   </div>
 
   <!-- python -->
@@ -98,28 +101,64 @@ toc: true
       </div>
     </section>
     <div id="checklist">
-      <input id="01" type="checkbox" name="r" value="1" checked>
-      <label for="01">Basic syntax</label>
-      <input id="02" type="checkbox" name="r" value="2" checked>
-      <label for="02">Datastructures</label>
-      <input id="03" type="checkbox" name="r" value="3" checked>
-      <label for="03">OOP, Interfaces, Classes</label>
-      <input id="03" type="checkbox" name="r" value="3" checked>
-      <label for="03">Common Packages</label>
-      <input id="03" type="checkbox" name="r" value="3" checked>
-      <label for="03">Files and APIs</label>
-      <input id="03" type="checkbox" name="r" value="3" checked>
-      <label for="03">OOP, Interfaces, Classes</label>
+      <input id="200" type="checkbox" name="r" value="1" checked>
+      <label for="200">Basic syntax</label>
+      <input id="201" type="checkbox" name="r" value="2" checked>
+      <label for="201">Datastructures</label>
+      <input id="202" type="checkbox" name="r" value="3" checked>
+      <label for="202">OOP, Interfaces, Classes</label>
+      <input id="203" type="checkbox" name="r" value="3" checked>
+      <label for="203">Common Packages</label>
+      <input id="204" type="checkbox" name="r" value="3" checked>
+      <label for="204">Files and APIs</label>
+      <input id="205" type="checkbox" name="r" value="3" checked>
+      <label for="205">OOP, Interfaces, Classes</label>
+    </div>
+    <h2><i class="fab fa-python"></i> Common libraries</h2> 
+    <div id="checklist">
+      <input id="206" type="checkbox" name="r" value="1" checked>
+      <label for="206"> poetry (like maven a project wrapper)</label>
+      <input id="207" type="checkbox" name="r" value="1" checked>
+      <label for="207"> Requests</label>
+      <input id="208" type="checkbox" name="r" value="1" checked>
+      <label for="208"> Pandas</label>
+      <input id="209" type="checkbox" name="r" value="1" checked>
+      <label for="209"> numpy</label>
+      <input id="210" type="checkbox" name="r" value="1" checked>
+      <label for="210"> marshmallow  - VO validator</label>
+      <input id="211" type="checkbox" name="r" value="1" checked>
+      <label for="211"> pytest - unit testing</label>
+      <input id="212" type="checkbox" name="r" value="1" checked>
+      <label for="212"> paramiko sftp</label>
+      <input id="213" type="checkbox" name="r" value="1" checked>
+      <label for="213"> Selenium</label>
+      <input id="214" type="checkbox" name="r" value="1" checked>
+      <label for="214"> dash - dashboard-boostrap-components </label>
     </div>
     <h2><i class="fab fa-python"></i> fastAPI</h2> 
     <div id="checklist">
-      <input id="01" type="checkbox" name="r" value="1" checked>
-      <label for="01"> REST API</label>
-      <input id="01" type="checkbox" name="r" value="1" checked>
-      <label for="01"> WEB HOOks</label>
+      <input id="215" type="checkbox" name="r" value="1" checked>
+      <label for="215"> REST API</label>
+      <input id="216" type="checkbox" name="r" value="1" checked>
+      <label for="216"> WEB HOOks</label>
+    </div>
+    <h2><i class="fab fa-python"></i> Flask</h2> 
+    <div id="checklist">
+      <input id="217" type="checkbox" name="r" value="1" checked>
+      <label for="217"> REST API</label>
     </div>
   </div>
-  <div>JS</div>
+  <div>
+    <section class="bg">
+      <div class="blog-card">
+        <img class="blog-img" src="{{ site.url }}{{ site.baseurl }}/assets/images/imgs/167072911-dc31eac8-6885-4a05-9c25-279ecce22a79.png" />
+        <div class="text-overlay">
+          <h2>Javascript - WWW world</h2>
+          <p>intermediate about front end development PWA...</p>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>
 
 

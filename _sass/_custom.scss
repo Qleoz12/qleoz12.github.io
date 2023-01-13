@@ -42,13 +42,28 @@
 .wrapper_grid {
   display: grid;
   grid-column-gap: 1em;
-  grid-template-columns: repeat(3, 1fr);
-
-  h2{
+  margin: 0 auto;
+  
+  h2, label{
     text-transform: capitalize;
+  }
+
+  div {
+    max-width: 600px;
+    margin: 0 auto;
+    
   }
 }
 
+@media (min-width: 600px) {
+  .wrapper_grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 900px) {
+  .wrapper_grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/***********
+*/
 
 
 .bg {
