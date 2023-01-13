@@ -43,6 +43,15 @@ feature_row:
     <br />
     **STATUS** : [![read](https://img.shields.io/badge/read-completed-green.svg?style=flat)](https://www.amazon.com/libro-HTML5-JavaScript-Edici%C3%B3n-Spanish/dp/8426724639)"
 
+  - image_path: https://m.media-amazon.com/images/I/61338e6Bl5L.jpg
+    alt: "El gran libro de HTML5, CSS3 y Javascript"
+    title: "Mastering Microservices with Java 9 - Second Edition: Build domain-driven microservice-based applications with Spring, Spring Cloud, and Angular 2nd Revised edition Edición"
+    excerpt: "Use domain-driven design to build microservices
+    Use Spring Cloud to use Service Discovery and Registeration 
+    Use Kafka, Avro and Spring Streams for implementing event based microservices
+    <br />
+    **STATUS** : [![read](https://img.shields.io/badge/read-in progress-yellow.svg?style=flat)](https://www.amazon.com/Mastering-Microservices-Java-domain-driven-microservice-based/dp/1787281442?){:target='_blank' rel='noopener'}"
+
 
     
   
