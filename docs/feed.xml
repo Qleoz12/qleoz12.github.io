@@ -1,4 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-01-04T13:20:47-05:00</updated><id>/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">JAVA Patters Families</title><link href="/java/VUE-track-effects-trigger-copy/" rel="alternate" type="text/html" title="JAVA Patters Families" /><published>2022-12-21T00:00:00-05:00</published><updated>2022-12-21T08:06:00-05:00</updated><id>/java/VUE-track-effects-trigger%20copy</id><content type="html" xml:base="/java/VUE-track-effects-trigger-copy/"><![CDATA[<h2 id="concept">Concept</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-01-13T14:03:57-05:00</updated><id>/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Domain Driven Design</title><link href="/development%20aproach/Domain-Driven-Design/" rel="alternate" type="text/html" title="Domain Driven Design" /><published>2023-01-07T00:00:00-05:00</published><updated>2023-01-07T08:06:00-05:00</updated><id>/development%20aproach/Domain%20Driven%20Design</id><content type="html" xml:base="/development%20aproach/Domain-Driven-Design/"><![CDATA[<h2 id="concept">Concept</h2>
+
+<p>DDD is a key design practice that helps to design the microservices of the product that you are
+developing, into DDD the mainstay is de DOMAIN, and with a good desing and the fundamentals to apply
+DDD aproach is usually for complex systems that requiere a clear and good arquitecture and layered, decouple
+segregate structure.</p>
+
+<p>the fundamentals inside DDD  are</p>
+
+<ul>
+  <li>Ubiquitous language and unified model language (UML)</li>
+  <li>Multilayer architecture</li>
+  <li>Artifacts (components)</li>
+</ul>
+
+<h2 id="ubiquitous-language">Ubiquitous language</h2>
+<p>the comunication and desings with Ubiquitous language,<br />
+let us remove the misundestanding ,misinterpretation 
+and comunications gaps among them, using UML and the 
+collective of diagrams and 
+desings allow evade the ambiguty or definition unique per bounded context, 
+for now think in it as a field where all logical componets related are setted</p>
+
+<h2 id="multilayer-architecture">Multilayer architecture</h2>
+<p>the common way to decouple the componets inside an application, in diferent layers tha have
+single responsability and each layer are connect between them</p>
+
+<ol>
+  <li>Presentation layer or User Interface (UI).</li>
+  <li>Application layer.</li>
+  <li>Domain layer.</li>
+  <li>Infrastructure layer.</li>
+</ol>
+
+<h2 id="artifacts-of-domain-driven-design">Artifacts of domain-driven design</h2>
+
+<p>There are seven different artifacts used in DDD to express, create, and retrieve domain models:</p>
+
+<ol>
+  <li>Entities</li>
+  <li>Value objects</li>
+  <li>Services</li>
+  <li>Aggregates</li>
+  <li>Repository</li>
+  <li>Factory</li>
+  <li>Module</li>
+</ol>
+
+<p>References:</p>
+<ul>
+  <li>https://vladikk.com/2018/01/21/bounded-contexts-vs-microservices/</li>
+  <li>https://medium.com/@jonathanloscalzo/domain-driven-design-principios-beneficios-y-elementos-primera-parte-aad90f30aa35</li>
+</ul>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Development Aproach" /><summary type="html"><![CDATA[Concept]]></summary></entry><entry><title type="html">JAVA Patters Families</title><link href="/java/VUE-track-effects-trigger-copy/" rel="alternate" type="text/html" title="JAVA Patters Families" /><published>2022-12-21T00:00:00-05:00</published><updated>2022-12-21T08:06:00-05:00</updated><id>/java/VUE-track-effects-trigger%20copy</id><content type="html" xml:base="/java/VUE-track-effects-trigger-copy/"><![CDATA[<h2 id="concept">Concept</h2>
 <p>there is 3 main families of patterns coudl be applied to all code langajes 
 , so they are:</p>
 
@@ -210,7 +262,109 @@ Spring Cloud Sleuth supports OpenZipkin compatible systems directly</p>
 
 <p>In the next image you can check the behavior of track ID and span ID between each service and how you could easily identity the same request through the complex microservices structure,
 in the case, trace ID is X for just one request and each service adds snap ID for the same request, it’s identify the flow the request on in and back
-<img src="/assets/images/spring/sleuth-trace-id.jpg" alt="alt" /></p>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="java/spring/cloud/sleuth" /><summary type="html"><![CDATA[This is an post for ilustrate how works Spring Cloud Sleuth for track request throught several microservices]]></summary></entry><entry><title type="html">Iterator Pattern</title><link href="/fundamentals/patterns/patterns-iterator/" rel="alternate" type="text/html" title="Iterator Pattern" /><published>2022-04-25T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-iterator</id><content type="html" xml:base="/fundamentals/patterns/patterns-iterator/"><![CDATA[<p>This is an example for implementation for Iterator pattern</p>
+<img src="/assets/images/spring/sleuth-trace-id.jpg" alt="alt" /></p>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="java/spring/cloud/sleuth" /><summary type="html"><![CDATA[This is an post for ilustrate how works Spring Cloud Sleuth for track request throught several microservices]]></summary></entry><entry><title type="html">Strategy Pattern</title><link href="/fundamentals/patterns/patterns-strategy/" rel="alternate" type="text/html" title="Strategy Pattern" /><published>2022-04-25T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-strategy</id><content type="html" xml:base="/fundamentals/patterns/patterns-strategy/"><![CDATA[<p>This is an example implementation of the Strategy pattern</p>
+
+<h2 id="concept">Concept</h2>
+<p>The Strategy Pattern, lets you define a family of algorithms, encapsulate each algorithm
+(called a strategy), and select an algorithm at run time. The example below shows a farmer app with several filters<br />
+to get apples based on criteria. You can see these criteria as different behaviors in the filter method. For more info, check strategy design pattern 
+(see http://en.wikipedia.org/wiki/Strategy_pattern)</p>
+
+<p>In this situation you have several ways to filter apples based on criteria like 
+weight, color, or other factors.</p>
+
+<p><img src="/assets/images/pattern-strategy_z1.png" alt="alt" />
+simple filter by color</p>
+
+<p><img src="/assets/images/pattern-strategy_z2.png" alt="alt" />
+simple parametrized filter by color</p>
+
+<p><img src="/assets/images/pattern-strategy_z3.png" alt="alt" />
+simple parametrized filter by weight</p>
+
+<p>in the previous images you can see the easy way to resolve the problem , It works, but it repeats the non-bold code 
+and breaks the DRY (don’t repeat yourself) principle of software engineering.You will need to repeat the code again if you want to mix filters or add new filters.</p>
+
+<p><img src="/assets/images/pattern-strategy_z4.png" alt="alt" />
+this image show a bad implementation for combining the filters of color and weight</p>
+
+<p>perhaps, if you re-think the problem to decouple the behavior you requiered you can use this strategy pattern in this situation 
+<img src="/assets/images/pattern-strategy_z6.png" alt="alt" /></p>
+
+<p>But it implies you must create a new class for each new requirement you have to add to the farmer app, but if it class is for single use
+then you could use lambda expressions for simplify more the code and get more cleaner and less complexity on development
+check the las lines on main class for see the new improvement.</p>
+
+<p class="notice--info"><strong>Note:</strong> this is an example of Strategy patterns, it will be a series to implement all patterns in java / python / go</p>
+
+<p>in the next classes you can see the implementation for apply the builder pattern and how in the MainClass call all implemantation
+for show usage, you can see the flexibility for use this structure in the problem for OOP with functional programming like lambdas functions</p>
+
+<h2 id="abstractions">Abstractions</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">ApplePredicate</span> <span class="o">{</span>
+    <span class="kt">boolean</span> <span class="nf">test</span><span class="o">(</span><span class="nc">Apple</span> <span class="n">a</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="kd">class</span> <span class="nc">AppleWeightPredicate</span> <span class="kd">implements</span> <span class="nc">ApplePredicate</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">test</span><span class="o">(</span><span class="nc">Apple</span> <span class="n">apple</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">apple</span><span class="o">.</span><span class="na">getWeight</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">150</span><span class="o">;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="kd">class</span> <span class="nc">AppleColorPredicate</span> <span class="kd">implements</span> <span class="nc">ApplePredicate</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">test</span><span class="o">(</span><span class="nc">Apple</span> <span class="n">apple</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">apple</span><span class="o">.</span><span class="na">getColor</span><span class="o">()</span> <span class="o">==</span> <span class="nc">Color</span><span class="o">.</span><span class="na">GREEN</span><span class="o">;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre></div></div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="kd">class</span> <span class="nc">AppleRedAndHeavyPredicate</span> <span class="kd">implements</span> <span class="nc">ApplePredicate</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">test</span><span class="o">(</span><span class="nc">Apple</span> <span class="n">apple</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">apple</span><span class="o">.</span><span class="na">getColor</span><span class="o">()</span> <span class="o">==</span> <span class="nc">Color</span><span class="o">.</span><span class="na">RED</span> <span class="o">&amp;&amp;</span> <span class="n">apple</span><span class="o">.</span><span class="na">getWeight</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">150</span><span class="o">;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="usage">Usage</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainClass</span> <span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+	
+	<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Apple</span><span class="o">&gt;</span> <span class="n">inventory</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span>
+        <span class="k">new</span> <span class="nf">Apple</span><span class="o">(</span><span class="mi">80</span><span class="o">,</span> <span class="nc">Color</span><span class="o">.</span><span class="na">GREEN</span><span class="o">),</span>
+        <span class="k">new</span> <span class="nf">Apple</span><span class="o">(</span><span class="mi">155</span><span class="o">,</span> <span class="nc">Color</span><span class="o">.</span><span class="na">GREEN</span><span class="o">),</span>
+        <span class="k">new</span> <span class="nf">Apple</span><span class="o">(</span><span class="mi">120</span><span class="o">,</span> <span class="nc">Color</span><span class="o">.</span><span class="na">RED</span><span class="o">));</span>
+
+		<span class="c1">// [Apple{color=GREEN, weight=80}, Apple{color=GREEN, weight=155}]</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Apple</span><span class="o">&gt;</span> <span class="n">greenApples2</span> <span class="o">=</span> <span class="n">filter</span><span class="o">(</span><span class="n">inventory</span><span class="o">,</span> <span class="k">new</span> <span class="nc">AppleColorPredicate</span><span class="o">());</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">greenApples2</span><span class="o">);</span>
+
+    <span class="c1">// [Apple{color=GREEN, weight=155}]</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Apple</span><span class="o">&gt;</span> <span class="n">heavyApples</span> <span class="o">=</span> <span class="n">filter</span><span class="o">(</span><span class="n">inventory</span><span class="o">,</span> <span class="k">new</span> <span class="nc">AppleWeightPredicate</span><span class="o">());</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">heavyApples</span><span class="o">);</span>
+
+    <span class="c1">// []</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Apple</span><span class="o">&gt;</span> <span class="n">redAndHeavyApples</span> <span class="o">=</span> <span class="n">filter</span><span class="o">(</span><span class="n">inventory</span><span class="o">,</span> <span class="k">new</span> <span class="nc">AppleRedAndHeavyPredicate</span><span class="o">());</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">redAndHeavyApples</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="c1">//Update JAVA 8 lambda Expresions for once use symplifies set of clasess</span>
+	<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Apple</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span>  <span class="n">filterApples</span><span class="o">(</span><span class="n">inventory</span><span class="o">,</span> <span class="o">(</span><span class="nc">Apple</span> <span class="n">apple</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="no">RED</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">apple</span><span class="o">.</span><span class="na">getColor</span><span class="o">()));</span>
+
+	<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Apple</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span>  <span class="n">filterApples</span><span class="o">(</span><span class="n">inventory</span><span class="o">,</span> <span class="o">(</span><span class="nc">Apple</span> <span class="n">apple</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">apple</span><span class="o">.</span><span class="na">getColor</span><span class="o">()</span> <span class="o">==</span> <span class="nc">Color</span><span class="o">.</span><span class="na">RED</span> <span class="o">&amp;&amp;</span> <span class="n">apple</span><span class="o">.</span><span class="na">getWeight</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">150</span><span class="o">;);</span>
+	
+<span class="o">}</span>
+</code></pre></div></div>
+<p>finally I add this picture to review the idea of strategy pattern to conclude the topic
+<img src="/assets/images/pattern-strategy_z5.png" alt="alt" /></p>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example implementation of the Strategy pattern]]></summary></entry><entry><title type="html">Iterator Pattern</title><link href="/fundamentals/patterns/patterns-iterator/" rel="alternate" type="text/html" title="Iterator Pattern" /><published>2022-04-25T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-iterator</id><content type="html" xml:base="/fundamentals/patterns/patterns-iterator/"><![CDATA[<p>This is an example for implementation for Iterator pattern</p>
 
 <h2 id="concept">Concept</h2>
 <p>the Iterator Pattern provides a way to access the elements
@@ -385,280 +539,4 @@ for show usage, you can see the flexibility for use this structure in the proble
 		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cityVacation</span><span class="o">);</span>
 	<span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Iterator pattern]]></summary></entry><entry><title type="html">Strategy Pattern</title><link href="/fundamentals/patterns/patterns-strategy/" rel="alternate" type="text/html" title="Strategy Pattern" /><published>2022-04-25T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-strategy</id><content type="html" xml:base="/fundamentals/patterns/patterns-strategy/"><![CDATA[<p>This is an example implementation of the Strategy pattern</p>
-
-<h2 id="concept">Concept</h2>
-<p>The Strategy Pattern, lets you define a family of algorithms, encapsulate each algorithm
-(called a strategy), and select an algorithm at run time. The example below shows a farmer app with several filters<br />
-to get apples based on criteria. You can see these criteria as different behaviors in the filter method. For more info, check strategy design pattern 
-(see http://en.wikipedia.org/wiki/Strategy_pattern)</p>
-
-<p>In this situation you have several ways to filter apples based on criteria like 
-weight, color, or other factors.</p>
-
-<p><img src="/assets/images/pattern-strategy_z1.png" alt="alt" />
-simple filter by color</p>
-
-<p><img src="/assets/images/pattern-strategy_z2.png" alt="alt" />
-simple parametrized filter by color</p>
-
-<p><img src="/assets/images/pattern-strategy_z3.png" alt="alt" />
-simple parametrized filter by weight</p>
-
-<p>in the previous images you can see the easy way to resolve the problem , It works, but it repeats the non-bold code 
-and breaks the DRY (don’t repeat yourself) principle of software engineering.You will need to repeat the code again if you want to mix filters or add new filters.</p>
-
-<p><img src="/assets/images/pattern-strategy_z4.png" alt="alt" />
-this image show a bad implementation for combining the filters of color and weight</p>
-
-<p>perhaps, if you re-think the problem to decouple the behavior you requiered you can use this strategy pattern in this situation 
-<img src="/assets/images/pattern-strategy_z6.png" alt="alt" /></p>
-
-<p>But it implies you must create a new class for each new requirement you have to add to the farmer app, but if it class is for single use
-then you could use lambda expressions for simplify more the code and get more cleaner and less complexity on development
-check the las lines on main class for see the new improvement.</p>
-
-<p class="notice--info"><strong>Note:</strong> this is an example of Strategy patterns, it will be a series to implement all patterns in java / python / go</p>
-
-<p>in the next classes you can see the implementation for apply the builder pattern and how in the MainClass call all implemantation
-for show usage, you can see the flexibility for use this structure in the problem for OOP with functional programming like lambdas functions</p>
-
-<h2 id="abstractions">Abstractions</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">ApplePredicate</span> <span class="o">{</span>
-    <span class="kt">boolean</span> <span class="nf">test</span><span class="o">(</span><span class="nc">Apple</span> <span class="n">a</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="kd">class</span> <span class="nc">AppleWeightPredicate</span> <span class="kd">implements</span> <span class="nc">ApplePredicate</span> <span class="o">{</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">test</span><span class="o">(</span><span class="nc">Apple</span> <span class="n">apple</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">return</span> <span class="n">apple</span><span class="o">.</span><span class="na">getWeight</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">150</span><span class="o">;</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="kd">class</span> <span class="nc">AppleColorPredicate</span> <span class="kd">implements</span> <span class="nc">ApplePredicate</span> <span class="o">{</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">test</span><span class="o">(</span><span class="nc">Apple</span> <span class="n">apple</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">return</span> <span class="n">apple</span><span class="o">.</span><span class="na">getColor</span><span class="o">()</span> <span class="o">==</span> <span class="nc">Color</span><span class="o">.</span><span class="na">GREEN</span><span class="o">;</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre></div></div>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="kd">class</span> <span class="nc">AppleRedAndHeavyPredicate</span> <span class="kd">implements</span> <span class="nc">ApplePredicate</span> <span class="o">{</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">test</span><span class="o">(</span><span class="nc">Apple</span> <span class="n">apple</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">return</span> <span class="n">apple</span><span class="o">.</span><span class="na">getColor</span><span class="o">()</span> <span class="o">==</span> <span class="nc">Color</span><span class="o">.</span><span class="na">RED</span> <span class="o">&amp;&amp;</span> <span class="n">apple</span><span class="o">.</span><span class="na">getWeight</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">150</span><span class="o">;</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre></div></div>
-
-<h2 id="usage">Usage</h2>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainClass</span> <span class="o">{</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-	
-	<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Apple</span><span class="o">&gt;</span> <span class="n">inventory</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span>
-        <span class="k">new</span> <span class="nf">Apple</span><span class="o">(</span><span class="mi">80</span><span class="o">,</span> <span class="nc">Color</span><span class="o">.</span><span class="na">GREEN</span><span class="o">),</span>
-        <span class="k">new</span> <span class="nf">Apple</span><span class="o">(</span><span class="mi">155</span><span class="o">,</span> <span class="nc">Color</span><span class="o">.</span><span class="na">GREEN</span><span class="o">),</span>
-        <span class="k">new</span> <span class="nf">Apple</span><span class="o">(</span><span class="mi">120</span><span class="o">,</span> <span class="nc">Color</span><span class="o">.</span><span class="na">RED</span><span class="o">));</span>
-
-		<span class="c1">// [Apple{color=GREEN, weight=80}, Apple{color=GREEN, weight=155}]</span>
-    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Apple</span><span class="o">&gt;</span> <span class="n">greenApples2</span> <span class="o">=</span> <span class="n">filter</span><span class="o">(</span><span class="n">inventory</span><span class="o">,</span> <span class="k">new</span> <span class="nc">AppleColorPredicate</span><span class="o">());</span>
-    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">greenApples2</span><span class="o">);</span>
-
-    <span class="c1">// [Apple{color=GREEN, weight=155}]</span>
-    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Apple</span><span class="o">&gt;</span> <span class="n">heavyApples</span> <span class="o">=</span> <span class="n">filter</span><span class="o">(</span><span class="n">inventory</span><span class="o">,</span> <span class="k">new</span> <span class="nc">AppleWeightPredicate</span><span class="o">());</span>
-    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">heavyApples</span><span class="o">);</span>
-
-    <span class="c1">// []</span>
-    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Apple</span><span class="o">&gt;</span> <span class="n">redAndHeavyApples</span> <span class="o">=</span> <span class="n">filter</span><span class="o">(</span><span class="n">inventory</span><span class="o">,</span> <span class="k">new</span> <span class="nc">AppleRedAndHeavyPredicate</span><span class="o">());</span>
-    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">redAndHeavyApples</span><span class="o">);</span>
-	<span class="o">}</span>
-
-	<span class="c1">//Update JAVA 8 lambda Expresions for once use symplifies set of clasess</span>
-	<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Apple</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span>  <span class="n">filterApples</span><span class="o">(</span><span class="n">inventory</span><span class="o">,</span> <span class="o">(</span><span class="nc">Apple</span> <span class="n">apple</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="no">RED</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">apple</span><span class="o">.</span><span class="na">getColor</span><span class="o">()));</span>
-
-	<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Apple</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span>  <span class="n">filterApples</span><span class="o">(</span><span class="n">inventory</span><span class="o">,</span> <span class="o">(</span><span class="nc">Apple</span> <span class="n">apple</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">apple</span><span class="o">.</span><span class="na">getColor</span><span class="o">()</span> <span class="o">==</span> <span class="nc">Color</span><span class="o">.</span><span class="na">RED</span> <span class="o">&amp;&amp;</span> <span class="n">apple</span><span class="o">.</span><span class="na">getWeight</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">150</span><span class="o">;);</span>
-	
-<span class="o">}</span>
-</code></pre></div></div>
-<p>finally I add this picture to review the idea of strategy pattern to conclude the topic
-<img src="/assets/images/pattern-strategy_z5.png" alt="alt" /></p>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example implementation of the Strategy pattern]]></summary></entry><entry><title type="html">Builder Pattern</title><link href="/fundamentals/patterns/patterns-builder/" rel="alternate" type="text/html" title="Builder Pattern" /><published>2022-04-24T00:00:00-05:00</published><updated>2022-04-24T08:06:00-05:00</updated><id>/fundamentals/patterns/patterns-builder</id><content type="html" xml:base="/fundamentals/patterns/patterns-builder/"><![CDATA[<p>This is an example for implementation for Builder pattern</p>
-
-<h2 id="concept">Concept</h2>
-<p>Use the BuilderPattern to encapsulate the construction of a
-product and allow it to be constructed in steps.</p>
-
-<p>the situation is when you must to face several ways to create some kind element depeding combination of several parameters 
-<img src="/assets/images/pattern_builder.png" alt="alt" /></p>
-
-<p>Separate the construction of a complex object from its representation so that the
-same construction process can create different representations</p>
-
-<p>it´s looks similar at umls repreentation but its focus an abstraction how exposes the easy way for set all needs for create the object requiered
-<img src="/assets/images/pattern_builder-1.png" alt="alt" /></p>
-
-<p class="notice--info"><strong>Note:</strong> this is an example of builder patterns, its will be a series for implement all patterns in java / python / go</p>
-
-<p>in the next classes you can see the implementation for apply the builder pattern and how in the MainClass call all implemantation
-for show usage, you can see the flexibility for use this structure in the problem for OOP</p>
-
-<h2 id="abstraccions">abstraccions</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">VacationBuilder</span> <span class="o">{</span>
-	<span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
-	<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Accommodation</span><span class="o">&gt;</span> <span class="n">accommodations</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Accommodation</span><span class="o">&gt;();</span>
-	<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">events</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
-	
-	<span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">();</span>
-	<span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">);</span>
-	<span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">year</span><span class="o">,</span> <span class="kt">int</span> <span class="n">month</span><span class="o">,</span> <span class="kt">int</span> <span class="n">day</span><span class="o">,</span> <span class="kt">int</span> <span class="n">nights</span><span class="o">,</span> <span class="kt">int</span> <span class="n">location</span><span class="o">);</span>
-	<span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">VacationBuilder</span> <span class="nf">addEvent</span><span class="o">(</span><span class="nc">String</span> <span class="n">event</span><span class="o">);</span>
-	
-	<span class="kd">public</span> <span class="nc">Vacation</span> <span class="nf">getVacation</span><span class="o">()</span> <span class="o">{</span>
-		<span class="nc">Vacation</span> <span class="n">vacation</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Vacation</span><span class="o">();</span>
-		<span class="n">vacation</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
-		<span class="n">vacation</span><span class="o">.</span><span class="na">setAccommodations</span><span class="o">(</span><span class="n">accommodations</span><span class="o">);</span>
-		<span class="n">vacation</span><span class="o">.</span><span class="na">setEvents</span><span class="o">(</span><span class="n">events</span><span class="o">);</span>
-		<span class="k">return</span> <span class="n">vacation</span><span class="o">;</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Vacation</span> <span class="o">{</span>
-	<span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
-	<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Accommodation</span><span class="o">&gt;</span> <span class="n">accommodations</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Accommodation</span><span class="o">&gt;();</span>
-	<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">events</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
- 
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
-	<span class="o">}</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAccommodations</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Accommodation</span><span class="o">&gt;</span> <span class="n">accommodations</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">accommodations</span> <span class="o">=</span> <span class="n">accommodations</span><span class="o">;</span>
-	<span class="o">}</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setEvents</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">events</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">events</span> <span class="o">=</span> <span class="n">events</span><span class="o">;</span>
-	<span class="o">}</span>
-	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
-		<span class="nc">StringBuffer</span> <span class="n">display</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
-		<span class="n">display</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"---- "</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">+</span> <span class="s">" ----\n"</span><span class="o">);</span>
-		<span class="k">for</span> <span class="o">(</span><span class="nc">Accommodation</span> <span class="n">a</span> <span class="o">:</span> <span class="n">accommodations</span><span class="o">)</span> <span class="o">{</span>
-			<span class="n">display</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
-		<span class="o">}</span>
-		<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">e</span> <span class="o">:</span> <span class="n">events</span><span class="o">)</span> <span class="o">{</span>
-			<span class="n">display</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">e</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">display</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Tent</span> <span class="kd">extends</span> <span class="nc">Accommodation</span> <span class="o">{</span>
-	<span class="kt">int</span> <span class="n">siteNumber</span><span class="o">;</span>
-	<span class="kd">public</span> <span class="nf">Tent</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"Tent"</span><span class="o">;</span>
-	<span class="o">}</span>
-	<span class="kd">public</span> <span class="nf">Tent</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
-	<span class="o">}</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setSiteNumber</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">siteNumber</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
-	<span class="o">}</span>
-	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getSiteNumber</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">siteNumber</span><span class="o">;</span>
-	<span class="o">}</span>
-	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getLocation</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">if</span> <span class="o">(</span><span class="n">siteNumber</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="s">""</span><span class="o">;</span>
-		<span class="k">else</span> <span class="k">return</span> <span class="s">"Site number "</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">siteNumber</span><span class="o">;</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h2 id="usage">Usage</h2>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">OutdoorsVacationBuilder</span> <span class="kd">extends</span> <span class="nc">VacationBuilder</span> <span class="o">{</span>	
-	<span class="kd">public</span> <span class="nf">OutdoorsVacationBuilder</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"Outdoorsy Vacation Builder"</span><span class="o">;</span>
-	<span class="o">}</span>
-	<span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">accommodations</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Tent</span><span class="o">());</span>
-		<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
-	<span class="o">}</span>
-	<span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">accommodations</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Tent</span><span class="o">(</span><span class="n">name</span><span class="o">));</span>
-		<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
-	<span class="o">}</span>
-	<span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">year</span><span class="o">,</span> <span class="kt">int</span> <span class="n">month</span><span class="o">,</span> <span class="kt">int</span> <span class="n">day</span><span class="o">,</span> <span class="kt">int</span> <span class="n">nights</span><span class="o">,</span> <span class="kt">int</span> <span class="n">location</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">Reservation</span> <span class="n">reservation</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Reservation</span><span class="o">();</span>
-		<span class="n">reservation</span><span class="o">.</span><span class="na">setArrivalDate</span><span class="o">(</span><span class="n">year</span><span class="o">,</span> <span class="n">month</span><span class="o">,</span> <span class="n">day</span><span class="o">);</span>
-		<span class="n">reservation</span><span class="o">.</span><span class="na">setNights</span><span class="o">(</span><span class="n">nights</span><span class="o">);</span>
-		
-		<span class="nc">Tent</span> <span class="n">tent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Tent</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
-		<span class="n">tent</span><span class="o">.</span><span class="na">setReservation</span><span class="o">(</span><span class="n">reservation</span><span class="o">);</span>
-		<span class="n">tent</span><span class="o">.</span><span class="na">setSiteNumber</span><span class="o">(</span><span class="n">location</span><span class="o">);</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">accommodations</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">tent</span><span class="o">);</span>
-		<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
-	<span class="o">}</span>
-	<span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addEvent</span><span class="o">(</span><span class="nc">String</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">events</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"Hike: "</span> <span class="o">+</span> <span class="n">event</span><span class="o">);</span>
-		<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CityVacationBuilder</span> <span class="kd">extends</span> <span class="nc">VacationBuilder</span> <span class="o">{</span>	
-	<span class="kd">public</span> <span class="nf">CityVacationBuilder</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"City Vacation Builder"</span><span class="o">;</span>
-	<span class="o">}</span>
-	<span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">accommodations</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Hotel</span><span class="o">());</span>
-		<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
-	<span class="o">}</span>
-	<span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">accommodations</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Hotel</span><span class="o">(</span><span class="n">name</span><span class="o">));</span>
-		<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
-	<span class="o">}</span>
-	<span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">year</span><span class="o">,</span> <span class="kt">int</span> <span class="n">month</span><span class="o">,</span> <span class="kt">int</span> <span class="n">day</span><span class="o">,</span> <span class="kt">int</span> <span class="n">nights</span><span class="o">,</span> <span class="kt">int</span> <span class="n">location</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">Reservation</span> <span class="n">reservation</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Reservation</span><span class="o">();</span>
-		<span class="n">reservation</span><span class="o">.</span><span class="na">setArrivalDate</span><span class="o">(</span><span class="n">year</span><span class="o">,</span> <span class="n">month</span><span class="o">,</span> <span class="n">day</span><span class="o">);</span>
-		<span class="n">reservation</span><span class="o">.</span><span class="na">setNights</span><span class="o">(</span><span class="n">nights</span><span class="o">);</span>
-		
-		<span class="nc">Hotel</span> <span class="n">hotel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Hotel</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
-		<span class="n">hotel</span><span class="o">.</span><span class="na">setReservation</span><span class="o">(</span><span class="n">reservation</span><span class="o">);</span>
-		<span class="n">hotel</span><span class="o">.</span><span class="na">setRoomNumber</span><span class="o">(</span><span class="n">location</span><span class="o">);</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">accommodations</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">hotel</span><span class="o">);</span>
-		<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
-	<span class="o">}</span>
-	<span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addEvent</span><span class="o">(</span><span class="nc">String</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">events</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"See the "</span> <span class="o">+</span> <span class="n">event</span> <span class="o">+</span> <span class="s">" show"</span><span class="o">);</span>
-		<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainClass</span> <span class="o">{</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">VacationBuilder</span> <span class="n">outdoorsyVacationBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OutdoorsVacationBuilder</span><span class="o">();</span>
-		<span class="nc">Vacation</span> <span class="n">outdoorsyVacation</span> <span class="o">=</span> <span class="n">outdoorsyVacationBuilder</span>
-				<span class="o">.</span><span class="na">addAccommodation</span><span class="o">(</span><span class="s">"Two person tent"</span><span class="o">,</span> <span class="mi">2020</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">34</span><span class="o">)</span>
-				<span class="o">.</span><span class="na">addEvent</span><span class="o">(</span><span class="s">"Beach"</span><span class="o">)</span>
-				<span class="o">.</span><span class="na">addAccommodation</span><span class="o">(</span><span class="s">"Two person tent"</span><span class="o">)</span>
-				<span class="o">.</span><span class="na">addEvent</span><span class="o">(</span><span class="s">"Mountains"</span><span class="o">)</span>
-				<span class="o">.</span><span class="na">getVacation</span><span class="o">();</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">outdoorsyVacation</span><span class="o">);</span>
-		
-		<span class="nc">VacationBuilder</span> <span class="n">cityVacationBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CityVacationBuilder</span><span class="o">();</span>
-		<span class="nc">Vacation</span> <span class="n">cityVacation</span> <span class="o">=</span> <span class="n">cityVacationBuilder</span>
-				<span class="o">.</span><span class="na">addAccommodation</span><span class="o">(</span><span class="s">"Grand Facadian"</span><span class="o">,</span> <span class="mi">2020</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span>
-				<span class="o">.</span><span class="na">addAccommodation</span><span class="o">(</span><span class="s">"Hotel Commander"</span><span class="o">,</span> <span class="mi">2020</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span>
-				<span class="o">.</span><span class="na">addEvent</span><span class="o">(</span><span class="s">"Cirque du Soleil"</span><span class="o">)</span>
-				<span class="o">.</span><span class="na">getVacation</span><span class="o">();</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cityVacation</span><span class="o">);</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Builder pattern]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/patterns" /><summary type="html"><![CDATA[This is an example for implementation for Iterator pattern]]></summary></entry></feed>
