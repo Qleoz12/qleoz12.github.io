@@ -1,5 +1,5 @@
 ---
-layout: archive
+layout: splash
 permalink: /knowledge
 title: "Code Languajes and Tools used through experience"
 
