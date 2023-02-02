@@ -50,8 +50,16 @@ feature_row:
     Use Spring Cloud to use Service Discovery and Registeration 
     Use Kafka, Avro and Spring Streams for implementing event based microservices
     <br />
-    **STATUS** : [![read](https://img.shields.io/badge/read-in progress-yellow.svg?style=flat)](https://www.amazon.com/Mastering-Microservices-Java-domain-driven-microservice-based/dp/1787281442?){:target='_blank' rel='noopener'}"
+    **STATUS** :  [![read](https://img.shields.io/badge/read-completed-green.svg?style=flat)](https://www.amazon.com/Mastering-Microservices-Java-domain-driven-microservice-based/dp/1787281442?){:target='_blank' rel='noopener'}"
 
+  - image_path: https://m.media-amazon.com/images/I/513ALlarUsL.jpg
+    alt: "Mastering Microservices with Java: Build enterprise microservices"
+    title: "Mastering Microservices with Java: Build enterprise microservices with Spring Boot 2.0, Spring Cloud, and Angular, 3rd Edition 3rd Edición"
+    excerpt: "Use domain-driven design to build microservices
+    Use Spring Cloud to use Service Discovery and Registeration 
+    Use Kafka, Avro and Spring Streams for implementing event based microservices
+    <br />
+    **STATUS** : [![read](https://img.shields.io/badge/read-in progress-yellow.svg?style=flat)](https://www.amazon.com/Mastering-Microservices-Java-enterprise-microservices-ebook/dp/B07P82KN94){:target='_blank' rel='noopener'}"
 
     
   
