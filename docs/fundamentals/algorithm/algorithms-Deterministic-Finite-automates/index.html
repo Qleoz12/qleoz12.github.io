@@ -9,30 +9,36 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Dann Brown Adventures - Page 4</title>
-<meta name="description" content="An amazing website.">
+<!-- begin _includes/seo.html --><title>Deterministic Finite Automata (DFAs) - Dann Brown Adventures</title>
+<meta name="description" content="A deterministic finite automaton (DFA) is a mathematical model used to recognize  patterns in strings. It is a type of finite state machine that accepts or rejects  a given string based on its current state and the input it receives.">
 
 
   <meta name="author" content="Dann brown">
   
+  <meta property="article:author" content="Dann brown">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Dann Brown Adventures">
-<meta property="og:title" content="Dann Brown Adventures">
-<meta property="og:url" content="/page4/">
+<meta property="og:title" content="Deterministic Finite Automata (DFAs)">
+<meta property="og:url" content="/fundamentals/algorithm/algorithms-Deterministic-Finite-automates/">
 
 
-  <meta property="og:description" content="An amazing website.">
-
-
-
+  <meta property="og:description" content="A deterministic finite automaton (DFA) is a mathematical model used to recognize  patterns in strings. It is a type of finite state machine that accepts or rejects  a given string based on its current state and the input it receives.">
 
 
 
 
 
+
+
+  <meta property="article:published_time" content="2023-04-16T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2022-04-25T08:06:00-05:00">
 
 
 
@@ -41,13 +47,9 @@
   
 
 
-<link rel="canonical" href="/page4/">
+<link rel="canonical" href="/fundamentals/algorithm/algorithms-Deterministic-Finite-automates/">
 
 
-  <link rel="prev" href="/page3/">
-
-
-  <link rel="next" href="/page5/">
 
 
 <script type="application/ld+json">
@@ -96,7 +98,7 @@
 
   </head>
 
-  <body class="layout--home">
+  <body class="layout--archive">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -146,6 +148,51 @@
     <div class="initial-content">
       
 
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#fundamentals" itemprop="item"><span itemprop="name">Fundamentals</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#algorithm" itemprop="item"><span itemprop="name">Algorithm</span></a>
+          <meta itemprop="position" content="3" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Deterministic Finite Automata (DFAs)</li>
+      
+    
+  </ol>
+</nav>
 
   
 
@@ -285,312 +332,67 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title"></h1>
+      <h1 id="page-title" class="page__title">Deterministic Finite Automata (DFAs)</h1>
     
-    
+    <p>A deterministic finite automaton (DFA) is a mathematical model used to recognize 
+patterns in strings. It is a type of finite state machine that accepts or rejects 
+a given string based on its current state and the input it receives.</p>
 
-<h3 class="archive__subtitle">Recent posts</h3>
+<h2 id="formal-definition">Formal definition</h2>
+<p>A DFA is defined as a 5-tuple, consisting of:</p>
 
+<p>A finite set of states Q <br />
+A finite set of input symbols Σ (also called the alphabet) <br />
+A transition function δ : Q × Σ → Q, which maps a state and an input symbol to a new state <br />
+A start state q<sub>0</sub> ∈ Q <br />
+A set of accept states F ⊆ Q</p>
 
+<h2 id="how-dfas-work">How DFAs work</h2>
+<p>A DFA starts in the start state and reads a string of input symbols. 
+For each symbol, it transitions to a new state based on the current state and the symbol. 
+If the final state is an accept state, the string is accepted; otherwise, it is rejected.</p>
 
+<h2 id="example">Example</h2>
+<p>Let’s consider a DFA that recognizes strings of 0’s and 1’s that have an odd 
+number of 1’s. The DFA has two states: q<sub>0</sub> and q<sub>1</sub>. 
+The transition function is defined as follows:</p>
 
-<div class="entries-list">
-  
-    
+<p>δ(q<sub>0</sub>, 0) = q<sub>0</sub>
+δ(q<sub>0</sub>, 1) = q<sub>1</sub>
+δ(q<sub>1</sub>, 0) = q<sub>1</sub>
+δ(q<sub>1</sub>, 1) = q<sub>0</sub>
+The start state is q<sub>0</sub> and the accept state is q<sub>1</sub>.</p>
 
+<p>Let’s see how the DFA processes the string “11010”:</p>
 
+<p>q0 –(1)–&gt; q1 –(1)–&gt; q0 –(0)–&gt; q0 –(1)–&gt; q1 –(0)–&gt; q1
+The final state is q<sub>1</sub>, which is an accept state. 
+Therefore, the string “11010” is accepted by the DFA.</p>
 
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/fundamentals/patterns/patterns-Facade/" rel="permalink">Facade Pattern
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-04-21T00:00:00-05:00">April 21, 2022</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This is an example for implementation for Facade pattern
-</p>
-  </article>
+<h2 id="slides">slides</h2>
+<div class="responsive-wrap">
+<!-- this is the embed code provided by Google -->
+  <iframe src="https://docs.google.com/presentation/d/18b_TQyfrvZu2krvv_HYpQvWRHYA1fD9iiwvB9uBcJuI/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<!-- Google embed ends -->
 </div>
 
-  
-    
+<h2 id="conclusion">Conclusion:</h2>
 
+<p>DFAs are a powerful tool for recognizing patterns in strings. 
+They can be used in a wide range of applications, such as lexical analysis,
+regular expression matching, and compiler design. Understanding DFAs is an 
+important part of computer science and is essential for building robust 
+software systems.</p>
 
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/fundamentals/patterns/patterns-proxy/" rel="permalink">Proxy Pattern
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-04-20T00:00:00-05:00">April 20, 2022</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This is an example for implementation for Proxy pattern
-</p>
-  </article>
-</div>
-
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/fundamentals/patterns/patterns-singleton/" rel="permalink">Singleton Pattern
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-04-19T00:00:00-05:00">April 19, 2022</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This is an example for implementation for singleton pattern
-</p>
-  </article>
-</div>
-
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/fundamentals/patterns/patterns-adapter/" rel="permalink">Adapter Pattern
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-04-18T00:00:00-05:00">April 18, 2022</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This is an example for implementation for Adapter pattern
-</p>
-  </article>
-</div>
-
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/fundamentals/patterns/patterns-command/" rel="permalink">Command pattern
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-04-17T00:00:00-05:00">April 17, 2022</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This is an example for implementation for Command pattern
-</p>
-  </article>
-</div>
-
-  
-</div>
-
-
-<nav class="pagination">
-  
-  <ul>
-    
-    
-      
-        <li><a href="/page3/">Previous</a></li>
-      
-    
-
-    
-    
-      <li><a href="/">1</a></li>
-    
-
-    
-    
-
-    
-    
-    
-
-    
-      
-        
-        
-        
-        <li><a href="/page2/">2</a></li>
-      
-    
-      
-        
-        
-        
-        <li><a href="/page3/">3</a></li>
-      
-    
-      
-        <li><a href="/page4/" class="disabled current">4</a></li>
-      
-    
-
-    
-    
-
-    
-      <li><a href="/page5/">5</a></li>
-    
-
-    
-    
-      <li><a href="/page5/">Next</a></li>
-    
-  </ul>
-</nav>
-
-
+<h2 id="references">References</h2>
+<ul>
+  <li>
+    <p>https://ivanvladimir.gitlab.io/lfya_book/docs/02lam%C3%A1quinasinmemoria/04aut%C3%B3matafinito/</p>
+  </li>
+  <li>
+    <p>https://colab.research.google.com/github/ivanvladimir/maquinas_notebooks/blob/main/lfya/02%20La%20m%C3%A1quina%20sin%20memoria.ipynb</p>
+  </li>
+</ul>
 
   </div>
 </div>

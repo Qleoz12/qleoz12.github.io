@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-04-16T10:51:20-05:00</updated><id>/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Algorithm Breadth-First Search</title><link href="/fundamentals/algorithm/algorithms-Breadth-First-Search/" rel="alternate" type="text/html" title="Algorithm Breadth-First Search" /><published>2023-04-16T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>/fundamentals/algorithm/algorithms-Breadth-First-Search</id><content type="html" xml:base="/fundamentals/algorithm/algorithms-Breadth-First-Search/"><![CDATA[<h1 id="breadth-first-search-a-simple-but-powerful-graph-traversal-algorithm">Breadth-First Search: A Simple but Powerful Graph Traversal Algorithm</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-05-08T17:23:00-05:00</updated><id>/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Algorithm Breadth-First Search</title><link href="/fundamentals/algorithm/algorithms-Breadth-First-Search-copy/" rel="alternate" type="text/html" title="Algorithm Breadth-First Search" /><published>2023-04-16T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>/fundamentals/algorithm/algorithms-Breadth-First-Search%20copy</id><content type="html" xml:base="/fundamentals/algorithm/algorithms-Breadth-First-Search-copy/"><![CDATA[<h1 id="breadth-first-search-a-simple-but-powerful-graph-traversal-algorithm">Breadth-First Search: A Simple but Powerful Graph Traversal Algorithm</h1>
 
 <p>When working with graphs or trees, one of the most basic operations you may need 
 to perform is searching for a specific node or path. Breadth-First Search (BFS) 
@@ -136,7 +136,65 @@ https://www.udemy.com/course/artificial-intelligence-games-in-java/ (Accessed: A
   <li>
     <p>https://stackoverflow.com/questions/5357211/breadth-first-search-query-in-mysql</p>
   </li>
-</ul>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/algorithm" /><summary type="html"><![CDATA[Breadth-First Search: A Simple but Powerful Graph Traversal Algorithm]]></summary></entry><entry><title type="html">Domain Driven Design</title><link href="/development%20aproach/Domain-Driven-Design/" rel="alternate" type="text/html" title="Domain Driven Design" /><published>2023-01-07T00:00:00-05:00</published><updated>2023-01-07T08:06:00-05:00</updated><id>/development%20aproach/Domain%20Driven%20Design</id><content type="html" xml:base="/development%20aproach/Domain-Driven-Design/"><![CDATA[<h2 id="concept">Concept</h2>
+</ul>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/algorithm" /><summary type="html"><![CDATA[Breadth-First Search: A Simple but Powerful Graph Traversal Algorithm]]></summary></entry><entry><title type="html">Deterministic Finite Automata (DFAs)</title><link href="/fundamentals/algorithm/algorithms-Deterministic-Finite-automates/" rel="alternate" type="text/html" title="Deterministic Finite Automata (DFAs)" /><published>2023-04-16T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>/fundamentals/algorithm/algorithms-Deterministic-Finite-automates</id><content type="html" xml:base="/fundamentals/algorithm/algorithms-Deterministic-Finite-automates/"><![CDATA[<p>A deterministic finite automaton (DFA) is a mathematical model used to recognize 
+patterns in strings. It is a type of finite state machine that accepts or rejects 
+a given string based on its current state and the input it receives.</p>
+
+<h2 id="formal-definition">Formal definition</h2>
+<p>A DFA is defined as a 5-tuple, consisting of:</p>
+
+<p>A finite set of states Q <br />
+A finite set of input symbols Σ (also called the alphabet) <br />
+A transition function δ : Q × Σ → Q, which maps a state and an input symbol to a new state <br />
+A start state q<sub>0</sub> ∈ Q <br />
+A set of accept states F ⊆ Q</p>
+
+<h2 id="how-dfas-work">How DFAs work</h2>
+<p>A DFA starts in the start state and reads a string of input symbols. 
+For each symbol, it transitions to a new state based on the current state and the symbol. 
+If the final state is an accept state, the string is accepted; otherwise, it is rejected.</p>
+
+<h2 id="example">Example</h2>
+<p>Let’s consider a DFA that recognizes strings of 0’s and 1’s that have an odd 
+number of 1’s. The DFA has two states: q<sub>0</sub> and q<sub>1</sub>. 
+The transition function is defined as follows:</p>
+
+<p>δ(q<sub>0</sub>, 0) = q<sub>0</sub>
+δ(q<sub>0</sub>, 1) = q<sub>1</sub>
+δ(q<sub>1</sub>, 0) = q<sub>1</sub>
+δ(q<sub>1</sub>, 1) = q<sub>0</sub>
+The start state is q<sub>0</sub> and the accept state is q<sub>1</sub>.</p>
+
+<p>Let’s see how the DFA processes the string “11010”:</p>
+
+<p>q0 –(1)–&gt; q1 –(1)–&gt; q0 –(0)–&gt; q0 –(1)–&gt; q1 –(0)–&gt; q1
+The final state is q<sub>1</sub>, which is an accept state. 
+Therefore, the string “11010” is accepted by the DFA.</p>
+
+<h2 id="slides">slides</h2>
+<div class="responsive-wrap">
+<!-- this is the embed code provided by Google -->
+  <iframe src="https://docs.google.com/presentation/d/18b_TQyfrvZu2krvv_HYpQvWRHYA1fD9iiwvB9uBcJuI/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<!-- Google embed ends -->
+</div>
+
+<h2 id="conclusion">Conclusion:</h2>
+
+<p>DFAs are a powerful tool for recognizing patterns in strings. 
+They can be used in a wide range of applications, such as lexical analysis,
+regular expression matching, and compiler design. Understanding DFAs is an 
+important part of computer science and is essential for building robust 
+software systems.</p>
+
+<h2 id="references">References</h2>
+<ul>
+  <li>
+    <p>https://ivanvladimir.gitlab.io/lfya_book/docs/02lam%C3%A1quinasinmemoria/04aut%C3%B3matafinito/</p>
+  </li>
+  <li>
+    <p>https://colab.research.google.com/github/ivanvladimir/maquinas_notebooks/blob/main/lfya/02%20La%20m%C3%A1quina%20sin%20memoria.ipynb</p>
+  </li>
+</ul>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/algorithm" /><summary type="html"><![CDATA[A deterministic finite automaton (DFA) is a mathematical model used to recognize patterns in strings. It is a type of finite state machine that accepts or rejects a given string based on its current state and the input it receives.]]></summary></entry><entry><title type="html">Domain Driven Design</title><link href="/development%20aproach/Domain-Driven-Design/" rel="alternate" type="text/html" title="Domain Driven Design" /><published>2023-01-07T00:00:00-05:00</published><updated>2023-01-07T08:06:00-05:00</updated><id>/development%20aproach/Domain%20Driven%20Design</id><content type="html" xml:base="/development%20aproach/Domain-Driven-Design/"><![CDATA[<h2 id="concept">Concept</h2>
 
 <p>DDD is a key design practice that helps to design the microservices of the product that you are
 developing, into DDD the mainstay is de DOMAIN, and with a good desing and the fundamentals to apply
@@ -375,34 +433,4 @@ It does NOT support Parallel Programming.	It supports Parallel Programming.</p>
 </table>
 
 <p>in the next interface image, we can see the methods oof the Splititerator
-<img src="/assets/images/java/splititerator.png" alt="alt" /></p>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Java/JDK8" /><summary type="html"><![CDATA[Concept SplitIterator is a new interface, it comes with JDK 8, the main functionalities of split iterator is]]></summary></entry><entry><title type="html">Java Spring-cloud sleuth</title><link href="/java/spring/cloud/sleuth/java-spring-cloud-sleuth/" rel="alternate" type="text/html" title="Java Spring-cloud sleuth" /><published>2022-06-22T00:00:00-05:00</published><updated>2022-06-22T08:06:00-05:00</updated><id>/java/spring/cloud/sleuth/java-spring-cloud-sleuth</id><content type="html" xml:base="/java/spring/cloud/sleuth/java-spring-cloud-sleuth/"><![CDATA[<p>This is an post for ilustrate how works Spring Cloud Sleuth for track request throught several microservices</p>
-
-<h2 id="concept">Concept</h2>
-<p>Sleuth, it’s api module contains all necessary interfaces to be implemented by a tracer.
-Spring Cloud Sleuth is able to trace your requests and messages so that you can correlate that communication to corresponding log entries. 
-You can also export the tracing information to an external system to visualize latency. 
-Spring Cloud Sleuth supports OpenZipkin compatible systems directly</p>
-
-<p><em>Spring Cloud Sleuth borrows Dapper’s terminology.</em></p>
-
-<p><strong>Span</strong>: The basic unit of work. For example, sending an RPC is a new span, as is sending a response to an RPC. Spans also have other data, such as descriptions, timestamped events, key-value annotations (tags), the ID of the span that caused them, and process IDs (normally IP addresses).</p>
-
-<p>Spans can be started and stopped, and they keep track of their timing information. Once you create a span, you must stop it at some point in the future.</p>
-
-<p><strong>Trace</strong>: A set of spans forming a tree-like structure. For example, if you run a distributed big-data store, a trace might be formed by a PUT request.</p>
-
-<p><strong>Annotation/Event</strong>: Used to record the existence of an event in time.</p>
-
-<p>Conceptually in a typical RPC scenario we mark these events to highlight what kind of an action took place (it doesn’t mean that physically such an event will be set on a span).</p>
-
-<p>cs: Client Sent. The client has made a request. This annotation indicates the start of the span.</p>
-
-<p>sr: Server Received: The server side got the request and started processing it. Subtracting the cs timestamp from this timestamp reveals the network latency.</p>
-
-<p>ss: Server Sent. Annotated upon completion of request processing (when the response got sent back to the client). Subtracting the sr timestamp from this timestamp reveals the time needed by the server side to process the request.</p>
-
-<p>cr: Client Received. Signifies the end of the span. The client has successfully received the response from the server side. Subtracting the cs timestamp from this timestamp reveals the whole time needed by the client to receive the response from the server.</p>
-
-<p>In the next image you can check the behavior of track ID and span ID between each service and how you could easily identity the same request through the complex microservices structure,
-in the case, trace ID is X for just one request and each service adds snap ID for the same request, it’s identify the flow the request on in and back
-<img src="/assets/images/spring/sleuth-trace-id.jpg" alt="alt" /></p>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="java/spring/cloud/sleuth" /><summary type="html"><![CDATA[This is an post for ilustrate how works Spring Cloud Sleuth for track request throught several microservices]]></summary></entry></feed>
+<img src="/assets/images/java/splititerator.png" alt="alt" /></p>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Java/JDK8" /><summary type="html"><![CDATA[Concept SplitIterator is a new interface, it comes with JDK 8, the main functionalities of split iterator is]]></summary></entry></feed>
