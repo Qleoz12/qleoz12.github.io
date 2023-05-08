@@ -1,0 +1,534 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Algorithm Breadth-First Search - Dann Brown Adventures</title>
+<meta name="description" content="Breadth-First Search: A Simple but Powerful Graph Traversal Algorithm">
+
+
+  <meta name="author" content="Dann brown">
+  
+  <meta property="article:author" content="Dann brown">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dann Brown Adventures">
+<meta property="og:title" content="Algorithm Breadth-First Search">
+<meta property="og:url" content="/fundamentals/algorithm/algorithms-Breadth-First-Search/">
+
+
+  <meta property="og:description" content="Breadth-First Search: A Simple but Powerful Graph Traversal Algorithm">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2023-04-16T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2022-04-25T08:06:00-05:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/fundamentals/algorithm/algorithms-Breadth-First-Search/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Leonardo L Sanchez- Dann Brown",
+      "url": "/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dann Brown Adventures Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--archive">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Dann Brown Adventures
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/books/reading">Reading List</a>
+            </li><li class="masthead__menu-item">
+              <a href="/reading">looking</a>
+            </li><li class="masthead__menu-item">
+              <a href="/knowledge">knowledge</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#fundamentals" itemprop="item"><span itemprop="name">Fundamentals</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#algorithm" itemprop="item"><span itemprop="name">Algorithm</span></a>
+          <meta itemprop="position" content="3" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Algorithm Breadth-First Search</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/1577552827279.jpg" alt="Dann brown" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">Dann brown</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">CO</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/leonardo-sanchez-89590b127/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">linkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://www.youtube.com/channel/UCoROtxDQYfIgjXBDcORK5zw/videos" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-youtube" aria-hidden="true"></i><span class="label">Youtube</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Qleoz12" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kintaroloop@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="kintaroloop@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">Algorithm Breadth-First Search</h1>
+    
+    <h1 id="breadth-first-search-a-simple-but-powerful-graph-traversal-algorithm">Breadth-First Search: A Simple but Powerful Graph Traversal Algorithm</h1>
+
+<p>When working with graphs or trees, one of the most basic operations you may need 
+to perform is searching for a specific node or path. Breadth-First Search (BFS) 
+is a simple but powerful algorithm that allows you to traverse a graph or tree 
+in a systematic way, visiting each node at a fixed distance from the starting 
+node before moving on to nodes that are farther away. In this post, we’ll 
+explore what BFS is, how it works, and why it’s important.</p>
+
+<h2 id="introduction">Introduction:</h2>
+
+<p>Breadth-First Search is a graph traversal algorithm that visits all the nodes 
+at a fixed distance from the starting node before visiting nodes that are 
+farther away. This makes it a good choice for finding the shortest 
+path between two nodes or for exploring a graph or tree in a systematic way.</p>
+
+<h2 id="how-bfs-works">How BFS Works:</h2>
+
+<p>The basic idea behind BFS is to visit all the nodes at a given distance 
+from the starting node before moving on to nodes that are farther away. 
+To do this, BFS uses a queue data structure to keep track of the nodes 
+that need to be visited. Here’s how the algorithm works:</p>
+
+<p>Enqueue the starting node in the queue.
+While the queue is not empty, dequeue the first node in the queue and mark it as visited.
+Enqueue all the neighbors of the dequeued node that have not been visited yet.
+Repeat steps 2-3 until the queue is empty.
+By visiting nodes in this way, BFS ensures that you visit all the nodes at a 
+given distance from the starting node before moving on to nodes that are farther
+ away. This makes it an efficient algorithm for exploring large graphs or trees.</p>
+
+<h2 id="why-bfs-is-important">Why BFS is Important:</h2>
+
+<p>BFS is an important algorithm in computer science because it can be used to 
+solve a wide range of problems, from finding the shortest path between two nodes 
+to detecting cycles in a graph. It’s also a fundamental building block for more 
+complex algorithms, such as Dijkstra’s algorithm for finding the shortest path 
+in a weighted graph.</p>
+
+<h3 id="example-implementation-in-java">Example Implementation in Java:</h3>
+
+<p>Here’s an example implementation of BFS in Java:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Queue</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BreadthFirstSearch</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">bfs</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">graph</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">graph</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+        <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;();</span>
+        
+        <span class="n">visited</span><span class="o">[</span><span class="n">start</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+        
+        <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">node</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+            
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">graph</span><span class="o">[</span><span class="n">node</span><span class="o">].</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">graph</span><span class="o">[</span><span class="n">node</span><span class="o">][</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">visited</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">{</span>
+                    <span class="n">visited</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                    <span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[][]</span> <span class="n">graph</span> <span class="o">=</span> <span class="o">{</span>
+            <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">},</span>
+            <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">},</span>
+            <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">},</span>
+            <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">},</span>
+            <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">}</span>
+        <span class="o">};</span>
+        
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"BFS traversal starting from node 0:"</span><span class="o">);</span>
+        <span class="n">bfs</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>This code represents a graph as an adjacency matrix and performs a BFS traversal 
+starting from node 0. In each iteration of the while loop, the first node in the
+queue is dequeued, and all its unvisited neighbors are added to the queue. 
+The visited array keeps track of which nodes have been visited, 
+so that each node is visited exactly once.</p>
+
+<h2 id="time-complexity">Time Complexity:</h2>
+
+<p>The time complexity of BFS is O(V+E), where V is the number of vertices and E 
+is the number of edges in the graph. This is because BFS traverses all the 
+vertices and edges in the graph once. In the worst case, where the graph is a 
+complete graph, BFS will visit every vertex and edge exactly once, resulting in 
+a time complexity of O(V^2).</p>
+
+<h2 id="downsides">Downsides:</h2>
+
+<p>While BFS is a simple and efficient algorithm for exploring large graphs or trees,
+ it does have some downsides:</p>
+
+<p>Space Complexity: BFS uses a queue to keep track of the nodes that need to be 
+visited, which can take up a lot of memory for large graphs or trees.</p>
+
+<p>Suboptimal Paths: BFS is designed to find the shortest path between two nodes, 
+but it may not always find the optimal path in a weighted graph. This is 
+because BFS does not take edge weights into account when determining the order 
+in which to visit nodes.</p>
+
+<p>Time Complexity for Dense Graphs: In dense graphs with a large number of edges, 
+BFS can have a high time complexity, as it may visit many unnecessary nodes 
+before finding the desired path.</p>
+
+<p>Despite these downsides, BFS is still a widely used algorithm in computer 
+science due to its simplicity and versatility.</p>
+
+<h2 id="conclusion">Conclusion:</h2>
+
+<p>Breadth-First Search is a simple but powerful algorithm that can be used to 
+traverse a graph or tree in a systematic way. It’s a good choice for finding 
+the shortest path between two nodes or for exploring a graph or tree in a 
+breadth-first manner. By visiting nodes at a fixed distance from the starting 
+node before moving on to nodes that are farther away, BFS ensures that you visit 
+all the nodes in a graph or tree efficiently.</p>
+
+<p>I hope you found this introduction to BFS helpful. If you have any questions or 
+comments, feel free to leave them below!</p>
+
+<h2 id="references">References</h2>
+<ul>
+  <li>
+    <p>Balazs, H. (no date) Artificial Intelligence I: Meta-heuristics and games in 
+Java, Udemy. Udemy. Available at: 
+https://www.udemy.com/course/artificial-intelligence-games-in-java/ (Accessed: April 16, 2023).</p>
+  </li>
+  <li>
+    <p>https://stackoverflow.com/questions/5357211/breadth-first-search-query-in-mysql</p>
+  </li>
+</ul>
+
+  </div>
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Leonardo L Sanchez- Dann Brown. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
