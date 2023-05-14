@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-05-08T17:23:00-05:00</updated><id>/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Algorithm Breadth-First Search</title><link href="/fundamentals/algorithm/algorithms-Breadth-First-Search-copy/" rel="alternate" type="text/html" title="Algorithm Breadth-First Search" /><published>2023-04-16T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>/fundamentals/algorithm/algorithms-Breadth-First-Search%20copy</id><content type="html" xml:base="/fundamentals/algorithm/algorithms-Breadth-First-Search-copy/"><![CDATA[<h1 id="breadth-first-search-a-simple-but-powerful-graph-traversal-algorithm">Breadth-First Search: A Simple but Powerful Graph Traversal Algorithm</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-05-14T16:49:26-05:00</updated><id>/feed.xml</id><title type="html">Dann Brown Adventures</title><subtitle>An amazing website.</subtitle><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><entry><title type="html">Algorithm Breadth-First Search</title><link href="/fundamentals/algorithm/algorithms-Breadth-First-Search-copy/" rel="alternate" type="text/html" title="Algorithm Breadth-First Search" /><published>2023-04-16T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>/fundamentals/algorithm/algorithms-Breadth-First-Search%20copy</id><content type="html" xml:base="/fundamentals/algorithm/algorithms-Breadth-First-Search-copy/"><![CDATA[<h1 id="breadth-first-search-a-simple-but-powerful-graph-traversal-algorithm">Breadth-First Search: A Simple but Powerful Graph Traversal Algorithm</h1>
 
 <p>When working with graphs or trees, one of the most basic operations you may need 
 to perform is searching for a specific node or path. Breadth-First Search (BFS) 
@@ -186,6 +186,42 @@ regular expression matching, and compiler design. Understanding DFAs is an
 important part of computer science and is essential for building robust 
 software systems.</p>
 
+<h2 id="repository">Repository</h2>
+
+<div class="feature__wrapper">
+
+  
+    <div class="feature__item--left">
+      <div class="archive__item">
+        
+          <div class="archive__item-teaser">
+            <img src="https://img.asmedia.epimg.net/resizer/6Y-eMP_PRbjQvkQuWS86T_FG61U=/644x362/cloudfront-eu-central-1.images.arcpublishing.com/diarioas/PVMMQEWO7VOXNKKE7GPPYWTE2Y.jpg" alt="" />
+            
+          </div>
+        
+
+        <div class="archive__item-body">
+          
+            <h2 class="archive__item-title">Algorithms DFA</h2>
+          
+
+          
+            <div class="archive__item-excerpt">
+              <p>This is some sample java maven project  with a package for FDA proofs</p>
+
+            </div>
+          
+
+          
+            <p><a href="https://github.com/Qleoz12/JavaKnowledge/tree/master/algoritms" class="btn btn--inverse">repository</a></p>
+          
+        </div>
+      </div>
+    </div>
+  
+
+</div>
+
 <h2 id="references">References</h2>
 <ul>
   <li>
@@ -194,7 +230,145 @@ software systems.</p>
   <li>
     <p>https://colab.research.google.com/github/ivanvladimir/maquinas_notebooks/blob/main/lfya/02%20La%20m%C3%A1quina%20sin%20memoria.ipynb</p>
   </li>
-</ul>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/algorithm" /><summary type="html"><![CDATA[A deterministic finite automaton (DFA) is a mathematical model used to recognize patterns in strings. It is a type of finite state machine that accepts or rejects a given string based on its current state and the input it receives.]]></summary></entry><entry><title type="html">Domain Driven Design</title><link href="/development%20aproach/Domain-Driven-Design/" rel="alternate" type="text/html" title="Domain Driven Design" /><published>2023-01-07T00:00:00-05:00</published><updated>2023-01-07T08:06:00-05:00</updated><id>/development%20aproach/Domain%20Driven%20Design</id><content type="html" xml:base="/development%20aproach/Domain-Driven-Design/"><![CDATA[<h2 id="concept">Concept</h2>
+</ul>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/algorithm" /><summary type="html"><![CDATA[A deterministic finite automaton (DFA) is a mathematical model used to recognize patterns in strings. It is a type of finite state machine that accepts or rejects a given string based on its current state and the input it receives.]]></summary></entry><entry><title type="html">Algorithm Breadth-First Search</title><link href="/fundamentals/algorithm/algorithms-Breadth-First-Search/" rel="alternate" type="text/html" title="Algorithm Breadth-First Search" /><published>2023-04-16T00:00:00-05:00</published><updated>2022-04-25T08:06:00-05:00</updated><id>/fundamentals/algorithm/algorithms-Breadth-First-Search</id><content type="html" xml:base="/fundamentals/algorithm/algorithms-Breadth-First-Search/"><![CDATA[<h1 id="breadth-first-search-a-simple-but-powerful-graph-traversal-algorithm">Breadth-First Search: A Simple but Powerful Graph Traversal Algorithm</h1>
+
+<p>When working with graphs or trees, one of the most basic operations you may need 
+to perform is searching for a specific node or path. Breadth-First Search (BFS) 
+is a simple but powerful algorithm that allows you to traverse a graph or tree 
+in a systematic way, visiting each node at a fixed distance from the starting 
+node before moving on to nodes that are farther away. In this post, we’ll 
+explore what BFS is, how it works, and why it’s important.</p>
+
+<h2 id="introduction">Introduction:</h2>
+
+<p>Breadth-First Search is a graph traversal algorithm that visits all the nodes 
+at a fixed distance from the starting node before visiting nodes that are 
+farther away. This makes it a good choice for finding the shortest 
+path between two nodes or for exploring a graph or tree in a systematic way.</p>
+
+<h2 id="how-bfs-works">How BFS Works:</h2>
+
+<p>The basic idea behind BFS is to visit all the nodes at a given distance 
+from the starting node before moving on to nodes that are farther away. 
+To do this, BFS uses a queue data structure to keep track of the nodes 
+that need to be visited. Here’s how the algorithm works:</p>
+
+<p>Enqueue the starting node in the queue.
+While the queue is not empty, dequeue the first node in the queue and mark it as visited.
+Enqueue all the neighbors of the dequeued node that have not been visited yet.
+Repeat steps 2-3 until the queue is empty.
+By visiting nodes in this way, BFS ensures that you visit all the nodes at a 
+given distance from the starting node before moving on to nodes that are farther
+ away. This makes it an efficient algorithm for exploring large graphs or trees.</p>
+
+<h2 id="why-bfs-is-important">Why BFS is Important:</h2>
+
+<p>BFS is an important algorithm in computer science because it can be used to 
+solve a wide range of problems, from finding the shortest path between two nodes 
+to detecting cycles in a graph. It’s also a fundamental building block for more 
+complex algorithms, such as Dijkstra’s algorithm for finding the shortest path 
+in a weighted graph.</p>
+
+<h3 id="example-implementation-in-java">Example Implementation in Java:</h3>
+
+<p>Here’s an example implementation of BFS in Java:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Queue</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BreadthFirstSearch</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">bfs</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">graph</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">graph</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+        <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;();</span>
+        
+        <span class="n">visited</span><span class="o">[</span><span class="n">start</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">start</span><span class="o">);</span>
+        
+        <span class="k">while</span> <span class="o">(!</span><span class="n">queue</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">node</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+            
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">graph</span><span class="o">[</span><span class="n">node</span><span class="o">].</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">graph</span><span class="o">[</span><span class="n">node</span><span class="o">][</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">visited</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">{</span>
+                    <span class="n">visited</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                    <span class="n">queue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[][]</span> <span class="n">graph</span> <span class="o">=</span> <span class="o">{</span>
+            <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">},</span>
+            <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">},</span>
+            <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">},</span>
+            <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">},</span>
+            <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">}</span>
+        <span class="o">};</span>
+        
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"BFS traversal starting from node 0:"</span><span class="o">);</span>
+        <span class="n">bfs</span><span class="o">(</span><span class="n">graph</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>This code represents a graph as an adjacency matrix and performs a BFS traversal 
+starting from node 0. In each iteration of the while loop, the first node in the
+queue is dequeued, and all its unvisited neighbors are added to the queue. 
+The visited array keeps track of which nodes have been visited, 
+so that each node is visited exactly once.</p>
+
+<h2 id="time-complexity">Time Complexity:</h2>
+
+<p>The time complexity of BFS is O(V+E), where V is the number of vertices and E 
+is the number of edges in the graph. This is because BFS traverses all the 
+vertices and edges in the graph once. In the worst case, where the graph is a 
+complete graph, BFS will visit every vertex and edge exactly once, resulting in 
+a time complexity of O(V^2).</p>
+
+<h2 id="downsides">Downsides:</h2>
+
+<p>While BFS is a simple and efficient algorithm for exploring large graphs or trees,
+ it does have some downsides:</p>
+
+<p>Space Complexity: BFS uses a queue to keep track of the nodes that need to be 
+visited, which can take up a lot of memory for large graphs or trees.</p>
+
+<p>Suboptimal Paths: BFS is designed to find the shortest path between two nodes, 
+but it may not always find the optimal path in a weighted graph. This is 
+because BFS does not take edge weights into account when determining the order 
+in which to visit nodes.</p>
+
+<p>Time Complexity for Dense Graphs: In dense graphs with a large number of edges, 
+BFS can have a high time complexity, as it may visit many unnecessary nodes 
+before finding the desired path.</p>
+
+<p>Despite these downsides, BFS is still a widely used algorithm in computer 
+science due to its simplicity and versatility.</p>
+
+<h2 id="conclusion">Conclusion:</h2>
+
+<p>Breadth-First Search is a simple but powerful algorithm that can be used to 
+traverse a graph or tree in a systematic way. It’s a good choice for finding 
+the shortest path between two nodes or for exploring a graph or tree in a 
+breadth-first manner. By visiting nodes at a fixed distance from the starting 
+node before moving on to nodes that are farther away, BFS ensures that you visit 
+all the nodes in a graph or tree efficiently.</p>
+
+<p>I hope you found this introduction to BFS helpful. If you have any questions or 
+comments, feel free to leave them below!</p>
+
+<h2 id="references">References</h2>
+<ul>
+  <li>
+    <p>Balazs, H. (no date) Artificial Intelligence I: Meta-heuristics and games in 
+Java, Udemy. Udemy. Available at: 
+https://www.udemy.com/course/artificial-intelligence-games-in-java/ (Accessed: April 16, 2023).</p>
+  </li>
+  <li>
+    <p>https://stackoverflow.com/questions/5357211/breadth-first-search-query-in-mysql</p>
+  </li>
+</ul>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Fundamentals/algorithm" /><summary type="html"><![CDATA[Breadth-First Search: A Simple but Powerful Graph Traversal Algorithm]]></summary></entry><entry><title type="html">Domain Driven Design</title><link href="/development%20aproach/Domain-Driven-Design/" rel="alternate" type="text/html" title="Domain Driven Design" /><published>2023-01-07T00:00:00-05:00</published><updated>2023-01-07T08:06:00-05:00</updated><id>/development%20aproach/Domain%20Driven%20Design</id><content type="html" xml:base="/development%20aproach/Domain-Driven-Design/"><![CDATA[<h2 id="concept">Concept</h2>
 
 <p>DDD is a key design practice that helps to design the microservices of the product that you are
 developing, into DDD the mainstay is de DOMAIN, and with a good desing and the fundamentals to apply
@@ -383,54 +557,4 @@ multithreaded code!.</p>
 
 <h3 id="challenges-responses">challenges responses</h3>
 
-<p>https://github.com/Qleoz12/Medellin-java-streams</p>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Java/JDK8" /><summary type="html"><![CDATA[Concept]]></summary></entry><entry><title type="html">Java SplitIterator</title><link href="/java/jdk8/java-Splititerator/" rel="alternate" type="text/html" title="Java SplitIterator" /><published>2022-06-25T00:00:00-05:00</published><updated>2022-06-25T08:06:00-05:00</updated><id>/java/jdk8/java-Splititerator</id><content type="html" xml:base="/java/jdk8/java-Splititerator/"><![CDATA[<h2 id="concept">Concept</h2>
-<p>SplitIterator is a new interface, it comes with JDK 8, the main functionalities of split iterator is</p>
-
-<ul>
-  <li>split the data-structure</li>
-  <li>iterate the chunks</li>
-</ul>
-
-<p>Split iterator was create for sake to improve the way to implement parallelism because, 
-if you use SplitIterator API with Stream API, you could get an advance 
-‘<em>Internal iteration allows you to process a stream in parallel without the need to
-explicitly use and coordinate different threads in your code.</em>’</p>
-
-<p>Spliterator itself does not provide the parallel programming behavior. However, 
-it provides some methods to support it. 
-Developers should utilize Spliterator interface methods and implement 
-parallel programming by using Fork/Join Framework (one good approach).</p>
-
-<p>It is an Iterator for whole Collection API.	It is an Iterator for both Collection and Stream API, except Map implemented classes.
-It is an Universal Iterator.	It is NOT an Universal Iterator.
-It does NOT support Parallel Programming.	It supports Parallel Programming.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Iterator</th>
-      <th>Spliterator</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Introduced in Java 1.2.</td>
-      <td>Introduced in Java 1.8.</td>
-    </tr>
-    <tr>
-      <td>It is an Iterator for whole Collection API.</td>
-      <td>It is an Iterator for both Collection and Stream API, except Map implemented classes.</td>
-    </tr>
-    <tr>
-      <td>It is an Universal Iterator.</td>
-      <td>It is NOT an Universal Iterator.</td>
-    </tr>
-    <tr>
-      <td>It does NOT support Parallel Programming.</td>
-      <td>It supports Parallel Programming.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>in the next interface image, we can see the methods oof the Splititerator
-<img src="/assets/images/java/splititerator.png" alt="alt" /></p>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Java/JDK8" /><summary type="html"><![CDATA[Concept SplitIterator is a new interface, it comes with JDK 8, the main functionalities of split iterator is]]></summary></entry></feed>
+<p>https://github.com/Qleoz12/Medellin-java-streams</p>]]></content><author><name>Dann brown</name><email>kintaroloop@gmail.com</email></author><category term="Java/JDK8" /><summary type="html"><![CDATA[Concept]]></summary></entry></feed>
