@@ -5,6 +5,18 @@ categories:
   - Fundamentals/algorithm
 date: 2023-04-16
 last_modified_at: 2022-04-25T08:06:00-05:00
+w_github_card:
+  - input: "Algorithms"
+    link: "https://github.com/Qleoz12/JavaKnowledge/tree/master/algoritms"
+
+feature_row2:
+- image_path: https://img.asmedia.epimg.net/resizer/6Y-eMP_PRbjQvkQuWS86T_FG61U=/644x362/cloudfront-eu-central-1.images.arcpublishing.com/diarioas/PVMMQEWO7VOXNKKE7GPPYWTE2Y.jpg
+  excerpt: 'This is some sample java maven project  with a package for FDA proofs'
+  title: "Algorithms DFA"
+  url: "https://github.com/Qleoz12/JavaKnowledge/tree/master/algoritms"
+  btn_label: "repository"
+  btn_class: "btn--inverse"
+
 ---
 
 
@@ -58,6 +70,8 @@ regular expression matching, and compiler design. Understanding DFAs is an
 important part of computer science and is essential for building robust 
 software systems.
 
+## Repository 
+{% include feature_row id="feature_row2" type="left" %}
 
 
 ## References
