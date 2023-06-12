@@ -75,6 +75,7 @@ software systems.
 
 
 ## References
-- https://ivanvladimir.gitlab.io/lfya_book/docs/02lam%C3%A1quinasinmemoria/04aut%C3%B3matafinito/
-
-- https://colab.research.google.com/github/ivanvladimir/maquinas_notebooks/blob/main/lfya/02%20La%20m%C3%A1quina%20sin%20memoria.ipynb
+<p>
+* https://ivanvladimir.gitlab.io/lfya_book/docs/02lam%C3%A1quinasinmemoria/04aut%C3%B3matafinito/
+* https://colab.research.google.com/github/ivanvladimir/maquinas_notebooks/blob/main/lfya/02%20La%20m%C3%A1quina%20sin%20memoria.ipynb
+</p>
