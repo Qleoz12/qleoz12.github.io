@@ -1,0 +1,22 @@
+---
+layout: archive
+permalink: /certs/
+title: "study certificates"
+
+last_modified_at: 2021-05-11T10:23:16-04:00
+toc: true
+author_profile: true
+---
+
+
+<div class="feature__wrapper">
+  {% for link_hash in site.data.certs %}
+  <header class="title-set-course">{{link_hash[0]}}</header class="title-set-course">
+    {% for link in link_hash[1] %}
+      <iframe src="{{link.human_url}}" width="300"></iframe>
+      <a href="{{link.human_url}}">{{link.title}} </a>
+      <br>
+    {% endfor %}
+  {% endfor %}
+
+</div> 
