@@ -10,5 +10,7 @@ main:
     url: /reading
   - title: "knowledge"
     url: /knowledge
+  - title: "certs"
+    url: /certs
   # - title: "Sitemap"
   #   url: /sitemap/
