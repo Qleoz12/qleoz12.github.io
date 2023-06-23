@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Java Spring-cloud sleuth - Dann Brown Adventures</title>
-<meta name="description" content="This is an post for ilustrate how works Spring Cloud Sleuth for track request throught several microservices">
+<!-- begin _includes/seo.html --><title>Example post - Dann Brown Adventures</title>
+<meta name="description" content="Hello world">
 
 
   <meta name="author" content="Dann brown">
@@ -22,23 +22,21 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Dann Brown Adventures">
-<meta property="og:title" content="Java Spring-cloud sleuth">
-<meta property="og:url" content="/java/spring/cloud/sleuth/java-spring-cloud-sleuth/">
+<meta property="og:title" content="Example post">
+<meta property="og:url" content="/blog/example-multi-social/">
 
 
-  <meta property="og:description" content="This is an post for ilustrate how works Spring Cloud Sleuth for track request throught several microservices">
-
-
-
+  <meta property="og:description" content="Hello world">
 
 
 
 
-  <meta property="article:published_time" content="2022-06-22T00:00:00-05:00">
 
 
 
-  <meta property="article:modified_time" content="2022-06-22T08:06:00-05:00">
+  <meta property="article:published_time" content="2023-06-22T04:32:00-05:00">
+
+
 
 
 
@@ -47,7 +45,7 @@
   
 
 
-<link rel="canonical" href="/java/spring/cloud/sleuth/java-spring-cloud-sleuth/">
+<link rel="canonical" href="/blog/example-multi-social/">
 
 
 
@@ -172,7 +170,7 @@
       
         
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/categories/#java" itemprop="item"><span itemprop="name">Java</span></a>
+          <a href="/categories/#blog" itemprop="item"><span itemprop="name">Blog</span></a>
           <meta itemprop="position" content="2" />
         </li>
         <span class="sep">/</span>
@@ -180,37 +178,7 @@
     
       
       
-        
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/categories/#spring" itemprop="item"><span itemprop="name">Spring</span></a>
-          <meta itemprop="position" content="3" />
-        </li>
-        <span class="sep">/</span>
-      
-    
-      
-      
-        
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/categories/#cloud" itemprop="item"><span itemprop="name">Cloud</span></a>
-          <meta itemprop="position" content="4" />
-        </li>
-        <span class="sep">/</span>
-      
-    
-      
-      
-        
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/categories/#sleuth" itemprop="item"><span itemprop="name">Sleuth</span></a>
-          <meta itemprop="position" content="5" />
-        </li>
-        <span class="sep">/</span>
-      
-    
-      
-      
-        <li class="current">Java Spring-cloud sleuth</li>
+        <li class="current">Example post</li>
       
     
   </ol>
@@ -354,39 +322,9 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">Java Spring-cloud sleuth</h1>
+      <h1 id="page-title" class="page__title">Example post</h1>
     
-    <p>This is an post for ilustrate how works Spring Cloud Sleuth for track request throught several microservices</p>
-
-<h2 id="concept">Concept</h2>
-<p>Sleuth, it’s api module contains all necessary interfaces to be implemented by a tracer.
-Spring Cloud Sleuth is able to trace your requests and messages so that you can correlate that communication to corresponding log entries. 
-You can also export the tracing information to an external system to visualize latency. 
-Spring Cloud Sleuth supports OpenZipkin compatible systems directly</p>
-
-<p><em>Spring Cloud Sleuth borrows Dapper’s terminology.</em></p>
-
-<p><strong>Span</strong>: The basic unit of work. For example, sending an RPC is a new span, as is sending a response to an RPC. Spans also have other data, such as descriptions, timestamped events, key-value annotations (tags), the ID of the span that caused them, and process IDs (normally IP addresses).</p>
-
-<p>Spans can be started and stopped, and they keep track of their timing information. Once you create a span, you must stop it at some point in the future.</p>
-
-<p><strong>Trace</strong>: A set of spans forming a tree-like structure. For example, if you run a distributed big-data store, a trace might be formed by a PUT request.</p>
-
-<p><strong>Annotation/Event</strong>: Used to record the existence of an event in time.</p>
-
-<p>Conceptually in a typical RPC scenario we mark these events to highlight what kind of an action took place (it doesn’t mean that physically such an event will be set on a span).</p>
-
-<p>cs: Client Sent. The client has made a request. This annotation indicates the start of the span.</p>
-
-<p>sr: Server Received: The server side got the request and started processing it. Subtracting the cs timestamp from this timestamp reveals the network latency.</p>
-
-<p>ss: Server Sent. Annotated upon completion of request processing (when the response got sent back to the client). Subtracting the sr timestamp from this timestamp reveals the time needed by the server side to process the request.</p>
-
-<p>cr: Client Received. Signifies the end of the span. The client has successfully received the response from the server side. Subtracting the cs timestamp from this timestamp reveals the whole time needed by the client to receive the response from the server.</p>
-
-<p>In the next image you can check the behavior of track ID and span ID between each service and how you could easily identity the same request through the complex microservices structure,
-in the case, trace ID is X for just one request and each service adds snap ID for the same request, it’s identify the flow the request on in and back
-<img src="/assets/images/spring/sleuth-trace-id.jpg" alt="alt" /></p>
+    <p>Hello world</p>
 
     
       <div id="disqus_thread"></div>
@@ -394,8 +332,8 @@ in the case, trace ID is X for just one request and each service adds snap ID fo
     var disqus_config = function () {
       // Here is an example,
       // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
-      this.page.url = "https://qleoz12.github.io//java/spring/cloud/sleuth/java-spring-cloud-sleuth/";
-      this.page.identifier = "/java/spring/cloud/sleuth/java-spring-cloud-sleuth/";
+      this.page.url = "https://qleoz12.github.io//blog/example-multi-social/";
+      this.page.identifier = "/blog/example-multi-social/";
     };
 
     // You should be able to get the following lines of code from your Disqus admin.

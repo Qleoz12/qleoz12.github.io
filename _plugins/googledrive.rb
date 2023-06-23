@@ -70,7 +70,7 @@ module Reading
                     # debugger
                 end
             end 
-            puts data
+            # puts data
             
             # inject data into template
             site.data['certs'] = data
