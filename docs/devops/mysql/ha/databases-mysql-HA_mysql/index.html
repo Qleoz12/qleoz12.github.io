@@ -1,0 +1,552 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Mysql HA- high Availibity - Dann Brown Adventures</title>
+<meta name="description" content="Mysql HA">
+
+
+  <meta name="author" content="Dann brown">
+  
+  <meta property="article:author" content="Dann brown">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dann Brown Adventures">
+<meta property="og:title" content="Mysql HA- high Availibity">
+<meta property="og:url" content="/devops/mysql/ha/databases-mysql-HA_mysql/">
+
+
+  <meta property="og:description" content="Mysql HA">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2023-07-21T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2023-07-21T08:06:00-05:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/devops/mysql/ha/databases-mysql-HA_mysql/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Leonardo L Sanchez- Dann Brown",
+      "url": "/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dann Brown Adventures Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--archive">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Dann Brown Adventures
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/books/reading">Reading List</a>
+            </li><li class="masthead__menu-item">
+              <a href="/reading">looking</a>
+            </li><li class="masthead__menu-item">
+              <a href="/knowledge">knowledge</a>
+            </li><li class="masthead__menu-item">
+              <a href="/certs">certs</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#devops" itemprop="item"><span itemprop="name">Devops</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#mysql" itemprop="item"><span itemprop="name">Mysql</span></a>
+          <meta itemprop="position" content="3" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#ha" itemprop="item"><span itemprop="name">Ha</span></a>
+          <meta itemprop="position" content="4" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Mysql HA- high Availibity</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/1577552827279.jpg" alt="Dann brown" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">Dann brown</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">CO</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/leonardo-sanchez-89590b127/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">linkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://www.youtube.com/channel/UCoROtxDQYfIgjXBDcORK5zw/videos" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-youtube" aria-hidden="true"></i><span class="label">Youtube</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Qleoz12" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kintaroloop@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="kintaroloop@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">Mysql HA- high Availibity</h1>
+    
+    <h1 id="mysql-ha">Mysql HA</h1>
+
+<p>mysql had capabilities, that allow us to create a componentes for get high availability 
+of our database, to achieve that we have this kind of tools, when we are using</p>
+
+<ul>
+  <li><a href="https://dev.mysql.com/doc/refman/8.0/en/group-replication.html">mysql group replication</a></li>
+  <li><a href="https://dev.mysql.com/doc/refman/8.0/en/mysql-innodb-cluster-introduction.html">mysql innoDB Cluster</a></li>
+  <li><a href="https://dev.mysql.com/doc/refman/8.0/en/mysql-innodb-cluster-introduction.html">mysql NDB Cluster</a></li>
+</ul>
+
+<p>for this entry, I will expose you how use innoDB for create a failure tolerant database componenet</p>
+
+<h2 id="concepts">Concepts</h2>
+
+<h3 id="high-availibity">high availibity</h3>
+<p>High availability refers to the ability of a system to remain accessible and 
+operational for an extended period, without any significant downtime or service 
+interruptions. In the context of databases like MySQL, achieving high availability 
+ensures that the database remains accessible even in the face of hardware failures,
+ software issues, or maintenance activities. High availability is essential for 
+ critical applications where downtime can result in financial losses, decreased 
+ user satisfaction, and other negative consequences.</p>
+
+<h3 id="scaling-features">scaling features</h3>
+<p>Scaling features in the context of MySQL InnoDB refer to the ability of the database to handle increased workloads and data without sacrificing performance. There are two primary types of scaling:</p>
+
+<p><strong>Vertical Scaling (Scaling Up):</strong> This involves upgrading the hardware resources of the server hosting the MySQL database, such as increasing CPU power, RAM, or storage capacity. While vertical scaling can provide a performance boost, it has limitations and may eventually become expensive or impractical when reaching the hardware’s maximum capabilities.</p>
+
+<p><strong>Horizontal Scaling (Scaling Out):</strong> This involves distributing the database load across multiple servers. With horizontal scaling, you can add more servers to handle the increased workload and data. It provides better scalability compared to vertical scaling since you can keep adding servers as needed. However, horizontal scaling also introduces complexities related to data distribution and synchronization.</p>
+
+<p>To achieve high availability and scaling features with MySQL InnoDB, several strategies and technologies can be used:</p>
+
+<p><strong>Replication:</strong> MySQL supports replication, where one server (the master) is designated as the primary source of data changes, and one or more servers (the replicas) replicate the changes from the master. This provides improved read scalability and some degree of high availability since the replicas can be used for read-heavy workloads or failover scenarios.</p>
+
+<p><strong>Load Balancing:</strong> For horizontally scaled setups, a load balancer can distribute incoming database requests across multiple database servers. This helps evenly distribute the workload and prevent individual servers from becoming overwhelmed.</p>
+
+<p><strong>Clustering:</strong> MySQL can be deployed in a clustered setup, such as MySQL Cluster or Galera Cluster. These technologies enable synchronous replication and automatic failover, enhancing both high availability and read/write scalability.</p>
+
+<p><strong>Sharding:</strong> Sharding involves partitioning the database into smaller, independent parts called shards. Each shard is hosted on a separate server. Sharding can improve write scalability, but it introduces complexity in managing data distribution and joins across shards.</p>
+
+<h2 id="mysql-innodb">Mysql InnoDB</h2>
+<p>InnoDB is a transactional storage engine for MySQL, developed by Innobase Oy,
+which was later acquired by Oracle Corporation. It is designed to provide 
+high-performance and reliability for both read and write-intensive workloads. 
+InnoDB supports ACID (Atomicity, Consistency, Isolation, Durability) properties, 
+making it suitable for applications that require data integrity and consistency.</p>
+
+<p>An InnoDB Cluster consists of at least three MySQL Server instances, 
+and it provides high-availability and scaling features. 
+InnoDB Cluster uses the following MySQL technologies:</p>
+
+<ul>
+  <li>MySQL Shell, which is an advanced client and code editor for MySQL.</li>
+  <li>MySQL Server, and Group Replication, which enables a set of MySQL instances to provide high-availability. InnoDB Cluster provides an alternative, easy to use programmatic way to work with Group Replication.</li>
+  <li>MySQL Router, a lightweight middleware that provides transparent routing between your application and InnoDB Cluster.</li>
+</ul>
+
+<h2 id="lets-try-it-out">let’s try it out:</h2>
+<p>all the process its based at the article https://diptochakrabarty.medium.com/setting-mysql-cluster-using-docker-f0e405d03762
+I create a repo using docker containers for easily handle several instances and join them at a innoDB cluster, 
+docker with docker compose deploy the nodes with a simple</p>
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose up -d
+</code></pre></div></div>
+<p>when all the nodes stay up we can confiogure the cluster, we need get into a mysql shell for create the cluster</p>
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker exec -it mysql-docker-cluster_mysql-dev1_1 mysqlsh -uclusteradmin -pcladmin (shell for mysql-dev1 container)
+</code></pre></div></div>
+<p>when we are  inside fomr this node we will configure all another nodes</p>
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dba.configureInstance("clusteradmin@mysql-dev1:3306")
+dba.configureInstance("clusteradmin@mysql-dev2:3306")
+dba.configureInstance("clusteradmin@mysql-dev3:3306")
+dba.configureInstance("clusteradmin@mysql-dev4:3306")
+</code></pre></div></div>
+<h2 id="downsides">Downsides:</h2>
+
+<p>While BFS is a simple and efficient algorithm for exploring large graphs or trees,
+ it does have some downsides:</p>
+
+<p>Space Complexity: BFS uses a queue to keep track of the nodes that need to be 
+visited, which can take up a lot of memory for large graphs or trees.</p>
+
+<p>Suboptimal Paths: BFS is designed to find the shortest path between two nodes, 
+but it may not always find the optimal path in a weighted graph. This is 
+because BFS does not take edge weights into account when determining the order 
+in which to visit nodes.</p>
+
+<p>Time Complexity for Dense Graphs: In dense graphs with a large number of edges, 
+BFS can have a high time complexity, as it may visit many unnecessary nodes 
+before finding the desired path.</p>
+
+<p>Despite these downsides, BFS is still a widely used algorithm in computer 
+science due to its simplicity and versatility.</p>
+
+<h2 id="conclusion">Conclusion:</h2>
+
+<p>Breadth-First Search is a simple but powerful algorithm that can be used to 
+traverse a graph or tree in a systematic way. It’s a good choice for finding 
+the shortest path between two nodes or for exploring a graph or tree in a 
+breadth-first manner. By visiting nodes at a fixed distance from the starting 
+node before moving on to nodes that are farther away, BFS ensures that you visit 
+all the nodes in a graph or tree efficiently.</p>
+
+<p>I hope you found this introduction to BFS helpful. If you have any questions or 
+comments, feel free to leave them below!</p>
+
+<h2 id="references">References</h2>
+<ul>
+  <li>https://medium.com/@wagnerjfr/setting-up-mysql-group-replication-with-mysql-docker-images-f5eedd44fa2b</li>
+  <li>https://dev.mysql.com/blog-archive/setting-up-mysql-group-replication-with-mysql-docker-images/</li>
+  <li>https://pierreabreu.medium.com/how-to-create-master-slave-mysql-8-with-docker-compose-yml-c137f45e28c7</li>
+  <li>https://dev.mysql.com/doc/refman/5.7/en/mysql-innodb-cluster-introduction.html</li>
+  <li>https://diptochakrabarty.medium.com/setting-mysql-cluster-using-docker-f0e405d03762</li>
+  <li>https://github.com/DiptoChakrabarty?page=5&amp;tab=repositories</li>
+  <li>https://github.com/DiptoChakrabarty/CodingInterviews/tree/master/VISA%20Senior%20Software%20Engineer%202019</li>
+  <li>https://blog.byte.builders/post/deploy-and-manage-mysql-innodb-cluster-in-aws/</li>
+  <li>https://dev.mysql.com/blog-archive/docker-compose-setup-for-innodb-cluster/</li>
+  <li>https://poazy.github.io/20210712-mysql-innodb-cluster_install-1m2s.html</li>
+  <li>https://www.dbi-services.com/blog/installing-mysql-innodb-cluster-in-oke-using-a-mysql-operator/</li>
+  <li>https://git.g-able.com/users/006763/projects</li>
+</ul>
+
+    
+      <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      // Here is an example,
+      // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
+      this.page.url = "https://qleoz12.github.io//devops/mysql/ha/databases-mysql-HA_mysql/";
+      this.page.identifier = "/devops/mysql/ha/databases-mysql-HA_mysql/";
+    };
+
+    // You should be able to get the following lines of code from your Disqus admin.
+    // https://disqus.com/admin/universalcode
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//qleoz12githubio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+    
+  </div>
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Leonardo L Sanchez- Dann Brown. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

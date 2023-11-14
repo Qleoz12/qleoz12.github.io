@@ -5,8 +5,8 @@
     <description>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</description>
     <link></link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 22 Jun 2023 21:43:45 -0500</pubDate>
-    <lastBuildDate>Thu, 22 Jun 2023 21:43:45 -0500</lastBuildDate>
+    <pubDate>Mon, 13 Nov 2023 22:45:53 -0500</pubDate>
+    <lastBuildDate>Mon, 13 Nov 2023 22:45:53 -0500</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
     
     
@@ -21,8 +21,168 @@
 
         
         <item>
-            <title>Example post</title>
-            <description>&lt;p&gt;Hello world&lt;/p&gt;
+            <title>React Handling API request race</title>
+            <description>&lt;h1 id=&quot;in-progress&quot;&gt;in progress..&lt;/h1&gt;
+</description>
+            <pubDate>Fri, 21 Jul 2023 00:00:00 -0500</pubDate>
+            <link>/devops/mysql/ha/react-Handling-API-request-race/</link>
+            <guid isPermaLink="true">/devops/mysql/ha/react-Handling-API-request-race/</guid>
+            
+            
+            <category>devops/mysql/HA</category>
+            
+        </item>
+        
+    
+        
+
+        
+
+        
+        <item>
+            <title>Mysql HA- high Availibity</title>
+            <description>&lt;h1 id=&quot;mysql-ha&quot;&gt;Mysql HA&lt;/h1&gt;
+
+&lt;p&gt;mysql had capabilities, that allow us to create a componentes for get high availability 
+of our database, to achieve that we have this kind of tools, when we are using&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/8.0/en/group-replication.html&quot;&gt;mysql group replication&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/8.0/en/mysql-innodb-cluster-introduction.html&quot;&gt;mysql innoDB Cluster&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/8.0/en/mysql-innodb-cluster-introduction.html&quot;&gt;mysql NDB Cluster&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;for this entry, I will expose you how use innoDB for create a failure tolerant database componenet&lt;/p&gt;
+
+&lt;h2 id=&quot;concepts&quot;&gt;Concepts&lt;/h2&gt;
+
+&lt;h3 id=&quot;high-availibity&quot;&gt;high availibity&lt;/h3&gt;
+&lt;p&gt;High availability refers to the ability of a system to remain accessible and 
+operational for an extended period, without any significant downtime or service 
+interruptions. In the context of databases like MySQL, achieving high availability 
+ensures that the database remains accessible even in the face of hardware failures,
+ software issues, or maintenance activities. High availability is essential for 
+ critical applications where downtime can result in financial losses, decreased 
+ user satisfaction, and other negative consequences.&lt;/p&gt;
+
+&lt;h3 id=&quot;scaling-features&quot;&gt;scaling features&lt;/h3&gt;
+&lt;p&gt;Scaling features in the context of MySQL InnoDB refer to the ability of the database to handle increased workloads and data without sacrificing performance. There are two primary types of scaling:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Vertical Scaling (Scaling Up):&lt;/strong&gt; This involves upgrading the hardware resources of the server hosting the MySQL database, such as increasing CPU power, RAM, or storage capacity. While vertical scaling can provide a performance boost, it has limitations and may eventually become expensive or impractical when reaching the hardware’s maximum capabilities.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Horizontal Scaling (Scaling Out):&lt;/strong&gt; This involves distributing the database load across multiple servers. With horizontal scaling, you can add more servers to handle the increased workload and data. It provides better scalability compared to vertical scaling since you can keep adding servers as needed. However, horizontal scaling also introduces complexities related to data distribution and synchronization.&lt;/p&gt;
+
+&lt;p&gt;To achieve high availability and scaling features with MySQL InnoDB, several strategies and technologies can be used:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Replication:&lt;/strong&gt; MySQL supports replication, where one server (the master) is designated as the primary source of data changes, and one or more servers (the replicas) replicate the changes from the master. This provides improved read scalability and some degree of high availability since the replicas can be used for read-heavy workloads or failover scenarios.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Load Balancing:&lt;/strong&gt; For horizontally scaled setups, a load balancer can distribute incoming database requests across multiple database servers. This helps evenly distribute the workload and prevent individual servers from becoming overwhelmed.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Clustering:&lt;/strong&gt; MySQL can be deployed in a clustered setup, such as MySQL Cluster or Galera Cluster. These technologies enable synchronous replication and automatic failover, enhancing both high availability and read/write scalability.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sharding:&lt;/strong&gt; Sharding involves partitioning the database into smaller, independent parts called shards. Each shard is hosted on a separate server. Sharding can improve write scalability, but it introduces complexity in managing data distribution and joins across shards.&lt;/p&gt;
+
+&lt;h2 id=&quot;mysql-innodb&quot;&gt;Mysql InnoDB&lt;/h2&gt;
+&lt;p&gt;InnoDB is a transactional storage engine for MySQL, developed by Innobase Oy,
+which was later acquired by Oracle Corporation. It is designed to provide 
+high-performance and reliability for both read and write-intensive workloads. 
+InnoDB supports ACID (Atomicity, Consistency, Isolation, Durability) properties, 
+making it suitable for applications that require data integrity and consistency.&lt;/p&gt;
+
+&lt;p&gt;An InnoDB Cluster consists of at least three MySQL Server instances, 
+and it provides high-availability and scaling features. 
+InnoDB Cluster uses the following MySQL technologies:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MySQL Shell, which is an advanced client and code editor for MySQL.&lt;/li&gt;
+  &lt;li&gt;MySQL Server, and Group Replication, which enables a set of MySQL instances to provide high-availability. InnoDB Cluster provides an alternative, easy to use programmatic way to work with Group Replication.&lt;/li&gt;
+  &lt;li&gt;MySQL Router, a lightweight middleware that provides transparent routing between your application and InnoDB Cluster.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;lets-try-it-out&quot;&gt;let’s try it out:&lt;/h2&gt;
+&lt;p&gt;all the process its based at the article https://diptochakrabarty.medium.com/setting-mysql-cluster-using-docker-f0e405d03762
+I create a repo using docker containers for easily handle several instances and join them at a innoDB cluster, 
+docker with docker compose deploy the nodes with a simple&lt;/p&gt;
+&lt;div class=&quot;language-docker highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker compose up -d
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;when all the nodes stay up we can confiogure the cluster, we need get into a mysql shell for create the cluster&lt;/p&gt;
+&lt;div class=&quot;language-docker highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker exec -it mysql-docker-cluster_mysql-dev1_1 mysqlsh -uclusteradmin -pcladmin (shell for mysql-dev1 container)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;when we are  inside fomr this node we will configure all another nodes&lt;/p&gt;
+&lt;div class=&quot;language-docker highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dba.configureInstance(&quot;clusteradmin@mysql-dev1:3306&quot;)
+dba.configureInstance(&quot;clusteradmin@mysql-dev2:3306&quot;)
+dba.configureInstance(&quot;clusteradmin@mysql-dev3:3306&quot;)
+dba.configureInstance(&quot;clusteradmin@mysql-dev4:3306&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;downsides&quot;&gt;Downsides:&lt;/h2&gt;
+
+&lt;p&gt;While BFS is a simple and efficient algorithm for exploring large graphs or trees,
+ it does have some downsides:&lt;/p&gt;
+
+&lt;p&gt;Space Complexity: BFS uses a queue to keep track of the nodes that need to be 
+visited, which can take up a lot of memory for large graphs or trees.&lt;/p&gt;
+
+&lt;p&gt;Suboptimal Paths: BFS is designed to find the shortest path between two nodes, 
+but it may not always find the optimal path in a weighted graph. This is 
+because BFS does not take edge weights into account when determining the order 
+in which to visit nodes.&lt;/p&gt;
+
+&lt;p&gt;Time Complexity for Dense Graphs: In dense graphs with a large number of edges, 
+BFS can have a high time complexity, as it may visit many unnecessary nodes 
+before finding the desired path.&lt;/p&gt;
+
+&lt;p&gt;Despite these downsides, BFS is still a widely used algorithm in computer 
+science due to its simplicity and versatility.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion:&lt;/h2&gt;
+
+&lt;p&gt;Breadth-First Search is a simple but powerful algorithm that can be used to 
+traverse a graph or tree in a systematic way. It’s a good choice for finding 
+the shortest path between two nodes or for exploring a graph or tree in a 
+breadth-first manner. By visiting nodes at a fixed distance from the starting 
+node before moving on to nodes that are farther away, BFS ensures that you visit 
+all the nodes in a graph or tree efficiently.&lt;/p&gt;
+
+&lt;p&gt;I hope you found this introduction to BFS helpful. If you have any questions or 
+comments, feel free to leave them below!&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;https://medium.com/@wagnerjfr/setting-up-mysql-group-replication-with-mysql-docker-images-f5eedd44fa2b&lt;/li&gt;
+  &lt;li&gt;https://dev.mysql.com/blog-archive/setting-up-mysql-group-replication-with-mysql-docker-images/&lt;/li&gt;
+  &lt;li&gt;https://pierreabreu.medium.com/how-to-create-master-slave-mysql-8-with-docker-compose-yml-c137f45e28c7&lt;/li&gt;
+  &lt;li&gt;https://dev.mysql.com/doc/refman/5.7/en/mysql-innodb-cluster-introduction.html&lt;/li&gt;
+  &lt;li&gt;https://diptochakrabarty.medium.com/setting-mysql-cluster-using-docker-f0e405d03762&lt;/li&gt;
+  &lt;li&gt;https://github.com/DiptoChakrabarty?page=5&amp;amp;tab=repositories&lt;/li&gt;
+  &lt;li&gt;https://github.com/DiptoChakrabarty/CodingInterviews/tree/master/VISA%20Senior%20Software%20Engineer%202019&lt;/li&gt;
+  &lt;li&gt;https://blog.byte.builders/post/deploy-and-manage-mysql-innodb-cluster-in-aws/&lt;/li&gt;
+  &lt;li&gt;https://dev.mysql.com/blog-archive/docker-compose-setup-for-innodb-cluster/&lt;/li&gt;
+  &lt;li&gt;https://poazy.github.io/20210712-mysql-innodb-cluster_install-1m2s.html&lt;/li&gt;
+  &lt;li&gt;https://www.dbi-services.com/blog/installing-mysql-innodb-cluster-in-oke-using-a-mysql-operator/&lt;/li&gt;
+  &lt;li&gt;https://git.g-able.com/users/006763/projects&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+            <pubDate>Fri, 21 Jul 2023 00:00:00 -0500</pubDate>
+            <link>/devops/mysql/ha/databases-mysql-HA_mysql/</link>
+            <guid isPermaLink="true">/devops/mysql/ha/databases-mysql-HA_mysql/</guid>
+            
+            
+            <category>devops/mysql/HA</category>
+            
+        </item>
+        
+    
+        
+
+        
+
+        
+        <item>
+            <title>iftt proof</title>
+            <description>&lt;p&gt;this post its  a proof for test automatization for links post with social media 
+nets througth iftt&lt;/p&gt;
+
+&lt;p&gt;reference https://eduardoboucas.com/blog/2015/04/28/sharing-jekyll-posts-on-social-media-using-front-matter-and-ifttt.html&lt;/p&gt;
 </description>
             <pubDate>Thu, 22 Jun 2023 04:32:00 -0500</pubDate>
             <link>/blog/example-multi-social/</link>
@@ -337,25 +497,13 @@ https://www.udemy.com/course/artificial-intelligence-games-in-java/ (Accessed: A
 &lt;/ul&gt;
 </description>
             <pubDate>Sun, 16 Apr 2023 00:00:00 -0500</pubDate>
-            <link>/fundamentals/algorithm/algorithms-Breadth-First-Search-copy/</link>
-            <guid isPermaLink="true">/fundamentals/algorithm/algorithms-Breadth-First-Search-copy/</guid>
+            <link>/fundamentals/algorithm/algorithms-Breadth-First-Search-copy-2/</link>
+            <guid isPermaLink="true">/fundamentals/algorithm/algorithms-Breadth-First-Search-copy-2/</guid>
             
             
             <category>Fundamentals/algorithm</category>
             
         </item>
-        
-    
-        
-
-        
-
-        
-    
-        
-
-        
-
         
     
         

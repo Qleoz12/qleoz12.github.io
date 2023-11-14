@@ -60,6 +60,20 @@ feature_row:
     Use Kafka, Avro and Spring Streams for implementing event based microservices
     <br />
     **STATUS** : [![read](https://img.shields.io/badge/read-in progress-yellow.svg?style=flat)](https://www.amazon.com/Mastering-Microservices-Java-enterprise-microservices-ebook/dp/B07P82KN94){:target='_blank' rel='noopener'}"
+  
+  - image_path: https://m.media-amazon.com/images/I/91uFdkCJmAL._SL1500_.jpg
+    alt: "earning React: Modern Patterns for Developing React Apps"
+    title: "earning React: Modern Patterns for Developing React Apps"
+    excerpt: "if you want to learn how to build efficient React applications, 
+    this is your book. Ideal for web developers and software engineers 
+    who understand how JavaScript, CSS, and HTML work in the browser,
+     this updated edition provides best practices and patterns for writing modern React code. 
+     No prior knowledge of React or functional JavaScript is necessary.
+    <br />
+    **STATUS** : [![read](https://img.shields.io/badge/read-in progress-yellow.svg?style=flat)](https://www.amazon.com/Learning-React-Modern-Patterns-Developing/dp/1492051721){:target='_blank' rel='noopener'}"
+
+
+
 
     
   

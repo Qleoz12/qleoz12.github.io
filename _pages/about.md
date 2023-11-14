@@ -8,12 +8,14 @@ toc: true
 author_profile: true
 ---
 
-Systems Technologist, currently studying Systems
-Engineering, deepening knowledge of the best practices of
-web development and Architectures that allow better
-performance and ease when developing projects or making
-improvements, continuous and self-taught learning.
-Fullstack JAVA Developer (JAVA EE)
+
+As a Systems Technologist studying Systems Engineering, I am 
+actively enhancing my knowledge of web development best practices 
+and architectures that facilitate improved performance and ease of project 
+development and enhancement. I am dedicated to continuous, self-directed learning. 
+Additionally, I have expertise as a full-stack Java developer, 
+specializing in Java, Python (i try all i know in java for easy way:  python).
+
 
 
 ## social
@@ -31,6 +33,7 @@ beecrowd
 <a href="https://www.codecademy.com/profiles/Qleoz12">
 codeAcademy
 </a>
+
 
 
 
