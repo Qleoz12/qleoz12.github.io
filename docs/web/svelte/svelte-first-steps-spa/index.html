@@ -1,0 +1,916 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Svelte First Steps: A Comprehensive Journey - Dann Brown Adventures</title>
+<meta name="description" content="&lt;!– these days, I want to learn svelte by client’s request, I work nowdays at react’s projects  but a listeng from cowrokers and friend svelt is getting relevance,  so the client recomend me a good youtube course, svelte makigas course, in 32  shorts videos explain in a good way how scratch svelte, learn the paradigm abot slvete framwork ,it’s improves the coding with less sentences than usual frontend frameworks (Angular,React,VUE)">
+
+
+  <meta name="author" content="Dann brown">
+  
+  <meta property="article:author" content="Dann brown">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dann Brown Adventures">
+<meta property="og:title" content="Svelte First Steps: A Comprehensive Journey">
+<meta property="og:url" content="http://localhost:4000/web/svelte/svelte-first-steps-spa/">
+
+
+  <meta property="og:description" content="&lt;!– these days, I want to learn svelte by client’s request, I work nowdays at react’s projects  but a listeng from cowrokers and friend svelt is getting relevance,  so the client recomend me a good youtube course, svelte makigas course, in 32  shorts videos explain in a good way how scratch svelte, learn the paradigm abot slvete framwork ,it’s improves the coding with less sentences than usual frontend frameworks (Angular,React,VUE)">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2024-01-11T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2024-01-11T08:06:00-05:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/web/svelte/svelte-first-steps-spa/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Leonardo L Sanchez- Dann Brown",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dann Brown Adventures Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--archive">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Dann Brown Adventures
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/books/reading">Reading List</a>
+            </li><li class="masthead__menu-item">
+              <a href="/reading">looking</a>
+            </li><li class="masthead__menu-item">
+              <a href="/knowledge">knowledge</a>
+            </li><li class="masthead__menu-item">
+              <a href="/certs">certs</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#web" itemprop="item"><span itemprop="name">Web</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#svelte" itemprop="item"><span itemprop="name">Svelte</span></a>
+          <meta itemprop="position" content="3" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Svelte First Steps: A Comprehensive Journey</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/1577552827279.jpg" alt="Dann brown" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Dann brown</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">CO</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/leonardo-sanchez-89590b127/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">linkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://www.youtube.com/channel/UCoROtxDQYfIgjXBDcORK5zw/videos" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-youtube" aria-hidden="true"></i><span class="label">Youtube</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Qleoz12" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kintaroloop@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="kintaroloop@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">Svelte First Steps: A Comprehensive Journey</h1>
+    
+    <!-- these days, I want to learn svelte by client's request, I work nowdays at react's projects 
+but a listeng from cowrokers and friend svelt is getting relevance, 
+so the client recomend me a good youtube course, [svelte makigas course](https://www.makigas.es/series/svelte),
+in 32  shorts videos explain in a good way how scratch svelte, learn the paradigm abot slvete framwork
+,it's improves the coding with less sentences than usual frontend frameworks (Angular,React,VUE)
+
+
+I saw every video, I seachred at github a repo for practice and complete all course code, 
+I created my own and I created a PR to the oficial repository to improve the quality of this free course 
+at the web  all the code explained was created by makigas(original owner) 
+but in this post I explain each component  -->
+<p>In response to a client’s request, I decided to delve into Svelte, 
+despite my current focus on React projects. With recommendations pouring in from 
+colleagues and friends about Svelte’s rising popularity, I embarked on a learning journey.</p>
+
+<p>The suggested starting point was the “Svelte Makigas Course” by Makigas. 
+Comprising 32 concise videos, this course offers a thorough exploration of Svelte, 
+unraveling its paradigm and emphasizing concise coding compared to other frontend 
+frameworks like Angular, React, and Vue.</p>
+
+<p>After diligently watching every video, I scoured GitHub for a practice repository, 
+completing all course code. Not stopping there, I created my repository, making improvements, 
+and submitted a PR to the official repository, aiming to enhance the quality of this invaluable 
+free resource. While Makigas is the original creator of the code, this post elaborates on each 
+component, providing a deeper understanding.</p>
+
+<h1 id="code-repository">Code Repository</h1>
+
+<p>All resources associated with this post can be found at <a href="https://github.com/Qleoz12/tutorial-svelte">tutorial-svelte</a>. Feel free to explore and consider giving it a star if you find it helpful.</p>
+
+<h2 id="1-colorpickersvelte">1. ColorPicker.svelte</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="k">export</span> <span class="kd">let</span> <span class="nx">choices</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">yellow</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">orange</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">blue</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">green</span><span class="dl">"</span><span class="p">];</span>
+    <span class="k">export</span> <span class="kd">let</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+    <span class="kd">let</span> <span class="nx">backgrounds</span><span class="o">=</span><span class="p">{</span>
+        <span class="na">red</span><span class="p">:</span> <span class="dl">'</span><span class="s1">silver</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">ornage</span><span class="p">:</span> <span class="dl">'</span><span class="s1">darkblue</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">blue</span><span class="p">:</span><span class="dl">'</span><span class="s1">yellow</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">green</span><span class="p">:</span><span class="dl">'</span><span class="s1">purple</span><span class="dl">'</span>
+    <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;main&gt;</span>
+    <span class="nt">&lt;p</span> 
+    <span class="na">style:--bgcolor=</span><span class="s">{backgrounds[value]}</span>
+    <span class="na">style:--fgcolor=</span><span class="s">{value}</span>
+    <span class="na">class=</span><span class="s">"color"</span>
+     <span class="nt">&gt;</span>
+        {value}
+    <span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">bind:value</span><span class="nt">&gt;</span>
+        {#each choices as choice}
+            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">{choice}</span><span class="nt">&gt;</span>{choice}<span class="nt">&lt;/option&gt;</span>
+        {/each}
+    <span class="nt">&lt;/select&gt;</span>
+<span class="nt">&lt;/main&gt;</span>
+
+<span class="nt">&lt;style&gt;</span>
+    <span class="nc">.color</span> <span class="p">{</span>
+        <span class="nl">background-color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--bgcolor</span><span class="p">);</span>
+        <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--fgcolor</span><span class="p">);</span>
+
+        <span class="nl">font-size</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
+        <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+        <span class="nl">line-height</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+        <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</code></pre></div></div>
+<h2 id="explanation">Explanation:</h2>
+
+<ul>
+  <li>choices and value are exported for external interaction.</li>
+  <li>backgrounds maps color choices to background colors.</li>
+  <li>The main part dynamically sets background and text color based on the selected value.</li>
+  <li>A dropdown (select) is provided for color selection.</li>
+  <li>CSS variables are used for styling flexibility.</li>
+</ul>
+
+<p>the purpuose of this lesson is show, how we can link JS variables with CSS variables for get
+flexibility at complex scenarios for our styling components and interactivity</p>
+
+<p>we bind –bgcolor(cssvariable)with js variable backgrounds, wich is a dictionary that allow load dinamically <br />
+the background when we change the select, the same for –fgcolor and value</p>
+
+<h2 id="counterformsvelte">CounterForm.svelte</h2>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="kd">let</span> <span class="nx">contador</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">disabled</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+    <span class="kd">let</span> <span class="nx">valor</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">svelte</span><span class="dl">"</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">desactivar</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">disabled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">const</span> <span class="nx">inc</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">contador</span> <span class="o">=</span> <span class="nx">contador</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">dec</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">contador</span> <span class="o">=</span> <span class="nx">contador</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;main&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"/search"</span> <span class="na">method=</span><span class="s">"POST"</span> <span class="na">on:submit</span><span class="err">|</span><span class="na">preventDefault=</span><span class="s">{desactivar}</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">bind:value=</span><span class="s">{valor}</span> <span class="err">{</span><span class="na">disabled</span><span class="err">}</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"Buscar"</span> <span class="err">{</span><span class="na">disabled</span><span class="err">}</span><span class="nt">&gt;</span>Buscar<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span>  <span class="na">on:click=</span><span class="s">{dec}</span><span class="nt">&gt;</span>-<span class="nt">&lt;/button&gt;</span>
+        {contador}
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span>  <span class="na">on:click=</span><span class="s">{inc}</span><span class="nt">&gt;</span>+<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/main&gt;</span>
+</code></pre></div></div>
+
+<h2 id="explanation-1">Explanation:</h2>
+
+<ul>
+  <li>contador, disabled, and valor are reactive variables.</li>
+  <li>desactivar function sets disabled to true on form submission.</li>
+  <li>Buttons and input fields are provided for incrementing/decrementing contador and submitting a form.</li>
+  <li>bind:value is used for two-way binding with the input field.</li>
+</ul>
+
+<h2 id="nameformsvelte">NameForm.svelte</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="k">import</span> <span class="nx">Input</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../lib/Input.svelte</span><span class="dl">'</span><span class="p">;</span>
+  
+    <span class="kd">let</span> <span class="nx">nombre</span><span class="o">=</span><span class="dl">"</span><span class="s2">John</span><span class="dl">"</span>
+    <span class="kd">let</span> <span class="nx">apellido</span><span class="o">=</span><span class="dl">"</span><span class="s2">Doe</span><span class="dl">"</span>
+
+    <span class="kd">let</span> <span class="nx">nombreCompleto</span><span class="p">;</span>
+    <span class="nl">$</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nx">nombreCompleto</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">nombre</span><span class="p">}</span><span class="s2"> </span><span class="p">${</span><span class="nx">apellido</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+  
+<span class="nt">&lt;main&gt;</span>
+    <span class="nt">&lt;fieldset&gt;</span>
+        <span class="nt">&lt;Input</span> <span class="na">bind:value=</span><span class="s">{nombre}</span> <span class="na">label=</span><span class="s">"Nombre"</span> <span class="na">identifier=</span><span class="s">"nombre"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Input</span> <span class="na">bind:value=</span><span class="s">{apellido}</span> <span class="na">label=</span><span class="s">"Apellido"</span>  <span class="na">identifier=</span><span class="s">"apellido"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/fieldset&gt;</span>
+
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"label"</span><span class="nt">&gt;</span> Tu eres <span class="nt">&lt;strong&gt;</span>{nombreCompleto}<span class="nt">&lt;/strong&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/main&gt;</span>
+</code></pre></div></div>
+
+<h2 id="explanation-2">Explanation:</h2>
+
+<ul>
+  <li>Imports Input component from ‘../lib/Input.svelte’.</li>
+  <li>nombre and apellido are reactive variables.</li>
+  <li>nombreCompleto is calculated using a reactive statement.</li>
+  <li>Renders two input fields using the Input component for name and surname.</li>
+  <li>Displays the full name below the input fields.</li>
+</ul>
+
+<h2 id="employeeformsvelte">EmployeeForm.svelte</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="k">import</span> <span class="nx">Input</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../lib/Input.svelte</span><span class="dl">'</span><span class="p">;</span>
+    <span class="k">import</span> <span class="nx">Dropdown</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../lib/Dropdown.svelte</span><span class="dl">'</span><span class="p">;</span>
+    <span class="k">import</span> <span class="nx">Rangos</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../lib/Rangos.svelte</span><span class="dl">'</span><span class="p">;</span>
+  
+    <span class="kd">let</span> <span class="nx">estado</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">nombre</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Pepita</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">apellido</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Flores</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">sector</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Frontend</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">salario</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">min</span><span class="p">:</span> <span class="mi">30000</span><span class="p">,</span>
+        <span class="na">max</span><span class="p">:</span> <span class="mi">45000</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">}</span>
+  
+    <span class="kd">let</span> <span class="nx">error</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  
+    <span class="kd">let</span> <span class="nx">sectores</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Backend</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Frontend</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Devops</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">QA</span><span class="dl">'</span><span class="p">];</span>
+  
+    <span class="kd">function</span> <span class="nx">envio</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+      <span class="nx">alert</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">estado</span><span class="p">));</span>
+    <span class="p">}</span>
+  
+    <span class="kd">function</span> <span class="nx">actualizarSalario</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">estado</span><span class="p">.</span><span class="nx">salario</span><span class="p">.</span><span class="nx">min</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">min</span><span class="p">;</span>
+      <span class="nx">estado</span><span class="p">.</span><span class="nx">salario</span><span class="p">.</span><span class="nx">max</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">max</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">estado</span><span class="p">.</span><span class="nx">salario</span><span class="p">.</span><span class="nx">min</span> <span class="o">&gt;</span> <span class="nx">estado</span><span class="p">.</span><span class="nx">salario</span><span class="p">.</span><span class="nx">max</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">error</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">No puedes tener más en el mínimo que en el máximo</span><span class="dl">"</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">error</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+  
+<span class="nt">&lt;main&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">on:submit=</span><span class="s">{envio}</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Input</span> <span class="na">identifier=</span><span class="s">"nombre"</span> <span class="na">label=</span><span class="s">"Nombre"</span> <span class="na">bind:value=</span><span class="s">{estado.nombre}</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;Input</span> <span class="na">identifier=</span><span class="s">"apellido"</span> <span class="na">label=</span><span class="s">"Apellido"</span> <span class="na">bind:value=</span><span class="s">{estado.apellido}</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;Dropdown</span> <span class="na">identifier=</span><span class="s">"sector"</span> <span class="na">label=</span><span class="s">"Sector"</span> <span class="na">choices=</span><span class="s">{sectores}</span> <span class="na">bind:value=</span><span class="s">{estado.sector}</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;Rangos</span> <span class="na">identifier=</span><span class="s">"salarios"</span> <span class="na">label=</span><span class="s">"Salarios"</span> <span class="na">min=</span><span class="s">{estado.salario.min}</span> <span class="na">max=</span><span class="s">{estado.salario.max}</span> <span class="na">on:update=</span><span class="s">{actualizarSalario}</span> <span class="nt">/&gt;</span>
+      {#if error != null}
+        <span class="nt">&lt;p&gt;</span>{error}<span class="nt">&lt;/p&gt;</span>
+      {/if}
+      <span class="nt">&lt;p&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"Enviar"</span> <span class="na">disabled=</span><span class="s">{error</span> <span class="err">!==</span> <span class="na">null</span><span class="err">}</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/main&gt;</span>
+</code></pre></div></div>
+
+<h2 id="explanation-3">Explanation:</h2>
+
+<ul>
+  <li>Imports Input, Dropdown, and Rangos components.</li>
+  <li>estado holds employee information with default values.</li>
+  <li>Form with various input fields for employee details.</li>
+  <li>Displays an error message if the minimum salary is greater than the maximum.</li>
+  <li>Submits the form on button click, showing an alert with employee details.</li>
+</ul>
+
+<h2 id="menusectionsvelte">MenuSection.svelte</h2>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="k">import</span> <span class="nx">Section</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">../lib/section.svelte</span><span class="dl">"</span><span class="p">;</span>
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;section&gt;</span>
+    <span class="nt">&lt;Section</span> <span class="na">titulo=</span><span class="s">"menu del día"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;section</span> <span class="na">slot=</span><span class="s">"main"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;p&gt;</span>chopitos<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;p&gt;</span>pescado<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;p&gt;</span>fruta del día<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/section&gt;</span>
+    <span class="nt">&lt;/Section&gt;</span>
+
+    <span class="nt">&lt;Section</span> <span class="na">titulo=</span><span class="s">"menu del día"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;svelte:fragment</span> <span class="na">slot=</span><span class="s">"main"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;p&gt;</span>chopitos<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;p&gt;</span>pescado<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;p&gt;</span>fruta del día<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/svelte:fragment&gt;</span>
+    <span class="nt">&lt;/Section&gt;</span>
+
+    <span class="nt">&lt;Section</span> <span class="na">titulo=</span><span class="s">"cafés"</span><span class="nt">&gt;&lt;/Section&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+</code></pre></div></div>
+<h2 id="explanation-4">Explanation:</h2>
+
+<ul>
+  <li>Imports Section component.</li>
+  <li>Uses the Section component to create different sections with titles.</li>
+  <li>Demonstrates using both the slot attribute and svelte:fragment for content insertion.</li>
+</ul>
+
+<h2 id="appsvelte">App.svelte</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="k">export</span> <span class="kd">let</span> <span class="nx">name</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">no</span><span class="p">(){</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">No puedes copiar</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;svelte:head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>demo title<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/svelte:head&gt;</span>
+
+<span class="nt">&lt;svelte:body</span> <span class="na">on:contextmenu</span><span class="err">|</span><span class="na">preventDefault=</span><span class="s">{no}/</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;main&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>Hello {name}!<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Visit the <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://svelte.dev/tutorial"</span><span class="nt">&gt;</span>Svelte tutorial<span class="nt">&lt;/a&gt;</span> to learn how to build Svelte apps.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/main&gt;</span>
+
+<span class="nt">&lt;style&gt;</span>
+    <span class="nt">main</span> <span class="p">{</span>
+        <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+        <span class="nl">padding</span><span class="p">:</span> <span class="m">1em</span><span class="p">;</span>
+        <span class="nl">max-width</span><span class="p">:</span> <span class="m">240px</span><span class="p">;</span>
+        <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nt">h1</span> <span class="p">{</span>
+        <span class="nl">color</span><span class="p">:</span> <span class="m">#ff3e00</span><span class="p">;</span>
+        <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="p">;</span>
+        <span class="nl">font-size</span><span class="p">:</span> <span class="m">4em</span><span class="p">;</span>
+        <span class="nl">font-weight</span><span class="p">:</span> <span class="m">100</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">@media</span> <span class="p">(</span><span class="n">min-width</span><span class="p">:</span> <span class="m">640px</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nt">main</span> <span class="p">{</span>
+            <span class="nl">max-width</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</code></pre></div></div>
+
+<h2 id="explanation-5">Explanation:</h2>
+
+<ul>
+  <li>Exports name as a prop.</li>
+  <li>Uses svelte:head to set the document title.</li>
+  <li>Uses svelte:body to prevent the context menu on right-click.</li>
+  <li>Displays a simple greeting and a link to the Svelte tutorial.</li>
+  <li>Responsive styling with a maximum width of 240px.</li>
+</ul>
+
+<h2 id="counterclicksvelte">CounterClick.svelte</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="k">import</span> <span class="nx">Counter</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../lib/counterClick.svelte</span><span class="dl">'</span><span class="p">;</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;main&gt;</span>
+    <span class="nt">&lt;Counter</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/main&gt;</span>
+</code></pre></div></div>
+
+<h2 id="explanation-6">Explanation:</h2>
+
+<ul>
+  <li>Imports the Counter component.</li>
+  <li>Places the Counter component in the main content area.</li>
+</ul>
+
+<h2 id="stylednameformsvelte">StyledNameForm.svelte</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="k">import</span> <span class="nx">Input</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../lib/Input.svelte</span><span class="dl">'</span><span class="p">;</span>
+  
+    <span class="kd">let</span> <span class="nx">nombre</span><span class="o">=</span><span class="dl">"</span><span class="s2">John</span><span class="dl">"</span>
+    <span class="kd">let</span> <span class="nx">apellido</span><span class="o">=</span><span class="dl">"</span><span class="s2">Doe</span><span class="dl">"</span>
+<span class="nt">&lt;/script&gt;</span>
+  
+<span class="nt">&lt;main&gt;</span>
+    <span class="nt">&lt;fieldset&gt;</span>
+        <span class="nt">&lt;Input</span> <span class="na">bind:value=</span><span class="s">{nombre}</span> <span class="na">label=</span><span class="s">"Nombre"</span> <span class="na">identifier=</span><span class="s">"nombre"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Input</span> <span class="na">bind:value=</span><span class="s">{apellido}</span> <span class="na">label=</span><span class="s">"Apellido"</span>  <span class="na">identifier=</span><span class="s">"apellido"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/fieldset&gt;</span>
+
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"label"</span><span class="nt">&gt;</span> Tu eres <span class="nt">&lt;strong&gt;</span>{nombre} {apellido}<span class="nt">&lt;/strong&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/main&gt;</span>
+
+<span class="nt">&lt;style&gt;</span>
+    <span class="nc">.label</span><span class="p">{</span>
+        <span class="nl">color</span><span class="p">:</span><span class="no">aqua</span><span class="p">;</span>
+        <span class="nl">font-size</span><span class="p">:</span> <span class="m">1.3rem</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</code></pre></div></div>
+
+<h2 id="explanation-7">Explanation:</h2>
+
+<ul>
+  <li>Imports Input component.</li>
+  <li>Uses the same form as NameForm.svelte but adds styling.</li>
+  <li>Applies a custom style to the label using the .label class.</li>
+</ul>
+
+<h2 id="globalcsspracticesvelte">GlobalCSSPractice.svelte</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="k">import</span> <span class="nx">Input</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../lib/Input.svelte</span><span class="dl">'</span><span class="p">;</span>
+   
+    <span class="kd">let</span> <span class="nx">nombre</span><span class="o">=</span><span class="dl">"</span><span class="s2">John</span><span class="dl">"</span>
+    <span class="kd">let</span> <span class="nx">apellido</span><span class="o">=</span><span class="dl">"</span><span class="s2">Doe</span><span class="dl">"</span>
+<span class="nt">&lt;/script&gt;</span>
+  
+<span class="nt">&lt;main&gt;</span>
+
+    <span class="nt">&lt;h2&gt;</span>Practicar para CSS global<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+      <span class="nt">&lt;li&gt;</span>Si un componente tiene un global CSS solo se aplica durante la presencia de dicho componente.<span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;</span>Si se tiene muchos estilos globales, es preferible tener una hoja de estilos e importarla.<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;fieldset&gt;</span>
+        <span class="nt">&lt;Input</span> <span class="na">bind:value=</span><span class="s">{nombre}</span> <span class="na">label=</span><span class="s">"Nombre"</span> <span class="na">identifier=</span><span class="s">"nombre"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Input</span> <span class="na">bind:value=</span><span class="s">{apellido}</span> <span class="na">label=</span><span class="s">"Apellido"</span>  <span class="na">identifier=</span><span class="s">"apellido"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/fieldset&gt;</span>
+
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"label"</span><span class="nt">&gt;</span> Tu eres <span class="nt">&lt;strong&gt;</span>{nombre} {apellido}<span class="nt">&lt;/strong&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/main&gt;</span>
+  
+<span class="nt">&lt;style&gt;</span>
+    <span class="nd">:global</span><span class="o">(</span><span class="nt">body</span><span class="o">)</span><span class="p">{</span>
+        <span class="nl">font-family</span><span class="p">:</span> <span class="n">system-ui</span><span class="p">,</span> <span class="n">-apple-system</span><span class="p">,</span> <span class="n">BlinkMacSystemFont</span><span class="p">,</span> <span class="s2">'Segoe UI'</span><span class="p">,</span> <span class="n">Roboto</span><span class="p">,</span> <span class="n">Oxygen</span><span class="p">,</span> <span class="n">Ubuntu</span><span class="p">,</span> <span class="n">Cantarell</span><span class="p">,</span> <span class="s2">'Open Sans'</span><span class="p">,</span> <span class="s2">'Helvetica Neue'</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+        <span class="nl">font-size</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span>
+        <span class="nl">background-color</span><span class="p">:</span> <span class="m">#424769</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">:global</span><span class="o">(*)</span><span class="p">{</span>
+        <span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</code></pre></div></div>
+
+<h2 id="navbarsvelte-and-routersvelte">Navbar.svelte and Router.svelte</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="k">import</span> <span class="nx">Router</span><span class="p">,</span> <span class="p">{</span> <span class="nx">push</span><span class="p">,</span> <span class="nx">replace</span><span class="p">,</span> <span class="nx">location</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">svelte-spa-router</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">import</span> <span class="p">{</span> <span class="nx">wrap</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">svelte-spa-router/wrap</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">import</span> <span class="nx">Navbar</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./navbar.svelte</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">import</span> <span class="p">{</span> <span class="nx">routes</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./routes</span><span class="dl">"</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">routeLoaded</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">routeLoaded event</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Component</span><span class="dl">"</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">component</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Name</span><span class="dl">"</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;main&gt;</span>
+    <span class="nt">&lt;Navbar</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Router</span> <span class="err">{</span><span class="na">routes</span><span class="err">}</span> <span class="na">on:routeLoaded=</span><span class="s">{routeLoaded}</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/main&gt;</span>
+</code></pre></div></div>
+
+<h2 id="explanation-8">Explanation:</h2>
+
+<ul>
+  <li>Imports necessary components and functions for routing.</li>
+  <li>Uses Navbar component to display navigation links.</li>
+  <li>Utilizes Router to handle route changes and loads components dynamically.</li>
+  <li>routeLoaded function logs information about the loaded route.</li>
+</ul>
+
+<ol>
+  <li>Menu.svelte</li>
+</ol>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="k">import</span> <span class="p">{</span> <span class="nx">routes</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./routes</span><span class="dl">"</span><span class="p">;</span>
+
+    <span class="kd">const</span> <span class="nx">routesArray</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">routes</span><span class="p">).</span><span class="nx">map</span><span class="p">(([</span><span class="nx">path</span><span class="p">,</span> <span class="nx">config</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="p">({</span>
+        <span class="nx">path</span><span class="p">,</span>
+        <span class="p">...</span><span class="nx">config</span><span class="p">.</span><span class="nx">props</span><span class="p">,</span>
+    <span class="p">}));</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;ul&gt;</span>
+    {#each routesArray as { path, name }}
+        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">{`/#${path}`}</span><span class="nt">&gt;</span>{name}<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    {/each}
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="nt">&lt;style&gt;</span>
+    <span class="nt">ul</span> <span class="p">{</span>
+        <span class="nl">list-style-type</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+        <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+        <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+        <span class="nl">background-color</span><span class="p">:</span> <span class="m">#333</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nt">li</span> <span class="p">{</span>
+        <span class="nl">padding</span><span class="p">:</span> <span class="m">15px</span><span class="p">;</span>
+        <span class="nl">color</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+        <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nt">li</span><span class="nd">:hover</span> <span class="p">{</span>
+        <span class="nl">background-color</span><span class="p">:</span> <span class="m">#555</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nt">a</span> <span class="p">{</span>
+        <span class="nl">margin</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+        <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+        <span class="nl">height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nt">a</span><span class="nd">:visited</span> <span class="p">{</span>
+        <span class="nl">color</span><span class="p">:</span> <span class="no">aliceblue</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</code></pre></div></div>
+
+<h2 id="explanation-9">Explanation:</h2>
+
+<ul>
+  <li>Imports routes from the routes file.</li>
+  <li>Creates an array of routes for navigation.</li>
+  <li>Displays a list of navigation links using an unordered list (ul).</li>
+  <li>Applies styling to the list items and links.</li>
+  <li>This covers the main components and their functionalities. Each component serves a specific purpose, from handling color selection to managing forms, and navigating through different sections of the application.</li>
+</ul>
+
+<h2 id="conclusion">Conclusion:</h2>
+
+<h2 id="references">References</h2>
+<ul>
+  <li>https://www.makigas.es/series/svelte</li>
+  <li>https://www.youtube.com/watch?v=pze2JJj82XA&amp;list=PLTd5ehIj0goM-5mQxXLmCr5nHZX_yc2QT&amp;ab_channel=makigas</li>
+  <li>https://github.com/Qleoz12/tutorial-svelte</li>
+</ul>
+
+    
+      <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      // Here is an example,
+      // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
+      this.page.url = "https://qleoz12.github.io//web/svelte/svelte-first-steps-spa/";
+      this.page.identifier = "/web/svelte/svelte-first-steps-spa/";
+    };
+
+    // You should be able to get the following lines of code from your Disqus admin.
+    // https://disqus.com/admin/universalcode
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//qleoz12githubio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+    
+  </div>
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 Leonardo L Sanchez- Dann Brown. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
