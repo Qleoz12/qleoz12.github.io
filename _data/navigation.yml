@@ -12,5 +12,7 @@ main:
     url: /knowledge
   - title: "certs"
     url: /certs
+  - title: "Languages"
+    url: /Languages
   # - title: "Sitemap"
   #   url: /sitemap/
