@@ -5,9 +5,9 @@ categories:
   - Fundamentals/algorithm
 date: 2023-04-16
 last_modified_at: 2022-04-25T08:06:00-05:00
-w_github_card:
-  - input: "Algorithms"
-    link: "https://github.com/Qleoz12/JavaKnowledge/tree/master/algoritms"
+# w_github_card:
+#   # - input: "Algorithms"
+#   #   link: "https://github.com/Qleoz12/JavaKnowledge/tree/master/algoritms"
 
 feature_row2:
 - image_path: https://img.asmedia.epimg.net/resizer/6Y-eMP_PRbjQvkQuWS86T_FG61U=/644x362/cloudfront-eu-central-1.images.arcpublishing.com/diarioas/PVMMQEWO7VOXNKKE7GPPYWTE2Y.jpg
