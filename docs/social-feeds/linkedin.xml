@@ -5,8 +5,8 @@
     <description>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</description>
     <link></link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 12 Aug 2024 11:04:02 -0500</pubDate>
-    <lastBuildDate>Mon, 12 Aug 2024 11:04:02 -0500</lastBuildDate>
+    <pubDate>Mon, 12 Aug 2024 11:10:07 -0500</pubDate>
+    <lastBuildDate>Mon, 12 Aug 2024 11:10:07 -0500</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
     
     
@@ -22,9 +22,7 @@
         
         <item>
             <title>Create Your Own CDN and Try Your Web Components Online</title>
-            <description>&lt;h1 id=&quot;create-your-own-cdn-and-try-your-webcomponents-online&quot;&gt;Create your own CDN and try your webcomponents online&lt;/h1&gt;
-
-&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+            <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;In this post, I’ll show you how to create your own Content Delivery Network (CDN) and use it to test your web components online.&lt;/p&gt;
 
@@ -39,12 +37,15 @@
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;creating-web-components&quot;&gt;Creating Web Components&lt;/h3&gt;
-&lt;p&gt;Once your CDN is set up, you can create and upload web components. For example, I created a web component for a business card to display my contact information online. You can check out the code 
-https://github.com/Qleoz12/svelte-web-components-template/blob/master/packages/lib/src/profile-card.wc.svelte&lt;/p&gt;
+&lt;p&gt;Once your CDN is set up, you can create and upload web components. For example, I created a web component for a business card to display my contact information online. You can check out the code&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-link&quot;&gt;https://github.com/Qleoz12/svelte-web-components-template/blob/master/packages/lib/src/profile-card.wc.svelte
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;not forget give star a my repo ⭐&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;not forget give star a my repo&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Upload the web component to your CDN and test the link to ensure it is available online. In my case, the library is deployed at this&lt;/p&gt;
 
-&lt;p&gt;Upload the web component to your CDN and test the link to ensure it is available online. In my case, the library is deployed at this  https://github.com/Qleoz12/static/tree/main/js/webcomponents&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-link&quot;&gt; https://github.com/Qleoz12/static/tree/main/js/webcomponents
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;try-the-webcomponent-online&quot;&gt;Try the webcomponent online&lt;/h3&gt;
 &lt;p&gt;I used my personal portfolio and a React project to test the integration of webcomponent and it works perfectly.&lt;/p&gt;
@@ -81,16 +82,7 @@ https://github.com/Qleoz12/svelte-web-components-template/blob/master/packages/l
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;table&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;[The Top 10 Content Delivery Networks (CDNs)&lt;/td&gt;
-          &lt;td&gt;Expert Insights](https://expertinsights.com/insights/the-top-content-delivery-networks-cdns/)&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://expertinsights.com/insights/the-top-content-delivery-networks-cdns&quot;&gt;The Top 10 Content Delivery Networks (CDNs)&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://dev.to/jcubic/how-to-get-a-literally-free-cdn-2gc1&quot;&gt;How to get a literally free CDN - DEV Community&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;[webfx.com](https://www.webfx.com/blog/web-design/free-public-cdns/)&quot;&gt;6 Free CDN Services (to Speed Up Your Website in 2024)&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=cISYzA36-ZY&quot;&gt;American Psycho -Business Card Scene (youtube.com)&lt;/a&gt;&lt;/li&gt;
