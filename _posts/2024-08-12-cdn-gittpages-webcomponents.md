@@ -61,6 +61,12 @@ also check my youtube video
 
 <img src="https://raw.githubusercontent.com/Qleoz12/qleoz12.github.io/master/assets/images/graphs/cdn-webcomponents.drawio.svg">
 
+<div class="responsive-wrap">
+<!-- this is the embed code provided by Google -->
+  <iframe src="https://docs.google.com/presentation/d/1s9LRgqhLGTXlE031cYilrd1BiI42YKtDNUoJFdbhftw/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<!-- Google embed ends -->
+</div>
+
 
 
 
