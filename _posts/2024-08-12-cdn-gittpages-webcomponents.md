@@ -8,7 +8,6 @@ last_modified_at: 2024-08-12T08:06:00-05:00
 share: linkedin
 ---
 
-# Create your own CDN and try your webcomponents online
 
 ## Introduction
 
@@ -24,12 +23,16 @@ By leveraging GitHub Pages, you can set up a personal CDN to host your web compo
 
 ### Creating Web Components
 Once your CDN is set up, you can create and upload web components. For example, I created a web component for a business card to display my contact information online. You can check out the code 
+```link
 https://github.com/Qleoz12/svelte-web-components-template/blob/master/packages/lib/src/profile-card.wc.svelte
+```
+**not forget give star a my repo ⭐**
 
-**not forget give star a my repo**
+Upload the web component to your CDN and test the link to ensure it is available online. In my case, the library is deployed at this
 
-Upload the web component to your CDN and test the link to ensure it is available online. In my case, the library is deployed at this  https://github.com/Qleoz12/static/tree/main/js/webcomponents
-
+```link
+ https://github.com/Qleoz12/static/tree/main/js/webcomponents
+```
 
 ### Try the webcomponent online
 I used my personal portfolio and a React project to test the integration of webcomponent and it works perfectly.
@@ -67,7 +70,7 @@ with this discover now your able to expose trought internet new creation, update
 
 ## References
 
-- [The Top 10 Content Delivery Networks (CDNs) | Expert Insights](https://expertinsights.com/insights/the-top-content-delivery-networks-cdns/)
+- [The Top 10 Content Delivery Networks (CDNs)](https://expertinsights.com/insights/the-top-content-delivery-networks-cdns)
 - [How to get a literally free CDN - DEV Community](https://dev.to/jcubic/how-to-get-a-literally-free-cdn-2gc1)
 - [6 Free CDN Services (to Speed Up Your Website in 2024)]([webfx.com](https://www.webfx.com/blog/web-design/free-public-cdns/))
 - [American Psycho -Business Card Scene (youtube.com)](https://www.youtube.com/watch?v=cISYzA36-ZY)
