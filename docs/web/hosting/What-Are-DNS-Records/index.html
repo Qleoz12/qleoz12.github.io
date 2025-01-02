@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Lambdas y Streams Practica - Dann Brown Adventures</title>
-<meta name="description" content="Concept">
+<!-- begin _includes/seo.html --><title>What Are DNS Records? - Dann Brown Adventures</title>
+<meta name="description" content="Introduction">
 
 
   <meta name="author" content="Dann brown">
@@ -22,32 +22,32 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Dann Brown Adventures">
-<meta property="og:title" content="Lambdas y Streams Practica">
-<meta property="og:url" content="/vue/patterns-Families/">
+<meta property="og:title" content="What Are DNS Records?">
+<meta property="og:url" content="/web/hosting/What-Are-DNS-Records/">
 
 
-  <meta property="og:description" content="Concept">
-
-
-
+  <meta property="og:description" content="Introduction">
 
 
 
 
-  <meta property="article:published_time" content="2022-12-06T00:00:00-05:00">
 
 
 
-  <meta property="article:modified_time" content="2022-12-06T08:06:00-05:00">
+  <meta property="article:published_time" content="2024-09-19T00:00:00-05:00">
 
 
 
-  
+  <meta property="article:modified_time" content="2024-09-19T08:06:00-05:00">
+
+
 
   
 
+  
 
-<link rel="canonical" href="/vue/patterns-Families/">
+
+<link rel="canonical" href="/web/hosting/What-Are-DNS-Records/">
 
 
 
@@ -174,7 +174,7 @@
       
         
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/categories/#vue" itemprop="item"><span itemprop="name">Vue</span></a>
+          <a href="/categories/#web" itemprop="item"><span itemprop="name">Web</span></a>
           <meta itemprop="position" content="2" />
         </li>
         <span class="sep">/</span>
@@ -182,7 +182,17 @@
     
       
       
-        <li class="current">Lambdas y Streams Practica</li>
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#hosting" itemprop="item"><span itemprop="name">Hosting</span></a>
+          <meta itemprop="position" content="3" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">What Are DNS Records?</li>
       
     
   </ol>
@@ -326,13 +336,56 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">Lambdas y Streams Practica</h1>
+      <h1 id="page-title" class="page__title">What Are DNS Records?</h1>
     
-    <h2 id="concept">Concept</h2>
+    <h2 id="introduction">Introduction</h2>
 
-<h3 id="effect-es-todo-aquello-que-efectúa-un-cambio-en-la-aplicación">Effect: Es todo aquello que efectúa un cambio en la aplicación.</h3>
-<h3 id="track-siguen-las-dependencias-dinámicas-y-sus-efectos-es-decir-se-mantiene-es-el-acto-de-dar-seguimiento-a-aquellas-variables-que-producen-el-efecto-para-que-si-una-cambia-el-efecto-se-vuelva-a-calcular">Track: Siguen las dependencias dinámicas y sus efectos. Es decir, se mantiene es el acto de dar seguimiento a aquellas variables que producen el efecto, para que si una cambia, el efecto se vuelva a calcular.</h3>
-<h3 id="trigger-son-los-disparadores-de-los-efectos-de-las-dependencias-es-esa-acción-que-se-ejecuta-después-de-que-el-track-detectó-un-cambio-para-poder-actualizar-el-effect">Trigger:: Son los disparadores de los efectos de las dependencias. Es esa acción que se ejecuta después de que el track detectó un cambio para poder actualizar el effect.</h3>
+<p>DNS Zone Editor.</p>
+
+<h2 id="a-record">A Record</h2>
+<p>maps a hostname to ipv4
+AAAA Record
+maps a hostname to ipv6</p>
+
+<h2 id="cname">CNAME</h2>
+<p>maps a hostmname to another hostname</p>
+
+<h2 id="alias-records">Alias records</h2>
+<p>maps a hostnamew to ase resource 
+An extension to DNS functioanlity 
+alies recors not use ttl
+alias record targets:</p>
+<ul>
+  <li>elastic load balancer</li>
+  <li>amzaon cloudfront distribution</li>
+  <li>amazon api gateway</li>
+  <li>elastic beanstalk</li>
+  <li>s3 website bucket</li>
+  <li>vpc interface endpoint</li>
+  <li>global accelerator</li>
+  <li>route 53 record in the same hosted zone</li>
+</ul>
+
+<p>MX Entry
+TXT Record
+SRV Record</p>
+
+<p>DNS Glossary
+Additional Information</p>
+
+<h2 id="ttl">TTL</h2>
+<p>Each DNS record has a TTL (Time To Live) which orders clients for how long to cache these values and not overload the DNS Resolver with DNS requests. The TTL value should be set to strike a balance between how long the value should be cached vs. how many requests should go to the DNS Resolver.</p>
+
+<h2 id="conclusion">Conclusion:</h2>
+<ul>
+  <li>pending</li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://www.bluehost.com/help/article/dns-records-explained">The Top 10 Content Delivery Networks (CDNs)</a></li>
+</ul>
 
     
       <div id="disqus_thread"></div>
@@ -340,8 +393,8 @@
     var disqus_config = function () {
       // Here is an example,
       // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
-      this.page.url = "https://qleoz12.github.io//vue/patterns-Families/";
-      this.page.identifier = "/vue/patterns-Families/";
+      this.page.url = "https://qleoz12.github.io//web/hosting/What-Are-DNS-Records/";
+      this.page.identifier = "/web/hosting/What-Are-DNS-Records/";
     };
 
     // You should be able to get the following lines of code from your Disqus admin.

@@ -5,8 +5,8 @@
     <description>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</description>
     <link></link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 12 Aug 2024 11:35:26 -0500</pubDate>
-    <lastBuildDate>Mon, 12 Aug 2024 11:35:26 -0500</lastBuildDate>
+    <pubDate>Thu, 02 Jan 2025 07:27:16 -0500</pubDate>
+    <lastBuildDate>Thu, 02 Jan 2025 07:27:16 -0500</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
     
     
@@ -14,6 +14,318 @@
 
     
 
+    
+        
+
+        
+
+        
+        <item>
+            <title>AWS Database</title>
+            <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;this post is a hub of AWS database notes&lt;/p&gt;
+</description>
+            <pubDate>Mon, 02 Dec 2024 00:00:00 -0500</pubDate>
+            <link>/tools/aws-db/</link>
+            <guid isPermaLink="true">/tools/aws-db/</guid>
+            
+            
+            <category>Tools</category>
+            
+        </item>
+        
+    
+        
+
+        
+
+        
+        <item>
+            <title>Amazon Route 53 </title>
+            <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;this post is a hub of notes of amazon route 53&lt;/p&gt;
+
+&lt;h1 id=&quot;routing-policies-in-amazon-route-53-simplifying-dns-management&quot;&gt;Routing Policies in Amazon Route 53: Simplifying DNS Management&lt;/h1&gt;
+&lt;p&gt;Routing policies in Amazon Route 53 are integral to managing DNS queries, 
+helping determine how clients access resources. Unlike traffic routing in load balancers, 
+routing policies in Route 53 focus on DNS-level decisions. 
+Route 53 translates hostnames into IP addresses or endpoints, 
+guiding clients on where to send HTTP queries without directly routing traffic.&lt;/p&gt;
+
+&lt;p&gt;Amazon Route 53 supports several routing policies: simple, weighted, failover, latency-based, geolocation, multi-value answer, and geoproximity. Each serves a specific purpose, with the simple routing policy being the most straightforward. The simple policy maps a domain (e.g., foo.example.com) to a single resource or multiple IP addresses. If multiple IPs are provided, clients select one randomly. This basic approach lacks health check integration but remains an efficient way to direct traffic.&lt;/p&gt;
+
+&lt;p&gt;By defining TTL (time-to-live) values, such as 20 seconds, you can control how long DNS responses are cached. Route 53’s flexibility also allows edits to existing records, enabling dynamic updates to IP addresses. This simplicity and efficiency make it an ideal starting point for managing DNS routing in AWS.&lt;/p&gt;
+
+&lt;p&gt;Latency Routing Policy will evaluate the latency between your users and AWS Regions, and help them get a DNS response that will minimize their latency (e.g. response time)&lt;/p&gt;
+
+&lt;h2 id=&quot;simple-routing-policy&quot;&gt;Simple Routing Policy&lt;/h2&gt;
+&lt;p&gt;A simple routing policy in Amazon Route 53 is the most straightforward DNS routing strategy. 
+It maps a domain name (e.g., example.com) to a single resource, 
+such as an IP address or an alias for an AWS resource. 
+If multiple IP addresses are specified, the DNS response includes all of them, and the client randomly selects one to use.&lt;/p&gt;
+
+&lt;h3 id=&quot;key-features-of-the-simple-routing-policy-include&quot;&gt;Key features of the simple routing policy include:&lt;/h3&gt;
+
+&lt;p&gt;No Health Checks: It does not support health checks to monitor the availability of resources.
+Random Selection: When multiple values are provided, clients choose one at random.&lt;/p&gt;
+
+&lt;p&gt;Ease of Use: Ideal for straightforward DNS configurations where no additional logic or failover mechanisms are required.
+This policy is called “simple” because of its basic functionality and minimal configuration requirements.&lt;/p&gt;
+
+&lt;h1 id=&quot;weighted-routing-policy&quot;&gt;weighted routing policy&lt;/h1&gt;
+
+&lt;p&gt;Weighted Routing Policy in Amazon Route 53: Managing Traffic Distribution
+Main Idea:
+The weighted routing policy in Amazon Route 53 allows you to distribute DNS query traffic to multiple resources based on assigned weights, enabling precise control over traffic distribution.&lt;/p&gt;
+
+&lt;p&gt;Sub-Ideas:&lt;/p&gt;
+
+&lt;p&gt;How Weighted Routing Works:&lt;/p&gt;
+
+&lt;p&gt;Assign relative weights to DNS records.
+Traffic is distributed proportionally to the weights. For example, if weights are 70, 20, and 10, 70% of traffic goes to the first resource, 20% to the second, and 10% to the third.
+Key Features:&lt;/p&gt;
+
+&lt;p&gt;Weights don’t need to sum to 100; they are relative indicators.
+All DNS records must share the same name and type.
+Supports optional health checks for monitoring resources.
+Use Cases:&lt;/p&gt;
+
+&lt;p&gt;Load balancing across regions.
+Gradual rollout of new application versions.
+Traffic redirection adjustments by modifying weights.
+Setting a weight of 0 to stop sending traffic to a resource temporarily.&lt;/p&gt;
+</description>
+            <pubDate>Mon, 02 Dec 2024 00:00:00 -0500</pubDate>
+            <link>/tools/aws-53/</link>
+            <guid isPermaLink="true">/tools/aws-53/</guid>
+            
+            
+            <category>Tools</category>
+            
+        </item>
+        
+    
+        
+
+        
+
+        
+        <item>
+            <title>tools, commands and hacks</title>
+            <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;this post is a hub of tools usufull for daily use. as a systems engieener&lt;/p&gt;
+
+&lt;h1 id=&quot;dig-command&quot;&gt;dig command&lt;/h1&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dig simple.stephane-klein.info
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Description
+The dig (domain information groper) command is a flexible tool for interrogating DNS name servers. It performs DNS lookups and displays the answers that are returned from the queried name servers. Most DNS administrators use the dig command to troubleshoot DNS problems because of its flexibility, ease of use, and clarity of output. Although dig is normally used with command-line arguments, it also has a batch mode for reading lookup requests from a file. Unlike earlier versions, the BIND9 implementation of dig allows multiple lookups to be issued from the command line. Unless it is told to query a specific name server, the dig command tries each of the servers listed in the /etc/resolv.conf file. If no usable server addresses are found, the dig command sends the query to the local host. If you specify no command line arguments or options, the dig command performs an NS query for “.” (the root).&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;pending&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+            <pubDate>Mon, 02 Dec 2024 00:00:00 -0500</pubDate>
+            <link>/tools/commands-usefull/</link>
+            <guid isPermaLink="true">/tools/commands-usefull/</guid>
+            
+            
+            <category>Tools</category>
+            
+        </item>
+        
+    
+        
+
+        
+
+        
+        <item>
+            <title>What Are DNS Records?</title>
+            <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;DNS Zone Editor.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-record&quot;&gt;A Record&lt;/h2&gt;
+&lt;p&gt;maps a hostname to ipv4
+AAAA Record
+maps a hostname to ipv6&lt;/p&gt;
+
+&lt;h2 id=&quot;cname&quot;&gt;CNAME&lt;/h2&gt;
+&lt;p&gt;maps a hostmname to another hostname&lt;/p&gt;
+
+&lt;h2 id=&quot;alias-records&quot;&gt;Alias records&lt;/h2&gt;
+&lt;p&gt;maps a hostnamew to ase resource 
+An extension to DNS functioanlity 
+alies recors not use ttl
+alias record targets:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;elastic load balancer&lt;/li&gt;
+  &lt;li&gt;amzaon cloudfront distribution&lt;/li&gt;
+  &lt;li&gt;amazon api gateway&lt;/li&gt;
+  &lt;li&gt;elastic beanstalk&lt;/li&gt;
+  &lt;li&gt;s3 website bucket&lt;/li&gt;
+  &lt;li&gt;vpc interface endpoint&lt;/li&gt;
+  &lt;li&gt;global accelerator&lt;/li&gt;
+  &lt;li&gt;route 53 record in the same hosted zone&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;MX Entry
+TXT Record
+SRV Record&lt;/p&gt;
+
+&lt;p&gt;DNS Glossary
+Additional Information&lt;/p&gt;
+
+&lt;h2 id=&quot;ttl&quot;&gt;TTL&lt;/h2&gt;
+&lt;p&gt;Each DNS record has a TTL (Time To Live) which orders clients for how long to cache these values and not overload the DNS Resolver with DNS requests. The TTL value should be set to strike a balance between how long the value should be cached vs. how many requests should go to the DNS Resolver.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion:&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;pending&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.bluehost.com/help/article/dns-records-explained&quot;&gt;The Top 10 Content Delivery Networks (CDNs)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+            <pubDate>Thu, 19 Sep 2024 00:00:00 -0500</pubDate>
+            <link>/web/hosting/What-Are-DNS-Records/</link>
+            <guid isPermaLink="true">/web/hosting/What-Are-DNS-Records/</guid>
+            
+            
+            <category>Web/hosting</category>
+            
+        </item>
+        
+    
+        
+
+        
+
+        
+        <item>
+            <title>ICANN Registry, Registrar, and Registrant: What&apos;s the Difference?</title>
+            <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;When it comes to domain names and the internet, you might have come across terms like ICANN, 
+registry, registrar, and registrant. Understanding the roles and differences between 
+these entities is crucial for anyone involved in managing or purchasing domain names. 
+This post aims to clarify these terms and explain their functions.&lt;/p&gt;
+
+&lt;h3 id=&quot;icann&quot;&gt;ICANN&lt;/h3&gt;
+
+&lt;p&gt;The Internet Corporation for Assigned Names and Numbers (ICANN) is a global organization 
+responsible for coordinating the maintenance and procedures of several databases 
+related to the namespaces of the internet. Essentially, ICANN ensures the stable and 
+secure operation of the internet’s unique identifier systems.&lt;/p&gt;
+
+&lt;h3 id=&quot;registry&quot;&gt;Registry&lt;/h3&gt;
+
+&lt;p&gt;A registry is an organization that manages top-level domains (TLDs) such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.com&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.net&lt;/code&gt;. 
+The registry maintains the database of all domain names registered under its TLD and ensures 
+that each domain name is unique. The Internet Assigned Numbers Authority (IANA), a department within ICANN, oversees these registries.&lt;/p&gt;
+
+&lt;p&gt;Registries delegate the commercial sales of domain name registrations to registrars. 
+For instance, when a registrar sells a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.com&lt;/code&gt; domain registration to an end user (or ‘registrant’), 
+the registrar must notify VeriSign, the registry for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.com&lt;/code&gt; domains. 
+The registrar also pays a fee to VeriSign, which is included in the price charged to the end user.&lt;/p&gt;
+
+&lt;h3 id=&quot;registrar&quot;&gt;Registrar&lt;/h3&gt;
+
+&lt;p&gt;A registrar is a company authorized by ICANN to sell domain names to the public. 
+Registrars provide the interface and services necessary for individuals and organizations to register domain names. 
+They act as intermediaries between the registrants and the registries. Examples of popular registrars include GoDaddy, Namecheap, and Google Domains.&lt;/p&gt;
+
+&lt;h3 id=&quot;registrant&quot;&gt;Registrant&lt;/h3&gt;
+
+&lt;p&gt;A registrant is the individual or organization that registers a domain name. 
+The registrant holds the rights to use the domain name for a specified period, typically one year, with the option to renew. 
+The registrant is responsible for providing accurate contact information and ensuring that the domain name is used in compliance with the terms set by the registrar and registry.&lt;/p&gt;
+
+&lt;h3 id=&quot;name-servers&quot;&gt;Name Servers&lt;/h3&gt;
+
+&lt;p&gt;At the domain registrar, every domain must specify two pieces of information called name servers. 
+Name servers are crucial because they tell everyone where to look for the DNS records of the domain.
+Essentially, name servers act as directories that guide internet traffic to the correct location.&lt;/p&gt;
+
+&lt;p&gt;Here are some examples of name servers:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dns1.name-services.com&lt;/code&gt; = BulkRegister&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ns26.domaincontrol.com&lt;/code&gt; = GoDaddy&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ns.rackspace.com&lt;/code&gt; = Rackspace&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dns1.stabletransit.com&lt;/code&gt; = Mosso / Rackspace Cloud&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;dns--domain-name-services&quot;&gt;DNS – Domain Name Services&lt;/h3&gt;
+
+&lt;p&gt;DNS (Domain Name System) is the backbone of every domain. It translates human-readable domain 
+names (like www.example.com) into IP addresses that computers use to identify each other on the network. DNS has three main components:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;HOST A Record&lt;/strong&gt;: This record maps a domain to a specific IP address. It is used to point a domain or subdomain to a web server.
+    &lt;ul&gt;
+      &lt;li&gt;Examples:
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;www.paperstreet.com&lt;/code&gt; → &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;72.32.8.45&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;paperstreet.com&lt;/code&gt; → &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;72.32.8.45&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mail.paperstreet.com&lt;/code&gt; → &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;72.3.161.129&lt;/code&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;HOST A records allow for multiple subdomains, such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;citrix.paperstreet.com&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;webmail.paperstreet.com&lt;/code&gt;, or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;essentials.paperstreet.com&lt;/code&gt;.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;MX Record (Mail Exchange)&lt;/strong&gt;: These records specify the mail servers responsible for receiving email on behalf of a domain. They direct email traffic to the correct mail server.
+    &lt;ul&gt;
+      &lt;li&gt;Example:
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;paperstreet.com&lt;/code&gt; email points to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mail.paperstreet.com&lt;/code&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;CNAME Record (Canonical Name)&lt;/strong&gt;: This is an alias for another domain name. Instead of pointing directly to an IP address, a CNAME points to another domain name, which then points to an IP address. This is useful for managing multiple domain names that should resolve to the same IP address.
+    &lt;ul&gt;
+      &lt;li&gt;Example:
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;www.paperstreet.com&lt;/code&gt; → &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;paperstreet.com&lt;/code&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;This setup allows the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;www&lt;/code&gt; version of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;paperstreet.com&lt;/code&gt; to point to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;paperstreet.com&lt;/code&gt; and use the same IP address.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;By understanding these components, you can effectively manage your domain’s DNS settings to ensure proper functionality and accessibility.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion:&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;pending&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/&quot;&gt;The Top 10 Content Delivery Networks (CDNs)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;https://www.paperstreet.com/blog/domains-registrars-name-servers-and-dns-oh-my/
+https://help.one.com/hc/en-us/articles/115005588149-What-is-a-registry-registrar-and-registrant&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+            <pubDate>Mon, 02 Sep 2024 00:00:00 -0500</pubDate>
+            <link>/web/hosting/hosting-ICANN-registry-registar-registrant/</link>
+            <guid isPermaLink="true">/web/hosting/hosting-ICANN-registry-registar-registrant/</guid>
+            
+            
+            <category>Web/hosting</category>
+            
+        </item>
+        
     
         
 
@@ -902,165 +1214,6 @@ nets througth iftt&lt;/p&gt;
             <category>blog</category>
             
         </item>
-        
-    
-        
-
-        
-
-        
-        <item>
-            <title>Integrating Jekyll with Google Drive API</title>
-            <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;In this post, we will explore how to connect your Jekyll-powered personal 
-blog with a Google Drive public folder. 
-The goal is to easily share PDFs or documents by displaying them on a page of 
-my blog. By utilizing Jekyll’s static site generation capabilities and plugins, 
-we can automate the process of adding new certifications documents without having to 
-manually code each time. Let’s dive in! (final result &lt;a href=&quot;https://qleoz12.github.io/certs/&quot;&gt;certs&lt;/a&gt;)&lt;/p&gt;
-
-&lt;h2 id=&quot;jekyll-and-ruby&quot;&gt;Jekyll and Ruby&lt;/h2&gt;
-
-&lt;p&gt;To accomplish this task, we can leverage Jekyll’s plugin system, 
-which allows us to extend its functionality. There are various types of 
-plugins available in Jekyll, including generators, converters, commands, tags, 
-filters, and hooks. More information on Jekyll plugins can be found &lt;a href=&quot;https://jekyllrb.com/docs/plugins/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;creating-a-generator-plugin-for-jekyll&quot;&gt;Creating a Generator Plugin for Jekyll&lt;/h2&gt;
-
-&lt;p&gt;To begin, we need to create a generator plugin for Jekyll. Here’s the recipe 
-to complete the task:&lt;/p&gt;
-
-&lt;h3 id=&quot;enable-the-google-drive-api&quot;&gt;Enable the Google Drive API&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Go to the Google APIs Console.&lt;/li&gt;
-  &lt;li&gt;Create a new project.&lt;/li&gt;
-  &lt;li&gt;Enable the Google Drive API by searching for it and enabling it.&lt;/li&gt;
-  &lt;li&gt;Create credentials for a web server to access application data.&lt;/li&gt;
-  &lt;li&gt;Name the service account and grant it a Project Role of Editor.&lt;/li&gt;
-  &lt;li&gt;Download the JSON file containing the credentials.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;connect-google-api-with-jekyll&quot;&gt;Connect Google API with Jekyll&lt;/h3&gt;
-
-&lt;p&gt;To connect Jekyll with the Google Drive API, follow these steps:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Install the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;google_drive&lt;/code&gt; gem by adding &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gem &quot;google_drive&quot;&lt;/code&gt; to your Gemfile.&lt;/li&gt;
-  &lt;li&gt;Create a session using the JSON file obtained from the Google API.&lt;/li&gt;
-  &lt;li&gt;Iterate through the list of available folders in your project.&lt;/li&gt;
-  &lt;li&gt;Filter the folders to create a page that displays the folder name and its containing PDFs.&lt;/li&gt;
-  &lt;li&gt;Filter the contents of each folder, listing the files using query parameters.&lt;/li&gt;
-  &lt;li&gt;Transform the filtered children into an array of hash objects, containing the file name and public URL.&lt;/li&gt;
-  &lt;li&gt;Create another hash array using the folder name as the key and the array of files as the value.&lt;/li&gt;
-  &lt;li&gt;Inject the data read from the Google API into the Jekyll context to be processed for a custom page.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Here’s an example implementation of the generator plugin:&lt;/p&gt;
-
-&lt;h4 id=&quot;plugin-generatorrb&quot;&gt;Plugin (generator.rb)&lt;/h4&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;google_drive&quot;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Jekyll&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;GoogleDriveGenerator&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Generator&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Jekyll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Generator&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;generate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;session&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;GoogleDrive&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;from_service_account_key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./_plugins/config.json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
-        
-        &lt;span class=&quot;n&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-          &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;resource_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;folder&apos;&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;childs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;q: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&apos;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;resource_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;resource_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;rindex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;:&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&apos; in parents &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;childstrasnformed&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-            
-            &lt;span class=&quot;n&quot;&gt;childs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-              &lt;span class=&quot;n&quot;&gt;childstrasnformed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-                &lt;span class=&quot;s2&quot;&gt;&quot;human_url&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;human_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;view&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;preview&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-                &lt;span class=&quot;s2&quot;&gt;&quot;title&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;title&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-            
-            &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;childstrasnformed&lt;/span&gt;
-          &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-        &lt;span class=&quot;c1&quot;&gt;# Inject data into template&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;certs&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;template-indexhtml&quot;&gt;Template (index.html)&lt;/h4&gt;
-
-&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&amp;lt;div class=&quot;feature__wrapper&quot;&amp;gt;
-  &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;link_hash&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site.data.certs&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-    &amp;lt;header class=&quot;title-set-course&quot;&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;link_hash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/header&amp;gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;link_hash[1]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-      &amp;lt;iframe src=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;human_url&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot; width=&quot;300&quot;&amp;gt;&amp;lt;/iframe&amp;gt;
-      &amp;lt;a href=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;human_url&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/a&amp;gt;
-      &amp;lt;br&amp;gt;
-    &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
-&amp;lt;/div&amp;gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;I dedicated two days to researching and working on this task. 
-I thoroughly enjoyed this journey and the learning experience it provided. 
-I hope the code and information 
-I have shared can be a valuable reference for others and be utilized for different purposes.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=VqoSUSy011I&amp;amp;ab_channel=Twilio&quot;&gt;YouTube - Twilio: Google Spreadsheets and Ruby&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.twilio.com/blog/google-spreadsheets-ruby-html&quot;&gt;Twilio Blog - Google Spreadsheets and Ruby&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/gimite/google-spreadsheet-ruby&quot;&gt;GitHub - gimite/google-spreadsheet-ruby&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://medium.com/software-development-with-ease/understanding-hashmap-datastructure-ruby-aec3868bc5ad&quot;&gt;Medium - Understanding HashMap Data Structure in Ruby&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p class=&quot;notice--success&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; If you enjoy my content, please feel free to leave a comment or share 
-your thoughts. Your feedback is greatly appreciated and encourages me to continue
- creating valuable content. Thank you for your support!&lt;/p&gt;
-
-</description>
-            <pubDate>Thu, 22 Jun 2023 00:00:00 -0500</pubDate>
-            <link>/rubby/jekyll/jekyll-ruby-generator-google-api/</link>
-            <guid isPermaLink="true">/rubby/jekyll/jekyll-ruby-generator-google-api/</guid>
-            
-            
-            <category>rubby/jekyll</category>
-            
-        </item>
-        
-    
-        
-
-        
-
-        
-    
-        
-
-        
-
-        
-    
-        
-
-        
-
-        
-    
-        
-
-        
-
         
     
   </channel>

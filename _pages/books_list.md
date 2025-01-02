@@ -11,6 +11,7 @@ feature_row:
     excerpt: "Lambda, streams, functional and reactive programming by Raoul-Gabriel Urma Mario Fusco Alan Mycroft 
     <br />
     **STATUS** : [![read](https://img.shields.io/badge/read-in progress-yellow.svg?style=flat)](https://www.amazon.com/Modern-Java-Action-functional-programming/dp/1617293563){:target='_blank' rel='noopener'}"
+    category: "technology"
 
   - image_path: https://images-na.ssl-images-amazon.com/images/I/31N95BlSwUL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg
     alt: "Learn Blockchain by Building One: A Concise Path to Understanding Cryptocurrencies 1st ed. Edición"
@@ -19,6 +20,7 @@ feature_row:
     in our daily lives,
     <br />
     **STATUS** : [![read](https://img.shields.io/badge/read-completed-green.svg?style=flat)](https://www.amazon.com/-/es/Daniel-van-Flymen/dp/1484251709/ref=sr_1_1?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=NESCJDTLZJIQ&keywords=learn+blockchain&qid=1655179151&sprefix=learn+block+chain%2Caps%2C125&sr=8-1)"
+    category: "technology"
 
   - image_path: https://images-na.ssl-images-amazon.com/images/I/41xShlnTZTL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg
     alt: "Clean Code: A Handbook of Agile Software Craftsmanship 1st"
@@ -26,6 +28,7 @@ feature_row:
     excerpt: "Lambda, streams, functional and reactive programming by Raoul-Gabriel Urma Mario Fusco Alan Mycroft 
     <br />
     **STATUS** : [![read](https://img.shields.io/badge/read-in progress-yellow.svg?style=flat)](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)"
+    category: "technology"
 
   - image_path: https://m.media-amazon.com/images/I/51AELKpAoWL.jpg
     alt: "Generic Pipelines Using Docker: The DevOps Guide to Building Reusable, Platform Agnostic CI/CD Frameworks 1st ed. Edición,"
@@ -33,6 +36,7 @@ feature_row:
     excerpt: "Generic Pipelines Using Docker explores the principles and implementations that allow you to do just that,pipelines that any team can use. 
     <br />
     **STATUS** : [![read](https://img.shields.io/badge/read-completed-green.svg?style=flat)](https://www.amazon.com/-/es/Brandon-Atkinson-ebook/dp/B07FKF52SH/ref=sr_1_1?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3EO7POTS0DTAW&keywords=Generic+Pipelines+Using+Docker&qid=1655179099&sprefix=generic+pipelines+using+docker%2Caps%2C115&sr=8-1)"
+    category: "technology"
 
   - image_path: assets/images/books/elgranlibro HTML5,CSS3,Javascript.jpg
     alt: "El gran libro de HTML5, CSS3 y Javascript"
@@ -42,6 +46,7 @@ feature_row:
     preparados para HTML5.. 
     <br />
     **STATUS** : [![read](https://img.shields.io/badge/read-completed-green.svg?style=flat)](https://www.amazon.com/libro-HTML5-JavaScript-Edici%C3%B3n-Spanish/dp/8426724639)"
+    category: "technology"
 
   - image_path: https://m.media-amazon.com/images/I/61338e6Bl5L.jpg
     alt: "El gran libro de HTML5, CSS3 y Javascript"
@@ -51,6 +56,7 @@ feature_row:
     Use Kafka, Avro and Spring Streams for implementing event based microservices
     <br />
     **STATUS** :  [![read](https://img.shields.io/badge/read-completed-green.svg?style=flat)](https://www.amazon.com/Mastering-Microservices-Java-domain-driven-microservice-based/dp/1787281442?){:target='_blank' rel='noopener'}"
+    category: "technology"
 
   - image_path: https://m.media-amazon.com/images/I/513ALlarUsL.jpg
     alt: "Mastering Microservices with Java: Build enterprise microservices"
@@ -60,6 +66,7 @@ feature_row:
     Use Kafka, Avro and Spring Streams for implementing event based microservices
     <br />
     **STATUS** : [![read](https://img.shields.io/badge/read-in progress-yellow.svg?style=flat)](https://www.amazon.com/Mastering-Microservices-Java-enterprise-microservices-ebook/dp/B07P82KN94){:target='_blank' rel='noopener'}"
+    category: "technology"
   
   - image_path: https://m.media-amazon.com/images/I/91uFdkCJmAL._SL1500_.jpg
     alt: "earning React: Modern Patterns for Developing React Apps"
@@ -71,15 +78,17 @@ feature_row:
      No prior knowledge of React or functional JavaScript is necessary.
     <br />
     **STATUS** : [![read](https://img.shields.io/badge/read-in progress-yellow.svg?style=flat)](https://www.amazon.com/Learning-React-Modern-Patterns-Developing/dp/1492051721){:target='_blank' rel='noopener'}"
+    category: "technology"
 
-
-
+  - image_path: "path-to-image"
+    alt: "Better Small Talk"
+    title: "Better Small Talk"
+    category: "philosophy"
+    excerpt: "How to start conversations, keep them going, and build rapport without any awkwardness."
+    url: "https://example.com"
 
     
   
 ---
 
 {% include feature_row %}
-
-
-

@@ -8,15 +8,23 @@ toc: true
 author_profile: true
 ---
 
+<!-- Embed Credly Certification Profile -->
+<div class="certification-embed">
+  <h2>My Badges</h2>
+  <div data-iframe-width="400" data-iframe-height="300" data-share-badge-id="e1a0ee4e-2a5f-4316-8804-6088f267e944"
+    data-share-badge-host="https://www.credly.com"></div>
+  <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+  <div data-iframe-width="400" data-iframe-height="300" data-share-badge-id="6bb502ad-c127-4958-8aba-7e534381627f" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+</div>
 
 <div class="feature__wrapper">
   {% for link_hash in site.data.certs %}
   <header class="title-set-course">{{link_hash[0]}}</header class="title-set-course">
-    {% for link in link_hash[1] %}
-      <iframe src="{{link.human_url}}" width="300"></iframe>
-      <a href="{{link.human_url}}">{{link.title}} </a>
-      <br>
-    {% endfor %}
+  {% for link in link_hash[1] %}
+  <iframe src="{{link.human_url}}" width="300"></iframe>
+  <a href="{{link.human_url}}">{{link.title}} </a>
+  <br>
+  {% endfor %}
   {% endfor %}
 
-</div> 
+</div>
