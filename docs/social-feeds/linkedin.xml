@@ -5,8 +5,8 @@
     <description>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</description>
     <link></link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 02 Jan 2025 07:27:16 -0500</pubDate>
-    <lastBuildDate>Thu, 02 Jan 2025 07:27:16 -0500</lastBuildDate>
+    <pubDate>Sun, 05 Jan 2025 19:40:42 -0500</pubDate>
+    <lastBuildDate>Sun, 05 Jan 2025 19:40:42 -0500</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
     
     
@@ -21,16 +21,214 @@
 
         
         <item>
+            <title>AWS posts hub</title>
+            <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;adfasdfdasf&lt;/p&gt;
+
+&lt;p&gt;asdfasdf&lt;/p&gt;
+</description>
+            <pubDate>Sun, 05 Jan 2025 00:00:00 -0500</pubDate>
+            <link>/aws/aws-post-hub/</link>
+            <guid isPermaLink="true">/aws/aws-post-hub/</guid>
+            
+            
+            <category>AWS</category>
+            
+        </item>
+        
+    
+        
+
+        
+
+        
+        <item>
+            <title>AWS posts hub</title>
+            <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;adfasdfdasf&lt;/p&gt;
+
+&lt;p&gt;asdfasdf&lt;/p&gt;
+</description>
+            <pubDate>Sun, 05 Jan 2025 00:00:00 -0500</pubDate>
+            <link>/aws/aws-post-hub-copy/</link>
+            <guid isPermaLink="true">/aws/aws-post-hub-copy/</guid>
+            
+            
+            <category>AWS</category>
+            
+        </item>
+        
+    
+        
+
+        
+
+        
+        <item>
+            <title>AWS EventBridge</title>
+            <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;This post is a hub of AWS EventBridge notes.&lt;/p&gt;
+
+&lt;p&gt;AWS EventBridge is a serverless event bus service that makes it easy to connect applications using data from your own applications, integrated Software-as-a-Service (SaaS) applications, and AWS services.&lt;/p&gt;
+
+&lt;h3 id=&quot;key-features&quot;&gt;Key Features:&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Event-driven architecture:&lt;/strong&gt; Simplifies the process of building event-driven applications.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Serverless:&lt;/strong&gt; Automatically scales and handles infrastructure management.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Integrated with AWS services:&lt;/strong&gt; Easily connects with other AWS services like Lambda, SQS, SNS, and more.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Custom event buses:&lt;/strong&gt; Create custom event buses for your applications.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Schema registry:&lt;/strong&gt; Automatically discovers and stores event schemas.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;example-use&quot;&gt;Example Use:&lt;/h3&gt;
+&lt;h4 id=&quot;microservices-synchronization&quot;&gt;Microservices Synchronization&lt;/h4&gt;
+&lt;p&gt;Case: Update the status of orders across different microservices.&lt;/p&gt;
+
+&lt;p&gt;Event: An order changes to “Shipped” in the inventory system.&lt;/p&gt;
+
+&lt;p&gt;Action: EventBridge distributes the event to logistics and billing services to initiate shipping and generate the invoice.&lt;/p&gt;
+
+&lt;p&gt;sample event&lt;/p&gt;
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;source&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;app.orders&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;detail-type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Order Shipped&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;detail&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;orderId&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;12345&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;status&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Shipped&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/aws/DALL·E 2025-01-05 18.04.16 - sample Amazon EventBridge. The diagram highlights three components in red_ Inventory .webp&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;https://media.datacumulus.com/aws-dva/AWS%20Certified%20Developer%20Slides%20v37.pdf&lt;/li&gt;
+  &lt;li&gt;https://www.udemy.com/course/aws-certified-developer-associate-dva-c01/?couponCode=NEWYEARCAREER&lt;/li&gt;
+  &lt;li&gt;https://www.stephanemaarek.com/&lt;/li&gt;
+  &lt;li&gt;https://docs.aws.amazon.com/&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+            <pubDate>Sun, 05 Jan 2025 00:00:00 -0500</pubDate>
+            <link>/aws/aws-eventBridge/</link>
+            <guid isPermaLink="true">/aws/aws-eventBridge/</guid>
+            
+            
+            <category>AWS</category>
+            
+        </item>
+        
+    
+        
+
+        
+
+        
+        <item>
             <title>AWS Database</title>
             <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;this post is a hub of AWS database notes&lt;/p&gt;
+
+&lt;p&gt;into AWS services there ares several database services, some of them are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Aurora&lt;/li&gt;
+  &lt;li&gt;RDS&lt;/li&gt;
+  &lt;li&gt;DynamoDB&lt;/li&gt;
+  &lt;li&gt;Redshift&lt;/li&gt;
+  &lt;li&gt;ElastiCache&lt;/li&gt;
+  &lt;li&gt;Neptune&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;amazon-aurora&quot;&gt;Amazon Aurora&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; Amazon Aurora is a MySQL and PostgreSQL-compatible relational database built for the cloud, offering performance and availability similar to commercial databases at a fraction of the cost.&lt;/p&gt;
+
+&lt;h3 id=&quot;key-features&quot;&gt;Key Features:&lt;/h3&gt;
+
+&lt;p&gt;High performance and availability
+Automatic failover and backup
+Isolation and security
+Push-button scaling
+Advanced monitoring
+Backtrack to restore data at any point in time
+Example Use: Amazon Aurora is suitable for high-performance applications that require scalability and reliability. For instance, a social media platform can use Aurora to handle large volumes of user data and interactions with minimal latency.&lt;/p&gt;
+
+&lt;h3 id=&quot;amazon-rds-relational-database-service&quot;&gt;Amazon RDS (Relational Database Service)&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; Amazon RDS is a managed relational database service that supports multiple database engines, including MySQL, PostgreSQL, MariaDB, Oracle, and SQL Server. It automates tasks such as provisioning, patching, backup, recovery, and scaling.&lt;/p&gt;
+
+&lt;h3 id=&quot;key-features-1&quot;&gt;Key Features:&lt;/h3&gt;
+
+&lt;p&gt;Automated provisioning and OS patching
+Continuous backups and Point in Time Restore
+Monitoring dashboards
+Read replicas for improved read performance
+Multi-AZ setup for disaster recovery
+Vertical and horizontal scaling
+Storage backed by EBS
+Example Use: Amazon RDS is ideal for applications that require a managed relational database with high availability and automated maintenance. For example, an e-commerce website can use Amazon RDS to store customer data, orders, and product information, ensuring data integrity and availability.&lt;/p&gt;
+
+&lt;h3 id=&quot;amazon-dynamodb&quot;&gt;Amazon DynamoDB&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability. It is designed for applications that require consistent, single-digit millisecond latency at any scale.&lt;/p&gt;
+
+&lt;h3 id=&quot;key-features-2&quot;&gt;Key Features:&lt;/h3&gt;
+
+&lt;p&gt;Fully managed and serverless
+Single-digit millisecond response times
+Built-in security, backup, and restore
+Multi-region, multi-active replication
+On-demand and provisioned capacity modes
+Example Use: Amazon DynamoDB is ideal for applications with high throughput and low latency requirements, such as real-time bidding platforms, gaming leaderboards, and IoT data storage.&lt;/p&gt;
+
+&lt;h3 id=&quot;amazon-redshift&quot;&gt;Amazon Redshift&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; Amazon Redshift is a fully managed data warehouse service that makes it simple and cost-effective to analyze all your data using standard SQL and existing business intelligence tools.&lt;/p&gt;
+
+&lt;h3 id=&quot;key-features-3&quot;&gt;Key Features:&lt;/h3&gt;
+
+&lt;p&gt;High performance and scalability
+Columnar storage and data compression
+Massively parallel processing (MPP)
+Automated backups and snapshots
+Integration with AWS services and third-party tools
+Example Use: Amazon Redshift is perfect for data warehousing and analytics workloads. For example, a marketing analytics company can use Redshift to aggregate and analyze large datasets from various sources to generate insights and reports.&lt;/p&gt;
+
+&lt;h3 id=&quot;amazon-elasticache&quot;&gt;Amazon ElastiCache&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; Amazon ElastiCache is a fully managed in-memory data store and cache service that supports Redis and Memcached. It is designed to improve the performance of web applications by retrieving data from high throughput and low latency in-memory data stores.&lt;/p&gt;
+
+&lt;h3 id=&quot;key-features-4&quot;&gt;Key Features:&lt;/h3&gt;
+
+&lt;p&gt;Fully managed Redis and Memcached
+Multi-AZ with automatic failover
+Read replicas for read scalability
+Data durability with AOF persistence (Redis)
+Backup and restore capabilities
+Example Use: Amazon ElastiCache is ideal for caching frequently accessed data to reduce latency and improve application performance. For instance, an online gaming platform can use ElastiCache to store session data and leaderboards, ensuring quick access for players.&lt;/p&gt;
+
+&lt;h3 id=&quot;amazon-neptune&quot;&gt;Amazon Neptune&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; Amazon Neptune is a fully managed graph database service that supports both property graph and RDF graph models. It is designed for applications that need to navigate and query highly connected datasets.&lt;/p&gt;
+
+&lt;h3 id=&quot;key-features-5&quot;&gt;Key Features:&lt;/h3&gt;
+
+&lt;p&gt;Fully managed and highly available
+Support for Apache TinkerPop Gremlin and RDF/SPARQL
+ACID transactions with immediate consistency
+Multi-AZ deployment with automatic failover
+Integration with AWS services
+Example Use: Amazon Neptune is suitable for applications that require complex relationship queries, such as social networking, recommendation engines, and fraud detection. For example, a social media platform can use Neptune to model and query user connections and interactions.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;https://media.datacumulus.com/aws-dva/AWS%20Certified%20Developer%20Slides%20v37.pdf&lt;/li&gt;
+  &lt;li&gt;https://www.udemy.com/course/aws-certified-developer-associate-dva-c01/?couponCode=NEWYEARCAREER&lt;/li&gt;
+  &lt;li&gt;https://www.stephanemaarek.com/&lt;/li&gt;
+  &lt;li&gt;https://docs.aws.amazon.com/&lt;/li&gt;
+&lt;/ul&gt;
 </description>
             <pubDate>Mon, 02 Dec 2024 00:00:00 -0500</pubDate>
-            <link>/tools/aws-db/</link>
-            <guid isPermaLink="true">/tools/aws-db/</guid>
+            <link>/aws/aws-db/</link>
+            <guid isPermaLink="true">/aws/aws-db/</guid>
             
             
-            <category>Tools</category>
+            <category>AWS</category>
             
         </item>
         
@@ -97,11 +295,11 @@ Traffic redirection adjustments by modifying weights.
 Setting a weight of 0 to stop sending traffic to a resource temporarily.&lt;/p&gt;
 </description>
             <pubDate>Mon, 02 Dec 2024 00:00:00 -0500</pubDate>
-            <link>/tools/aws-53/</link>
-            <guid isPermaLink="true">/tools/aws-53/</guid>
+            <link>/aws/aws-53/</link>
+            <guid isPermaLink="true">/aws/aws-53/</guid>
             
             
-            <category>Tools</category>
+            <category>AWS</category>
             
         </item>
         
@@ -1025,193 +1223,6 @@ to managing forms and navigating through different sections of the application.&
             
             
             <category>Web/Svelte</category>
-            
-        </item>
-        
-    
-        
-
-        
-
-        
-        <item>
-            <title>React Handling API request race</title>
-            <description>&lt;h1 id=&quot;in-progress&quot;&gt;in progress..&lt;/h1&gt;
-</description>
-            <pubDate>Fri, 21 Jul 2023 00:00:00 -0500</pubDate>
-            <link>/devops/mysql/ha/react-Handling-API-request-race/</link>
-            <guid isPermaLink="true">/devops/mysql/ha/react-Handling-API-request-race/</guid>
-            
-            
-            <category>devops/mysql/HA</category>
-            
-        </item>
-        
-    
-        
-
-        
-
-        
-        <item>
-            <title>Mysql HA- high Availibity</title>
-            <description>&lt;h1 id=&quot;mysql-ha&quot;&gt;Mysql HA&lt;/h1&gt;
-
-&lt;p&gt;mysql had capabilities, that allow us to create a componentes for get high availability 
-of our database, to achieve that we have this kind of tools, when we are using&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/8.0/en/group-replication.html&quot;&gt;mysql group replication&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/8.0/en/mysql-innodb-cluster-introduction.html&quot;&gt;mysql innoDB Cluster&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/8.0/en/mysql-innodb-cluster-introduction.html&quot;&gt;mysql NDB Cluster&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;for this entry, I will expose you how use innoDB for create a failure tolerant database componenet&lt;/p&gt;
-
-&lt;h2 id=&quot;concepts&quot;&gt;Concepts&lt;/h2&gt;
-
-&lt;h3 id=&quot;high-availibity&quot;&gt;high availibity&lt;/h3&gt;
-&lt;p&gt;High availability refers to the ability of a system to remain accessible and 
-operational for an extended period, without any significant downtime or service 
-interruptions. In the context of databases like MySQL, achieving high availability 
-ensures that the database remains accessible even in the face of hardware failures,
- software issues, or maintenance activities. High availability is essential for 
- critical applications where downtime can result in financial losses, decreased 
- user satisfaction, and other negative consequences.&lt;/p&gt;
-
-&lt;h3 id=&quot;scaling-features&quot;&gt;scaling features&lt;/h3&gt;
-&lt;p&gt;Scaling features in the context of MySQL InnoDB refer to the ability of the database to handle increased workloads and data without sacrificing performance. There are two primary types of scaling:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Vertical Scaling (Scaling Up):&lt;/strong&gt; This involves upgrading the hardware resources of the server hosting the MySQL database, such as increasing CPU power, RAM, or storage capacity. While vertical scaling can provide a performance boost, it has limitations and may eventually become expensive or impractical when reaching the hardware’s maximum capabilities.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Horizontal Scaling (Scaling Out):&lt;/strong&gt; This involves distributing the database load across multiple servers. With horizontal scaling, you can add more servers to handle the increased workload and data. It provides better scalability compared to vertical scaling since you can keep adding servers as needed. However, horizontal scaling also introduces complexities related to data distribution and synchronization.&lt;/p&gt;
-
-&lt;p&gt;To achieve high availability and scaling features with MySQL InnoDB, several strategies and technologies can be used:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Replication:&lt;/strong&gt; MySQL supports replication, where one server (the master) is designated as the primary source of data changes, and one or more servers (the replicas) replicate the changes from the master. This provides improved read scalability and some degree of high availability since the replicas can be used for read-heavy workloads or failover scenarios.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Load Balancing:&lt;/strong&gt; For horizontally scaled setups, a load balancer can distribute incoming database requests across multiple database servers. This helps evenly distribute the workload and prevent individual servers from becoming overwhelmed.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Clustering:&lt;/strong&gt; MySQL can be deployed in a clustered setup, such as MySQL Cluster or Galera Cluster. These technologies enable synchronous replication and automatic failover, enhancing both high availability and read/write scalability.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Sharding:&lt;/strong&gt; Sharding involves partitioning the database into smaller, independent parts called shards. Each shard is hosted on a separate server. Sharding can improve write scalability, but it introduces complexity in managing data distribution and joins across shards.&lt;/p&gt;
-
-&lt;h2 id=&quot;mysql-innodb&quot;&gt;Mysql InnoDB&lt;/h2&gt;
-&lt;p&gt;InnoDB is a transactional storage engine for MySQL, developed by Innobase Oy,
-which was later acquired by Oracle Corporation. It is designed to provide 
-high-performance and reliability for both read and write-intensive workloads. 
-InnoDB supports ACID (Atomicity, Consistency, Isolation, Durability) properties, 
-making it suitable for applications that require data integrity and consistency.&lt;/p&gt;
-
-&lt;p&gt;An InnoDB Cluster consists of at least three MySQL Server instances, 
-and it provides high-availability and scaling features. 
-InnoDB Cluster uses the following MySQL technologies:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;MySQL Shell, which is an advanced client and code editor for MySQL.&lt;/li&gt;
-  &lt;li&gt;MySQL Server, and Group Replication, which enables a set of MySQL instances to provide high-availability. InnoDB Cluster provides an alternative, easy to use programmatic way to work with Group Replication.&lt;/li&gt;
-  &lt;li&gt;MySQL Router, a lightweight middleware that provides transparent routing between your application and InnoDB Cluster.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;lets-try-it-out&quot;&gt;let’s try it out:&lt;/h2&gt;
-&lt;p&gt;all the process its based at the article https://diptochakrabarty.medium.com/setting-mysql-cluster-using-docker-f0e405d03762
-I create a repo using docker containers for easily handle several instances and join them at a innoDB cluster, 
-docker with docker compose deploy the nodes with a simple&lt;/p&gt;
-&lt;div class=&quot;language-docker highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker compose up -d
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;when all the nodes stay up we can confiogure the cluster, we need get into a mysql shell for create the cluster&lt;/p&gt;
-&lt;div class=&quot;language-docker highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker exec -it mysql-docker-cluster_mysql-dev1_1 mysqlsh -uclusteradmin -pcladmin (shell for mysql-dev1 container)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;when we are  inside fomr this node we will configure all another nodes&lt;/p&gt;
-&lt;div class=&quot;language-docker highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dba.configureInstance(&quot;clusteradmin@mysql-dev1:3306&quot;)
-dba.configureInstance(&quot;clusteradmin@mysql-dev2:3306&quot;)
-dba.configureInstance(&quot;clusteradmin@mysql-dev3:3306&quot;)
-dba.configureInstance(&quot;clusteradmin@mysql-dev4:3306&quot;)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h2 id=&quot;downsides&quot;&gt;Downsides:&lt;/h2&gt;
-
-&lt;p&gt;While BFS is a simple and efficient algorithm for exploring large graphs or trees,
- it does have some downsides:&lt;/p&gt;
-
-&lt;p&gt;Space Complexity: BFS uses a queue to keep track of the nodes that need to be 
-visited, which can take up a lot of memory for large graphs or trees.&lt;/p&gt;
-
-&lt;p&gt;Suboptimal Paths: BFS is designed to find the shortest path between two nodes, 
-but it may not always find the optimal path in a weighted graph. This is 
-because BFS does not take edge weights into account when determining the order 
-in which to visit nodes.&lt;/p&gt;
-
-&lt;p&gt;Time Complexity for Dense Graphs: In dense graphs with a large number of edges, 
-BFS can have a high time complexity, as it may visit many unnecessary nodes 
-before finding the desired path.&lt;/p&gt;
-
-&lt;p&gt;Despite these downsides, BFS is still a widely used algorithm in computer 
-science due to its simplicity and versatility.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion:&lt;/h2&gt;
-
-&lt;p&gt;Breadth-First Search is a simple but powerful algorithm that can be used to 
-traverse a graph or tree in a systematic way. It’s a good choice for finding 
-the shortest path between two nodes or for exploring a graph or tree in a 
-breadth-first manner. By visiting nodes at a fixed distance from the starting 
-node before moving on to nodes that are farther away, BFS ensures that you visit 
-all the nodes in a graph or tree efficiently.&lt;/p&gt;
-
-&lt;p&gt;I hope you found this introduction to BFS helpful. If you have any questions or 
-comments, feel free to leave them below!&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;https://medium.com/@wagnerjfr/setting-up-mysql-group-replication-with-mysql-docker-images-f5eedd44fa2b&lt;/li&gt;
-  &lt;li&gt;https://dev.mysql.com/blog-archive/setting-up-mysql-group-replication-with-mysql-docker-images/&lt;/li&gt;
-  &lt;li&gt;https://pierreabreu.medium.com/how-to-create-master-slave-mysql-8-with-docker-compose-yml-c137f45e28c7&lt;/li&gt;
-  &lt;li&gt;https://dev.mysql.com/doc/refman/5.7/en/mysql-innodb-cluster-introduction.html&lt;/li&gt;
-  &lt;li&gt;https://diptochakrabarty.medium.com/setting-mysql-cluster-using-docker-f0e405d03762&lt;/li&gt;
-  &lt;li&gt;https://github.com/DiptoChakrabarty?page=5&amp;amp;tab=repositories&lt;/li&gt;
-  &lt;li&gt;https://github.com/DiptoChakrabarty/CodingInterviews/tree/master/VISA%20Senior%20Software%20Engineer%202019&lt;/li&gt;
-  &lt;li&gt;https://blog.byte.builders/post/deploy-and-manage-mysql-innodb-cluster-in-aws/&lt;/li&gt;
-  &lt;li&gt;https://dev.mysql.com/blog-archive/docker-compose-setup-for-innodb-cluster/&lt;/li&gt;
-  &lt;li&gt;https://poazy.github.io/20210712-mysql-innodb-cluster_install-1m2s.html&lt;/li&gt;
-  &lt;li&gt;https://www.dbi-services.com/blog/installing-mysql-innodb-cluster-in-oke-using-a-mysql-operator/&lt;/li&gt;
-  &lt;li&gt;https://git.g-able.com/users/006763/projects&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-            <pubDate>Fri, 21 Jul 2023 00:00:00 -0500</pubDate>
-            <link>/devops/mysql/ha/databases-mysql-HA_mysql/</link>
-            <guid isPermaLink="true">/devops/mysql/ha/databases-mysql-HA_mysql/</guid>
-            
-            
-            <category>devops/mysql/HA</category>
-            
-        </item>
-        
-    
-        
-
-        
-
-        
-        <item>
-            <title>iftt proof</title>
-            <description>&lt;p&gt;this post its  a proof for test automatization for links post with social media 
-nets througth iftt&lt;/p&gt;
-
-&lt;p&gt;reference https://eduardoboucas.com/blog/2015/04/28/sharing-jekyll-posts-on-social-media-using-front-matter-and-ifttt.html&lt;/p&gt;
-</description>
-            <pubDate>Thu, 22 Jun 2023 04:32:00 -0500</pubDate>
-            <link>/blog/example-multi-social/</link>
-            <guid isPermaLink="true">/blog/example-multi-social/</guid>
-            
-            <category>jekyll</category>
-            
-            <category>social</category>
-            
-            <category>example</category>
-            
-            <category>post</category>
-            
-            
-            <category>blog</category>
             
         </item>
         

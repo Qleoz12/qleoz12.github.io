@@ -1,0 +1,509 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>AWS Database - Dann Brown Adventures</title>
+<meta name="description" content="Introduction this post is a hub of AWS database notes">
+
+
+  <meta name="author" content="Dann brown">
+  
+  <meta property="article:author" content="Dann brown">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dann Brown Adventures">
+<meta property="og:title" content="AWS Database">
+<meta property="og:url" content="/aws/aws-db/">
+
+
+  <meta property="og:description" content="Introduction this post is a hub of AWS database notes">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2024-12-02T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2024-12-02T08:06:00-05:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/aws/aws-db/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Leonardo L Sanchez- Dann Brown",
+      "url": "/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dann Brown Adventures Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--archive">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Dann Brown Adventures
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/books/reading">Reading List</a>
+            </li><li class="masthead__menu-item">
+              <a href="/reading">looking</a>
+            </li><li class="masthead__menu-item">
+              <a href="/knowledge">knowledge</a>
+            </li><li class="masthead__menu-item">
+              <a href="/certs">certs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/Languages">Languages</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#aws" itemprop="item"><span itemprop="name">Aws</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">AWS Database</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/1577552827279.jpg" alt="Dann brown" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">Dann brown</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">CO</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/leonardo-sanchez-89590b127/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">linkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://www.youtube.com/channel/UCoROtxDQYfIgjXBDcORK5zw/videos" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-youtube" aria-hidden="true"></i><span class="label">Youtube</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Qleoz12" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kintaroloop@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="kintaroloop@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">AWS Database</h1>
+    
+    <h2 id="introduction">Introduction</h2>
+<p>this post is a hub of AWS database notes</p>
+
+<p>into AWS services there ares several database services, some of them are:</p>
+<ul>
+  <li>Aurora</li>
+  <li>RDS</li>
+  <li>DynamoDB</li>
+  <li>Redshift</li>
+  <li>ElastiCache</li>
+  <li>Neptune</li>
+</ul>
+
+<h3 id="amazon-aurora">Amazon Aurora</h3>
+<p><strong>Description:</strong> Amazon Aurora is a MySQL and PostgreSQL-compatible relational database built for the cloud, offering performance and availability similar to commercial databases at a fraction of the cost.</p>
+
+<h3 id="key-features">Key Features:</h3>
+
+<p>High performance and availability
+Automatic failover and backup
+Isolation and security
+Push-button scaling
+Advanced monitoring
+Backtrack to restore data at any point in time
+Example Use: Amazon Aurora is suitable for high-performance applications that require scalability and reliability. For instance, a social media platform can use Aurora to handle large volumes of user data and interactions with minimal latency.</p>
+
+<h3 id="amazon-rds-relational-database-service">Amazon RDS (Relational Database Service)</h3>
+<p><strong>Description:</strong> Amazon RDS is a managed relational database service that supports multiple database engines, including MySQL, PostgreSQL, MariaDB, Oracle, and SQL Server. It automates tasks such as provisioning, patching, backup, recovery, and scaling.</p>
+
+<h3 id="key-features-1">Key Features:</h3>
+
+<p>Automated provisioning and OS patching
+Continuous backups and Point in Time Restore
+Monitoring dashboards
+Read replicas for improved read performance
+Multi-AZ setup for disaster recovery
+Vertical and horizontal scaling
+Storage backed by EBS
+Example Use: Amazon RDS is ideal for applications that require a managed relational database with high availability and automated maintenance. For example, an e-commerce website can use Amazon RDS to store customer data, orders, and product information, ensuring data integrity and availability.</p>
+
+<h3 id="amazon-dynamodb">Amazon DynamoDB</h3>
+<p><strong>Description:</strong> Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability. It is designed for applications that require consistent, single-digit millisecond latency at any scale.</p>
+
+<h3 id="key-features-2">Key Features:</h3>
+
+<p>Fully managed and serverless
+Single-digit millisecond response times
+Built-in security, backup, and restore
+Multi-region, multi-active replication
+On-demand and provisioned capacity modes
+Example Use: Amazon DynamoDB is ideal for applications with high throughput and low latency requirements, such as real-time bidding platforms, gaming leaderboards, and IoT data storage.</p>
+
+<h3 id="amazon-redshift">Amazon Redshift</h3>
+<p><strong>Description:</strong> Amazon Redshift is a fully managed data warehouse service that makes it simple and cost-effective to analyze all your data using standard SQL and existing business intelligence tools.</p>
+
+<h3 id="key-features-3">Key Features:</h3>
+
+<p>High performance and scalability
+Columnar storage and data compression
+Massively parallel processing (MPP)
+Automated backups and snapshots
+Integration with AWS services and third-party tools
+Example Use: Amazon Redshift is perfect for data warehousing and analytics workloads. For example, a marketing analytics company can use Redshift to aggregate and analyze large datasets from various sources to generate insights and reports.</p>
+
+<h3 id="amazon-elasticache">Amazon ElastiCache</h3>
+<p><strong>Description:</strong> Amazon ElastiCache is a fully managed in-memory data store and cache service that supports Redis and Memcached. It is designed to improve the performance of web applications by retrieving data from high throughput and low latency in-memory data stores.</p>
+
+<h3 id="key-features-4">Key Features:</h3>
+
+<p>Fully managed Redis and Memcached
+Multi-AZ with automatic failover
+Read replicas for read scalability
+Data durability with AOF persistence (Redis)
+Backup and restore capabilities
+Example Use: Amazon ElastiCache is ideal for caching frequently accessed data to reduce latency and improve application performance. For instance, an online gaming platform can use ElastiCache to store session data and leaderboards, ensuring quick access for players.</p>
+
+<h3 id="amazon-neptune">Amazon Neptune</h3>
+<p><strong>Description:</strong> Amazon Neptune is a fully managed graph database service that supports both property graph and RDF graph models. It is designed for applications that need to navigate and query highly connected datasets.</p>
+
+<h3 id="key-features-5">Key Features:</h3>
+
+<p>Fully managed and highly available
+Support for Apache TinkerPop Gremlin and RDF/SPARQL
+ACID transactions with immediate consistency
+Multi-AZ deployment with automatic failover
+Integration with AWS services
+Example Use: Amazon Neptune is suitable for applications that require complex relationship queries, such as social networking, recommendation engines, and fraud detection. For example, a social media platform can use Neptune to model and query user connections and interactions.</p>
+
+<h2 id="references">References</h2>
+<ul>
+  <li>https://media.datacumulus.com/aws-dva/AWS%20Certified%20Developer%20Slides%20v37.pdf</li>
+  <li>https://www.udemy.com/course/aws-certified-developer-associate-dva-c01/?couponCode=NEWYEARCAREER</li>
+  <li>https://www.stephanemaarek.com/</li>
+  <li>https://docs.aws.amazon.com/</li>
+</ul>
+
+    
+      <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      // Here is an example,
+      // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
+      this.page.url = "https://qleoz12.github.io//aws/aws-db/";
+      this.page.identifier = "/aws/aws-db/";
+    };
+
+    // You should be able to get the following lines of code from your Disqus admin.
+    // https://disqus.com/admin/universalcode
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//qleoz12githubio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+    
+  </div>
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 Leonardo L Sanchez- Dann Brown. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

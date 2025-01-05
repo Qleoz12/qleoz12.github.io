@@ -9,30 +9,36 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Dann Brown Adventures - Page 5</title>
-<meta name="description" content="An amazing website.">
+<!-- begin _includes/seo.html --><title>AWS EventBridge - Dann Brown Adventures</title>
+<meta name="description" content="Introduction This post is a hub of AWS EventBridge notes.">
 
 
   <meta name="author" content="Dann brown">
   
+  <meta property="article:author" content="Dann brown">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Dann Brown Adventures">
-<meta property="og:title" content="Dann Brown Adventures">
-<meta property="og:url" content="/page5/">
+<meta property="og:title" content="AWS EventBridge">
+<meta property="og:url" content="/aws/aws-eventBridge/">
 
 
-  <meta property="og:description" content="An amazing website.">
-
-
-
+  <meta property="og:description" content="Introduction This post is a hub of AWS EventBridge notes.">
 
 
 
 
 
+
+
+  <meta property="article:published_time" content="2025-01-05T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2025-01-05T08:06:00-05:00">
 
 
 
@@ -41,13 +47,9 @@
   
 
 
-<link rel="canonical" href="/page5/">
+<link rel="canonical" href="/aws/aws-eventBridge/">
 
 
-  <link rel="prev" href="/page4/">
-
-
-  <link rel="next" href="/page6/">
 
 
 <script type="application/ld+json">
@@ -96,7 +98,7 @@
 
   </head>
 
-  <body class="layout--home">
+  <body class="layout--archive">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -150,6 +152,41 @@
     <div class="initial-content">
       
 
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#aws" itemprop="item"><span itemprop="name">Aws</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">AWS EventBridge</li>
+      
+    
+  </ol>
+</nav>
 
   
 
@@ -289,332 +326,74 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title"></h1>
+      <h1 id="page-title" class="page__title">AWS EventBridge</h1>
     
-    
+    <h2 id="introduction">Introduction</h2>
+<p>This post is a hub of AWS EventBridge notes.</p>
 
-<h3 class="archive__subtitle">Recent posts</h3>
+<p>AWS EventBridge is a serverless event bus service that makes it easy to connect applications using data from your own applications, integrated Software-as-a-Service (SaaS) applications, and AWS services.</p>
 
+<h3 id="key-features">Key Features:</h3>
 
+<ul>
+  <li><strong>Event-driven architecture:</strong> Simplifies the process of building event-driven applications.</li>
+  <li><strong>Serverless:</strong> Automatically scales and handles infrastructure management.</li>
+  <li><strong>Integrated with AWS services:</strong> Easily connects with other AWS services like Lambda, SQS, SNS, and more.</li>
+  <li><strong>Custom event buses:</strong> Create custom event buses for your applications.</li>
+  <li><strong>Schema registry:</strong> Automatically discovers and stores event schemas.</li>
+</ul>
 
+<h3 id="example-use">Example Use:</h3>
+<h4 id="microservices-synchronization">Microservices Synchronization</h4>
+<p>Case: Update the status of orders across different microservices.</p>
 
-<div class="entries-list">
-  
-    
+<p>Event: An order changes to “Shipped” in the inventory system.</p>
 
+<p>Action: EventBridge distributes the event to logistics and billing services to initiate shipping and generate the invoice.</p>
 
+<p>sample event</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"app.orders"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"detail-type"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Order Shipped"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shipped"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
 
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/java/spring/cloud/grafana-overview/Monitoring-spring-apps-with-prometheus-grafana-and-grafana-loki/" rel="permalink">Monitoring Spring apps with prometheus grafana and grafana-loki bonus-micrometer
-</a>
-      
-    </h2>
-    
+<p><img src="/assets/images/aws/DALL·E 2025-01-05 18.04.16 - sample Amazon EventBridge. The diagram highlights three components in red_ Inventory .webp" alt="alt" /></p>
 
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-08-25T00:00:00-05:00">August 25, 2022</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Concept
-</p>
-  </article>
-</div>
-
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/java/jdk9/java-Reactive-streams-and-the-Flow-API/" rel="permalink">Reactive streams and the Flow API
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-07-31T00:00:00-05:00">July 31, 2022</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
+<h2 id="references">References</h2>
+<ul>
+  <li>https://media.datacumulus.com/aws-dva/AWS%20Certified%20Developer%20Slides%20v37.pdf</li>
+  <li>https://www.udemy.com/course/aws-certified-developer-associate-dva-c01/?couponCode=NEWYEARCAREER</li>
+  <li>https://www.stephanemaarek.com/</li>
+  <li>https://docs.aws.amazon.com/</li>
+</ul>
 
     
-      
-      
+      <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      // Here is an example,
+      // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
+      this.page.url = "https://qleoz12.github.io//aws/aws-eventBridge/";
+      this.page.identifier = "/aws/aws-eventBridge/";
+    };
 
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Concept
-</p>
-  </article>
-</div>
-
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/java/jdk8/java-Lambdas_Streams_Practica/" rel="permalink">Lambdas y Streams Practica
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-06-28T00:00:00-05:00">June 28, 2022</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Concept
-</p>
-  </article>
-</div>
-
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/java/jdk8/java-Splititerator/" rel="permalink">Java SplitIterator
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-06-25T00:00:00-05:00">June 25, 2022</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Concept
-SplitIterator is a new interface, it comes with JDK 8, the main functionalities of split iterator is
-</p>
-  </article>
-</div>
-
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/java/spring/cloud/sleuth/java-spring-cloud-sleuth/" rel="permalink">Java Spring-cloud sleuth
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-06-22T00:00:00-05:00">June 22, 2022</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This is an post for ilustrate how works Spring Cloud Sleuth for track request throught several microservices
-</p>
-  </article>
-</div>
-
-  
-</div>
-
-
-<nav class="pagination">
-  
-  <ul>
-    
-    
-      
-        <li><a href="/page4/">Previous</a></li>
-      
-    
-
-    
-    
-      <li><a href="/">1</a></li>
-    
-
-    
-    
-      
-      
-      <li><a href="#" class="disabled">&hellip;</a></li>
-    
-
-    
-    
-    
-
-    
-      
-        
-        
-        
-        <li><a href="/page3/">3</a></li>
-      
-    
-      
-        
-        
-        
-        <li><a href="/page4/">4</a></li>
-      
-    
-      
-        <li><a href="/page5/" class="disabled current">5</a></li>
-      
-    
-      
-        
-        
-        
-        <li><a href="/page6/">6</a></li>
-      
-    
-      
-        
-        
-        
-        <li><a href="/page7/">7</a></li>
-      
-    
-
-    
-    
-
-    
-      <li><a href="/page8/">8</a></li>
-    
-
-    
-    
-      <li><a href="/page6/">Next</a></li>
-    
-  </ul>
-</nav>
-
-
-
+    // You should be able to get the following lines of code from your Disqus admin.
+    // https://disqus.com/admin/universalcode
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//qleoz12githubio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
     
   </div>
   
