@@ -10,7 +10,11 @@ share: linkedin
 ---
 
 ## Introduction
-adfasdfdasf
+ this post is a hub of AWS notes, including services like EventBridge, X-Ray, and others.
 
-
-asdfasdf
+## Services Covered
+- [AWS EventBridge]({{ site.baseurl }}/aws-eventbridge/)
+- [AWS Database]({{ site.baseurl }}/aws-db/)
+- [AWS Lambda]({{ site.baseurl }}/aws-lambda/)
+- - [AWS X-Ray]({{ site.baseurl }}/aws-53/)
+  
