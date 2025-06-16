@@ -5,8 +5,8 @@
     <description>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</description>
     <link></link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 24 May 2025 23:54:12 -0500</pubDate>
-    <lastBuildDate>Sat, 24 May 2025 23:54:12 -0500</lastBuildDate>
+    <pubDate>Sun, 15 Jun 2025 20:26:46 -0500</pubDate>
+    <lastBuildDate>Sun, 15 Jun 2025 20:26:46 -0500</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
     
     
@@ -21,28 +21,53 @@
 
         
         <item>
-            <title>AWS X-Ray</title>
+            <title>Hacker Rank SQL Fundamentals</title>
             <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;This post is a hub of AWS X-Ray” notes.&lt;/p&gt;
+&lt;p&gt;Recently, I started practicing SQL again on HackerRank and discovered some interesting challenges that can help sharpen your SQL skills. Although I use SQL regularly at work, my post-degree classes at Langara College prompted me to revisit the fundamentals. I decided to share some of the challenges I found both engaging and useful for skill development.&lt;/p&gt;
 
-&lt;p&gt;AWS X-Ray” is&lt;/p&gt;
+&lt;p&gt;Returning to SQL on HackerRank brought a sense of nostalgia and reminded me of the underlying patterns and logic that make SQL so powerful for data manipulation and analysis.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/aws/DALL·E 2025-01-05 18.04.16 - sample Amazon EventBridge. The diagram highlights three components in red_ Inventory .webp&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;While exploring trends in frontend and backend technologies, I became interested in creating slides programmatically using &lt;a href=&quot;https://sli.dev/&quot;&gt;Sli.dev&lt;/a&gt;. Unlike Slides.com, Sli.dev lets me centralize all my slides on my GitHub profile and share them in a more organized way.&lt;/p&gt;
+
+&lt;p&gt;The following slides present my review of the SQL challenges I found on HackerRank. I hope you find them helpful as well.&lt;/p&gt;
+
+&lt;h2 id=&quot;slides&quot;&gt;Slides&lt;/h2&gt;
+&lt;p&gt;use arrow to navigate through the slides&lt;/p&gt;
+&lt;iframe src=&quot;https://qleoz12.github.io/Slides-dev/sql-hackerrank/&quot; width=&quot;100%&quot; height=&quot;600px&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&quot;my-experience&quot;&gt;My Experience&lt;/h2&gt;
+&lt;p&gt;I worked through these examples using MySQL 5.7. Although I usually use cloud databases like GCP or AWS, running a local Docker image with MySQL 5.7 gave me a renewed appreciation for the database and allowed me to experiment freely.&lt;/p&gt;
+
+&lt;h2 id=&quot;key-tricks-to-solve-challenges&quot;&gt;Key Tricks to Solve Challenges&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Split responsibilities:&lt;/strong&gt; Break complex queries into smaller parts to make them easier to understand and debug.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Reusable queries:&lt;/strong&gt; Write queries that can be reused, such as subqueries in the final query, to make your logic more flexible.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;CTE limitations:&lt;/strong&gt; MySQL 5.7 does not support Common Table Expressions (CTEs), so use subqueries or temporary tables to achieve similar results.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Don’t get frustrated:&lt;/strong&gt; If you don’t pass a test on the platform, remember there are many ways to solve a problem. Focus on learning and enjoy the process.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Finally, while certifications are nice to have—almost like collecting candies—the real value lies in the learning journey itself. Certifications can help during interviews, but the true reward is in how you apply this knowledge to help your team and solve real-world problems.&lt;/p&gt;
+
+&lt;h2 id=&quot;certifications&quot;&gt;certifications&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.hackerrank.com/profile/Qleoz12&quot;&gt;https://www.hackerrank.com/profile/Qleoz12&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;sql-challenges&quot;&gt;SQL Challenges&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;https://www.hackerrank.com/domains/sql?filters%5Bstatus%5D%5B%5D=unsolved&amp;amp;filters%5Bskills%5D%5B%5D=SQL%20%28Intermediate%29&amp;amp;badge_type=sql&lt;/li&gt;
+  &lt;li&gt;https://www.hackerrank.com/domains/sql?filters%5Bstatus%5D%5B%5D=unsolved&amp;amp;filters%5Bskills%5D%5B%5D=SQL%20%28Advanced%29&amp;amp;badge_type=sql&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;https://media.datacumulus.com/aws-dva/AWS%20Certified%20Developer%20Slides%20v37.pdf&lt;/li&gt;
-  &lt;li&gt;https://www.udemy.com/course/aws-certified-developer-associate-dva-c01/?couponCode=NEWYEARCAREER&lt;/li&gt;
-  &lt;li&gt;https://www.stephanemaarek.com/&lt;/li&gt;
-  &lt;li&gt;https://docs.aws.amazon.com/&lt;/li&gt;
+  &lt;li&gt;https://www.hackerrank.com/&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-            <pubDate>Mon, 06 Jan 2025 00:00:00 -0500</pubDate>
-            <link>/aws/test/</link>
-            <guid isPermaLink="true">/aws/test/</guid>
+            <pubDate>Sat, 07 Jun 2025 00:00:00 -0500</pubDate>
+            <link>/sql/fundamentals-sql-hackerRank/</link>
+            <guid isPermaLink="true">/sql/fundamentals-sql-hackerRank/</guid>
             
             
-            <category>AWS</category>
+            <category>SQL</category>
             
         </item>
         
@@ -87,35 +112,24 @@
         <item>
             <title>AWS posts hub</title>
             <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;adfasdfdasf&lt;/p&gt;
+&lt;p&gt;this post is a hub of AWS notes, including services like EventBridge, X-Ray, and others.&lt;/p&gt;
 
-&lt;p&gt;asdfasdf&lt;/p&gt;
+&lt;h2 id=&quot;services-covered&quot;&gt;Services Covered&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/aws-eventbridge/&quot;&gt;AWS EventBridge&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/aws-db/&quot;&gt;AWS Database&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/aws-lambda/&quot;&gt;AWS Lambda&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;/aws-53/&quot;&gt;AWS X-Ray&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
 </description>
             <pubDate>Sun, 05 Jan 2025 00:00:00 -0500</pubDate>
             <link>/aws/aws-post-hub/</link>
             <guid isPermaLink="true">/aws/aws-post-hub/</guid>
-            
-            
-            <category>AWS</category>
-            
-        </item>
-        
-    
-        
-
-        
-
-        
-        <item>
-            <title>AWS posts hub</title>
-            <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;adfasdfdasf&lt;/p&gt;
-
-&lt;p&gt;asdfasdf&lt;/p&gt;
-</description>
-            <pubDate>Sun, 05 Jan 2025 00:00:00 -0500</pubDate>
-            <link>/aws/aws-post-hub-copy/</link>
-            <guid isPermaLink="true">/aws/aws-post-hub-copy/</guid>
             
             
             <category>AWS</category>
@@ -585,6 +599,95 @@ https://help.one.com/hc/en-us/articles/115005588149-What-is-a-registry-registrar
             
             
             <category>Web/hosting</category>
+            
+        </item>
+        
+    
+        
+
+        
+
+        
+        <item>
+            <title>Create Your Own CDN and Try Your Web Components Online</title>
+            <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;In this post, I’ll show you how to create your own Content Delivery Network (CDN) and use it to test your web components online.&lt;/p&gt;
+
+&lt;p&gt;By leveraging GitHub Pages, you can set up a personal CDN to host your web components. In my case, I created a GitHub repository that serves as my personal CDN, which you can find https://github.com/Qleoz12/static Let’s call it “static” for now.&lt;/p&gt;
+
+&lt;h3 id=&quot;setting-up-your-cdn&quot;&gt;Setting Up Your CDN&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Create a GitHub Repository: Start by creating a simple repository on GitHub.&lt;/li&gt;
+  &lt;li&gt;Enable GitHub Pages: Go to the repository settings and enable GitHub Pages to make your content available online.&lt;/li&gt;
+  &lt;li&gt;Upload Your Content: Add your web components, images, or any other content you want to share online to the repository.&lt;/li&gt;
+  &lt;li&gt;Test Your Links: Make sure the links to your content are working correctly and are accessible online.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;creating-web-components&quot;&gt;Creating Web Components&lt;/h3&gt;
+&lt;p&gt;Once your CDN is set up, you can create and upload web components. For example, I created a web component for a business card to display my contact information online. You can check out the code&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-link&quot;&gt;https://github.com/Qleoz12/svelte-web-components-template/blob/master/packages/lib/src/profile-card.wc.svelte
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;not forget give star a my repo ⭐&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Upload the web component to your CDN and test the link to ensure it is available online. In my case, the library is deployed at this&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-link&quot;&gt; https://github.com/Qleoz12/static/tree/main/js/webcomponents
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;try-the-webcomponent-online&quot;&gt;Try the webcomponent online&lt;/h3&gt;
+&lt;p&gt;I used my personal portfolio and a React project to test the integration of webcomponent and it works perfectly.&lt;/p&gt;
+
+&lt;p&gt;just add the library reference and use the webcomponent in your project.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://qleoz12.github.io/static/js/webcomponents/profile-card.wc.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;profile-card&amp;gt;&amp;lt;/profile-card&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;check the pages:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Jekyll Blog Integration: Check out how I integrated a web component into my blog on the About - Dann Brown Adventures -&amp;gt;about  &lt;a href=&quot;https://qleoz12.github.io/about/&quot;&gt;qleoz12.github.io&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;React App Integration: See the integration with a React app using Vite + React + TS &lt;a href=&quot;https://qleoz12.github.io/React-Encriptador-Oracle-Alura-GIT-ACTIONS/&quot;&gt;qleoz12.github.io&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;explanation&quot;&gt;Explanation:&lt;/h2&gt;
+
+&lt;p&gt;Below is an image illustrating the flow of creating your own CDN and trying out your web components online. It also helps you understand how the repositories are connected.&lt;/p&gt;
+
+&lt;p&gt;also check my youtube video&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Qleoz12/qleoz12.github.io/master/assets/images/graphs/cdn-webcomponents.drawio.svg&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;responsive-wrap&quot;&gt;
+&lt;!-- this is the embed code provided by Google --&gt;
+  &lt;iframe src=&quot;https://docs.google.com/presentation/d/1s9LRgqhLGTXlE031cYilrd1BiI42YKtDNUoJFdbhftw/embed?start=false&amp;amp;loop=false&amp;amp;delayms=3000&quot; frameborder=&quot;0&quot; width=&quot;960&quot; height=&quot;569&quot; allowfullscreen=&quot;true&quot; mozallowfullscreen=&quot;true&quot; webkitallowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;
+&lt;!-- Google embed ends --&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion:&lt;/h2&gt;
+&lt;p&gt;with this discover now your able to expose trought internet new creation, update content for your clients, and share your work with the world. working one time&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://expertinsights.com/insights/the-top-content-delivery-networks-cdns&quot;&gt;The Top 10 Content Delivery Networks (CDNs)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dev.to/jcubic/how-to-get-a-literally-free-cdn-2gc1&quot;&gt;How to get a literally free CDN - DEV Community&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;[webfx.com](https://www.webfx.com/blog/web-design/free-public-cdns/)&quot;&gt;6 Free CDN Services (to Speed Up Your Website in 2024)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=cISYzA36-ZY&quot;&gt;American Psycho -Business Card Scene (youtube.com)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+            <pubDate>Mon, 12 Aug 2024 00:00:00 -0500</pubDate>
+            <link>/web/webcomponents/cdn-gittpages-webcomponents/</link>
+            <guid isPermaLink="true">/web/webcomponents/cdn-gittpages-webcomponents/</guid>
+            
+            
+            <category>Web/webcomponents</category>
             
         </item>
         
