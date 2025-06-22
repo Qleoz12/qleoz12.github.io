@@ -1,1 +1,1 @@
-Sitemap: /https://qleoz12.github.io/sitemap.xml
+Sitemap: /sitemap.xml
