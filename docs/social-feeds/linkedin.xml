@@ -5,8 +5,8 @@
     <description>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</description>
     <link></link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 15 Jun 2025 20:26:46 -0500</pubDate>
-    <lastBuildDate>Sun, 15 Jun 2025 20:26:46 -0500</lastBuildDate>
+    <pubDate>Sat, 21 Jun 2025 21:41:43 -0500</pubDate>
+    <lastBuildDate>Sat, 21 Jun 2025 21:41:43 -0500</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
     
     
@@ -53,13 +53,13 @@
 
 &lt;h2 id=&quot;sql-challenges&quot;&gt;SQL Challenges&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;https://www.hackerrank.com/domains/sql?filters%5Bstatus%5D%5B%5D=unsolved&amp;amp;filters%5Bskills%5D%5B%5D=SQL%20%28Intermediate%29&amp;amp;badge_type=sql&lt;/li&gt;
-  &lt;li&gt;https://www.hackerrank.com/domains/sql?filters%5Bstatus%5D%5B%5D=unsolved&amp;amp;filters%5Bskills%5D%5B%5D=SQL%20%28Advanced%29&amp;amp;badge_type=sql&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.hackerrank.com/domains/sql?filters%5Bstatus%5D%5B%5D=unsolved&amp;amp;filters%5Bskills%5D%5B%5D=SQL%20%28Intermediate%29&amp;amp;badge_type=sql&quot;&gt;HackerRank SQL Intermediate Challenges&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.hackerrank.com/domains/sql?filters%5Bstatus%5D%5B%5D=unsolved&amp;amp;filters%5Bskills%5D%5B%5D=SQL%20%28Advanced%29&amp;amp;badge_type=sql&quot;&gt;HackerRank SQL Advanced Challenges&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;https://www.hackerrank.com/&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.hackerrank.com/&quot;&gt;https://www.hackerrank.com/&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
             <pubDate>Sat, 07 Jun 2025 00:00:00 -0500</pubDate>
@@ -84,7 +84,7 @@
 
 &lt;p&gt;AWS X-Ray” is&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/aws/DALL·E 2025-01-05 18.04.16 - sample Amazon EventBridge. The diagram highlights three components in red_ Inventory .webp&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://qleoz12.github.io//assets/images/aws/DALL·E 2025-01-05 18.04.16 - sample Amazon EventBridge. The diagram highlights three components in red_ Inventory.webp&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 &lt;ul&gt;
@@ -116,12 +116,12 @@
 
 &lt;h2 id=&quot;services-covered&quot;&gt;Services Covered&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/aws-eventbridge/&quot;&gt;AWS EventBridge&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/aws-db/&quot;&gt;AWS Database&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/aws-lambda/&quot;&gt;AWS Lambda&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://qleoz12.github.io//aws-eventbridge/&quot;&gt;AWS EventBridge&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://qleoz12.github.io//aws-db/&quot;&gt;AWS Database&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://qleoz12.github.io//aws-lambda/&quot;&gt;AWS Lambda&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;/aws-53/&quot;&gt;AWS X-Ray&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://qleoz12.github.io//aws-53/&quot;&gt;AWS X-Ray&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -178,7 +178,7 @@
 &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/aws/DALL·E 2025-01-05 18.04.16 - sample Amazon EventBridge. The diagram highlights three components in red_ Inventory .webp&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://qleoz12.github.io//assets/images/aws/DALL·E 2025-01-05 18.04.16 - sample Amazon EventBridge. The diagram highlights three components in red_ Inventory .webp&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 &lt;ul&gt;

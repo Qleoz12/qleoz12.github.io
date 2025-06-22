@@ -36,8 +36,8 @@ Finally, while certifications are nice to haveâ€”almost like collecting candiesâ
 [https://www.hackerrank.com/profile/Qleoz12](https://www.hackerrank.com/profile/Qleoz12).
 
 ## SQL Challenges
-- https://www.hackerrank.com/domains/sql?filters%5Bstatus%5D%5B%5D=unsolved&filters%5Bskills%5D%5B%5D=SQL%20%28Intermediate%29&badge_type=sql
-- https://www.hackerrank.com/domains/sql?filters%5Bstatus%5D%5B%5D=unsolved&filters%5Bskills%5D%5B%5D=SQL%20%28Advanced%29&badge_type=sql
+- [HackerRank SQL Intermediate Challenges](https://www.hackerrank.com/domains/sql?filters%5Bstatus%5D%5B%5D=unsolved&filters%5Bskills%5D%5B%5D=SQL%20%28Intermediate%29&badge_type=sql)
+- [HackerRank SQL Advanced Challenges](https://www.hackerrank.com/domains/sql?filters%5Bstatus%5D%5B%5D=unsolved&filters%5Bskills%5D%5B%5D=SQL%20%28Advanced%29&badge_type=sql)
 
 ## References
-- https://www.hackerrank.com/
+- [https://www.hackerrank.com/](https://www.hackerrank.com/).
