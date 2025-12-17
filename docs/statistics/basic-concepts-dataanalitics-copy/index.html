@@ -9,30 +9,36 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>About - Dann Brown Adventures</title>
-<meta name="description" content="An amazing website.">
+<!-- begin _includes/seo.html --><title>Fundamentals, data analitics linear regression and bias - Dann Brown Adventures</title>
+<meta name="description" content="🧩 What Is X and What Is X_b? 🔹 X">
 
 
   <meta name="author" content="Dann brown">
   
+  <meta property="article:author" content="Dann brown">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Dann Brown Adventures">
-<meta property="og:title" content="About">
-<meta property="og:url" content="/about/">
+<meta property="og:title" content="Fundamentals, data analitics linear regression and bias">
+<meta property="og:url" content="/statistics/basic-concepts-dataanalitics-copy/">
 
 
-  <meta property="og:description" content="An amazing website.">
-
-
-
+  <meta property="og:description" content="🧩 What Is X and What Is X_b? 🔹 X">
 
 
 
 
 
+
+
+  <meta property="article:published_time" content="2025-10-08T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2025-10-08T09:06:00-05:00">
 
 
 
@@ -41,7 +47,7 @@
   
 
 
-<link rel="canonical" href="/about/">
+<link rel="canonical" href="/statistics/basic-concepts-dataanalitics-copy/">
 
 
 
@@ -166,7 +172,17 @@
         <span class="sep">/</span>
       
       
-        <li class="current">About</li>
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#statistics" itemprop="item"><span itemprop="name">Statistics</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Fundamentals, data analitics linear regression and bias</li>
       
     
   </ol>
@@ -310,67 +326,193 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">About</h1>
+      <h1 id="page-title" class="page__title">Fundamentals, data analitics linear regression and bias</h1>
     
-    <h2 id="about-me">About Me</h2>
+    <p>🧩 What Is X and What Is X_b?
+🔹 X</p>
 
-<h3 id="me">me</h3>
+<p>X is your feature matrix — it contains the input values you want the model to learn from.</p>
 
-<p>This is me, a person who sees life as a constant learning process. Over the years, I’ve taken different roles—student, developer, traveler—but one thing has stayed the same: my curiosity. I believe that every challenge, every new experience, is a chance to grow, and that mindset defines who I am today.</p>
+<p>Example:
+If you have one feature (say, number of pages in a book), X looks like this:</p>
 
-<h3 id="ws-qts">W’s Qts?</h3>
+<p>X = [[100],
+     [200],
+     [300],
+     [400]]</p>
 
-<p>I like to think about my journey in terms of questions—the W’s. Who am I becoming? What do I want to build? Why do I work so hard? Where am I heading? When should I take action? And how will I achieve it? These questions don’t always have clear answers, but they keep me moving forward with purpose.</p>
+<p>It’s a column of data — every row is one training example.</p>
 
-<h3 id="journey-in-tech">Journey in Tech</h3>
+<p>💡 Shape: (m, n)</p>
 
-<p>My path in technology began with curiosity. I started small, exploring how code could solve everyday problems. Over time, those experiments grew into bigger projects and eventually into a career. For me, tech is more than a job—it’s the journey of turning ideas into real solutions and constantly improving through practice.</p>
+<p>m = number of training examples (rows)</p>
 
-<h3 id="tech">TECH</h3>
+<p>n = number of features (columns)</p>
 
-<p>Technology is my passion because it connects creativity with problem-solving. I enjoy building systems, automating processes, and collaborating with others through code. It’s not just about computers; it’s about people, ideas, and possibilities. Tech is the tool that allows me to create and make a meaningful impact in the world.</p>
+<p>So in this case, m = 4, n = 1.</p>
 
-<h3 id="country">COUNTRY</h3>
+<p>🔹 X_b</p>
 
-<p>I am from Colombia, a country known for its culture, resilience, and strong communities. Growing up there taught me to adapt, to work hard, and to always find opportunities even in tough situations. Even though I live abroad now, my country gives me strength and reminds me of the values that shape my story.</p>
+<p>Before using the Normal Equation, we must add a column of 1s to X.</p>
 
-<h3 id="hobby">HOBBY</h3>
+<p>Why?
+Because our formula for linear regression is:</p>
 
-<p>Outside of work and studies, my hobbies are what keep me balanced and creative. I enjoy reading, exploring, and learning new things—sometimes languages, sometimes skills. Hobbies are a way to recharge, but also to see life from different perspectives. They remind me that growth isn’t only professional—it’s also personal.</p>
+<h1 id="𝑦">𝑦</h1>
+<p>𝜃
+0
++
+𝜃
+1
+𝑥
+y=θ
+0
+	​</p>
 
-<h3 id="web-component-card">Web Component Card</h3>
+<p>+θ
+1
+	​</p>
 
-<script type="module" crossorigin="" src="https://qleoz12.github.io/static/js/webcomponents/my-library.min.js"></script>
+<p>x</p>
 
-<profile-card></profile-card>
+<p>That θ₀ (the intercept or bias term) multiplies by 1 every time.
+To make it fit the same matrix format, we add a column of 1s to X.</p>
 
-<h2 id="social">Social</h2>
+<p>X_b = [[1, 100],
+       [1, 200],
+       [1, 300],
+       [1, 400]]</p>
 
-<p><a href="https://stackoverflow.com/users/7258885/qleoz12"><img src="https://stackoverflow.com/users/flair/7258885.png?theme=dark" alt="Stack Overflow Profile" /></a></p>
+<p>Now the first column (all 1s) corresponds to θ₀, and the second column corresponds to θ₁.</p>
 
-<p><a href="https://www.credly.com/users/leonardo-sanchez.ce088033">credly</a> |
-<a href="https://codepen.io/qleoz12">CodePen</a> |
-<a href="https://www.beecrowd.com.br/judge/en/profile/388592">Beecrowd</a> |
-<a href="https://www.codecademy.com/profiles/Qleoz12">Codecademy</a> |
-<a href="https://github.com/Qleoz12">Github</a> |
-<a href="https://leetcode.com/qleoz12/">leetcode</a> |
-<a href="https://www.udemy.com/user/qleoz12/">udemy</a></p>
+<p>💡 Shape of X_b: (m, n+1)</p>
 
-<h2 id="curriculum-vitae">Curriculum Vitae</h2>
+<p>🧠 What Is the Bias Term (θ₀ or intercept_)?</p>
 
-<p>To access my CV in either Spanish or English, please note that you will need a Google account to request permission. Click the appropriate link below to view my CV:
-If you encounter any issues accessing the CV, please ensure you’re logged into your Google account, and don’t hesitate to contact me for assistance.</p>
+<p>The bias term (also called intercept) is the value of y when all features are 0.
+It basically shifts the regression line up or down so it fits the data better.</p>
 
-<h3 id="spanish-cv">Spanish CV</h3>
+<p>Example:</p>
 
-<iframe src="https://drive.google.com/file/d/19o0gQ1FnUOlQeV8OZwOt-JVxson2IpHm/preview" width="100%" height="480"></iframe>
+<p>If your model is</p>
 
-<h3 id="english-cv">English CV</h3>
+<h1 id="𝑦-1">𝑦</h1>
+<p>4
++
+3
+𝑥
+y=4+3x</p>
 
-<iframe src="https://drive.google.com/file/d/19o0gQ1FnUOlQeV8OZwOt-JVxson2IpHm/preview" width="100%" height="480"></iframe>
+<p>then:</p>
 
-<p>If you encounter any issues accessing the CV, please ensure you’re logged into your Google account, and don’t hesitate to contact me for assistance.</p>
+<p>θ₀ (bias) = 4 → this means when x = 0, y starts at 4</p>
 
+<p>θ₁ (weight) = 3 → this means for every 1 increase in x, y goes up by 3</p>
+
+<p>So, in your Scikit-Learn output:</p>
+
+<p>lin_reg.intercept_, lin_reg.coef_</p>
+
+<p>you got:</p>
+
+<p>(array([4.21509616]), array([[2.77011339]]))</p>
+
+<p>That means:</p>
+
+<p>Bias/intercept = 4.215</p>
+
+<p>Slope/weight = 2.770</p>
+
+<p>So your final model is:</p>
+
+<p>𝑦</p>
+<p>=
+4.215
++
+2.770
+𝑥
+y</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>​
+</code></pre></div></div>
+
+<p>=4.215+2.770x
+🔁 And What Does the “T” Mean in X.T?</p>
+
+<p>X.T means the transpose of X.</p>
+
+<p>Transpose means switch rows and columns.</p>
+
+<p>If X looks like this:</p>
+
+<p>1   2   3
+4   5   6</p>
+
+<p>Then X.T looks like this:</p>
+
+<p>1   4
+2   5
+3   6</p>
+
+<p>This is used because in matrix algebra, to multiply correctly, dimensions must align.
+So the Normal Equation uses X.T to flip the matrix for proper multiplication:</p>
+
+<h1 id="𝜃">𝜃</h1>
+<p>(
+𝑋
+𝑇
+𝑋
+)
+−
+1
+𝑋
+𝑇
+𝑦
+θ=(X
+T
+X)
+−1
+X
+T
+y
+🧮 Putting It All Together
+Symbol	Meaning	Example
+X	Feature matrix	Pages in each book
+X_b	Feature matrix with column of 1s	Adds bias term
+y	Target values	Prices of books
+θ₀	Intercept (bias)	Where the line crosses y-axis
+θ₁…θₙ	Weights/slopes	How much each feature affects y
+X.T	Transpose of X	Flips rows ↔ columns for math compatibility
+🧠 Intuitive Summary</p>
+
+<p>👉 The bias term lets your line start at the right height.
+👉 The weights control how steep the line is.
+👉 The Normal Equation finds the best bias and weight combination so the line is as close as possible to all data points.</p>
+
+<p>Would you like me to add a small visual (graph) showing how the bias moves the line up/down and how the slope changes its angle?
+It would make the concept of bias and weights much clearer visually.</p>
+
+    
+      <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      // Here is an example,
+      // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
+      this.page.url = "https://qleoz12.github.io//statistics/basic-concepts-dataanalitics-copy/";
+      this.page.identifier = "/statistics/basic-concepts-dataanalitics-copy/";
+    };
+
+    // You should be able to get the following lines of code from your Disqus admin.
+    // https://disqus.com/admin/universalcode
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//qleoz12githubio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
     
   </div>
   

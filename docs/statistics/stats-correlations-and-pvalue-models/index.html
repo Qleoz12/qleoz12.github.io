@@ -1,0 +1,762 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Statistics Fundamentals: Correlations and P-Value Models - Dann Brown Adventures</title>
+<meta name="description" content="🧠 Introduction">
+
+
+  <meta name="author" content="Dann brown">
+  
+  <meta property="article:author" content="Dann brown">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dann Brown Adventures">
+<meta property="og:title" content="Statistics Fundamentals: Correlations and P-Value Models">
+<meta property="og:url" content="/statistics/stats-correlations-and-pvalue-models/">
+
+
+  <meta property="og:description" content="🧠 Introduction">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2025-07-24T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2025-07-24T09:06:00-05:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/statistics/stats-correlations-and-pvalue-models/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Leonardo L Sanchez- Dann Brown",
+      "url": "/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dann Brown Adventures Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--archive">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Dann Brown Adventures
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/books/reading">Reading List</a>
+            </li><li class="masthead__menu-item">
+              <a href="/reading">looking</a>
+            </li><li class="masthead__menu-item">
+              <a href="/knowledge">knowledge</a>
+            </li><li class="masthead__menu-item">
+              <a href="/certs">certs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/Languages">Languages</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#statistics" itemprop="item"><span itemprop="name">Statistics</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Statistics Fundamentals: Correlations and P-Value Models</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/1577552827279.jpg" alt="Dann brown" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">Dann brown</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">CO</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/leonardo-sanchez-89590b127/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">linkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://www.youtube.com/channel/UCoROtxDQYfIgjXBDcORK5zw/videos" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-youtube" aria-hidden="true"></i><span class="label">Youtube</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Qleoz12" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kintaroloop@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="kintaroloop@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">Statistics Fundamentals: Correlations and P-Value Models</h1>
+    
+    <h2 id="-introduction">🧠 Introduction</h2>
+
+<p>Understanding <strong>correlation</strong> is one of the first steps toward mastering data analysis.<br />
+Correlation tells us <em>how strongly two variables move together</em> — whether one increases as the other increases, decreases, or if there’s no relationship at all.</p>
+
+<p>There are several ways to measure relationships depending on the type of data (continuous or categorical) and distribution assumptions.<br />
+Below are some of the most common methods and how they’re used in Python.</p>
+
+<hr />
+
+<h2 id="correlation">correlation</h2>
+
+<p>correletion is a statistical measurements that describe the behavior of two variables and how they are related to each other.
+but is good reember two flow before continues or take care each time you are working with correlation</p>
+
+<h3 id="flaws-of-correlation">flaws of correlation</h3>
+
+<p>1st Flaw: The correlation coefficient does not have units (e.g., “cubic feet per hour”).</p>
+
+<p>2nd Flaw: “Correlation does not imply causation”.
+lurke variable, like classical example ice-cream sales and shark attacks and violence and churchs, always the lurke variables is the behind the scenes
+making the correlatuion looks like there is a causation but in reality there is not.</p>
+
+<figure class="half">
+    <a href="/assets/images/stats/lurking.png"><img src="/assets/images/stats/lurking.png" /></a>
+    <figcaption class="feature__item--center">Langara, 2025, Michael,LO</figcaption>
+</figure>
+
+<p>Correlation can reveal patterns, but it’s important not to check only on the correlation 
+coefficient itself. Always look at the shape of the relationship in a graph the 
+visual pattern often tells you more than the number alone. In this example, 
+I’ll use scatterplots to illustrate the different forms of correlation, 
+showing how variables can move together in positive, negative, or even no clear direction at all.</p>
+<figure class="half items-center">
+     <a href="/assets/images/stats/correlation.gif"><img src="/assets/images/stats/correlation.gif" /> </a>
+    <a href="/assets/images/stats/CorrelationForms.png"><img src="/assets/images/stats/CorrelationForms.png" /> </a>
+    <figcaption class="feature__item--center">Langara, 2025, Michael,LO</figcaption>
+</figure>
+
+<h2 id="-1-spearman-correlation">📊 1. Spearman Correlation</h2>
+
+<p>Used to measure <strong>monotonic relationships</strong> (when variables move in the same or opposite direction but not necessarily linearly).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">spearmanr</span>
+<span class="n">corr</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">spearmanr</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>When to use:</strong></p>
+
+<ul>
+  <li>Data are <strong>ordinal</strong> or <strong>not normally distributed</strong>.</li>
+  <li>You only care about the <em>ranking</em> relationship.</li>
+</ul>
+
+<p>Unlike <strong>Pearson correlation</strong>, which works with the <strong>actual numeric values</strong>,<br />
+<strong>Spearman correlation</strong> first <strong>converts all data into ranks</strong> before measuring the relationship.</p>
+
+<p>When your variable is not continuous but <strong>ordinal</strong> (like income bins 1–8 or satisfaction levels 1–5),<br />
+Spearman still works great because those categories <strong>already behave like ranks</strong>.</p>
+
+<p>For example:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Income Bin</th>
+      <th>Label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Very Low</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Low</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Medium</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Very High</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>These bins have <strong>natural order</strong>, but not equal spacing — meaning the jump from bin 1 → 2 isn’t the same as 4 → 5.<br />
+That’s exactly where Spearman correlation shines.</p>
+
+<p>It measures the <strong>monotonic trend</strong> (do higher bins tend to correspond to higher or lower outcomes?)<br />
+without assuming a straight-line (linear) relationship like Pearson does.</p>
+
+<hr />
+
+<p>🧠 <strong>In short:</strong></p>
+<blockquote>
+  <p>Spearman converts all values into ranks (or uses your ordinal bins directly)<br />
+and then measures how those ranks move together.<br />
+Perfect for data that is <em>ordered but not perfectly linear</em>.</p>
+</blockquote>
+
+<h2 id="-2-pearson-correlation">📈 2. Pearson Correlation</h2>
+
+<p>Measures the <strong>strength of a linear relationship</strong> between two continuous variables.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">pearsonr</span>
+<span class="n">corr</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">pearsonr</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>When to use:</strong></p>
+
+<ul>
+  <li>Both variables are <strong>continuous</strong> and <strong>approximately normal</strong>.</li>
+  <li>The relationship looks roughly linear.</li>
+</ul>
+
+<hr />
+
+<p>let’s check a simple example applied to dataanalitics</p>
+
+<h3 id="-spearman-on-brfss-income-vs-mental-health">🧪 Spearman on BRFSS: Income vs. Mental-Health</h3>
+
+<p>We’ll estimate a <strong>correlation</strong> between income(in bins categorical 1-8) and mental-health scores using Spearman’s ρ.<br />
+This is ideal when income is <strong>ordinal</strong> (e.g., 1–8 bins) and the relationship may be <strong>non-linear</strong>.</p>
+
+<p>Use the raw BRFSS rows (each respondent) with:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">income_bin</code> (ordinal 1–8, higher = higher income)</li>
+  <li><code class="language-plaintext highlighter-rouge">mh_score</code> (e.g., “mental health composite” or number of “bad MH days” higher = worst mental health, for this example we use MH_Score = (1–13 d) + (14+ d) )</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="c1"># df  -&gt; your MH table with columns: ["STATE_CODE","State","0 days poor MH","1-13 days poor MH","14+ days poor MH","MH_Score"]
+# summary_df -&gt; your income table with columns including ["_STATE","State","mean_bin"]
+</span>
+<span class="c1"># keep only the columns we need and normalize names
+</span><span class="n">mh</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s">"STATE_CODE"</span><span class="p">,</span><span class="s">"State"</span><span class="p">,</span><span class="s">"MH_Score"</span><span class="p">]].</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">inc</span> <span class="o">=</span> <span class="n">summary_df</span><span class="p">[[</span><span class="s">"_STATE"</span><span class="p">,</span><span class="s">"State"</span><span class="p">,</span><span class="s">"mean_bin"</span><span class="p">]].</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">"_STATE"</span><span class="p">:</span><span class="s">"STATE_CODE"</span><span class="p">}).</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># ==== 1) Merge ====
+</span><span class="n">both</span> <span class="o">=</span> <span class="n">mh</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">inc</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s">"STATE_CODE"</span><span class="p">,</span><span class="s">"State"</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s">"inner"</span><span class="p">)</span>
+
+<span class="c1"># (optional) keep only 50 states (drop DC &amp; territories)
+# both = both[~both["STATE_CODE"].isin([11,66,72,78])].copy()
+</span>
+<span class="c1"># ==== 2) Correlations ====
+</span><span class="n">pear</span> <span class="o">=</span> <span class="n">both</span><span class="p">[[</span><span class="s">"mean_bin"</span><span class="p">,</span><span class="s">"MH_Score"</span><span class="p">]].</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">"pearson"</span><span class="p">).</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">spear</span> <span class="o">=</span> <span class="n">both</span><span class="p">[[</span><span class="s">"mean_bin"</span><span class="p">,</span><span class="s">"MH_Score"</span><span class="p">]].</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">"spearman"</span><span class="p">).</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Pearson r = </span><span class="si">{</span><span class="n">pear</span><span class="p">:.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s">  |  Spearman ρ = </span><span class="si">{</span><span class="n">spear</span><span class="p">:.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s">  (x: richer → higher, y: worse → higher)"</span><span class="p">)</span>
+
+<span class="c1"># ==== 3) Scatter (quadrants + trendline) ====
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">both</span><span class="p">[</span><span class="s">"mean_bin"</span><span class="p">].</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">both</span><span class="p">[</span><span class="s">"MH_Score"</span><span class="p">].</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">xm</span><span class="p">,</span> <span class="n">ym</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">median</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="n">median</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
+
+<span class="c1"># OLS line (visual)
+</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="nb">min</span><span class="p">()</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">x</span><span class="p">.</span><span class="nb">max</span><span class="p">()</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">m</span><span class="o">*</span><span class="n">xx</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"black"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+
+<span class="c1"># quadrant medians
+</span><span class="n">plt</span><span class="p">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">xm</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s">"--"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"gray"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">ym</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s">"--"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"gray"</span><span class="p">)</span>
+
+<span class="c1"># label a few extremes
+</span><span class="n">lab</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">both</span><span class="p">.</span><span class="n">nsmallest</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="s">"MH_Score"</span><span class="p">),</span> <span class="n">both</span><span class="p">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="s">"MH_Score"</span><span class="p">),</span>
+                 <span class="n">both</span><span class="p">.</span><span class="n">nsmallest</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s">"mean_bin"</span><span class="p">),</span> <span class="n">both</span><span class="p">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s">"mean_bin"</span><span class="p">)]).</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="s">"State"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">lab</span><span class="p">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s">"mean_bin"</span><span class="p">]</span><span class="o">+</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">r</span><span class="p">[</span><span class="s">"MH_Score"</span><span class="p">]</span><span class="o">+</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">r</span><span class="p">[</span><span class="s">"State"</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"Income bin (1 = poorest … 7 = richest)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"MH_Score = (1–13 d) + (14+ d) − (0 d)   (higher = worse)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s">"Income vs Mental Health by State</span><span class="se">\n</span><span class="s">Pearson r=</span><span class="si">{</span><span class="n">pear</span><span class="p">:.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s">, Spearman ρ=</span><span class="si">{</span><span class="n">spear</span><span class="p">:.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># ==== 4) Quick comparison table (top/bottom by MH) with income column ====
+</span><span class="n">view</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">both</span><span class="p">.</span><span class="n">nsmallest</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="s">"MH_Score"</span><span class="p">).</span><span class="n">assign</span><span class="p">(</span><span class="n">Group</span><span class="o">=</span><span class="s">"Best 7 (MH)"</span><span class="p">),</span>
+                  <span class="n">both</span><span class="p">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="s">"MH_Score"</span><span class="p">).</span><span class="n">assign</span><span class="p">(</span><span class="n">Group</span><span class="o">=</span><span class="s">"Worst 7 (MH)"</span><span class="p">)],</span>
+                 <span class="n">ignore_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> \
+        <span class="p">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s">"Group"</span><span class="p">,</span><span class="s">"MH_Score"</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">view</span><span class="p">[[</span><span class="s">"Group"</span><span class="p">,</span><span class="s">"State"</span><span class="p">,</span><span class="s">"MH_Score"</span><span class="p">,</span><span class="s">"mean_bin"</span><span class="p">]].</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">float_format</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">v</span><span class="p">:.</span><span class="mi">1</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><img src="/assets/images/graphs/income_vs_mental.png" alt="alt" /></p>
+
+<h2 id="slides">slides</h2>
+<p>use arrow to navigate through the slides</p>
+
+<iframe src="https://docs.google.com/presentation/d/1nwldTIx4Gx3J4zrXMocEq4DDSi1gnAAk/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<!-- ## 🔢 3. Chi-Squared Test (Independence)
+
+Tests **independence between two categorical variables** using a contingency table.
+
+```python
+from scipy.stats import chi2_contingency
+chi2, p, dof, expected = chi2_contingency(table)  # 'table' is a 2D frequency table (DataFrame or array)
+```
+
+**When to use:**
+- You have **categorical data** (e.g., Gender × Preference).
+- You want to test whether categories are related.
+
+---
+
+## ⚖️ 4. Mann–Whitney U Test
+
+A **non-parametric alternative** to the independent t-test, comparing the **distributions/medians** of two groups.
+
+```python
+from scipy.stats import mannwhitneyu
+stat, p = mannwhitneyu(class1, class2, alternative="two-sided")
+```
+
+**When to use:**
+- Data are **not normally distributed** or contain outliers.
+- Comparing two **independent groups**.
+
+---
+
+## 📏 5. Two-Sample t-Test (Independent)
+
+Compares the **means** of two independent groups to see if they’re statistically different.
+
+```python
+from scipy import stats
+t_stat, p_val = stats.ttest_ind(df['A'], df['B'], equal_var=False)  # Welch’s by default when equal_var=False
+```
+
+**When to use:**
+- Data are **continuous** and reasonably **normal**.
+- Groups are **independent**.
+
+---
+
+## 📊 6. ANOVA (Analysis of Variance)
+
+Compares **three or more groups** to test if at least one mean differs.
+
+```python
+from scipy.stats import f_oneway
+F_statistic, p_value = f_oneway(class1, class2, class3)
+```
+
+**When to use:**
+- You have **≥ 3 groups** and want an overall test.
+
+> ANOVA only tells you *that* a difference exists, not *where*. Use **post‑hoc** tests (e.g., **Tukey HSD**) to locate group differences.
+
+---
+
+## 🧩 7. Linear Regression (OLS)
+
+Models a continuous outcome using one or more predictors.
+
+```python
+import statsmodels.api as sm
+
+X = sm.add_constant(X)  # adds intercept
+model = sm.OLS(y, X).fit()
+print(model.summary())
+```
+
+**When to use:**
+- Predicting a **continuous** outcome (e.g., price).
+- Estimating effect sizes and confidence intervals.
+
+---
+
+## 🧮 8. Logistic Regression (Classification)
+
+Predicts **categorical outcomes**, often binary (yes/no, 1/0).
+
+```python
+from sklearn.linear_model import LogisticRegression
+
+clf = LogisticRegression(max_iter=1000)
+clf.fit(X_train, y_train)
+proba = clf.predict_proba(X_test)[:, 1]
+preds = clf.predict(X_test)
+```
+
+**When to use:**
+- Target variable is **categorical**.
+- You want **class probabilities** and **decisions**.
+
+---
+
+## 🧭 Quick Decision Guide
+
+- **Correlation (Pearson)** → linear, continuous, normal-ish.
+- **Correlation (Spearman)** → monotonic, ordinal, non-normal or with outliers.
+- **t-test / Mann–Whitney** → two groups (parametric / nonparametric).
+- **ANOVA** → 3+ groups (means); add **Tukey** for pairwise.
+- **Chi-square** → categorical × categorical independence.
+- **Linear regression** → continuous target.
+- **Logistic regression** → categorical target.
+
+---
+
+## 🎓 Certifications & Learning Paths
+
+- *Coursera*: “Inferential Statistics” (Duke), “Statistical Inference” (JHU).
+- *Khan Academy*: Probability & Statistics.
+- *DataCamp*: Statistical Thinking in Python.
+
+---
+
+## 🚀 Practice Challenges
+
+1. Simulate two variables with a known correlation and verify Pearson vs Spearman.
+2. Build a 2×2 contingency table and run a chi-square test; interpret the **expected** vs **observed** counts.
+3. Compare two groups with both **t-test** and **Mann–Whitney** on skewed data; explain why p-values differ.
+4. Run a one-way **ANOVA** across 3+ groups; follow with **Tukey HSD**.
+5. Fit **OLS** and **Logistic Regression** models; report coefficients and interpret effect sizes.
+
+--- -->
+
+<h2 id="-references">📚 References</h2>
+
+<ul>
+  <li>underrated wikipedia https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient</li>
+  <li>SciPy <code class="language-plaintext highlighter-rouge">stats</code> documentation: https://docs.scipy.org/doc/scipy/reference/stats.html</li>
+  <li>Statsmodels documentation: https://www.statsmodels.org/stable/index.html</li>
+  <li>Scikit‑learn user guide: https://scikit-learn.org/stable/user_guide.html</li>
+  <li>“Practical Statistics for Data Scientists” (O’Reilly)</li>
+  <li>https://byjus.com/maths/correlation/</li>
+  <li>https://docs.google.com/presentation/d/1h5lD-rMfw0fAxGkx-6gWLJTQS0QFMfSTvz-WCvXSHNY/edit?slide=id.g39d1689f503_0_1#slide=id.g39d1689f503_0_1</li>
+  <li>https://colab.research.google.com/drive/1AGhtvp7aM4nrY3y4Hq6wUnM19PbZkvz2?usp=sharing#scrollTo=irFtdbHNh0VP</li>
+  <li>https://www.kaggle.com/datasets/ariaxiong/behavioral-risk-factor-surveillance-system-2022</li>
+  <li>https://www.cdc.gov/brfss/annual_data/annual_2022.html</li>
+  <li>https://www.cdc.gov/pcd/issues/2022/pdf/22_0001.pdf</li>
+</ul>
+
+    
+      <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      // Here is an example,
+      // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
+      this.page.url = "https://qleoz12.github.io//statistics/stats-correlations-and-pvalue-models/";
+      this.page.identifier = "/statistics/stats-correlations-and-pvalue-models/";
+    };
+
+    // You should be able to get the following lines of code from your Disqus admin.
+    // https://disqus.com/admin/universalcode
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//qleoz12githubio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+    
+  </div>
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 Leonardo L Sanchez- Dann Brown. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

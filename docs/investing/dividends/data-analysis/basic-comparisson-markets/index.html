@@ -1,0 +1,663 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Dividend Yield vs Drawdown: a simple approach to compare stocks - Dann Brown Adventures</title>
+<meta name="description" content="Motivation">
+
+
+  <meta name="author" content="Dann brown">
+  
+  <meta property="article:author" content="Dann brown">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dann Brown Adventures">
+<meta property="og:title" content="Dividend Yield vs Drawdown: a simple approach to compare stocks">
+<meta property="og:url" content="/investing/dividends/data-analysis/basic-comparisson-markets/">
+
+
+  <meta property="og:description" content="Motivation">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2025-10-08T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2025-10-08T09:06:00-05:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/investing/dividends/data-analysis/basic-comparisson-markets/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Leonardo L Sanchez- Dann Brown",
+      "url": "/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dann Brown Adventures Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--archive">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Dann Brown Adventures
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/books/reading">Reading List</a>
+            </li><li class="masthead__menu-item">
+              <a href="/reading">looking</a>
+            </li><li class="masthead__menu-item">
+              <a href="/knowledge">knowledge</a>
+            </li><li class="masthead__menu-item">
+              <a href="/certs">certs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/Languages">Languages</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#investing" itemprop="item"><span itemprop="name">Investing</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#dividends" itemprop="item"><span itemprop="name">Dividends</span></a>
+          <meta itemprop="position" content="3" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#data-analysis" itemprop="item"><span itemprop="name">Data analysis</span></a>
+          <meta itemprop="position" content="4" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Dividend Yield vs Drawdown: a simple approach to compare stocks</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/1577552827279.jpg" alt="Dann brown" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">Dann brown</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">CO</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/leonardo-sanchez-89590b127/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">linkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://www.youtube.com/channel/UCoROtxDQYfIgjXBDcORK5zw/videos" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-youtube" aria-hidden="true"></i><span class="label">Youtube</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Qleoz12" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kintaroloop@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="kintaroloop@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">Dividend Yield vs Drawdown: a simple approach to compare stocks</h1>
+    
+    <h2 id="motivation">Motivation</h2>
+
+<p>The aim of this analysis is to answer a very simple question:</p>
+
+<p>How would you compare high-dividend stocks without ignoring the real risk I’m taking?</p>
+
+<p>Many times, we focus only on dividend yield, while we ignore something equally important:</p>
+
+<p>📉 how deep a stock can fall before recovering.</p>
+
+<p>Instead of investing in complex models or forecasts, I deliberately chose a <strong>practical</strong> and reproducible approach:</p>
+<ul>
+  <li>Real dividends</li>
+  <li>Historical drawdowns</li>
+  <li>Exchange-level comparison</li>
+</ul>
+
+<hr />
+
+<h2 id="dataset-collection-and-preparation">Dataset collection and preparation</h2>
+
+<p>The first step was to <strong>get and unify datasets by market</strong>:</p>
+
+<ul>
+  <li><strong>NYSE</strong></li>
+  <li><strong>LSE</strong></li>
+  <li><strong>TSX</strong></li>
+</ul>
+
+<p>For each exchange, I worked with two types of files:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">*_features.csv</code>: general metrics (price, drawdown, volatility, etc.)</li>
+  <li><code class="language-plaintext highlighter-rouge">*_div_events.csv</code>: dividend events (payments, frequency, amounts)</li>
+</ul>
+
+<p>The workflow was intentionally simple:</p>
+
+<ol>
+  <li>Read the CSV files</li>
+  <li>Clean inconsistent columns</li>
+  <li>Unify schemas</li>
+  <li>Build a final dataframe comparable across markets</li>
+</ol>
+
+<blockquote>
+  <p>🎯 Goal: to have a <strong>homogeneous dataset</strong>, not perfect, but good enough for comparative analysis.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="a-deliberately-simple-approach">A deliberately simple approach</h2>
+
+<p>I focused on just <strong>two key variables</strong>:</p>
+
+<h3 id="-dividend-yield">📈 Dividend Yield</h3>
+<ul>
+  <li>How attractive the passive income is</li>
+  <li>Based on real trailing-twelve-month dividends</li>
+</ul>
+
+<h3 id="-max-drawdown">📉 Max Drawdown</h3>
+<ul>
+  <li>The worst historical decline</li>
+  <li>How psychologically painful the investment can be</li>
+</ul>
+
+<p>This helped me cut unnecessary noise and focus on one core question:</p>
+
+<blockquote>
+  <p><strong>Am I being fairly compensated for the risk I’m taking?</strong></p>
+</blockquote>
+
+<hr />
+
+<h2 id="data-cuts-and-clear-rules">Data cuts and clear rules</h2>
+
+<p>To avoid bias:</p>
+
+<ul>
+  <li>I selected the <strong>top dividend yield stocks per exchange</strong></li>
+  <li>Excluded securities with extreme drawdowns</li>
+  <li>Normalized comparisons across markets</li>
+</ul>
+
+<p>I’m not trying to find “the best stock”, but rather <strong>patterns</strong>:</p>
+
+<ul>
+  <li>Exchanges with better risk-to-income balance</li>
+  <li>Risk concentration zones</li>
+  <li>Outliers that look attractive but hide severe drawdowns</li>
+</ul>
+
+<hr />
+
+<h2 id="visualization">Visualization</h2>
+
+<p>This is where the analysis becomes much clearer.</p>
+
+<h3 id="max-drawdown-distribution-by-exchange">Max drawdown distribution by exchange</h3>
+
+<!-- IMAGE 1 -->
+<p><img src="../assets/images/max_drawdown_by_exchange.png" alt="Max Drawdown Distribution" /></p>
+
+<p>This visualization helped me understand:</p>
+
+<ul>
+  <li>Which markets concentrate more risk</li>
+  <li>Where drawdown tails are longer</li>
+  <li>Where high yields usually come with deep losses</li>
+</ul>
+
+<hr />
+
+<h3 id="final-comparison-by-exchange">Final comparison by exchange</h3>
+
+<!-- IMAGE 2 -->
+<p><img src="../assets/images/yield_vs_drawdown.png" alt="Dividend Yield vs Drawdown" /></p>
+
+<p>This second chart reinforces an important idea:</p>
+
+<ul>
+  <li>Not all high yields are equal</li>
+  <li>Some exchanges penalize risk more than others</li>
+  <li>Market context matters as much as the dividend itself</li>
+</ul>
+
+<hr />
+
+<h2 id="final-insights">Final insights</h2>
+
+<figure class="half items-center">
+     <a href="/assets/images/graphs/zscores.png"><img src="/assets/images/graphs/zscores.png" /> </a>
+    <a href="/assets/images/graphs/ddmaxdrawdown.png"><img src="/assets/images/graphs/ddmaxdrawdown.png" /> </a>
+    <figcaption class="feature__item--center">IGG, 2025</figcaption>
+</figure>
+
+<figure class="half items-center">
+     <a href="/assets/images/graphs/zscores.png"><img src="/assets/images/graphs/zscores.png" /> </a>
+    <a href="/assets/images/graphs/violines.png"><img src="/assets/images/graphs/violines.png" /> </a>
+    <figcaption class="feature__item--center">IGG, 2025</figcaption>
+</figure>
+
+<p>Comparative Analysis: NYSE vs TSX and LSE Through Dividends and Drawdowns</p>
+
+<p>In this analysis, I made a clear methodological decision:
+to focus only on the best loss scenarios, meaning I selected stocks with a maximum drawdown greater than or equal to −20% within the Top 100 stocks per exchange.</p>
+
+<p>The objective of this filter was to identify assets with strong performance while avoiding severe capital losses, and under this constraint, compare the NYSE (United States), TSX (Canada), and LSE (United Kingdom) in terms of risk and income generation.</p>
+
+<h3 id="1-average-dividend-yield-and-the-gaussian-distribution">1. Average Dividend Yield and the Gaussian Distribution</h3>
+
+<p>By constructing a Gaussian (normal) distribution for the Dividend Yield (TTM), several patterns emerge:</p>
+
+<p>NYSE shows the highest average dividend yield compared to TSX and LSE.</p>
+
+<p>Even after filtering for stocks with lower drawdowns, the U.S. market maintains a superior mean.</p>
+
+<p>The dispersion (σ) remains relatively controlled, suggesting that this is not driven by a few outliers, but rather by a consistent distribution.</p>
+
+<p>This is an important insight:
+even under conservative capital-preservation criteria, NYSE remains competitive in income generation.</p>
+
+<h3 id="2-drawdown-analysis-lower-capital-loss-overall">2. Drawdown Analysis: Lower Capital Loss Overall</h3>
+
+<p>When analyzing the Maximum Drawdown distribution, not only from my personal experience as a Latin American investor with some exposure to the U.S. market, but also from the data itself, the results are clear:</p>
+
+<p>NYSE exhibits lower average drawdowns compared to TSX and LSE (after applying the exchange-level filter).</p>
+
+<p>The density concentrates around less negative values, indicating better capital protection during market downturns.</p>
+
+<p>TSX and LSE show longer tails toward deeper losses, reflecting higher exposure to adverse scenarios.</p>
+
+<p>This reinforces the idea that NYSE not only pays higher dividends on average, but also penalizes capital less during periods of market stress.</p>
+
+<h3 id="3-practical-implications-as-an-investor">3. Practical Implications as an Investor</h3>
+
+<p>From a realistic investment perspective:</p>
+
+<p>NYSE appears more attractive for short- and medium-term strategies, where the balance between dividend income and drawdown control is critical.</p>
+
+<p>Market liquidity, depth, and the diversity of financial instruments clearly work in favor of the U.S. market.</p>
+
+<p>However, the analysis also confirms that concentration in a single market is not optimal.</p>
+
+<p>This is where strategic diversification becomes essential.</p>
+
+<h3 id="4-the-role-of-more-stable-markets-like-canada-tsx">4. The Role of More Stable Markets Like Canada (TSX)</h3>
+
+<p>Although TSX delivers lower average returns, it offers other valuable characteristics:</p>
+
+<p>Greater structural stability</p>
+
+<p>Exposure to defensive sectors (financials, energy, infrastructure)</p>
+
+<p>Lower relative volatility during certain market cycles</p>
+
+<p>For this reason, allocating a portion of long-term savings to more stable markets such as Canada makes sense, not as a growth engine, but as a risk anchor within the portfolio.</p>
+
+<p>Conclusion</p>
+
+<p>This analysis confirms an important takeaway:</p>
+
+<p>NYSE combines higher returns with lower capital losses even under conservative filters, making it well-suited for short- and medium-term strategies.</p>
+
+<p>TSX, while less profitable, plays a key role as a defensive diversifier.</p>
+
+<p>Rather than choosing a single “better” exchange, the real value lies in allocating capital based on the role each market plays within the portfolio.</p>
+
+<h2 id="next-steps">Next Steps</h2>
+<p>In future posts, I plan to share one of the strategies that has allowed me to sustain myself as an international student in Canada, that has worked well in terms of both dividends and drawdowns. Through this strategy, I am able to cover at least one-third of my expenses without breaking the savings and investment routines I established back in my home country.</p>
+
+<hr />
+
+<h2 id="reference-notebook">Reference notebook</h2>
+
+<p>For now, I’m not embedding the notebook directly into my blog, please check my notebook you can reproduce all data an graphs shown here.</p>
+
+<p>👉 <strong>Full analysis notebook</strong><br />
+<a href="https://github.com/Qleoz12/pythonKnowledge/blob/main/dataAnalitics/tsx.ipynb">View notebook on GitHub</a></p>
+
+<hr />
+
+<h2 id="references">References</h2>
+<ul>
+  <li>https://www.amazon.com/gp/product/B0BB5DDB1Q</li>
+  <li>https://github.com/Quantreo/2nd-edition-BOOK-AMAZON-Python-for-Finance-and-Algorithmic-Trading?tab=readme-ov-file</li>
+  <li>https://www.sea-stat.com/wp-content/uploads/2021/05/Yves-Hilpisch-Python-for-Finance_-Mastering-Data-Driven-Finance-Book-OReilly-2018.pdf</li>
+</ul>
+
+    
+      <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      // Here is an example,
+      // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
+      this.page.url = "https://qleoz12.github.io//investing/dividends/data-analysis/basic-comparisson-markets/";
+      this.page.identifier = "/investing/dividends/data-analysis/basic-comparisson-markets/";
+    };
+
+    // You should be able to get the following lines of code from your Disqus admin.
+    // https://disqus.com/admin/universalcode
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//qleoz12githubio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+    
+  </div>
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 Leonardo L Sanchez- Dann Brown. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

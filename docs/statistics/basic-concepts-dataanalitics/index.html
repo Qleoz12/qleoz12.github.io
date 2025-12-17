@@ -9,30 +9,36 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>About - Dann Brown Adventures</title>
-<meta name="description" content="An amazing website.">
+<!-- begin _includes/seo.html --><title>Fundamentals machine learning and data analitics - Dann Brown Adventures</title>
+<meta name="description" content="Introduction this post will make a summary of several concepts present in the book of data analitics and machine learning">
 
 
   <meta name="author" content="Dann brown">
   
+  <meta property="article:author" content="Dann brown">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Dann Brown Adventures">
-<meta property="og:title" content="About">
-<meta property="og:url" content="/about/">
+<meta property="og:title" content="Fundamentals machine learning and data analitics">
+<meta property="og:url" content="/statistics/basic-concepts-dataanalitics/">
 
 
-  <meta property="og:description" content="An amazing website.">
-
-
-
+  <meta property="og:description" content="Introduction this post will make a summary of several concepts present in the book of data analitics and machine learning">
 
 
 
 
 
+
+
+  <meta property="article:published_time" content="2025-09-12T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2025-09-12T09:06:00-05:00">
 
 
 
@@ -41,7 +47,7 @@
   
 
 
-<link rel="canonical" href="/about/">
+<link rel="canonical" href="/statistics/basic-concepts-dataanalitics/">
 
 
 
@@ -166,7 +172,17 @@
         <span class="sep">/</span>
       
       
-        <li class="current">About</li>
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#statistics" itemprop="item"><span itemprop="name">Statistics</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Fundamentals machine learning and data analitics</li>
       
     
   </ol>
@@ -310,67 +326,88 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">About</h1>
+      <h1 id="page-title" class="page__title">Fundamentals machine learning and data analitics</h1>
     
-    <h2 id="about-me">About Me</h2>
+    <h2 id="introduction">Introduction</h2>
+<p>this post will make a summary of several concepts present in the book of data analitics and machine learning</p>
 
-<h3 id="me">me</h3>
+<h3 id="asociation-rule-learning">asociation rule learning</h3>
+<h3 id="novelty-detection">novelty detection</h3>
+<p>novelly detection is the process of identifying new or unknown data points that differ significantly from the majority of the data. It is often used in fraud detection, network security, and quality control.</p>
 
-<p>This is me, a person who sees life as a constant learning process. Over the years, I’ve taken different roles—student, developer, traveler—but one thing has stayed the same: my curiosity. I believe that every challenge, every new experience, is a chance to grow, and that mindset defines who I am today.</p>
+<p>sample from the book</p>
 
-<h3 id="ws-qts">W’s Qts?</h3>
+<p>“data set from dogs mostly overall big dogs ans a few small dogs then come a chihuahua pictures,
+ the algorithm will identify the chihuahua as a novelty because it is significantly different from the majority of the data (big dogs).”</p>
 
-<p>I like to think about my journey in terms of questions—the W’s. Who am I becoming? What do I want to build? Why do I work so hard? Where am I heading? When should I take action? And how will I achieve it? These questions don’t always have clear answers, but they keep me moving forward with purpose.</p>
+<h3 id="anomaly-detection">anomaly detection</h3>
 
-<h3 id="journey-in-tech">Journey in Tech</h3>
+<h3 id="sampling-noise">sampling noise</h3>
 
-<p>My path in technology began with curiosity. I started small, exploring how code could solve everyday problems. Over time, those experiments grew into bigger projects and eventually into a career. For me, tech is more than a job—it’s the journey of turning ideas into real solutions and constantly improving through practice.</p>
+<h3 id="sampling-bias">sampling bias</h3>
+<p>Examples of Sampling Bias
+Perhaps the most famous example of sampling bias happened during the
+US presidential election in 1936,</p>
+<h3 id="clustering">clustering</h3>
+<h3 id="classification">classification</h3>
+<h3 id="regression">regression</h3>
 
-<h3 id="tech">TECH</h3>
+<p>Feature selection (selecting the most useful features to train on among
+existing features)
+• Feature extraction (combining existing features to produce a more
+useful one⁠—as we saw earlier, dimensionality reduction algorithms
+can help)
+• Creating new features by gathering new data</p>
 
-<p>Technology is my passion because it connects creativity with problem-solving. I enjoy building systems, automating processes, and collaborating with others through code. It’s not just about computers; it’s about people, ideas, and possibilities. Tech is the tool that allows me to create and make a meaningful impact in the world.</p>
+<p>Say you are visiting a foreign country and the taxi driver rips you off. You
+might be tempted to say that all taxi drivers in that country are thieves.
+Overgeneralizing is something that we humans do all too often, and
+unfortunately machines can fall into the same trap if we are not careful. In
+machine learning this is called overfitting</p>
 
-<h3 id="country">COUNTRY</h3>
+<p>### 
+transferring knowledge from one task to another is called transfer
+learning, and it’s one of the most important techniques in machine
+learning today, especially when using deep neural networks (i.e., neural
+networks composed of many layers of neurons). We will discuss this
+in detail in Part II</p>
 
-<p>I am from Colombia, a country known for its culture, resilience, and strong communities. Growing up there taught me to adapt, to work hard, and to always find opportunities even in tough situations. Even though I live abroad now, my country gives me strength and reminds me of the values that shape my story.</p>
+<p>Some photo-hosting services, such as Google Photos, are good examples of this.
+Once you upload all your family photos to the service, it automatically
+recognizes that the same person A shows up in photos 1, 5, and 11, while
+another person B shows up in photos 2, 5, and 7. This is the unsupervised part
+of the algorithm (clustering). Now all the system needs is for you to tell it who
+these people are. Just add one label per person⁠3 and it is able to name
+everyone in every photo, which is useful for searching photos.</p>
 
-<h3 id="hobby">HOBBY</h3>
+<h2 id="references">References</h2>
+<ul>
+  <li><a href="https://www.baeldung.com/java-mutation-testing-with-pitest">https://www.baeldung.com/java-mutation-testing-with-pitest</a></li>
+  <li>https://www.reddit.com/r/PHP/comments/1n1mi6t/mutation_testing_with_infection/</li>
+</ul>
 
-<p>Outside of work and studies, my hobbies are what keep me balanced and creative. I enjoy reading, exploring, and learning new things—sometimes languages, sometimes skills. Hobbies are a way to recharge, but also to see life from different perspectives. They remind me that growth isn’t only professional—it’s also personal.</p>
+    
+      <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      // Here is an example,
+      // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
+      this.page.url = "https://qleoz12.github.io//statistics/basic-concepts-dataanalitics/";
+      this.page.identifier = "/statistics/basic-concepts-dataanalitics/";
+    };
 
-<h3 id="web-component-card">Web Component Card</h3>
-
-<script type="module" crossorigin="" src="https://qleoz12.github.io/static/js/webcomponents/my-library.min.js"></script>
-
-<profile-card></profile-card>
-
-<h2 id="social">Social</h2>
-
-<p><a href="https://stackoverflow.com/users/7258885/qleoz12"><img src="https://stackoverflow.com/users/flair/7258885.png?theme=dark" alt="Stack Overflow Profile" /></a></p>
-
-<p><a href="https://www.credly.com/users/leonardo-sanchez.ce088033">credly</a> |
-<a href="https://codepen.io/qleoz12">CodePen</a> |
-<a href="https://www.beecrowd.com.br/judge/en/profile/388592">Beecrowd</a> |
-<a href="https://www.codecademy.com/profiles/Qleoz12">Codecademy</a> |
-<a href="https://github.com/Qleoz12">Github</a> |
-<a href="https://leetcode.com/qleoz12/">leetcode</a> |
-<a href="https://www.udemy.com/user/qleoz12/">udemy</a></p>
-
-<h2 id="curriculum-vitae">Curriculum Vitae</h2>
-
-<p>To access my CV in either Spanish or English, please note that you will need a Google account to request permission. Click the appropriate link below to view my CV:
-If you encounter any issues accessing the CV, please ensure you’re logged into your Google account, and don’t hesitate to contact me for assistance.</p>
-
-<h3 id="spanish-cv">Spanish CV</h3>
-
-<iframe src="https://drive.google.com/file/d/19o0gQ1FnUOlQeV8OZwOt-JVxson2IpHm/preview" width="100%" height="480"></iframe>
-
-<h3 id="english-cv">English CV</h3>
-
-<iframe src="https://drive.google.com/file/d/19o0gQ1FnUOlQeV8OZwOt-JVxson2IpHm/preview" width="100%" height="480"></iframe>
-
-<p>If you encounter any issues accessing the CV, please ensure you’re logged into your Google account, and don’t hesitate to contact me for assistance.</p>
-
+    // You should be able to get the following lines of code from your Disqus admin.
+    // https://disqus.com/admin/universalcode
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//qleoz12githubio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
     
   </div>
   

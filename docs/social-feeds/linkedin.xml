@@ -5,8 +5,8 @@
     <description>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</description>
     <link></link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 21 Jun 2025 21:49:13 -0500</pubDate>
-    <lastBuildDate>Sat, 21 Jun 2025 21:49:13 -0500</lastBuildDate>
+    <pubDate>Tue, 16 Dec 2025 20:35:48 -0500</pubDate>
+    <lastBuildDate>Tue, 16 Dec 2025 20:35:48 -0500</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
     
     
@@ -14,6 +14,991 @@
 
     
 
+    
+        
+
+        
+
+        
+        <item>
+            <title>Dividend Yield vs Drawdown: a simple approach to compare stocks</title>
+            <description>&lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;/h2&gt;
+
+&lt;p&gt;The aim of this analysis is to answer a very simple question:&lt;/p&gt;
+
+&lt;p&gt;How would you compare high-dividend stocks without ignoring the real risk I’m taking?&lt;/p&gt;
+
+&lt;p&gt;Many times, we focus only on dividend yield, while we ignore something equally important:&lt;/p&gt;
+
+&lt;p&gt;📉 how deep a stock can fall before recovering.&lt;/p&gt;
+
+&lt;p&gt;Instead of investing in complex models or forecasts, I deliberately chose a &lt;strong&gt;practical&lt;/strong&gt; and reproducible approach:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Real dividends&lt;/li&gt;
+  &lt;li&gt;Historical drawdowns&lt;/li&gt;
+  &lt;li&gt;Exchange-level comparison&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;dataset-collection-and-preparation&quot;&gt;Dataset collection and preparation&lt;/h2&gt;
+
+&lt;p&gt;The first step was to &lt;strong&gt;get and unify datasets by market&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;NYSE&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;LSE&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;TSX&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For each exchange, I worked with two types of files:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*_features.csv&lt;/code&gt;: general metrics (price, drawdown, volatility, etc.)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*_div_events.csv&lt;/code&gt;: dividend events (payments, frequency, amounts)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The workflow was intentionally simple:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Read the CSV files&lt;/li&gt;
+  &lt;li&gt;Clean inconsistent columns&lt;/li&gt;
+  &lt;li&gt;Unify schemas&lt;/li&gt;
+  &lt;li&gt;Build a final dataframe comparable across markets&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;🎯 Goal: to have a &lt;strong&gt;homogeneous dataset&lt;/strong&gt;, not perfect, but good enough for comparative analysis.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;a-deliberately-simple-approach&quot;&gt;A deliberately simple approach&lt;/h2&gt;
+
+&lt;p&gt;I focused on just &lt;strong&gt;two key variables&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;h3 id=&quot;-dividend-yield&quot;&gt;📈 Dividend Yield&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;How attractive the passive income is&lt;/li&gt;
+  &lt;li&gt;Based on real trailing-twelve-month dividends&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;-max-drawdown&quot;&gt;📉 Max Drawdown&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;The worst historical decline&lt;/li&gt;
+  &lt;li&gt;How psychologically painful the investment can be&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This helped me cut unnecessary noise and focus on one core question:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Am I being fairly compensated for the risk I’m taking?&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;data-cuts-and-clear-rules&quot;&gt;Data cuts and clear rules&lt;/h2&gt;
+
+&lt;p&gt;To avoid bias:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;I selected the &lt;strong&gt;top dividend yield stocks per exchange&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Excluded securities with extreme drawdowns&lt;/li&gt;
+  &lt;li&gt;Normalized comparisons across markets&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I’m not trying to find “the best stock”, but rather &lt;strong&gt;patterns&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Exchanges with better risk-to-income balance&lt;/li&gt;
+  &lt;li&gt;Risk concentration zones&lt;/li&gt;
+  &lt;li&gt;Outliers that look attractive but hide severe drawdowns&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;visualization&quot;&gt;Visualization&lt;/h2&gt;
+
+&lt;p&gt;This is where the analysis becomes much clearer.&lt;/p&gt;
+
+&lt;h3 id=&quot;max-drawdown-distribution-by-exchange&quot;&gt;Max drawdown distribution by exchange&lt;/h3&gt;
+
+&lt;!-- IMAGE 1 --&gt;
+&lt;p&gt;&lt;img src=&quot;../assets/images/max_drawdown_by_exchange.png&quot; alt=&quot;Max Drawdown Distribution&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This visualization helped me understand:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Which markets concentrate more risk&lt;/li&gt;
+  &lt;li&gt;Where drawdown tails are longer&lt;/li&gt;
+  &lt;li&gt;Where high yields usually come with deep losses&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;final-comparison-by-exchange&quot;&gt;Final comparison by exchange&lt;/h3&gt;
+
+&lt;!-- IMAGE 2 --&gt;
+&lt;p&gt;&lt;img src=&quot;../assets/images/yield_vs_drawdown.png&quot; alt=&quot;Dividend Yield vs Drawdown&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This second chart reinforces an important idea:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Not all high yields are equal&lt;/li&gt;
+  &lt;li&gt;Some exchanges penalize risk more than others&lt;/li&gt;
+  &lt;li&gt;Market context matters as much as the dividend itself&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;final-insights&quot;&gt;Final insights&lt;/h2&gt;
+
+&lt;figure class=&quot;half items-center&quot;&gt;
+     &lt;a href=&quot;/assets/images/graphs/zscores.png&quot;&gt;&lt;img src=&quot;/assets/images/graphs/zscores.png&quot; /&gt; &lt;/a&gt;
+    &lt;a href=&quot;/assets/images/graphs/ddmaxdrawdown.png&quot;&gt;&lt;img src=&quot;/assets/images/graphs/ddmaxdrawdown.png&quot; /&gt; &lt;/a&gt;
+    &lt;figcaption class=&quot;feature__item--center&quot;&gt;IGG, 2025&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure class=&quot;half items-center&quot;&gt;
+     &lt;a href=&quot;/assets/images/graphs/zscores.png&quot;&gt;&lt;img src=&quot;/assets/images/graphs/zscores.png&quot; /&gt; &lt;/a&gt;
+    &lt;a href=&quot;/assets/images/graphs/violines.png&quot;&gt;&lt;img src=&quot;/assets/images/graphs/violines.png&quot; /&gt; &lt;/a&gt;
+    &lt;figcaption class=&quot;feature__item--center&quot;&gt;IGG, 2025&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Comparative Analysis: NYSE vs TSX and LSE Through Dividends and Drawdowns&lt;/p&gt;
+
+&lt;p&gt;In this analysis, I made a clear methodological decision:
+to focus only on the best loss scenarios, meaning I selected stocks with a maximum drawdown greater than or equal to −20% within the Top 100 stocks per exchange.&lt;/p&gt;
+
+&lt;p&gt;The objective of this filter was to identify assets with strong performance while avoiding severe capital losses, and under this constraint, compare the NYSE (United States), TSX (Canada), and LSE (United Kingdom) in terms of risk and income generation.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-average-dividend-yield-and-the-gaussian-distribution&quot;&gt;1. Average Dividend Yield and the Gaussian Distribution&lt;/h3&gt;
+
+&lt;p&gt;By constructing a Gaussian (normal) distribution for the Dividend Yield (TTM), several patterns emerge:&lt;/p&gt;
+
+&lt;p&gt;NYSE shows the highest average dividend yield compared to TSX and LSE.&lt;/p&gt;
+
+&lt;p&gt;Even after filtering for stocks with lower drawdowns, the U.S. market maintains a superior mean.&lt;/p&gt;
+
+&lt;p&gt;The dispersion (σ) remains relatively controlled, suggesting that this is not driven by a few outliers, but rather by a consistent distribution.&lt;/p&gt;
+
+&lt;p&gt;This is an important insight:
+even under conservative capital-preservation criteria, NYSE remains competitive in income generation.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-drawdown-analysis-lower-capital-loss-overall&quot;&gt;2. Drawdown Analysis: Lower Capital Loss Overall&lt;/h3&gt;
+
+&lt;p&gt;When analyzing the Maximum Drawdown distribution, not only from my personal experience as a Latin American investor with some exposure to the U.S. market, but also from the data itself, the results are clear:&lt;/p&gt;
+
+&lt;p&gt;NYSE exhibits lower average drawdowns compared to TSX and LSE (after applying the exchange-level filter).&lt;/p&gt;
+
+&lt;p&gt;The density concentrates around less negative values, indicating better capital protection during market downturns.&lt;/p&gt;
+
+&lt;p&gt;TSX and LSE show longer tails toward deeper losses, reflecting higher exposure to adverse scenarios.&lt;/p&gt;
+
+&lt;p&gt;This reinforces the idea that NYSE not only pays higher dividends on average, but also penalizes capital less during periods of market stress.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-practical-implications-as-an-investor&quot;&gt;3. Practical Implications as an Investor&lt;/h3&gt;
+
+&lt;p&gt;From a realistic investment perspective:&lt;/p&gt;
+
+&lt;p&gt;NYSE appears more attractive for short- and medium-term strategies, where the balance between dividend income and drawdown control is critical.&lt;/p&gt;
+
+&lt;p&gt;Market liquidity, depth, and the diversity of financial instruments clearly work in favor of the U.S. market.&lt;/p&gt;
+
+&lt;p&gt;However, the analysis also confirms that concentration in a single market is not optimal.&lt;/p&gt;
+
+&lt;p&gt;This is where strategic diversification becomes essential.&lt;/p&gt;
+
+&lt;h3 id=&quot;4-the-role-of-more-stable-markets-like-canada-tsx&quot;&gt;4. The Role of More Stable Markets Like Canada (TSX)&lt;/h3&gt;
+
+&lt;p&gt;Although TSX delivers lower average returns, it offers other valuable characteristics:&lt;/p&gt;
+
+&lt;p&gt;Greater structural stability&lt;/p&gt;
+
+&lt;p&gt;Exposure to defensive sectors (financials, energy, infrastructure)&lt;/p&gt;
+
+&lt;p&gt;Lower relative volatility during certain market cycles&lt;/p&gt;
+
+&lt;p&gt;For this reason, allocating a portion of long-term savings to more stable markets such as Canada makes sense, not as a growth engine, but as a risk anchor within the portfolio.&lt;/p&gt;
+
+&lt;p&gt;Conclusion&lt;/p&gt;
+
+&lt;p&gt;This analysis confirms an important takeaway:&lt;/p&gt;
+
+&lt;p&gt;NYSE combines higher returns with lower capital losses even under conservative filters, making it well-suited for short- and medium-term strategies.&lt;/p&gt;
+
+&lt;p&gt;TSX, while less profitable, plays a key role as a defensive diversifier.&lt;/p&gt;
+
+&lt;p&gt;Rather than choosing a single “better” exchange, the real value lies in allocating capital based on the role each market plays within the portfolio.&lt;/p&gt;
+
+&lt;h2 id=&quot;next-steps&quot;&gt;Next Steps&lt;/h2&gt;
+&lt;p&gt;In future posts, I plan to share one of the strategies that has allowed me to sustain myself as an international student in Canada, that has worked well in terms of both dividends and drawdowns. Through this strategy, I am able to cover at least one-third of my expenses without breaking the savings and investment routines I established back in my home country.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;reference-notebook&quot;&gt;Reference notebook&lt;/h2&gt;
+
+&lt;p&gt;For now, I’m not embedding the notebook directly into my blog, please check my notebook you can reproduce all data an graphs shown here.&lt;/p&gt;
+
+&lt;p&gt;👉 &lt;strong&gt;Full analysis notebook&lt;/strong&gt;&lt;br /&gt;
+&lt;a href=&quot;https://github.com/Qleoz12/pythonKnowledge/blob/main/dataAnalitics/tsx.ipynb&quot;&gt;View notebook on GitHub&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;https://www.amazon.com/gp/product/B0BB5DDB1Q&lt;/li&gt;
+  &lt;li&gt;https://github.com/Quantreo/2nd-edition-BOOK-AMAZON-Python-for-Finance-and-Algorithmic-Trading?tab=readme-ov-file&lt;/li&gt;
+  &lt;li&gt;https://www.sea-stat.com/wp-content/uploads/2021/05/Yves-Hilpisch-Python-for-Finance_-Mastering-Data-Driven-Finance-Book-OReilly-2018.pdf&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+            <pubDate>Wed, 08 Oct 2025 00:00:00 -0500</pubDate>
+            <link>/investing/dividends/data-analysis/basic-comparisson-markets/</link>
+            <guid isPermaLink="true">/investing/dividends/data-analysis/basic-comparisson-markets/</guid>
+            
+            <category>dividends</category>
+            
+            <category>drawdown</category>
+            
+            <category>python</category>
+            
+            <category>pandas</category>
+            
+            <category>stocks</category>
+            
+            
+            <category>investing</category>
+            
+            <category>dividends</category>
+            
+            <category>data-analysis</category>
+            
+        </item>
+        
+    
+        
+
+        
+
+        
+        <item>
+            <title>Fundamentals, data analitics linear regression and bias</title>
+            <description>&lt;p&gt;🧩 What Is X and What Is X_b?
+🔹 X&lt;/p&gt;
+
+&lt;p&gt;X is your feature matrix — it contains the input values you want the model to learn from.&lt;/p&gt;
+
+&lt;p&gt;Example:
+If you have one feature (say, number of pages in a book), X looks like this:&lt;/p&gt;
+
+&lt;p&gt;X = [[100],
+     [200],
+     [300],
+     [400]]&lt;/p&gt;
+
+&lt;p&gt;It’s a column of data — every row is one training example.&lt;/p&gt;
+
+&lt;p&gt;💡 Shape: (m, n)&lt;/p&gt;
+
+&lt;p&gt;m = number of training examples (rows)&lt;/p&gt;
+
+&lt;p&gt;n = number of features (columns)&lt;/p&gt;
+
+&lt;p&gt;So in this case, m = 4, n = 1.&lt;/p&gt;
+
+&lt;p&gt;🔹 X_b&lt;/p&gt;
+
+&lt;p&gt;Before using the Normal Equation, we must add a column of 1s to X.&lt;/p&gt;
+
+&lt;p&gt;Why?
+Because our formula for linear regression is:&lt;/p&gt;
+
+&lt;h1 id=&quot;𝑦&quot;&gt;𝑦&lt;/h1&gt;
+&lt;p&gt;𝜃
+0
++
+𝜃
+1
+𝑥
+y=θ
+0
+	​&lt;/p&gt;
+
+&lt;p&gt;+θ
+1
+	​&lt;/p&gt;
+
+&lt;p&gt;x&lt;/p&gt;
+
+&lt;p&gt;That θ₀ (the intercept or bias term) multiplies by 1 every time.
+To make it fit the same matrix format, we add a column of 1s to X.&lt;/p&gt;
+
+&lt;p&gt;X_b = [[1, 100],
+       [1, 200],
+       [1, 300],
+       [1, 400]]&lt;/p&gt;
+
+&lt;p&gt;Now the first column (all 1s) corresponds to θ₀, and the second column corresponds to θ₁.&lt;/p&gt;
+
+&lt;p&gt;💡 Shape of X_b: (m, n+1)&lt;/p&gt;
+
+&lt;p&gt;🧠 What Is the Bias Term (θ₀ or intercept_)?&lt;/p&gt;
+
+&lt;p&gt;The bias term (also called intercept) is the value of y when all features are 0.
+It basically shifts the regression line up or down so it fits the data better.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;p&gt;If your model is&lt;/p&gt;
+
+&lt;h1 id=&quot;𝑦-1&quot;&gt;𝑦&lt;/h1&gt;
+&lt;p&gt;4
++
+3
+𝑥
+y=4+3x&lt;/p&gt;
+
+&lt;p&gt;then:&lt;/p&gt;
+
+&lt;p&gt;θ₀ (bias) = 4 → this means when x = 0, y starts at 4&lt;/p&gt;
+
+&lt;p&gt;θ₁ (weight) = 3 → this means for every 1 increase in x, y goes up by 3&lt;/p&gt;
+
+&lt;p&gt;So, in your Scikit-Learn output:&lt;/p&gt;
+
+&lt;p&gt;lin_reg.intercept_, lin_reg.coef_&lt;/p&gt;
+
+&lt;p&gt;you got:&lt;/p&gt;
+
+&lt;p&gt;(array([4.21509616]), array([[2.77011339]]))&lt;/p&gt;
+
+&lt;p&gt;That means:&lt;/p&gt;
+
+&lt;p&gt;Bias/intercept = 4.215&lt;/p&gt;
+
+&lt;p&gt;Slope/weight = 2.770&lt;/p&gt;
+
+&lt;p&gt;So your final model is:&lt;/p&gt;
+
+&lt;p&gt;𝑦&lt;/p&gt;
+&lt;p&gt;=
+4.215
++
+2.770
+𝑥
+y&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;​
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;=4.215+2.770x
+🔁 And What Does the “T” Mean in X.T?&lt;/p&gt;
+
+&lt;p&gt;X.T means the transpose of X.&lt;/p&gt;
+
+&lt;p&gt;Transpose means switch rows and columns.&lt;/p&gt;
+
+&lt;p&gt;If X looks like this:&lt;/p&gt;
+
+&lt;p&gt;1   2   3
+4   5   6&lt;/p&gt;
+
+&lt;p&gt;Then X.T looks like this:&lt;/p&gt;
+
+&lt;p&gt;1   4
+2   5
+3   6&lt;/p&gt;
+
+&lt;p&gt;This is used because in matrix algebra, to multiply correctly, dimensions must align.
+So the Normal Equation uses X.T to flip the matrix for proper multiplication:&lt;/p&gt;
+
+&lt;h1 id=&quot;𝜃&quot;&gt;𝜃&lt;/h1&gt;
+&lt;p&gt;(
+𝑋
+𝑇
+𝑋
+)
+−
+1
+𝑋
+𝑇
+𝑦
+θ=(X
+T
+X)
+−1
+X
+T
+y
+🧮 Putting It All Together
+Symbol	Meaning	Example
+X	Feature matrix	Pages in each book
+X_b	Feature matrix with column of 1s	Adds bias term
+y	Target values	Prices of books
+θ₀	Intercept (bias)	Where the line crosses y-axis
+θ₁…θₙ	Weights/slopes	How much each feature affects y
+X.T	Transpose of X	Flips rows ↔ columns for math compatibility
+🧠 Intuitive Summary&lt;/p&gt;
+
+&lt;p&gt;👉 The bias term lets your line start at the right height.
+👉 The weights control how steep the line is.
+👉 The Normal Equation finds the best bias and weight combination so the line is as close as possible to all data points.&lt;/p&gt;
+
+&lt;p&gt;Would you like me to add a small visual (graph) showing how the bias moves the line up/down and how the slope changes its angle?
+It would make the concept of bias and weights much clearer visually.&lt;/p&gt;
+</description>
+            <pubDate>Wed, 08 Oct 2025 00:00:00 -0500</pubDate>
+            <link>/statistics/basic-concepts-dataanalitics-copy/</link>
+            <guid isPermaLink="true">/statistics/basic-concepts-dataanalitics-copy/</guid>
+            
+            
+            <category>Statistics</category>
+            
+        </item>
+        
+    
+        
+
+        
+
+        
+        <item>
+            <title>Fundamentals machine learning and data analitics</title>
+            <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;this post will make a summary of several concepts present in the book of data analitics and machine learning&lt;/p&gt;
+
+&lt;h3 id=&quot;asociation-rule-learning&quot;&gt;asociation rule learning&lt;/h3&gt;
+&lt;h3 id=&quot;novelty-detection&quot;&gt;novelty detection&lt;/h3&gt;
+&lt;p&gt;novelly detection is the process of identifying new or unknown data points that differ significantly from the majority of the data. It is often used in fraud detection, network security, and quality control.&lt;/p&gt;
+
+&lt;p&gt;sample from the book&lt;/p&gt;
+
+&lt;p&gt;“data set from dogs mostly overall big dogs ans a few small dogs then come a chihuahua pictures,
+ the algorithm will identify the chihuahua as a novelty because it is significantly different from the majority of the data (big dogs).”&lt;/p&gt;
+
+&lt;h3 id=&quot;anomaly-detection&quot;&gt;anomaly detection&lt;/h3&gt;
+
+&lt;h3 id=&quot;sampling-noise&quot;&gt;sampling noise&lt;/h3&gt;
+
+&lt;h3 id=&quot;sampling-bias&quot;&gt;sampling bias&lt;/h3&gt;
+&lt;p&gt;Examples of Sampling Bias
+Perhaps the most famous example of sampling bias happened during the
+US presidential election in 1936,&lt;/p&gt;
+&lt;h3 id=&quot;clustering&quot;&gt;clustering&lt;/h3&gt;
+&lt;h3 id=&quot;classification&quot;&gt;classification&lt;/h3&gt;
+&lt;h3 id=&quot;regression&quot;&gt;regression&lt;/h3&gt;
+
+&lt;p&gt;Feature selection (selecting the most useful features to train on among
+existing features)
+• Feature extraction (combining existing features to produce a more
+useful one⁠—as we saw earlier, dimensionality reduction algorithms
+can help)
+• Creating new features by gathering new data&lt;/p&gt;
+
+&lt;p&gt;Say you are visiting a foreign country and the taxi driver rips you off. You
+might be tempted to say that all taxi drivers in that country are thieves.
+Overgeneralizing is something that we humans do all too often, and
+unfortunately machines can fall into the same trap if we are not careful. In
+machine learning this is called overfitting&lt;/p&gt;
+
+&lt;p&gt;### 
+transferring knowledge from one task to another is called transfer
+learning, and it’s one of the most important techniques in machine
+learning today, especially when using deep neural networks (i.e., neural
+networks composed of many layers of neurons). We will discuss this
+in detail in Part II&lt;/p&gt;
+
+&lt;p&gt;Some photo-hosting services, such as Google Photos, are good examples of this.
+Once you upload all your family photos to the service, it automatically
+recognizes that the same person A shows up in photos 1, 5, and 11, while
+another person B shows up in photos 2, 5, and 7. This is the unsupervised part
+of the algorithm (clustering). Now all the system needs is for you to tell it who
+these people are. Just add one label per person⁠3 and it is able to name
+everyone in every photo, which is useful for searching photos.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.baeldung.com/java-mutation-testing-with-pitest&quot;&gt;https://www.baeldung.com/java-mutation-testing-with-pitest&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;https://www.reddit.com/r/PHP/comments/1n1mi6t/mutation_testing_with_infection/&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+            <pubDate>Fri, 12 Sep 2025 00:00:00 -0500</pubDate>
+            <link>/statistics/basic-concepts-dataanalitics/</link>
+            <guid isPermaLink="true">/statistics/basic-concepts-dataanalitics/</guid>
+            
+            
+            <category>Statistics</category>
+            
+        </item>
+        
+    
+        
+
+        
+
+        
+        <item>
+            <title>Fundamentals Testing</title>
+            <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;for be a good developer you need to know the fundamentals of testing&lt;/p&gt;
+
+&lt;h1 id=&quot;what-is-testing&quot;&gt;what is testing&lt;/h1&gt;
+&lt;p&gt;the coverage of your code with tests is a good indicator of the quality of your code.?&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-unit-testing&quot;&gt;what is unit testing?&lt;/h2&gt;
+
+&lt;p&gt;a unit testing is a way to test a small part of code, like a function , a method or a class, to make sure it works as expected. basicakke you wrote a code that test another code wheer you ussualy test the input and the output of the code you want to test. in deeper version you can check the time of a a fucntion is called and also  how the parameters is passed to another function and even also raise exceptions and test how handle errors generating  erros an checkin the exceptions that are generated in certain situations.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-a-mutations-testing&quot;&gt;what is a mutations testing?&lt;/h2&gt;
+
+&lt;p&gt;is a technique used to evaluate the effectiveness of software tests. It involves making small changes (mutations) to the code and checking if the existing tests can detect these changes. If a test fails after a mutation, it is said to have “killed” the mutant, indicating that the test is effective in catching potential issues.&lt;/p&gt;
+
+&lt;p&gt;sample of mutation testing in java&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// File: Calculator.java&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.example.coursera.testing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Calculator&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isEven&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isPositive&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// mutation&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;com.example.coursera.testing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CalculatorMutant&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isEven&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isPositive&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;let’s put the idea on test&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Testing&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;pass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;Calculator&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Calculator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;CalculatorMutant&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mutant&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CalculatorMutant&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// ---------- WEAK TEST (single happy case) ----------&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Only checks a positive number → both implementations look correct.&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;weakPass&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;ok&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;isPositive&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+                        &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mutant&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;isPositive&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// also true → mutant &quot;passes&quot;&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weakPass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;WEAK TEST: PASS → Mutant SURVIVES ❌ (because we only tested 5)&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;WEAK TEST: FAIL&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;//exploring more cases even the lines are already covered improve the quality&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// for this purpose sample show how exploring more cases improve testing code agains mutation&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// ---------- STRONG TEST (add boundary) ----------&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Add the boundary 0 → original true, mutant false → caught.&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strongCatchesMutant&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;ok&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;isPositive&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+                        &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mutant&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;isPositive&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// false → detects the mutant&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strongCatchesMutant&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;STRONG TEST: PASS (boundary 0) → Mutant KILLED ✅&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;STRONG TEST: FAIL&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;certifications&quot;&gt;certifications&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://coursera.org/share/eb7a80f689d5f1f687e79276cadd00f8&quot;&gt;Introduction to Software Testing certificate&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.baeldung.com/java-mutation-testing-with-pitest&quot;&gt;https://www.baeldung.com/java-mutation-testing-with-pitest&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;https://www.reddit.com/r/PHP/comments/1n1mi6t/mutation_testing_with_infection/&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+            <pubDate>Mon, 01 Sep 2025 00:00:00 -0500</pubDate>
+            <link>/statistics/fundamentals-testing/</link>
+            <guid isPermaLink="true">/statistics/fundamentals-testing/</guid>
+            
+            
+            <category>Statistics</category>
+            
+        </item>
+        
+    
+        
+
+        
+
+        
+        <item>
+            <title>Statistics Fundamentals: Correlations and P-Value Models</title>
+            <description>&lt;h2 id=&quot;-introduction&quot;&gt;🧠 Introduction&lt;/h2&gt;
+
+&lt;p&gt;Understanding &lt;strong&gt;correlation&lt;/strong&gt; is one of the first steps toward mastering data analysis.&lt;br /&gt;
+Correlation tells us &lt;em&gt;how strongly two variables move together&lt;/em&gt; — whether one increases as the other increases, decreases, or if there’s no relationship at all.&lt;/p&gt;
+
+&lt;p&gt;There are several ways to measure relationships depending on the type of data (continuous or categorical) and distribution assumptions.&lt;br /&gt;
+Below are some of the most common methods and how they’re used in Python.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;correlation&quot;&gt;correlation&lt;/h2&gt;
+
+&lt;p&gt;correletion is a statistical measurements that describe the behavior of two variables and how they are related to each other.
+but is good reember two flow before continues or take care each time you are working with correlation&lt;/p&gt;
+
+&lt;h3 id=&quot;flaws-of-correlation&quot;&gt;flaws of correlation&lt;/h3&gt;
+
+&lt;p&gt;1st Flaw: The correlation coefficient does not have units (e.g., “cubic feet per hour”).&lt;/p&gt;
+
+&lt;p&gt;2nd Flaw: “Correlation does not imply causation”.
+lurke variable, like classical example ice-cream sales and shark attacks and violence and churchs, always the lurke variables is the behind the scenes
+making the correlatuion looks like there is a causation but in reality there is not.&lt;/p&gt;
+
+&lt;figure class=&quot;half&quot;&gt;
+    &lt;a href=&quot;/assets/images/stats/lurking.png&quot;&gt;&lt;img src=&quot;/assets/images/stats/lurking.png&quot; /&gt;&lt;/a&gt;
+    &lt;figcaption class=&quot;feature__item--center&quot;&gt;Langara, 2025, Michael,LO&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Correlation can reveal patterns, but it’s important not to check only on the correlation 
+coefficient itself. Always look at the shape of the relationship in a graph the 
+visual pattern often tells you more than the number alone. In this example, 
+I’ll use scatterplots to illustrate the different forms of correlation, 
+showing how variables can move together in positive, negative, or even no clear direction at all.&lt;/p&gt;
+&lt;figure class=&quot;half items-center&quot;&gt;
+     &lt;a href=&quot;/assets/images/stats/correlation.gif&quot;&gt;&lt;img src=&quot;/assets/images/stats/correlation.gif&quot; /&gt; &lt;/a&gt;
+    &lt;a href=&quot;/assets/images/stats/CorrelationForms.png&quot;&gt;&lt;img src=&quot;/assets/images/stats/CorrelationForms.png&quot; /&gt; &lt;/a&gt;
+    &lt;figcaption class=&quot;feature__item--center&quot;&gt;Langara, 2025, Michael,LO&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;-1-spearman-correlation&quot;&gt;📊 1. Spearman Correlation&lt;/h2&gt;
+
+&lt;p&gt;Used to measure &lt;strong&gt;monotonic relationships&lt;/strong&gt; (when variables move in the same or opposite direction but not necessarily linearly).&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy.stats&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spearmanr&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;corr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p_value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spearmanr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;When to use:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Data are &lt;strong&gt;ordinal&lt;/strong&gt; or &lt;strong&gt;not normally distributed&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;You only care about the &lt;em&gt;ranking&lt;/em&gt; relationship.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Unlike &lt;strong&gt;Pearson correlation&lt;/strong&gt;, which works with the &lt;strong&gt;actual numeric values&lt;/strong&gt;,&lt;br /&gt;
+&lt;strong&gt;Spearman correlation&lt;/strong&gt; first &lt;strong&gt;converts all data into ranks&lt;/strong&gt; before measuring the relationship.&lt;/p&gt;
+
+&lt;p&gt;When your variable is not continuous but &lt;strong&gt;ordinal&lt;/strong&gt; (like income bins 1–8 or satisfaction levels 1–5),&lt;br /&gt;
+Spearman still works great because those categories &lt;strong&gt;already behave like ranks&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;For example:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Income Bin&lt;/th&gt;
+      &lt;th&gt;Label&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Very Low&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;Low&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;Medium&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;High&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;Very High&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;These bins have &lt;strong&gt;natural order&lt;/strong&gt;, but not equal spacing — meaning the jump from bin 1 → 2 isn’t the same as 4 → 5.&lt;br /&gt;
+That’s exactly where Spearman correlation shines.&lt;/p&gt;
+
+&lt;p&gt;It measures the &lt;strong&gt;monotonic trend&lt;/strong&gt; (do higher bins tend to correspond to higher or lower outcomes?)&lt;br /&gt;
+without assuming a straight-line (linear) relationship like Pearson does.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;🧠 &lt;strong&gt;In short:&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Spearman converts all values into ranks (or uses your ordinal bins directly)&lt;br /&gt;
+and then measures how those ranks move together.&lt;br /&gt;
+Perfect for data that is &lt;em&gt;ordered but not perfectly linear&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;-2-pearson-correlation&quot;&gt;📈 2. Pearson Correlation&lt;/h2&gt;
+
+&lt;p&gt;Measures the &lt;strong&gt;strength of a linear relationship&lt;/strong&gt; between two continuous variables.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy.stats&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pearsonr&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;corr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p_value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pearsonr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;When to use:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Both variables are &lt;strong&gt;continuous&lt;/strong&gt; and &lt;strong&gt;approximately normal&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;The relationship looks roughly linear.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;let’s check a simple example applied to dataanalitics&lt;/p&gt;
+
+&lt;h3 id=&quot;-spearman-on-brfss-income-vs-mental-health&quot;&gt;🧪 Spearman on BRFSS: Income vs. Mental-Health&lt;/h3&gt;
+
+&lt;p&gt;We’ll estimate a &lt;strong&gt;correlation&lt;/strong&gt; between income(in bins categorical 1-8) and mental-health scores using Spearman’s ρ.&lt;br /&gt;
+This is ideal when income is &lt;strong&gt;ordinal&lt;/strong&gt; (e.g., 1–8 bins) and the relationship may be &lt;strong&gt;non-linear&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Use the raw BRFSS rows (each respondent) with:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;income_bin&lt;/code&gt; (ordinal 1–8, higher = higher income)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mh_score&lt;/code&gt; (e.g., “mental health composite” or number of “bad MH days” higher = worst mental health, for this example we use MH_Score = (1–13 d) + (14+ d) )&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# df  -&amp;gt; your MH table with columns: [&quot;STATE_CODE&quot;,&quot;State&quot;,&quot;0 days poor MH&quot;,&quot;1-13 days poor MH&quot;,&quot;14+ days poor MH&quot;,&quot;MH_Score&quot;]
+# summary_df -&amp;gt; your income table with columns including [&quot;_STATE&quot;,&quot;State&quot;,&quot;mean_bin&quot;]
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# keep only the columns we need and normalize names
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mh&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;STATE_CODE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;State&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MH_Score&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;inc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;summary_df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;_STATE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;State&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mean_bin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;_STATE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;STATE_CODE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# ==== 1) Merge ====
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;both&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;STATE_CODE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;State&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;how&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;inner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# (optional) keep only 50 states (drop DC &amp;amp; territories)
+# both = both[~both[&quot;STATE_CODE&quot;].isin([11,66,72,78])].copy()
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# ==== 2) Correlations ====
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pear&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;both&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mean_bin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MH_Score&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;corr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pearson&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;spear&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;both&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mean_bin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MH_Score&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;corr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;spearman&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Pearson r = &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;  |  Spearman ρ = &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;  (x: richer → higher, y: worse → higher)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# ==== 3) Scatter (quadrants + trendline) ====
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;both&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mean_bin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_numpy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;both&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MH_Score&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_numpy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;xm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ym&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;median&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;median&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;45&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.85&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# OLS line (visual)
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;polyfit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;xx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lw&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;black&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# quadrant medians
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;axvline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ls&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;--&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lw&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;gray&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;axhline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ym&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ls&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;--&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lw&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;gray&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# label a few extremes
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lab&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;both&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nsmallest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MH_Score&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;both&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nlargest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MH_Score&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                 &lt;span class=&quot;n&quot;&gt;both&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nsmallest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mean_bin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;both&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nlargest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mean_bin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drop_duplicates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;State&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lab&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iterrows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mean_bin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.02&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MH_Score&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;State&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fontsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xlabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Income bin (1 = poorest … 7 = richest)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ylabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MH_Score = (1–13 d) + (14+ d) − (0 d)   (higher = worse)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Income vs Mental Health by State&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Pearson r=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;, Spearman ρ=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tight_layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# ==== 4) Quick comparison table (top/bottom by MH) with income column ====
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;view&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;both&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nsmallest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MH_Score&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Group&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Best 7 (MH)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                  &lt;span class=&quot;n&quot;&gt;both&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nlargest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MH_Score&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Group&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Worst 7 (MH)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)],&lt;/span&gt;
+                 &lt;span class=&quot;n&quot;&gt;ignore_index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; \
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sort_values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Group&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MH_Score&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ascending&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Group&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;State&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MH_Score&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mean_bin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;float_format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/graphs/income_vs_mental.png&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;slides&quot;&gt;slides&lt;/h2&gt;
+&lt;p&gt;use arrow to navigate through the slides&lt;/p&gt;
+
+&lt;iframe src=&quot;https://docs.google.com/presentation/d/1nwldTIx4Gx3J4zrXMocEq4DDSi1gnAAk/embed?start=false&amp;amp;loop=false&amp;amp;delayms=3000&quot; frameborder=&quot;0&quot; width=&quot;960&quot; height=&quot;569&quot; allowfullscreen=&quot;true&quot; mozallowfullscreen=&quot;true&quot; webkitallowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;
+&lt;!-- ## 🔢 3. Chi-Squared Test (Independence)
+
+Tests **independence between two categorical variables** using a contingency table.
+
+```python
+from scipy.stats import chi2_contingency
+chi2, p, dof, expected = chi2_contingency(table)  # &apos;table&apos; is a 2D frequency table (DataFrame or array)
+```
+
+**When to use:**
+- You have **categorical data** (e.g., Gender × Preference).
+- You want to test whether categories are related.
+
+---
+
+## ⚖️ 4. Mann–Whitney U Test
+
+A **non-parametric alternative** to the independent t-test, comparing the **distributions/medians** of two groups.
+
+```python
+from scipy.stats import mannwhitneyu
+stat, p = mannwhitneyu(class1, class2, alternative=&quot;two-sided&quot;)
+```
+
+**When to use:**
+- Data are **not normally distributed** or contain outliers.
+- Comparing two **independent groups**.
+
+---
+
+## 📏 5. Two-Sample t-Test (Independent)
+
+Compares the **means** of two independent groups to see if they’re statistically different.
+
+```python
+from scipy import stats
+t_stat, p_val = stats.ttest_ind(df[&apos;A&apos;], df[&apos;B&apos;], equal_var=False)  # Welch’s by default when equal_var=False
+```
+
+**When to use:**
+- Data are **continuous** and reasonably **normal**.
+- Groups are **independent**.
+
+---
+
+## 📊 6. ANOVA (Analysis of Variance)
+
+Compares **three or more groups** to test if at least one mean differs.
+
+```python
+from scipy.stats import f_oneway
+F_statistic, p_value = f_oneway(class1, class2, class3)
+```
+
+**When to use:**
+- You have **≥ 3 groups** and want an overall test.
+
+&gt; ANOVA only tells you *that* a difference exists, not *where*. Use **post‑hoc** tests (e.g., **Tukey HSD**) to locate group differences.
+
+---
+
+## 🧩 7. Linear Regression (OLS)
+
+Models a continuous outcome using one or more predictors.
+
+```python
+import statsmodels.api as sm
+
+X = sm.add_constant(X)  # adds intercept
+model = sm.OLS(y, X).fit()
+print(model.summary())
+```
+
+**When to use:**
+- Predicting a **continuous** outcome (e.g., price).
+- Estimating effect sizes and confidence intervals.
+
+---
+
+## 🧮 8. Logistic Regression (Classification)
+
+Predicts **categorical outcomes**, often binary (yes/no, 1/0).
+
+```python
+from sklearn.linear_model import LogisticRegression
+
+clf = LogisticRegression(max_iter=1000)
+clf.fit(X_train, y_train)
+proba = clf.predict_proba(X_test)[:, 1]
+preds = clf.predict(X_test)
+```
+
+**When to use:**
+- Target variable is **categorical**.
+- You want **class probabilities** and **decisions**.
+
+---
+
+## 🧭 Quick Decision Guide
+
+- **Correlation (Pearson)** → linear, continuous, normal-ish.
+- **Correlation (Spearman)** → monotonic, ordinal, non-normal or with outliers.
+- **t-test / Mann–Whitney** → two groups (parametric / nonparametric).
+- **ANOVA** → 3+ groups (means); add **Tukey** for pairwise.
+- **Chi-square** → categorical × categorical independence.
+- **Linear regression** → continuous target.
+- **Logistic regression** → categorical target.
+
+---
+
+## 🎓 Certifications &amp; Learning Paths
+
+- *Coursera*: “Inferential Statistics” (Duke), “Statistical Inference” (JHU).
+- *Khan Academy*: Probability &amp; Statistics.
+- *DataCamp*: Statistical Thinking in Python.
+
+---
+
+## 🚀 Practice Challenges
+
+1. Simulate two variables with a known correlation and verify Pearson vs Spearman.
+2. Build a 2×2 contingency table and run a chi-square test; interpret the **expected** vs **observed** counts.
+3. Compare two groups with both **t-test** and **Mann–Whitney** on skewed data; explain why p-values differ.
+4. Run a one-way **ANOVA** across 3+ groups; follow with **Tukey HSD**.
+5. Fit **OLS** and **Logistic Regression** models; report coefficients and interpret effect sizes.
+
+--- --&gt;
+
+&lt;h2 id=&quot;-references&quot;&gt;📚 References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;underrated wikipedia https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient&lt;/li&gt;
+  &lt;li&gt;SciPy &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;stats&lt;/code&gt; documentation: https://docs.scipy.org/doc/scipy/reference/stats.html&lt;/li&gt;
+  &lt;li&gt;Statsmodels documentation: https://www.statsmodels.org/stable/index.html&lt;/li&gt;
+  &lt;li&gt;Scikit‑learn user guide: https://scikit-learn.org/stable/user_guide.html&lt;/li&gt;
+  &lt;li&gt;“Practical Statistics for Data Scientists” (O’Reilly)&lt;/li&gt;
+  &lt;li&gt;https://byjus.com/maths/correlation/&lt;/li&gt;
+  &lt;li&gt;https://docs.google.com/presentation/d/1h5lD-rMfw0fAxGkx-6gWLJTQS0QFMfSTvz-WCvXSHNY/edit?slide=id.g39d1689f503_0_1#slide=id.g39d1689f503_0_1&lt;/li&gt;
+  &lt;li&gt;https://colab.research.google.com/drive/1AGhtvp7aM4nrY3y4Hq6wUnM19PbZkvz2?usp=sharing#scrollTo=irFtdbHNh0VP&lt;/li&gt;
+  &lt;li&gt;https://www.kaggle.com/datasets/ariaxiong/behavioral-risk-factor-surveillance-system-2022&lt;/li&gt;
+  &lt;li&gt;https://www.cdc.gov/brfss/annual_data/annual_2022.html&lt;/li&gt;
+  &lt;li&gt;https://www.cdc.gov/pcd/issues/2022/pdf/22_0001.pdf&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+            <pubDate>Thu, 24 Jul 2025 00:00:00 -0500</pubDate>
+            <link>/statistics/stats-correlations-and-pvalue-models/</link>
+            <guid isPermaLink="true">/statistics/stats-correlations-and-pvalue-models/</guid>
+            
+            
+            <category>Statistics</category>
+            
+        </item>
+        
     
         
 
@@ -307,387 +1292,6 @@ Example Use: Amazon Neptune is suitable for applications that require complex re
             
             
             <category>AWS</category>
-            
-        </item>
-        
-    
-        
-
-        
-
-        
-        <item>
-            <title>Amazon Route 53 </title>
-            <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;this post is a hub of notes of amazon route 53&lt;/p&gt;
-
-&lt;h1 id=&quot;routing-policies-in-amazon-route-53-simplifying-dns-management&quot;&gt;Routing Policies in Amazon Route 53: Simplifying DNS Management&lt;/h1&gt;
-&lt;p&gt;Routing policies in Amazon Route 53 are integral to managing DNS queries, 
-helping determine how clients access resources. Unlike traffic routing in load balancers, 
-routing policies in Route 53 focus on DNS-level decisions. 
-Route 53 translates hostnames into IP addresses or endpoints, 
-guiding clients on where to send HTTP queries without directly routing traffic.&lt;/p&gt;
-
-&lt;p&gt;Amazon Route 53 supports several routing policies: simple, weighted, failover, latency-based, geolocation, multi-value answer, and geoproximity. Each serves a specific purpose, with the simple routing policy being the most straightforward. The simple policy maps a domain (e.g., foo.example.com) to a single resource or multiple IP addresses. If multiple IPs are provided, clients select one randomly. This basic approach lacks health check integration but remains an efficient way to direct traffic.&lt;/p&gt;
-
-&lt;p&gt;By defining TTL (time-to-live) values, such as 20 seconds, you can control how long DNS responses are cached. Route 53’s flexibility also allows edits to existing records, enabling dynamic updates to IP addresses. This simplicity and efficiency make it an ideal starting point for managing DNS routing in AWS.&lt;/p&gt;
-
-&lt;p&gt;Latency Routing Policy will evaluate the latency between your users and AWS Regions, and help them get a DNS response that will minimize their latency (e.g. response time)&lt;/p&gt;
-
-&lt;h2 id=&quot;simple-routing-policy&quot;&gt;Simple Routing Policy&lt;/h2&gt;
-&lt;p&gt;A simple routing policy in Amazon Route 53 is the most straightforward DNS routing strategy. 
-It maps a domain name (e.g., example.com) to a single resource, 
-such as an IP address or an alias for an AWS resource. 
-If multiple IP addresses are specified, the DNS response includes all of them, and the client randomly selects one to use.&lt;/p&gt;
-
-&lt;h3 id=&quot;key-features-of-the-simple-routing-policy-include&quot;&gt;Key features of the simple routing policy include:&lt;/h3&gt;
-
-&lt;p&gt;No Health Checks: It does not support health checks to monitor the availability of resources.
-Random Selection: When multiple values are provided, clients choose one at random.&lt;/p&gt;
-
-&lt;p&gt;Ease of Use: Ideal for straightforward DNS configurations where no additional logic or failover mechanisms are required.
-This policy is called “simple” because of its basic functionality and minimal configuration requirements.&lt;/p&gt;
-
-&lt;h1 id=&quot;weighted-routing-policy&quot;&gt;weighted routing policy&lt;/h1&gt;
-
-&lt;p&gt;Weighted Routing Policy in Amazon Route 53: Managing Traffic Distribution
-Main Idea:
-The weighted routing policy in Amazon Route 53 allows you to distribute DNS query traffic to multiple resources based on assigned weights, enabling precise control over traffic distribution.&lt;/p&gt;
-
-&lt;p&gt;Sub-Ideas:&lt;/p&gt;
-
-&lt;p&gt;How Weighted Routing Works:&lt;/p&gt;
-
-&lt;p&gt;Assign relative weights to DNS records.
-Traffic is distributed proportionally to the weights. For example, if weights are 70, 20, and 10, 70% of traffic goes to the first resource, 20% to the second, and 10% to the third.
-Key Features:&lt;/p&gt;
-
-&lt;p&gt;Weights don’t need to sum to 100; they are relative indicators.
-All DNS records must share the same name and type.
-Supports optional health checks for monitoring resources.
-Use Cases:&lt;/p&gt;
-
-&lt;p&gt;Load balancing across regions.
-Gradual rollout of new application versions.
-Traffic redirection adjustments by modifying weights.
-Setting a weight of 0 to stop sending traffic to a resource temporarily.&lt;/p&gt;
-</description>
-            <pubDate>Mon, 02 Dec 2024 00:00:00 -0500</pubDate>
-            <link>/aws/aws-53/</link>
-            <guid isPermaLink="true">/aws/aws-53/</guid>
-            
-            
-            <category>AWS</category>
-            
-        </item>
-        
-    
-        
-
-        
-
-        
-        <item>
-            <title>tools, commands and hacks</title>
-            <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;this post is a hub of tools usufull for daily use. as a systems engieener&lt;/p&gt;
-
-&lt;h1 id=&quot;dig-command&quot;&gt;dig command&lt;/h1&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dig simple.stephane-klein.info
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Description
-The dig (domain information groper) command is a flexible tool for interrogating DNS name servers. It performs DNS lookups and displays the answers that are returned from the queried name servers. Most DNS administrators use the dig command to troubleshoot DNS problems because of its flexibility, ease of use, and clarity of output. Although dig is normally used with command-line arguments, it also has a batch mode for reading lookup requests from a file. Unlike earlier versions, the BIND9 implementation of dig allows multiple lookups to be issued from the command line. Unless it is told to query a specific name server, the dig command tries each of the servers listed in the /etc/resolv.conf file. If no usable server addresses are found, the dig command sends the query to the local host. If you specify no command line arguments or options, the dig command performs an NS query for “.” (the root).&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;pending&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-            <pubDate>Mon, 02 Dec 2024 00:00:00 -0500</pubDate>
-            <link>/tools/commands-usefull/</link>
-            <guid isPermaLink="true">/tools/commands-usefull/</guid>
-            
-            
-            <category>Tools</category>
-            
-        </item>
-        
-    
-        
-
-        
-
-        
-        <item>
-            <title>What Are DNS Records?</title>
-            <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;DNS Zone Editor.&lt;/p&gt;
-
-&lt;h2 id=&quot;a-record&quot;&gt;A Record&lt;/h2&gt;
-&lt;p&gt;maps a hostname to ipv4
-AAAA Record
-maps a hostname to ipv6&lt;/p&gt;
-
-&lt;h2 id=&quot;cname&quot;&gt;CNAME&lt;/h2&gt;
-&lt;p&gt;maps a hostmname to another hostname&lt;/p&gt;
-
-&lt;h2 id=&quot;alias-records&quot;&gt;Alias records&lt;/h2&gt;
-&lt;p&gt;maps a hostnamew to ase resource 
-An extension to DNS functioanlity 
-alies recors not use ttl
-alias record targets:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;elastic load balancer&lt;/li&gt;
-  &lt;li&gt;amzaon cloudfront distribution&lt;/li&gt;
-  &lt;li&gt;amazon api gateway&lt;/li&gt;
-  &lt;li&gt;elastic beanstalk&lt;/li&gt;
-  &lt;li&gt;s3 website bucket&lt;/li&gt;
-  &lt;li&gt;vpc interface endpoint&lt;/li&gt;
-  &lt;li&gt;global accelerator&lt;/li&gt;
-  &lt;li&gt;route 53 record in the same hosted zone&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;MX Entry
-TXT Record
-SRV Record&lt;/p&gt;
-
-&lt;p&gt;DNS Glossary
-Additional Information&lt;/p&gt;
-
-&lt;h2 id=&quot;ttl&quot;&gt;TTL&lt;/h2&gt;
-&lt;p&gt;Each DNS record has a TTL (Time To Live) which orders clients for how long to cache these values and not overload the DNS Resolver with DNS requests. The TTL value should be set to strike a balance between how long the value should be cached vs. how many requests should go to the DNS Resolver.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion:&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;pending&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.bluehost.com/help/article/dns-records-explained&quot;&gt;The Top 10 Content Delivery Networks (CDNs)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-            <pubDate>Thu, 19 Sep 2024 00:00:00 -0500</pubDate>
-            <link>/web/hosting/What-Are-DNS-Records/</link>
-            <guid isPermaLink="true">/web/hosting/What-Are-DNS-Records/</guid>
-            
-            
-            <category>Web/hosting</category>
-            
-        </item>
-        
-    
-        
-
-        
-
-        
-        <item>
-            <title>ICANN Registry, Registrar, and Registrant: What&apos;s the Difference?</title>
-            <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;When it comes to domain names and the internet, you might have come across terms like ICANN, 
-registry, registrar, and registrant. Understanding the roles and differences between 
-these entities is crucial for anyone involved in managing or purchasing domain names. 
-This post aims to clarify these terms and explain their functions.&lt;/p&gt;
-
-&lt;h3 id=&quot;icann&quot;&gt;ICANN&lt;/h3&gt;
-
-&lt;p&gt;The Internet Corporation for Assigned Names and Numbers (ICANN) is a global organization 
-responsible for coordinating the maintenance and procedures of several databases 
-related to the namespaces of the internet. Essentially, ICANN ensures the stable and 
-secure operation of the internet’s unique identifier systems.&lt;/p&gt;
-
-&lt;h3 id=&quot;registry&quot;&gt;Registry&lt;/h3&gt;
-
-&lt;p&gt;A registry is an organization that manages top-level domains (TLDs) such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.com&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.net&lt;/code&gt;. 
-The registry maintains the database of all domain names registered under its TLD and ensures 
-that each domain name is unique. The Internet Assigned Numbers Authority (IANA), a department within ICANN, oversees these registries.&lt;/p&gt;
-
-&lt;p&gt;Registries delegate the commercial sales of domain name registrations to registrars. 
-For instance, when a registrar sells a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.com&lt;/code&gt; domain registration to an end user (or ‘registrant’), 
-the registrar must notify VeriSign, the registry for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.com&lt;/code&gt; domains. 
-The registrar also pays a fee to VeriSign, which is included in the price charged to the end user.&lt;/p&gt;
-
-&lt;h3 id=&quot;registrar&quot;&gt;Registrar&lt;/h3&gt;
-
-&lt;p&gt;A registrar is a company authorized by ICANN to sell domain names to the public. 
-Registrars provide the interface and services necessary for individuals and organizations to register domain names. 
-They act as intermediaries between the registrants and the registries. Examples of popular registrars include GoDaddy, Namecheap, and Google Domains.&lt;/p&gt;
-
-&lt;h3 id=&quot;registrant&quot;&gt;Registrant&lt;/h3&gt;
-
-&lt;p&gt;A registrant is the individual or organization that registers a domain name. 
-The registrant holds the rights to use the domain name for a specified period, typically one year, with the option to renew. 
-The registrant is responsible for providing accurate contact information and ensuring that the domain name is used in compliance with the terms set by the registrar and registry.&lt;/p&gt;
-
-&lt;h3 id=&quot;name-servers&quot;&gt;Name Servers&lt;/h3&gt;
-
-&lt;p&gt;At the domain registrar, every domain must specify two pieces of information called name servers. 
-Name servers are crucial because they tell everyone where to look for the DNS records of the domain.
-Essentially, name servers act as directories that guide internet traffic to the correct location.&lt;/p&gt;
-
-&lt;p&gt;Here are some examples of name servers:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dns1.name-services.com&lt;/code&gt; = BulkRegister&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ns26.domaincontrol.com&lt;/code&gt; = GoDaddy&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ns.rackspace.com&lt;/code&gt; = Rackspace&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dns1.stabletransit.com&lt;/code&gt; = Mosso / Rackspace Cloud&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;dns--domain-name-services&quot;&gt;DNS – Domain Name Services&lt;/h3&gt;
-
-&lt;p&gt;DNS (Domain Name System) is the backbone of every domain. It translates human-readable domain 
-names (like www.example.com) into IP addresses that computers use to identify each other on the network. DNS has three main components:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;HOST A Record&lt;/strong&gt;: This record maps a domain to a specific IP address. It is used to point a domain or subdomain to a web server.
-    &lt;ul&gt;
-      &lt;li&gt;Examples:
-        &lt;ul&gt;
-          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;www.paperstreet.com&lt;/code&gt; → &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;72.32.8.45&lt;/code&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;paperstreet.com&lt;/code&gt; → &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;72.32.8.45&lt;/code&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mail.paperstreet.com&lt;/code&gt; → &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;72.3.161.129&lt;/code&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;HOST A records allow for multiple subdomains, such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;citrix.paperstreet.com&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;webmail.paperstreet.com&lt;/code&gt;, or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;essentials.paperstreet.com&lt;/code&gt;.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;MX Record (Mail Exchange)&lt;/strong&gt;: These records specify the mail servers responsible for receiving email on behalf of a domain. They direct email traffic to the correct mail server.
-    &lt;ul&gt;
-      &lt;li&gt;Example:
-        &lt;ul&gt;
-          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;paperstreet.com&lt;/code&gt; email points to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mail.paperstreet.com&lt;/code&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;CNAME Record (Canonical Name)&lt;/strong&gt;: This is an alias for another domain name. Instead of pointing directly to an IP address, a CNAME points to another domain name, which then points to an IP address. This is useful for managing multiple domain names that should resolve to the same IP address.
-    &lt;ul&gt;
-      &lt;li&gt;Example:
-        &lt;ul&gt;
-          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;www.paperstreet.com&lt;/code&gt; → &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;paperstreet.com&lt;/code&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;This setup allows the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;www&lt;/code&gt; version of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;paperstreet.com&lt;/code&gt; to point to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;paperstreet.com&lt;/code&gt; and use the same IP address.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;By understanding these components, you can effectively manage your domain’s DNS settings to ensure proper functionality and accessibility.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion:&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;pending&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/&quot;&gt;The Top 10 Content Delivery Networks (CDNs)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;https://www.paperstreet.com/blog/domains-registrars-name-servers-and-dns-oh-my/
-https://help.one.com/hc/en-us/articles/115005588149-What-is-a-registry-registrar-and-registrant&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-            <pubDate>Mon, 02 Sep 2024 00:00:00 -0500</pubDate>
-            <link>/web/hosting/hosting-ICANN-registry-registar-registrant/</link>
-            <guid isPermaLink="true">/web/hosting/hosting-ICANN-registry-registar-registrant/</guid>
-            
-            
-            <category>Web/hosting</category>
-            
-        </item>
-        
-    
-        
-
-        
-
-        
-        <item>
-            <title>Create Your Own CDN and Try Your Web Components Online</title>
-            <description>&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;In this post, I’ll show you how to create your own Content Delivery Network (CDN) and use it to test your web components online.&lt;/p&gt;
-
-&lt;p&gt;By leveraging GitHub Pages, you can set up a personal CDN to host your web components. In my case, I created a GitHub repository that serves as my personal CDN, which you can find https://github.com/Qleoz12/static Let’s call it “static” for now.&lt;/p&gt;
-
-&lt;h3 id=&quot;setting-up-your-cdn&quot;&gt;Setting Up Your CDN&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Create a GitHub Repository: Start by creating a simple repository on GitHub.&lt;/li&gt;
-  &lt;li&gt;Enable GitHub Pages: Go to the repository settings and enable GitHub Pages to make your content available online.&lt;/li&gt;
-  &lt;li&gt;Upload Your Content: Add your web components, images, or any other content you want to share online to the repository.&lt;/li&gt;
-  &lt;li&gt;Test Your Links: Make sure the links to your content are working correctly and are accessible online.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;creating-web-components&quot;&gt;Creating Web Components&lt;/h3&gt;
-&lt;p&gt;Once your CDN is set up, you can create and upload web components. For example, I created a web component for a business card to display my contact information online. You can check out the code&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-link&quot;&gt;https://github.com/Qleoz12/svelte-web-components-template/blob/master/packages/lib/src/profile-card.wc.svelte
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;not forget give star a my repo ⭐&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Upload the web component to your CDN and test the link to ensure it is available online. In my case, the library is deployed at this&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-link&quot;&gt; https://github.com/Qleoz12/static/tree/main/js/webcomponents
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;try-the-webcomponent-online&quot;&gt;Try the webcomponent online&lt;/h3&gt;
-&lt;p&gt;I used my personal portfolio and a React project to test the integration of webcomponent and it works perfectly.&lt;/p&gt;
-
-&lt;p&gt;just add the library reference and use the webcomponent in your project.&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://qleoz12.github.io/static/js/webcomponents/profile-card.wc.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;profile-card&amp;gt;&amp;lt;/profile-card&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;check the pages:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Jekyll Blog Integration: Check out how I integrated a web component into my blog on the About - Dann Brown Adventures -&amp;gt;about  &lt;a href=&quot;https://qleoz12.github.io/about/&quot;&gt;qleoz12.github.io&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;React App Integration: See the integration with a React app using Vite + React + TS &lt;a href=&quot;https://qleoz12.github.io/React-Encriptador-Oracle-Alura-GIT-ACTIONS/&quot;&gt;qleoz12.github.io&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;explanation&quot;&gt;Explanation:&lt;/h2&gt;
-
-&lt;p&gt;Below is an image illustrating the flow of creating your own CDN and trying out your web components online. It also helps you understand how the repositories are connected.&lt;/p&gt;
-
-&lt;p&gt;also check my youtube video&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Qleoz12/qleoz12.github.io/master/assets/images/graphs/cdn-webcomponents.drawio.svg&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;responsive-wrap&quot;&gt;
-&lt;!-- this is the embed code provided by Google --&gt;
-  &lt;iframe src=&quot;https://docs.google.com/presentation/d/1s9LRgqhLGTXlE031cYilrd1BiI42YKtDNUoJFdbhftw/embed?start=false&amp;amp;loop=false&amp;amp;delayms=3000&quot; frameborder=&quot;0&quot; width=&quot;960&quot; height=&quot;569&quot; allowfullscreen=&quot;true&quot; mozallowfullscreen=&quot;true&quot; webkitallowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;
-&lt;!-- Google embed ends --&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion:&lt;/h2&gt;
-&lt;p&gt;with this discover now your able to expose trought internet new creation, update content for your clients, and share your work with the world. working one time&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://expertinsights.com/insights/the-top-content-delivery-networks-cdns&quot;&gt;The Top 10 Content Delivery Networks (CDNs)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://dev.to/jcubic/how-to-get-a-literally-free-cdn-2gc1&quot;&gt;How to get a literally free CDN - DEV Community&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;[webfx.com](https://www.webfx.com/blog/web-design/free-public-cdns/)&quot;&gt;6 Free CDN Services (to Speed Up Your Website in 2024)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=cISYzA36-ZY&quot;&gt;American Psycho -Business Card Scene (youtube.com)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-            <pubDate>Mon, 12 Aug 2024 00:00:00 -0500</pubDate>
-            <link>/web/webcomponents/cdn-gittpages-webcomponents/</link>
-            <guid isPermaLink="true">/web/webcomponents/cdn-gittpages-webcomponents/</guid>
-            
-            
-            <category>Web/webcomponents</category>
             
         </item>
         
