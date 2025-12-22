@@ -130,6 +130,9 @@ This second chart reinforces an important idea:
     <figcaption class="feature__item--center">IGG, 2025</figcaption>
 </figure>
 
+## Slides
+use arrow to navigate through the slides
+<iframe src="https://qleoz12.github.io/Slides-dev/stocks-markets-comparison/" width="100%" height="600px" frameborder="0" scrolling="no" allowfullscreen></iframe>
 
 Comparative Analysis: NYSE vs TSX and LSE Through Dividends and Drawdowns
 
@@ -218,3 +221,4 @@ For now, I’m not embedding the notebook directly into my blog, please check my
 - https://www.amazon.com/gp/product/B0BB5DDB1Q
 - https://github.com/Quantreo/2nd-edition-BOOK-AMAZON-Python-for-Finance-and-Algorithmic-Trading?tab=readme-ov-file
 - https://www.sea-stat.com/wp-content/uploads/2021/05/Yves-Hilpisch-Python-for-Finance_-Mastering-Data-Driven-Finance-Book-OReilly-2018.pdf
+- https://www.myjar.app/blog/financial-education/what-is-capital-erosion-and-how-does-it-affect-your-savings
