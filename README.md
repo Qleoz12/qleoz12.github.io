@@ -139,6 +139,41 @@ For detailed instructions on how to configure, customize, add/migrate content, a
 
 ---
 
+## Este blog — flujo de publicación de posts
+
+Resumen del ciclo habitual: crear el post en el repo, probar en local, comprobar el build, subir a GitHub y revisar el sitio publicado.
+
+1. **Crear o editar** un archivo en `_posts/` con nombre Jekyll: `AAAA-MM-DD-titulo-en-kebab-case.md`. Arriba del todo va el *front matter* en YAML (`title`, `date`, `categories`, etc.).
+2. **Dependencias** (una vez por máquina, o tras cambiar el `Gemfile`): `bundle install`.
+3. **Servidor local** (vista previa con recarga al guardar):
+
+   ```bash
+   bundle exec jekyll serve
+   ```
+
+   Abre en el navegador la URL que muestre la consola (por defecto suele ser `http://127.0.0.1:4000`).
+
+4. **Solo build** (sin servidor; útil para ver errores antes de subir):
+
+   ```bash
+   bundle exec jekyll build
+   ```
+
+5. **Git** — subir los cambios a la rama que use GitHub Pages (muchas veces `main`):
+
+   ```bash
+   git status
+   git add _posts/tu-archivo.md
+   git commit -m "post: descripción breve"
+   git push origin main
+   ```
+
+6. **Revisar en GitHub** — en el repo: pestaña *Commits* o el diff del PR; luego el sitio en `https://qleoz12.github.io/` (el deploy de Pages puede tardar un minuto o dos).
+
+Posts con fórmulas MathJax: en el *front matter* del post añade `math: true` (carga condicional en `_includes/footer/custom.html`).
+
+---
+
 ## Contributing
 
 Found a typo in the documentation or interested in [fixing a bug](https://github.com/mmistakes/minimal-mistakes/issues)? Then by all means [submit an issue](https://github.com/mmistakes/minimal-mistakes/issues/new) or [pull request](https://help.github.com/articles/using-pull-requests/). If this is your first pull request, it may be helpful to read up on the [GitHub Flow](https://guides.github.com/introduction/flow/) first.

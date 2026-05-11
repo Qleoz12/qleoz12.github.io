@@ -1,0 +1,13 @@
+{% comment %}
+R snippet panel: código y salida como bloques independientes.
+Uso:
+  {% capture mi_codigo %} ... fenced ```r ... {% endcapture %}
+  {% include r_panel.html kind="code" label="código" body=mi_codigo %}
+  kind: code | output
+{% endcomment %}
+<div class="r-panel r-panel--{{ include.kind }}">
+  {% if include.label %}<div class="r-panel__badge" aria-hidden="true">{{ include.label }}</div>{% endif %}
+  <div class="r-panel__body" markdown="1">
+{{ include.body }}
+  </div>
+</div>

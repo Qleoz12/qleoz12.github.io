@@ -501,3 +501,128 @@ sans-serif;
 .event:hover {
   background-color: #2980b9;
 }
+
+/* ==========================================================================
+   Video hub (_pages/videos.md)
+   ========================================================================== */
+
+.video-hub__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.video-hub__card {
+  border: 1px solid #cfcfcf;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fafafa;
+}
+
+.video-hub__thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.video-hub__body {
+  padding: 0.75rem 1rem 1rem;
+}
+
+.video-hub__title {
+  font-size: 1.1rem;
+  margin: 0 0 0.35rem;
+}
+
+.video-hub__meta {
+  color: #666;
+  font-size: 0.85rem;
+  margin: 0.25rem 0;
+}
+
+.video-hub__tags {
+  margin: 0.5rem 0 0;
+}
+
+.video-hub__tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  margin-right: 0.35rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  background: #e8e8e8;
+}
+
+.video-hub__slides {
+  margin-top: 0.75rem;
+}
+
+.video-hub__slides li {
+  margin-bottom: 0.5rem;
+}
+
+/* ==========================================================================
+   R panels — código y salida como componentes independientes (_includes/r_panel.html)
+   ========================================================================== */
+
+.r-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  margin: 1.5rem 0;
+}
+
+.r-panel {
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #c5c5c5;
+  background: #fafafa;
+}
+
+.r-panel--code {
+  border-left: 4px solid #276dc3;
+}
+
+.r-panel--output {
+  border-left: 4px solid #2e7d32;
+  background: #f4f7f4;
+  margin-top: 0.15rem;
+}
+
+.r-panel__badge {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 0.45rem 0.75rem;
+  background: #e8e8e8;
+  color: #444;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.r-panel__badge::before {
+  content: "// ";
+  opacity: 0.75;
+}
+
+.r-panel__body .highlight {
+  margin: 0;
+}
+
+.r-panel__body pre {
+  margin: 0;
+  padding: 1rem 1.15rem;
+  line-height: 1.55;
+}
+
+/* MathJax (page.math) — readable display, scroll on small screens */
+.math-block {
+  overflow-x: auto;
+  margin: 1.25rem 0;
+  padding: 0.35rem 0;
+}
+
+.math-block mjx-container[jax="SVG"][display="true"] {
+  margin: 0.75rem auto !important;
+}

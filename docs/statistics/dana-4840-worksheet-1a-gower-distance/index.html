@@ -1,0 +1,709 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>DANA 4840 — Worksheet 1a: Gower distance for mixed data - Dann Brown Adventures</title>
+<meta name="description" content="Study sheet for DANA 4840 — Worksheet 1a. Display math below uses MathJax (enabled on this page with math: true in the front matter).">
+
+
+  <meta name="author" content="Dann brown">
+  
+  <meta property="article:author" content="Dann brown">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dann Brown Adventures">
+<meta property="og:title" content="DANA 4840 — Worksheet 1a: Gower distance for mixed data">
+<meta property="og:url" content="/statistics/dana-4840-worksheet-1a-gower-distance/">
+
+
+  <meta property="og:description" content="Study sheet for DANA 4840 — Worksheet 1a. Display math below uses MathJax (enabled on this page with math: true in the front matter).">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-05-10T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2026-05-10T21:00:00-05:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/statistics/dana-4840-worksheet-1a-gower-distance/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Leonardo L Sanchez- Dann Brown",
+      "url": "/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dann Brown Adventures Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--archive">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Dann Brown Adventures
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/videos/">Videos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/books/reading">Reading List</a>
+            </li><li class="masthead__menu-item">
+              <a href="/reading">looking</a>
+            </li><li class="masthead__menu-item">
+              <a href="/knowledge">knowledge</a>
+            </li><li class="masthead__menu-item">
+              <a href="/certs">certs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/Languages">Languages</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#statistics" itemprop="item"><span itemprop="name">Statistics</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">DANA 4840 — Worksheet 1a: Gower distance for mixed data</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/1577552827279.jpg" alt="Dann brown" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">Dann brown</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">CO</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/leonardo-sanchez-89590b127/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">linkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://www.youtube.com/channel/UCoROtxDQYfIgjXBDcORK5zw/videos" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-youtube" aria-hidden="true"></i><span class="label">Youtube</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Qleoz12" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kintaroloop@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="kintaroloop@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">DANA 4840 — Worksheet 1a: Gower distance for mixed data</h1>
+    
+    <p>Study sheet for <strong>DANA 4840 — Worksheet 1a</strong>. Display math below uses <strong>MathJax</strong> (enabled on this page with <code class="language-plaintext highlighter-rouge">math: true</code> in the front matter).</p>
+
+<p>The worksheet uses a <strong>mixed</strong> table: quantitative fields, nominal categories, and a symmetric binary flag. <strong>Gower distance</strong> is appropriate because it builds a <strong>normalized dissimilarity between 0 and 1</strong> for each active variable and then <strong>averages</strong> those contributions (equal weight when there are no missing values).</p>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>For <strong>quantitative</strong> variables, the contribution is **(</td>
+          <td>x_1 - x_2</td>
+          <td>)** divided by the <strong>observed range</strong> (max − min) on that column, using <strong>all rows</strong> in the dataset.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>For <strong>categorical</strong> and <strong>symmetric binary</strong> variables, the contribution is <strong>0</strong> if the two values match and <strong>1</strong> if they differ.</li>
+</ul>
+
+<h2 id="dataset">Dataset</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Employee</th>
+      <th>Age</th>
+      <th>Race</th>
+      <th>Height</th>
+      <th>Income</th>
+      <th>IsMale</th>
+      <th>Politics</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Employee 1</td>
+      <td>22</td>
+      <td>1</td>
+      <td>Tall</td>
+      <td>0.39</td>
+      <td>TRUE</td>
+      <td>moderate</td>
+    </tr>
+    <tr>
+      <td>Employee 2</td>
+      <td>33</td>
+      <td>3</td>
+      <td>Short</td>
+      <td>0.34</td>
+      <td>TRUE</td>
+      <td>liberal</td>
+    </tr>
+    <tr>
+      <td>Employee 3</td>
+      <td>52</td>
+      <td>1</td>
+      <td>Moderate</td>
+      <td>0.51</td>
+      <td>FALSE</td>
+      <td>moderate</td>
+    </tr>
+    <tr>
+      <td>Employee 4</td>
+      <td>46</td>
+      <td>6</td>
+      <td>Tall</td>
+      <td>0.63</td>
+      <td>TRUE</td>
+      <td>conservative</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Source (adapted):</strong> <a href="https://jamesmccaffrey.wordpress.com/2020/04/21/example-of-calculating-the-gower-distance/">McCaffrey — example of calculating the Gower distance</a></p>
+
+<h2 id="variable-types-used-in-the-analysis">Variable types used in the analysis</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Type</th>
+      <th>Reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Age</strong></td>
+      <td>Quantitative (interval)</td>
+      <td>Absolute difference scaled by the <strong>observed range</strong> across the four employees.</td>
+    </tr>
+    <tr>
+      <td><strong>Race</strong></td>
+      <td>Nominal categorical</td>
+      <td>Codes <strong>1, 3, 1, 6</strong> are labels, not a continuous numeric scale — store as <code class="language-plaintext highlighter-rouge">factor</code> in R.</td>
+    </tr>
+    <tr>
+      <td><strong>Height</strong></td>
+      <td>Categorical</td>
+      <td>Different labels contribute <strong>1</strong> (here: unordered factor, consistent with <code class="language-plaintext highlighter-rouge">daisy</code> defaults).</td>
+    </tr>
+    <tr>
+      <td><strong>Income</strong></td>
+      <td>Quantitative (interval)</td>
+      <td>Same scaling rule as <strong>Age</strong>.</td>
+    </tr>
+    <tr>
+      <td><strong>IsMale</strong></td>
+      <td>Symmetric binary</td>
+      <td>Same value → 0; different value → 1.</td>
+    </tr>
+    <tr>
+      <td><strong>Politics</strong></td>
+      <td>Nominal categorical</td>
+      <td>Same category → 0; different category → 1.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="a-gower-distance-between-employee-1-and-employee-2">(a) Gower distance between Employee 1 and Employee 2</h2>
+
+<p><strong>Worksheet 1a — (a)</strong></p>
+
+<p>The dataset contains mixed data (quantitative and categorical variables). Calculate by hand the Gower distance between Employee 1 and Employee 2, showing all steps of how you arrive at your answer.</p>
+
+<p><strong>Employee 1:</strong> Age = 22, Race = 1, Height = Tall, Income = 0.39, IsMale = TRUE, Politics = moderate.<br />
+<strong>Employee 2:</strong> Age = 33, Race = 3, Height = Short, Income = 0.34, IsMale = TRUE, Politics = liberal.</p>
+
+<h3 id="step-1-ranges-for-quantitative-variables">Step 1: Ranges for quantitative variables</h3>
+
+<p>Use <strong>all four</strong> employees to set each range.</p>
+
+<div class="math-block">
+\[
+\begin{aligned}
+R_{\mathrm{Age}} &amp;= 52 - 22 = 30 \\[0.35em]
+R_{\mathrm{Income}} &amp;= 0.63 - 0.34 = 0.29
+\end{aligned}
+\]
+</div>
+
+<h3 id="step-2-variable-by-variable-contributions-employees-1-vs-2">Step 2: Variable-by-variable contributions (Employees 1 vs 2)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Calculation</th>
+      <th>Contribution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Age</strong></td>
+      <td>|22 − 33| / 30 = 11/30</td>
+      <td>≈ <strong>0.3667</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Race</strong></td>
+      <td>different categories</td>
+      <td><strong>1</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Height</strong></td>
+      <td>Tall vs Short</td>
+      <td><strong>1</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Income</strong></td>
+      <td>|0.39 − 0.34| / 0.29 = 5/29</td>
+      <td>≈ <strong>0.1724</strong></td>
+    </tr>
+    <tr>
+      <td><strong>IsMale</strong></td>
+      <td>TRUE vs TRUE</td>
+      <td><strong>0</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Politics</strong></td>
+      <td>moderate vs liberal</td>
+      <td><strong>1</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="step-3-average-the-six-contributions">Step 3: Average the six contributions</h3>
+
+<div class="math-block">
+\[
+\begin{aligned}
+D_{\mathrm{Gower}}(1,2) &amp;= \frac{0.3667 + 1 + 1 + 0.1724 + 0 + 1}{6} \\[0.45em]
+&amp;= \frac{3.5391}{6} \\[0.45em]
+&amp;\approx 0.5898
+\end{aligned}
+\]
+</div>
+
+<p>Exact rational form (optional):</p>
+
+<div class="math-block">
+\[
+D_{\mathrm{Gower}}(1,2) = \frac{3079}{5220} \approx 0.589847
+\]
+</div>
+
+<p>So Employees <strong>1</strong> and <strong>2</strong> are <strong>moderately dissimilar</strong> when all six variables enter with equal weight.</p>
+
+<p><em>(If <strong>Height</strong> is treated as an <strong>ordered</strong> factor with Short &lt; Moderate &lt; Tall, <code class="language-plaintext highlighter-rouge">daisy</code> still assigns contribution <strong>1</strong> for Tall vs Short in this small dataset because that pair spans the full spread of observed ordered levels.)</em></p>
+
+<h2 id="b-check-with-daisy">(b) Check with <code class="language-plaintext highlighter-rouge">daisy()</code></h2>
+
+<p><strong>Worksheet 1a — (b)</strong></p>
+
+<p>Use R’s <code class="language-plaintext highlighter-rouge">daisy()</code> to validate that your answer in part (a) is correct.</p>
+
+<p>Build the <code class="language-plaintext highlighter-rouge">data.frame</code> with sensible types: <code class="language-plaintext highlighter-rouge">Race</code>, <code class="language-plaintext highlighter-rouge">Height</code>, and <code class="language-plaintext highlighter-rouge">Politics</code> as <strong><code class="language-plaintext highlighter-rouge">factor</code></strong>; <code class="language-plaintext highlighter-rouge">IsMale</code> as logical; <code class="language-plaintext highlighter-rouge">Age</code> and <code class="language-plaintext highlighter-rouge">Income</code> numeric. With <code class="language-plaintext highlighter-rouge">metric = "gower"</code>, <code class="language-plaintext highlighter-rouge">daisy()</code> applies range scaling on numeric columns and 0/1 contributions on categorical columns as in the table above.</p>
+
+<div class="r-stack">
+
+<div class="r-panel r-panel--code">
+  <div class="r-panel__badge" aria-hidden="true">R code</div>
+  <div class="r-panel__body">
+
+      <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># =========================</span><span class="w">
+</span><span class="c1"># Worksheet 1a — (b)</span><span class="w">
+</span><span class="c1"># =========================</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span><span class="w">
+
+</span><span class="n">employees</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="w">
+  </span><span class="n">Age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">22</span><span class="p">,</span><span class="w"> </span><span class="m">33</span><span class="p">,</span><span class="w"> </span><span class="m">52</span><span class="p">,</span><span class="w"> </span><span class="m">46</span><span class="p">),</span><span class="w">
+  </span><span class="n">Race</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">)),</span><span class="w">
+  </span><span class="n">Height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"Tall"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Short"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Moderate"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Tall"</span><span class="p">)),</span><span class="w">
+  </span><span class="n">Income</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.39</span><span class="p">,</span><span class="w"> </span><span class="m">0.34</span><span class="p">,</span><span class="w"> </span><span class="m">0.51</span><span class="p">,</span><span class="w"> </span><span class="m">0.63</span><span class="p">),</span><span class="w">
+  </span><span class="n">IsMale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">),</span><span class="w">
+  </span><span class="n">Politics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"moderate"</span><span class="p">,</span><span class="w"> </span><span class="s2">"liberal"</span><span class="p">,</span><span class="w"> </span><span class="s2">"moderate"</span><span class="p">,</span><span class="w"> </span><span class="s2">"conservative"</span><span class="p">)),</span><span class="w">
+  </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"Employee"</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">)</span><span class="w">
+</span><span class="p">)</span><span class="w">
+
+</span><span class="n">D</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.matrix</span><span class="p">(</span><span class="n">daisy</span><span class="p">(</span><span class="n">employees</span><span class="p">,</span><span class="w"> </span><span class="n">metric</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"gower"</span><span class="p">))</span><span class="w">
+
+</span><span class="nf">round</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">)</span><span class="w">
+
+</span><span class="n">D</span><span class="p">[</span><span class="s2">"Employee1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Employee2"</span><span class="p">]</span><span class="w">
+
+</span><span class="m">3079</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">5220</span><span class="w">
+
+</span><span class="n">isTRUE</span><span class="p">(</span><span class="n">all.equal</span><span class="p">(</span><span class="n">D</span><span class="p">[</span><span class="s2">"Employee1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Employee2"</span><span class="p">],</span><span class="w"> </span><span class="m">3079</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">5220</span><span class="p">))</span><span class="w">
+</span></code></pre></div>      </div>
+
+    </div>
+</div>
+
+
+<div class="r-panel r-panel--output">
+  <div class="r-panel__badge" aria-hidden="true">Console output</div>
+  <div class="r-panel__body">
+
+      <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>          Employee1 Employee2 Employee3 Employee4
+Employee1  0.000000  0.589847  0.568966  0.604598
+Employee2  0.589847  0.000000  0.869923  0.738889
+Employee3  0.568966  0.869923  0.000000  0.768966
+Employee4  0.604598  0.738889  0.768966  0.000000
+
+[1] 0.5898467
+
+[1] 0.5898467
+
+[1] TRUE
+</code></pre></div>      </div>
+
+    </div>
+</div>
+
+</div>
+
+<p>Floating-point noise can make raw <code class="language-plaintext highlighter-rouge">==</code> checks fail even when the hand calculation matches; <strong><code class="language-plaintext highlighter-rouge">isTRUE(all.equal(...))</code></strong> is the reliable check in R.</p>
+
+    
+      <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      // Here is an example,
+      // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
+      this.page.url = "https://qleoz12.github.io//statistics/dana-4840-worksheet-1a-gower-distance/";
+      this.page.identifier = "/statistics/dana-4840-worksheet-1a-gower-distance/";
+    };
+
+    // You should be able to get the following lines of code from your Disqus admin.
+    // https://disqus.com/admin/universalcode
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//qleoz12githubio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+    
+  </div>
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+  
+<script>
+  window.MathJax = {
+    loader: { load: ['[tex]/ams'] },
+    tex: {
+      packages: { '[+]': ['ams', 'noerrors', 'noundefined'] },
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],
+      processEscapes: true,
+      tags: 'ams'
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script"></script>
+
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026 Leonardo L Sanchez- Dann Brown. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

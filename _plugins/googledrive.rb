@@ -4,7 +4,11 @@ require "debug"
 module Reading
     class Generator < Jekyll::Generator
         def generate(site)
-            
+            if ENV["SKIP_GOOGLE_DRIVE"] == "1" || ENV["JEKYLL_SKIP_GOOGLE_DRIVE"] == "1"
+                Jekyll.logger.info "Reading:", "Skipping Google Drive generator (set SKIP_GOOGLE_DRIVE=1)."
+                return
+            end
+
             # credentials = Google::Auth::UserRefreshCredentials.new(
             #     client_id: "-.apps.googleusercontent.com",
             #     client_secret:"-"

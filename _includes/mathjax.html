@@ -1,0 +1,18 @@
+{% comment %}
+  MathJax 3 (TeX → SVG). Enable on any page with front matter: math: true
+  Delimiters: \( \) inline; \[ \] or $$ $$ display. ams loaded for aligned / align*.
+{% endcomment %}
+<script>
+  window.MathJax = {
+    loader: { load: ['[tex]/ams'] },
+    tex: {
+      packages: { '[+]': ['ams', 'noerrors', 'noundefined'] },
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],
+      processEscapes: true,
+      tags: 'ams'
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script"></script>

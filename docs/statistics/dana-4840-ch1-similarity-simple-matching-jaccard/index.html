@@ -1,0 +1,867 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>DANA 4840 — Worksheet Ch.1: Simple Matching, Jaccard, shoppers - Dann Brown Adventures</title>
+<meta name="description" content="Study sheet for DANA 4840 — Chapter 1: similarity for binary-coded shoppers (Simple Matching, optional daisy() check), plus the lecture block on similarity vs distance and Gower for mixed data.">
+
+
+  <meta name="author" content="Dann brown">
+  
+  <meta property="article:author" content="Dann brown">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dann Brown Adventures">
+<meta property="og:title" content="DANA 4840 — Worksheet Ch.1: Simple Matching, Jaccard, shoppers">
+<meta property="og:url" content="/statistics/dana-4840-ch1-similarity-simple-matching-jaccard/">
+
+
+  <meta property="og:description" content="Study sheet for DANA 4840 — Chapter 1: similarity for binary-coded shoppers (Simple Matching, optional daisy() check), plus the lecture block on similarity vs distance and Gower for mixed data.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-05-09T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2026-05-10T21:00:00-05:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/statistics/dana-4840-ch1-similarity-simple-matching-jaccard/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Leonardo L Sanchez- Dann Brown",
+      "url": "/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dann Brown Adventures Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--archive">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Dann Brown Adventures
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/videos/">Videos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/books/reading">Reading List</a>
+            </li><li class="masthead__menu-item">
+              <a href="/reading">looking</a>
+            </li><li class="masthead__menu-item">
+              <a href="/knowledge">knowledge</a>
+            </li><li class="masthead__menu-item">
+              <a href="/certs">certs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/Languages">Languages</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#statistics" itemprop="item"><span itemprop="name">Statistics</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">DANA 4840 — Worksheet Ch.1: Simple Matching, Jaccard, shoppers</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/1577552827279.jpg" alt="Dann brown" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">Dann brown</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">CO</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/leonardo-sanchez-89590b127/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">linkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://www.youtube.com/channel/UCoROtxDQYfIgjXBDcORK5zw/videos" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-youtube" aria-hidden="true"></i><span class="label">Youtube</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Qleoz12" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kintaroloop@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="kintaroloop@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">DANA 4840 — Worksheet Ch.1: Simple Matching, Jaccard, shoppers</h1>
+    
+    <p>Study sheet for <strong>DANA 4840</strong> — Chapter 1: similarity for binary-coded shoppers (Simple Matching, optional <code class="language-plaintext highlighter-rouge">daisy()</code> check), plus the lecture block on similarity vs distance and Gower for mixed data.</p>
+
+<h2 id="dana-4840--classification-ii--cluster-analysis--part-2">DANA 4840 — Classification II — Cluster Analysis — Part 2</h2>
+
+<h3 id="use-cases-of-cluster-analysis">Use cases of cluster analysis</h3>
+
+<p>Cluster analysis is used in many settings, for example:</p>
+
+<ul>
+  <li>City planners segment neighborhoods (for example property-tax bands or service planning).</li>
+  <li>A large firm may group thousands of employees to target <strong>training</strong> or <strong>promotion</strong> decisions.</li>
+</ul>
+
+<h3 id="similarity-vs-dissimilarity-measurements">Similarity vs dissimilarity measurements</h3>
+
+<ul>
+  <li><strong>Similarity</strong> increases when two objects are <strong>more alike</strong> (e.g. Jaccard, Dice, Simple Matching on a <strong>0–1</strong> scale).</li>
+  <li><strong>Dissimilarity / distance</strong> decreases when two objects are <strong>more alike</strong> (e.g. Euclidean or Manhattan distance).</li>
+</ul>
+
+<h3 id="methods-to-calculate-similarity-and-dissimilarity-measurements">Methods to calculate similarity and dissimilarity measurements</h3>
+
+<p><strong>(a) Binary data (0/1 coding)</strong> — usually <strong>similarity</strong> measures:</p>
+
+<ol>
+  <li>Simple Matching (SMC)</li>
+  <li>Jaccard</li>
+  <li>Dice</li>
+</ol>
+
+<p><strong>(b) Quantitative data</strong> — usually <strong>dissimilarities / distances</strong>:</p>
+
+<ol>
+  <li>Euclidean distance</li>
+  <li>Manhattan distance</li>
+  <li>Correlation-based distances</li>
+</ol>
+
+<p><strong>(c) Mixed data</strong> (quantitative and categorical together): <strong>Gower distance</strong>. In R, use <code class="language-plaintext highlighter-rouge">cluster::daisy()</code> with explicit variable types.</p>
+
+<h3 id="turning-similarity-into-dissimilarity-and-why">Turning similarity into dissimilarity (and why)</h3>
+
+<p>Many clustering algorithms expect a <strong>dissimilarity matrix</strong> or work directly with <strong>distances</strong>. If a similarity <strong>s</strong> is scaled between <strong>0</strong> and <strong>1</strong> with <strong>1 = identical</strong>, a common transform is:</p>
+
+<p><strong>d = 1 − s</strong></p>
+
+<p>so <strong>d = 0</strong> for identical objects and larger <strong>d</strong> means more different. Always check the scale of <strong>s</strong> before applying a transform.</p>
+
+<h3 id="simple-matching-jaccard-and-dice-definitions">Simple Matching, Jaccard, and Dice (definitions)</h3>
+
+<p>For two objects <em>i</em> and <em>j</em> and <strong>p</strong> binary attributes, count four kinds of position-wise pairs:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Meaning (one position)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>a</strong></td>
+      <td>both have <strong>1</strong></td>
+    </tr>
+    <tr>
+      <td><strong>b</strong></td>
+      <td><em>i</em> has <strong>1</strong>, <em>j</em> has <strong>0</strong></td>
+    </tr>
+    <tr>
+      <td><strong>c</strong></td>
+      <td><em>i</em> has <strong>0</strong>, <em>j</em> has <strong>1</strong></td>
+    </tr>
+    <tr>
+      <td><strong>d</strong></td>
+      <td>both have <strong>0</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>and <strong>p = a + b + c + d</strong>.</p>
+
+<p><strong>Simple Matching (SMC)</strong> — similarity from <strong>all agreements</strong> (both <strong>1–1</strong> and <strong>0–0</strong>):</p>
+
+<div class="math-block">
+\[
+S_{\mathrm{SMC}} = \frac{a+d}{a+b+c+d} = \frac{a+d}{p}
+\]
+</div>
+
+<p><strong>Jaccard</strong> — ignores <strong>double zeros</strong> (only joint “presence” counts as a strong agreement):</p>
+
+<div class="math-block">
+\[
+J = \frac{a}{a+b+c}
+\]
+</div>
+
+<p><strong>Dice</strong> — another presence-based similarity; differs from Jaccard in how double zeros are weighted:</p>
+
+<div class="math-block">
+\[
+\text{Dice} = \frac{2a}{2a+b+c}
+\]
+</div>
+
+<p>For the <strong>shoppers</strong> worksheet we use <strong>SMC</strong> with <strong>p = 7</strong> bits (ethnicity encoded with two dummies).</p>
+
+<hr />
+
+<h2 id="dataset-shoppers">Dataset (shoppers)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Shopper</th>
+      <th>Tall or short</th>
+      <th>Body size heavy-set or not</th>
+      <th>Suspected ethnic background</th>
+      <th>Made purchases or not</th>
+      <th>Shop alone or not</th>
+      <th>Fashion conscious or not</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Shopper 1</td>
+      <td>Short</td>
+      <td>Not</td>
+      <td>Caucasian</td>
+      <td>Yes</td>
+      <td>Alone</td>
+      <td>Fashionable</td>
+    </tr>
+    <tr>
+      <td>Shopper 2</td>
+      <td>Tall</td>
+      <td>Heavy</td>
+      <td>Chinese</td>
+      <td>No</td>
+      <td>Alone</td>
+      <td>Not</td>
+    </tr>
+    <tr>
+      <td>Shopper 3</td>
+      <td>Short</td>
+      <td>Heavy</td>
+      <td>Indian</td>
+      <td>Yes</td>
+      <td>Alone</td>
+      <td>Not</td>
+    </tr>
+    <tr>
+      <td>Shopper 4</td>
+      <td>Short</td>
+      <td>Not</td>
+      <td>Chinese</td>
+      <td>No</td>
+      <td>Alone</td>
+      <td>Fashionable</td>
+    </tr>
+    <tr>
+      <td>Shopper 5</td>
+      <td>Tall</td>
+      <td>Heavy</td>
+      <td>Chinese</td>
+      <td>No</td>
+      <td>Not</td>
+      <td>Not</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="binary-coding-for-parts-a-and-b">Binary coding (for parts (a) and (b))</h3>
+
+<p>Six survey items become <strong>seven</strong> binary columns: ethnicity with <strong>three</strong> categories needs <strong>two dummy bits</strong> (Caucasian reference <code class="language-plaintext highlighter-rouge">(0,0)</code>; Chinese <code class="language-plaintext highlighter-rouge">(1,0)</code>; Indian <code class="language-plaintext highlighter-rouge">(0,1)</code>).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Bit</th>
+      <th>Variable</th>
+      <th>Coding</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Tall or short</td>
+      <td>Tall = 1, Short = 0</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Heavy-set or not</td>
+      <td>Heavy = 1, Not = 0</td>
+    </tr>
+    <tr>
+      <td>3–4</td>
+      <td>Ethnic background (two dummies)</td>
+      <td>Chinese = (1,0), Indian = (0,1), Caucasian = (0,0)</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Made purchases</td>
+      <td>Yes = 1, No = 0</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Shop alone</td>
+      <td>Alone = 1, Not alone = 0</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Fashion conscious</td>
+      <td>Fashionable = 1, Not = 0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Binary matrix 5 × 7</strong> (rows = shoppers 1…5):</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     [,1] [,2] [,3] [,4] [,5] [,6] [,7]
+[1,]    0    0    0    0    1    1    1
+[2,]    1    1    1    0    0    1    0
+[3,]    0    1    0    1    1    1    0
+[4,]    0    0    1    0    0    1    1
+[5,]    1    1    1    0    0    0    0
+</code></pre></div></div>
+
+<h3 id="a">(a)</h3>
+
+<p><strong>Worksheet Ch 1 — (a)</strong></p>
+
+<p>By introducing appropriate binary variables, calculate Simple Matching similarity coefficient for all pairs of shoppers. Present your final answer in a 5 × 5 matrix.</p>
+
+<p><em>(You will need extra writing space to complete your work as this part requires lots of working.)</em></p>
+
+<p><strong>Worked solution (sketch):</strong> For binary rows <strong>i</strong> and <strong>j</strong>, Simple Matching is <strong>(matches) / p</strong> with <strong>p = 7</strong> bits. Diagonal entries are <strong>1</strong>.</p>
+
+<div class="math-block">
+\[
+S_{\mathrm{SMC}}(i,j) = \frac{\text{\# positions where row } i \text{ equals row } j}{7}
+\]
+</div>
+
+<p>Each cell shows the exact fraction <strong>k/7</strong>. <strong>Hover</strong> a cell to see the decimal in the browser tooltip (<code class="language-plaintext highlighter-rouge">title</code>).</p>
+
+<div class="dana-ch1-smc-wrap">
+<style>
+.dana-ch1-smc-wrap table { border-collapse: collapse; margin: 1rem auto; font-size: 0.95rem; box-shadow: 0 1px 4px rgba(0,0,0,.12); }
+.dana-ch1-smc-wrap th, .dana-ch1-smc-wrap td { border: 1px solid rgba(0,0,0,.15); padding: 0.55rem 0.85rem; text-align: center; min-width: 3.1rem; }
+.dana-ch1-smc-wrap th { background: #f8f9fa; font-weight: 600; }
+.dana-ch1-smc-wrap td { font-weight: 600; font-variant-numeric: tabular-nums; cursor: default; }
+.dana-ch1-smc-wrap .legend { font-size: 0.88rem; color: #444; max-width: 36rem; margin: 0.5rem auto 0; text-align: center; }
+</style>
+<table aria-label="SMC similarity matrix, fractions k over 7">
+  <thead>
+    <tr><th></th><th scope="col">S1</th><th scope="col">S2</th><th scope="col">S3</th><th scope="col">S4</th><th scope="col">S5</th></tr>
+  </thead>
+  <tbody>
+    <tr><th scope="row">S1</th><td style="background:#d73027;color:#fff" title="S1 vs S1: 7/7 = 1.000">7/7</td><td style="background:#6e618b;color:#fff" title="S1 vs S2: 2/7 ≈ 0.286">2/7</td><td style="background:#984d63;color:#fff" title="S1 vs S3: 4/7 ≈ 0.571">4/7</td><td style="background:#ad434f;color:#fff" title="S1 vs S4: 5/7 ≈ 0.714">5/7</td><td style="background:#596b9f;color:#fff" title="S1 vs S5: 1/7 ≈ 0.143">1/7</td></tr>
+    <tr><th scope="row">S2</th><td style="background:#6e618b;color:#fff" title="S2 vs S1: 2/7 ≈ 0.286">2/7</td><td style="background:#d73027;color:#fff" title="S2 vs S2: 7/7 = 1.000">7/7</td><td style="background:#835777;color:#fff" title="S2 vs S3: 3/7 ≈ 0.429">3/7</td><td style="background:#984d63;color:#fff" title="S2 vs S4: 4/7 ≈ 0.571">4/7</td><td style="background:#c2393b;color:#fff" title="S2 vs S5: 6/7 ≈ 0.857">6/7</td></tr>
+    <tr><th scope="row">S3</th><td style="background:#984d63;color:#fff" title="S3 vs S1: 4/7 ≈ 0.571">4/7</td><td style="background:#835777;color:#fff" title="S3 vs S2: 3/7 ≈ 0.429">3/7</td><td style="background:#d73027;color:#fff" title="S3 vs S3: 7/7 = 1.000">7/7</td><td style="background:#6e618b;color:#fff" title="S3 vs S4: 2/7 ≈ 0.286">2/7</td><td style="background:#6e618b;color:#fff" title="S3 vs S5: 2/7 ≈ 0.286">2/7</td></tr>
+    <tr><th scope="row">S4</th><td style="background:#ad434f;color:#fff" title="S4 vs S1: 5/7 ≈ 0.714">5/7</td><td style="background:#984d63;color:#fff" title="S4 vs S2: 4/7 ≈ 0.571">4/7</td><td style="background:#6e618b;color:#fff" title="S4 vs S3: 2/7 ≈ 0.286">2/7</td><td style="background:#d73027;color:#fff" title="S4 vs S4: 7/7 = 1.000">7/7</td><td style="background:#835777;color:#fff" title="S4 vs S5: 3/7 ≈ 0.429">3/7</td></tr>
+    <tr><th scope="row">S5</th><td style="background:#596b9f;color:#fff" title="S5 vs S1: 1/7 ≈ 0.143">1/7</td><td style="background:#c2393b;color:#fff" title="S5 vs S2: 6/7 ≈ 0.857">6/7</td><td style="background:#6e618b;color:#fff" title="S5 vs S3: 2/7 ≈ 0.286">2/7</td><td style="background:#835777;color:#fff" title="S5 vs S4: 3/7 ≈ 0.429">3/7</td><td style="background:#d73027;color:#fff" title="S5 vs S5: 7/7 = 1.000">7/7</td></tr>
+  </tbody>
+</table>
+<p class="legend">Scale: <strong style="color:#4575b4">cool (low similarity)</strong> → <strong style="color:#d73027">warm (high similarity)</strong>. Decimals appear only in the tooltip.</p>
+</div>
+
+<p>Numeric matrix (4 decimals), equivalent:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        S1     S2     S3     S4     S5
+S1  1.0000 0.2857 0.5714 0.7143 0.1429
+S2  0.2857 1.0000 0.4286 0.5714 0.8571
+S3  0.5714 0.4286 1.0000 0.2857 0.2857
+S4  0.7143 0.5714 0.2857 1.0000 0.4286
+S5  0.1429 0.8571 0.2857 0.4286 1.0000
+</code></pre></div></div>
+
+<h3 id="b">(b)</h3>
+
+<p><strong>Worksheet Ch 1 — (b)</strong></p>
+
+<p>Use R’s <code class="language-plaintext highlighter-rouge">daisy()</code> to validate that your answer in part (a) is correct.</p>
+
+<p><strong>Worked notes:</strong> With <strong>symmetric binary</strong> columns, Gower dissimilarity equals the <strong>fraction of positions where the two rows disagree</strong>. Therefore:</p>
+
+<div class="math-block">
+\[
+S_{\mathrm{SMC}}(i,j) = 1 - d_{\mathrm{Gower}}(i,j)
+\]
+</div>
+
+<p>Declare all seven columns as <strong><code class="language-plaintext highlighter-rouge">symm</code></strong> in <code class="language-plaintext highlighter-rouge">daisy()</code>.</p>
+
+<h3 id="note-outer--vectorize--odd-looking-but-not-matrix-subtraction">Note: <code class="language-plaintext highlighter-rouge">outer()</code> + <code class="language-plaintext highlighter-rouge">Vectorize()</code> — odd-looking, but not “matrix subtraction”</h3>
+
+<p>The optional snippet</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">outer</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">Vectorize</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">shop_bin</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">shop_bin</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="p">])))</span><span class="w">
+</span></code></pre></div></div>
+
+<p>is <strong>not</strong> mysterious matrix algebra: it visits <strong>every pair of row indices (i, j)</strong> and stores the <strong>fraction of matching columns</strong> (that is the SMC). <code class="language-plaintext highlighter-rouge">outer(X, Y, FUN)</code> builds the grid of combinations; <strong><code class="language-plaintext highlighter-rouge">Vectorize()</code></strong> wraps <code class="language-plaintext highlighter-rouge">f(i, j)</code> so <code class="language-plaintext highlighter-rouge">outer</code> can call it <strong>scalar-by-scalar</strong> and return the 5×5 matrix. A double <code class="language-plaintext highlighter-rouge">for (i) for (j)</code> loop would give the same numbers.</p>
+
+<h3 id="note-maxabss_daisy---s_manual--what-it-reports">Note: <code class="language-plaintext highlighter-rouge">max(abs(S_daisy - S_manual))</code> — what it reports</h3>
+
+<p><code class="language-plaintext highlighter-rouge">S_daisy</code> and <code class="language-plaintext highlighter-rouge">S_manual</code> are both <strong>5×5</strong>. <strong><code class="language-plaintext highlighter-rouge">S_daisy - S_manual</code></strong> is <strong>element-wise</strong> subtraction (not matrix multiplication). <code class="language-plaintext highlighter-rouge">abs(...)</code> takes absolute differences and <strong><code class="language-plaintext highlighter-rouge">max(...)</code></strong> is the <strong>largest</strong> of the 25 cells.</p>
+
+<p>You will <strong>rarely see exactly 0</strong>: R uses <strong>floating-point</strong> arithmetic, and different code paths (<code class="language-plaintext highlighter-rouge">mean(…==…)</code> vs <code class="language-plaintext highlighter-rouge">daisy</code> plus subtraction) can leave differences around <strong>10⁻¹⁶</strong> (e.g. <code class="language-plaintext highlighter-rouge">1.110223e-16</code>). That is <strong>machine noise</strong>, not a mistake in the worksheet. For equality testing, use <strong><code class="language-plaintext highlighter-rouge">isTRUE(all.equal(S_daisy, S_manual))</code></strong>, which should return <strong><code class="language-plaintext highlighter-rouge">TRUE</code></strong>.</p>
+
+<div class="r-stack">
+
+<div class="r-panel r-panel--code">
+  <div class="r-panel__badge" aria-hidden="true">R code</div>
+  <div class="r-panel__body">
+
+      <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># =========================</span><span class="w">
+</span><span class="c1"># Worksheet Ch 1 — (b)</span><span class="w">
+</span><span class="c1"># =========================</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span><span class="w">
+
+</span><span class="n">shop_bin</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="w">
+  </span><span class="nf">c</span><span class="p">(</span><span class="w">
+    </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w">
+    </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w">
+    </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w">
+    </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w">
+    </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="w">
+  </span><span class="p">),</span><span class="w">
+  </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w">
+  </span><span class="n">byrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="w">
+</span><span class="p">)</span><span class="w">
+
+</span><span class="n">colnames</span><span class="p">(</span><span class="n">shop_bin</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="w">
+  </span><span class="s2">"tall"</span><span class="p">,</span><span class="w"> </span><span class="s2">"heavy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"eth_chinese"</span><span class="p">,</span><span class="w"> </span><span class="s2">"eth_indian"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"purchase"</span><span class="p">,</span><span class="w"> </span><span class="s2">"alone"</span><span class="p">,</span><span class="w"> </span><span class="s2">"fashion"</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span><span class="n">rownames</span><span class="p">(</span><span class="n">shop_bin</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"Shopper"</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">)</span><span class="w">
+
+</span><span class="n">p</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ncol</span><span class="p">(</span><span class="n">shop_bin</span><span class="p">)</span><span class="w">
+
+</span><span class="n">D</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.matrix</span><span class="p">(</span><span class="n">daisy</span><span class="p">(</span><span class="n">shop_bin</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">symm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">p</span><span class="p">)))</span><span class="w">
+
+</span><span class="n">S_daisy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">D</span><span class="w">
+
+</span><span class="nf">round</span><span class="p">(</span><span class="n">S_daisy</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># SMC “a mano”: misma idea que un doble bucle for (i) for (j).</span><span class="w">
+</span><span class="c1"># outer() + Vectorize(): ver nota arriba en el post.</span><span class="w">
+</span><span class="n">S_manual</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">outer</span><span class="p">(</span><span class="w">
+  </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="w">
+  </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="w">
+  </span><span class="n">Vectorize</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">shop_bin</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">shop_bin</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="p">]))</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span><span class="nf">round</span><span class="p">(</span><span class="n">S_manual</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Matriz de errores |S_daisy - S_manual| celda a celda; max = peor discrepancia.</span><span class="w">
+</span><span class="c1"># Suele ser ~1e-16 (no 0): coma flotante, no un error del worksheet.</span><span class="w">
+</span><span class="n">print</span><span class="p">(</span><span class="nf">max</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">S_daisy</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">S_manual</span><span class="p">)))</span><span class="w">
+</span><span class="c1"># Comparación “estadística” recomendada en R (tolerancia por .Machine$double.eps^0.5):</span><span class="w">
+</span><span class="n">isTRUE</span><span class="p">(</span><span class="n">all.equal</span><span class="p">(</span><span class="n">S_daisy</span><span class="p">,</span><span class="w"> </span><span class="n">S_manual</span><span class="p">))</span><span class="w">
+</span></code></pre></div>      </div>
+
+    </div>
+</div>
+
+
+<div class="r-panel r-panel--output">
+  <div class="r-panel__badge" aria-hidden="true">Console output</div>
+  <div class="r-panel__body">
+
+      <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        Shopper1 Shopper2 Shopper3 Shopper4 Shopper5
+Shopper1   1.0000   0.2857   0.5714   0.7143   0.1429
+Shopper2   0.2857   1.0000   0.4286   0.5714   0.8571
+Shopper3   0.5714   0.4286   1.0000   0.2857   0.2857
+Shopper4   0.7143   0.5714   0.2857   1.0000   0.4286
+Shopper5   0.1429   0.8571   0.2857   0.4286   1.0000
+
+        Shopper1 Shopper2 Shopper3 Shopper4 Shopper5
+Shopper1   1.0000   0.2857   0.5714   0.7143   0.1429
+Shopper2   0.2857   1.0000   0.4286   0.5714   0.8571
+Shopper3   0.5714   0.4286   1.0000   0.2857   0.2857
+Shopper4   0.7143   0.5714   0.2857   1.0000   0.4286
+Shopper5   0.1429   0.8571   0.2857   0.4286   1.0000
+
+[1] 1.110223e-16
+[1] TRUE
+</code></pre></div>      </div>
+
+    </div>
+</div>
+
+</div>
+
+<h3 id="c">(c)</h3>
+
+<p><strong>Worksheet Ch 1 — (c)</strong></p>
+
+<p>Which two shoppers are the most similar based on your answer in part (a)?</p>
+
+<p><strong>Answer:</strong> <strong>Shoppers 2 and 5</strong> — similarity <strong>6/7 ≈ 0.857</strong> (they match on 6 of 7 attributes; they differ only on <em>shop alone</em>).</p>
+
+<h3 id="d">(d)</h3>
+
+<p><strong>Worksheet Ch 1 — (d)</strong></p>
+
+<p>Which two shoppers are the least similar?</p>
+
+<p><strong>Answer:</strong> <strong>Shoppers 1 and 5</strong> — similarity <strong>1/7 ≈ 0.143</strong> (only one matching bit out of seven).</p>
+
+<h3 id="e">(e)</h3>
+
+<p><strong>Worksheet Ch 1 — (e)</strong></p>
+
+<p>If you were to divide these 5 shoppers into two relatively homogenous subgroups (clusters) based on the similarity numbers calculated in part (a), how will you form the two subgroups?</p>
+
+<p><strong>Answer (one reasonable split):</strong></p>
+
+<ul>
+  <li><strong>Cluster A — Shoppers 2 and 5:</strong> strongest pair (<strong>6/7</strong>); both <em>Tall</em>, <em>Heavy</em>, <em>Chinese</em>, no purchase, not <em>fashion conscious</em> (they differ only on shopping alone).</li>
+  <li><strong>Cluster B — Shoppers 1, 3, and 4:</strong> all <em>Short</em>; internal similarity is weaker (e.g. 3 vs 4 is only <strong>2/7</strong>), but the split contrasts “all Short” profiles against the “Tall + Heavy + Chinese” block.</li>
+</ul>
+
+<p><em>(Other partitions are defensible if the course prescribes a different clustering rule.)</em></p>
+
+<h3 id="f">(f)</h3>
+
+<p><strong>Worksheet Ch 1 — (f)</strong></p>
+
+<p>Would Simple Matching similarity coefficient or Jaccard similarity coefficient be more suitable for this dataset? Explain.</p>
+
+<p><strong>Answer:</strong> <strong>Simple Matching</strong> fits better here: every <strong>0</strong> and <strong>1</strong> is meaningful, and <strong>0–0 agreements</strong> should count.</p>
+
+<p><strong>Jaccard</strong> for binary data often <strong>drops double zeros</strong> (it emphasizes joint “presence”). That makes sense when <strong>0</strong> is not comparable to <strong>1</strong>. In this worksheet both levels are symmetric categories, so <strong>SMC</strong> matches the question better.</p>
+
+    
+      <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      // Here is an example,
+      // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
+      this.page.url = "https://qleoz12.github.io//statistics/dana-4840-ch1-similarity-simple-matching-jaccard/";
+      this.page.identifier = "/statistics/dana-4840-ch1-similarity-simple-matching-jaccard/";
+    };
+
+    // You should be able to get the following lines of code from your Disqus admin.
+    // https://disqus.com/admin/universalcode
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//qleoz12githubio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+    
+  </div>
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+  
+<script>
+  window.MathJax = {
+    loader: { load: ['[tex]/ams'] },
+    tex: {
+      packages: { '[+]': ['ams', 'noerrors', 'noundefined'] },
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],
+      processEscapes: true,
+      tags: 'ams'
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script"></script>
+
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026 Leonardo L Sanchez- Dann Brown. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

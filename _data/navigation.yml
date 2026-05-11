@@ -4,6 +4,8 @@ main:
     url: /about/
   - title: "Archive"
     url: /year-archive/
+  - title: "Videos"
+    url: /videos/
   - title: "Reading List"
     url: /books/reading
   - title: "looking"
