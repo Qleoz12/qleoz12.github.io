@@ -4,7 +4,7 @@ search: false
 categories:
   - Statistics
 date: 2026-05-09
-last_modified_at: 2026-05-10T20:00:00-06:00
+last_modified_at: 2026-05-11T12:00:00-06:00
 share: linkedin
 math: true
 ---
@@ -322,3 +322,60 @@ Would Simple Matching similarity coefficient or Jaccard similarity coefficient b
 **Answer:** **Simple Matching** fits better here: every **0** and **1** is meaningful, and **0–0 agreements** should count.
 
 **Jaccard** for binary data often **drops double zeros** (it emphasizes joint “presence”). That makes sense when **0** is not comparable to **1**. In this worksheet both levels are symmetric categories, so **SMC** matches the question better.
+
+---
+
+## Teacher suggestion / última sesión — SMC con doble bucle y `daisy()`
+
+Lo mismo que arriba con `outer()` + `Vectorize()`, pero en **forma mínima** (lo que suele caber en una diapositiva): matriz binaria, **doble `for`**, luego **Gower dissimilarity on symmetric binaries** → similarity **= 1 − d**. La salida debe coincidir con la matriz **5×5** del apartado (a); **`max(abs(...))`** suele ser ~**`1e-16`** y **`all.equal`** debe dar **`TRUE`**.
+
+{% capture d4840_teacher_smc_code %}
+```r
+shop_bin <- matrix(
+  c(
+    0, 0, 0, 0, 1, 1, 1,
+    1, 1, 1, 0, 0, 1, 0,
+    0, 1, 0, 1, 1, 1, 0,
+    0, 0, 1, 0, 0, 1, 1,
+    1, 1, 1, 0, 0, 0, 0
+  ),
+  nrow = 5,
+  byrow = TRUE
+)
+p <- ncol(shop_bin)
+n <- nrow(shop_bin)
+S_min <- matrix(0, n, n)
+for (i in seq_len(n)) {
+  for (j in seq_len(n)) {
+    S_min[i, j] <- mean(shop_bin[i, ] == shop_bin[j, ])
+  }
+}
+rownames(S_min) <- colnames(S_min) <- paste0("S", seq_len(n))
+round(S_min, 4)
+
+library(cluster)
+D_g <- as.matrix(daisy(shop_bin, type = list(symm = seq_len(p))))
+S_daisy_min <- 1 - D_g
+max(abs(S_min - S_daisy_min))
+isTRUE(all.equal(S_min, S_daisy_min))
+```
+{% endcapture %}
+
+{% capture d4840_teacher_smc_out %}
+```text
+      S1     S2     S3     S4     S5
+S1 1.0000 0.2857 0.5714 0.7143 0.1429
+S2 0.2857 1.0000 0.4286 0.5714 0.8571
+S3 0.5714 0.4286 1.0000 0.2857 0.2857
+S4 0.7143 0.5714 0.2857 1.0000 0.4286
+S5 0.1429 0.8571 0.2857 0.4286 1.0000
+
+[1] 1.110223e-16
+[1] TRUE
+```
+{% endcapture %}
+
+<div class="r-stack">
+{% include r_panel.html kind="code" label="R code (teacher-style)" body=d4840_teacher_smc_code %}
+{% include r_panel.html kind="output" label="Console output" body=d4840_teacher_smc_out %}
+</div>

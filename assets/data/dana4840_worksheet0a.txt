@@ -1,0 +1,5 @@
+Age	Race	Height	Income	IsMale	Politics
+22	1	Tall	0.39	TRUE	moderate
+33	3	Short	0.34	TRUE	liberal
+52	1	Moderate	0.51	FALSE	moderate
+46	6	Tall	0.63	TRUE	conservative

@@ -1,0 +1,882 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>DANA 4840 — K-means (exploración 2): USArrests, escala, codo y salida de R - Dann Brown Adventures</title>
+<meta name="description" content="Notas de exploración sobre K-means con datos reales (USArrests): qué hace la función, por qué scale(), cómo leer tamaños, centroides, WSS, betweenss/totss y por qué aggregate() devuelve medias en unidades originales. Para el ejercicio manual con cuatro puntos A–C–D y centros fijos, conviene el post anterior sobre MacQueen y centers como matriz.">
+
+
+  <meta name="author" content="Dann brown">
+  
+  <meta property="article:author" content="Dann brown">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dann Brown Adventures">
+<meta property="og:title" content="DANA 4840 — K-means (exploración 2): USArrests, escala, codo y salida de R">
+<meta property="og:url" content="/statistics/dana-4840-kmeans-exploracion-2-usarrests/">
+
+
+  <meta property="og:description" content="Notas de exploración sobre K-means con datos reales (USArrests): qué hace la función, por qué scale(), cómo leer tamaños, centroides, WSS, betweenss/totss y por qué aggregate() devuelve medias en unidades originales. Para el ejercicio manual con cuatro puntos A–C–D y centros fijos, conviene el post anterior sobre MacQueen y centers como matriz.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-05-19T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2026-05-19T13:00:00-05:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/statistics/dana-4840-kmeans-exploracion-2-usarrests/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Leonardo L Sanchez- Dann Brown",
+      "url": "/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dann Brown Adventures Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--archive">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Dann Brown Adventures
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/videos/">Videos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/books/reading">Reading List</a>
+            </li><li class="masthead__menu-item">
+              <a href="/reading">looking</a>
+            </li><li class="masthead__menu-item">
+              <a href="/knowledge">knowledge</a>
+            </li><li class="masthead__menu-item">
+              <a href="/certs">certs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/Languages">Languages</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#statistics" itemprop="item"><span itemprop="name">Statistics</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">DANA 4840 — K-means (exploración 2): USArrests, escala, codo y salida de R</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/1577552827279.jpg" alt="Dann brown" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">Dann brown</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">CO</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/leonardo-sanchez-89590b127/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">linkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://www.youtube.com/channel/UCoROtxDQYfIgjXBDcORK5zw/videos" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-youtube" aria-hidden="true"></i><span class="label">Youtube</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Qleoz12" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kintaroloop@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="kintaroloop@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">DANA 4840 — K-means (exploración 2): USArrests, escala, codo y salida de R</h1>
+    
+    <p>Notas de exploración sobre <strong>K-means</strong> con datos reales (<strong><code class="language-plaintext highlighter-rouge">USArrests</code></strong>): qué hace la función, por qué <strong><code class="language-plaintext highlighter-rouge">scale()</code></strong>, cómo leer <strong>tamaños</strong>, <strong>centroides</strong>, <strong>WSS</strong>, <strong><code class="language-plaintext highlighter-rouge">betweenss/totss</code></strong> y por qué <strong><code class="language-plaintext highlighter-rouge">aggregate()</code></strong> devuelve medias en <strong>unidades originales</strong>. Para el ejercicio manual con cuatro puntos A–C–D y centros fijos, conviene el post anterior sobre <strong>MacQueen</strong> y <strong><code class="language-plaintext highlighter-rouge">centers</code></strong> como matriz.</p>
+
+<hr />
+
+<h2 id="1-qué-es-k-means">1. Qué es K-means</h2>
+
+<p><strong>K-means</strong> agrupa observaciones en <strong>K</strong> clusters minimizando (de forma aproximada y iterativa) la variabilidad <strong>dentro</strong> de cada grupo: cada punto se asigna al <strong>centroide</strong> más cercano y los centroides se <strong>actualizan</strong> como media de los miembros del grupo.</p>
+
+<p>Ejemplo típico en R:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">kmeans</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">centers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">nstart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">25</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Parte</th>
+      <th style="text-align: left">Significado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">x</code></strong></td>
+      <td style="text-align: left">Matriz o <code class="language-plaintext highlighter-rouge">data.frame</code> <strong>solo numérico</strong> (aquí suele ir <strong><code class="language-plaintext highlighter-rouge">scale(USArrests)</code></strong>).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">centers = 4</code></strong></td>
+      <td style="text-align: left"><strong>K = 4</strong>: cuatro grupos. También puede ser una <strong>matriz</strong> de centros iniciales (como en el worksheet con A y C).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">nstart = 25</code></strong></td>
+      <td style="text-align: left">Se prueban <strong>25</strong> conjuntos de centros iniciales aleatorios y se guarda la solución con <strong>menor</strong> <code class="language-plaintext highlighter-rouge">tot.withinss</code>. Reduce la mala suerte de una sola inicialización.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Sin <strong><code class="language-plaintext highlighter-rouge">set.seed()</code></strong>, los resultados numéricos pueden cambiar entre ejecuciones aunque <strong><code class="language-plaintext highlighter-rouge">nstart</code></strong> sea alto.</p>
+
+<hr />
+
+<h2 id="2-qué-datos-son-usarrests">2. Qué datos son <strong><code class="language-plaintext highlighter-rouge">USArrests</code></strong></h2>
+
+<p>Dataset incluido en R: <strong>50 estados</strong> (filas) y cuatro variables numéricas:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Variable</th>
+      <th style="text-align: left">Interpretación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Murder</strong></td>
+      <td style="text-align: left">Tasa de homicidios</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Assault</strong></td>
+      <td style="text-align: left">Tasa de asaltos</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>UrbanPop</strong></td>
+      <td style="text-align: left">Porcentaje de población urbana</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Rape</strong></td>
+      <td style="text-align: left">Tasa de violación</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>La pregunta de clustering es descriptiva: <strong>¿qué estados quedan juntos si medimos “similitud” por perfil de crimen y urbanización?</strong> No implica causalidad ni etiquetas “buenas” o “malas” fuera del contexto del análisis.</p>
+
+<hr />
+
+<h2 id="3-por-qué-scale">3. Por qué <strong><code class="language-plaintext highlighter-rouge">scale()</code></strong></h2>
+
+<p>Las magnitudes difieren mucho (por ejemplo <strong>Assault</strong> suele ser grande en crudo frente a <strong>Murder</strong>). Sin escalar, la variable con mayor varianza <strong>domina</strong> las distancias euclídeas.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">scale</span><span class="p">(</span><span class="n">USArrests</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong><code class="language-plaintext highlighter-rouge">scale()</code></strong> centra cada columna (media 0) y la divide por su desviación típica (desvío 1) usando los datos presentes. Así <strong>cada variable pesa de forma comparable</strong> al calcular distancias en K-means.</p>
+
+<hr />
+
+<h2 id="4-cómo-funciona-k-means-por-dentro-idea">4. Cómo funciona K-means por dentro (idea)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Paso</th>
+      <th style="text-align: left">Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: left">Elegir <strong>K</strong> centroides iniciales.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: left">Asignar cada punto al centroide <strong>más cercano</strong> (euclídeo en el espacio de <strong><code class="language-plaintext highlighter-rouge">x</code></strong>).</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: left">Recalcular cada centroide como <strong>media</strong> de los puntos del cluster.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: left">Repetir 2–3 hasta que las asignaciones (o los centroides) <strong>se estabilicen</strong>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="5-método-del-codo-elbow-y-elección-de-k">5. Método del codo (<strong>elbow</strong>) y elección de <strong>K</strong></h2>
+
+<p>En un gráfico habitual, el eje horizontal es <strong>k</strong> (número de clusters) y el vertical es <strong>total within-cluster sum of squares</strong> (<strong><code class="language-plaintext highlighter-rouge">tot.withinss</code></strong>) u otra medida de error dentro del grupo.</p>
+
+<ul>
+  <li>Cuando <strong>k</strong> crece, <strong><code class="language-plaintext highlighter-rouge">tot.withinss</code></strong> suele <strong>bajar</strong> (más clusters ⇒ puntos más cerca de “su” centro).</li>
+  <li>Se busca un <strong>“codo”</strong>: una <strong>k</strong> donde bajar <strong>k</strong> más aporta <strong>poco</strong> extra frente al coste de interpretar más grupos.</li>
+</ul>
+
+<p>Muchos materiales de curso usan <strong>k = 4</strong> con <strong><code class="language-plaintext highlighter-rouge">USArrests</code></strong> como ilustración cuando el codo sugiere cuatro grupos; la <strong>k óptima</strong> no es única: depende del criterio y del contexto.</p>
+
+<hr />
+
+<h2 id="6-salida-típica-tamaños-de-cluster">6. Salida típica: tamaños de cluster</h2>
+
+<p>Tras <strong><code class="language-plaintext highlighter-rouge">kmeans(df, 4, nstart = 25)</code></strong> puede aparecer algo como:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>K-means clustering with 4 clusters of sizes 8, 13, 16, 13
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Cluster</th>
+      <th style="text-align: center">Estados (con esa solución)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">8</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">13</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">16</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">13</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>8 + 13 + 16 + 13 = 50</strong>. Los números exactos dependen de la solución elegida entre los <strong><code class="language-plaintext highlighter-rouge">nstart</code></strong> intentos.</p>
+
+<hr />
+
+<h2 id="7-cluster-means-sobre-datos-escalados">7. <strong><code class="language-plaintext highlighter-rouge">Cluster means</code></strong> (sobre datos escalados)</h2>
+
+<p>La tabla <strong><code class="language-plaintext highlighter-rouge">km$centers</code></strong> da el <strong>centroide</strong> de cada cluster en las <strong>mismas unidades que <code class="language-plaintext highlighter-rouge">x</code></strong>. Si <strong><code class="language-plaintext highlighter-rouge">x = scale(USArrests)</code></strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Valor</th>
+      <th style="text-align: left">Lectura</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Positivo</strong></td>
+      <td style="text-align: left">Por encima de la media global de esa variable (en el conjunto escalado).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Negativo</strong></td>
+      <td style="text-align: left">Por debajo de la media global.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Cerca de 0</strong></td>
+      <td style="text-align: left">Cerca del “promedio típico” del dataset.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Ejemplo de lectura: un cluster con <strong>Murder</strong>, <strong>Assault</strong> y <strong>Rape</strong> altos en positivo sugiere perfil de <strong>crimen relativamente alto</strong> respecto al resto de estados; otro con esos valores negativos sugiere <strong>crimen relativamente bajo</strong>.</p>
+
+<hr />
+
+<h2 id="8-vector-cluster">8. Vector <strong><code class="language-plaintext highlighter-rouge">cluster</code></strong></h2>
+
+<p>Asigna a cada fila un entero <strong>1 … K</strong>:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Alabama 1
+Alaska 4
+...
+</code></pre></div></div>
+
+<p>Significa: Alabama va al cluster <strong>1</strong>, Alaska al <strong>4</strong>, etc. Es la partición <strong>final</strong> de esa llamada a <strong><code class="language-plaintext highlighter-rouge">kmeans</code></strong>.</p>
+
+<hr />
+
+<h2 id="9-withinss-y-totwithinss">9. <strong><code class="language-plaintext highlighter-rouge">withinss</code></strong> y <strong><code class="language-plaintext highlighter-rouge">tot.withinss</code></strong></h2>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Within cluster sum of squares by cluster:
+[1]  ...  ...  ...  ...
+</code></pre></div></div>
+
+<p>Cada componente mide la <strong>dispersión dentro</strong> de un cluster respecto a <strong>su</strong> centroide (K-means usa <strong>distancia euclídea al cuadrado</strong> en la definición interna de esa suma).</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">km$tot.withinss</code></strong> es la <strong>suma</strong> de esos valores: dispersión total <strong>dentro</strong> de los cuatro grupos.</p>
+
+<p><strong>Importante:</strong> <strong><code class="language-plaintext highlighter-rouge">tot.withinss</code></strong> <strong>no</strong> es el porcentaje <strong>71.2 %</strong>. El porcentaje aparece en la línea <strong><code class="language-plaintext highlighter-rouge">(between_SS / total_SS = …)</code></strong> (siguiente apartado).</p>
+
+<hr />
+
+<h2 id="10-betweenss-y-totss">10. <strong><code class="language-plaintext highlighter-rouge">betweenss</code></strong> y <strong><code class="language-plaintext highlighter-rouge">totss</code></strong></h2>
+
+<p>R muestra a menudo:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(between_SS / total_SS =  71.2 %)
+</code></pre></div></div>
+
+<p>Interpretación: <strong>qué fracción de la variación total</strong> del conjunto (sobre los datos transformados que entraron en <strong><code class="language-plaintext highlighter-rouge">kmeans</code></strong>) queda <strong>entre</strong> centroides frente a <strong>dentro</strong> de clusters. Un valor <strong>más alto</strong> indica clusters <strong>más separados</strong> en ese sentido (siempre con cautela: <strong>K</strong> alto puede inflar la métrica).</p>
+
+<p>Ejemplo de frase para informe:</p>
+
+<p><strong>The 4-cluster solution explains about 71.2% of the total variation in the scaled <code class="language-plaintext highlighter-rouge">USArrests</code> data</strong> (según esa corrida concreta).</p>
+
+<p>Con <strong><code class="language-plaintext highlighter-rouge">set.seed(123)</code></strong>, <strong><code class="language-plaintext highlighter-rouge">nstart = 25</code></strong> y <strong><code class="language-plaintext highlighter-rouge">centers = 4</code></strong>, una corrida reproducible da <strong><code class="language-plaintext highlighter-rouge">betweenss/totss ≈ 71.2%</code></strong> y <strong><code class="language-plaintext highlighter-rouge">tot.withinss ≈ 56.4</code></strong> (no confundir ambos números).</p>
+
+<hr />
+
+<h2 id="11-por-qué-aggregate-sobre-usarrests-sin-escalar">11. Por qué <strong><code class="language-plaintext highlighter-rouge">aggregate()</code></strong> sobre <strong><code class="language-plaintext highlighter-rouge">USArrests</code></strong> sin escalar</h2>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">aggregate</span><span class="p">(</span><span class="n">USArrests</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">cluster</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">km</span><span class="o">$</span><span class="n">cluster</span><span class="p">),</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Aquí las medias son por cluster pero en <strong>unidades reales</strong> (tasas y porcentajes), lo que facilita <strong>interpretar</strong> y comparar con tablas públicas.</p>
+
+<p>Ejemplo reproducible (<strong><code class="language-plaintext highlighter-rouge">set.seed(123)</code></strong>):</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">cluster</th>
+      <th style="text-align: right">Murder</th>
+      <th style="text-align: right">Assault</th>
+      <th style="text-align: right">UrbanPop</th>
+      <th style="text-align: right">Rape</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: right">13.94</td>
+      <td style="text-align: right">243.63</td>
+      <td style="text-align: right">53.75</td>
+      <td style="text-align: right">21.41</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: right">3.60</td>
+      <td style="text-align: right">78.54</td>
+      <td style="text-align: right">52.08</td>
+      <td style="text-align: right">12.18</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: right">5.66</td>
+      <td style="text-align: right">138.88</td>
+      <td style="text-align: right">73.88</td>
+      <td style="text-align: right">18.78</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: right">10.82</td>
+      <td style="text-align: right">257.38</td>
+      <td style="text-align: right">76.00</td>
+      <td style="text-align: right">33.19</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Lectura rápida ilustrativa:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Cluster</th>
+      <th style="text-align: left">Perfil (orientativo)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: left">Criminalidad alta en varias tasas, urbanización moderada</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: left">Criminalidad baja</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: left">Criminalidad intermedia, urbanización alta</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: left">Asaltos y violación altos, urbanización alta</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Los perfiles dependen de la solución K-means obtenida.</p>
+
+<hr />
+
+<h2 id="12-código-reproducible-resumen">12. Código reproducible (resumen)</h2>
+
+<div class="r-stack">
+
+<div class="r-panel r-panel--code">
+  <div class="r-panel__badge" aria-hidden="true">R code</div>
+  <div class="r-panel__body">
+
+      <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Entrada: datos estandarizados (misma escala por variable)</span><span class="w">
+</span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">scale</span><span class="p">(</span><span class="n">USArrests</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># k = 4, varios intentos de inicio aleatorio</span><span class="w">
+</span><span class="n">km</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">kmeans</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">centers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">nstart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">25</span><span class="p">)</span><span class="w">
+
+</span><span class="n">km</span><span class="o">$</span><span class="n">size</span><span class="w">           </span><span class="c1"># tamaños por cluster</span><span class="w">
+</span><span class="n">km</span><span class="o">$</span><span class="n">centers</span><span class="w">        </span><span class="c1"># centroides en espacio escalado</span><span class="w">
+</span><span class="n">km</span><span class="o">$</span><span class="n">cluster</span><span class="w">        </span><span class="c1"># etiqueta por estado</span><span class="w">
+</span><span class="n">km</span><span class="o">$</span><span class="n">withinss</span><span class="w">       </span><span class="c1"># WSS dentro de cada cluster</span><span class="w">
+</span><span class="n">km</span><span class="o">$</span><span class="n">tot.withinss</span><span class="w">   </span><span class="c1"># suma total de WSS dentro</span><span class="w">
+</span><span class="n">km</span><span class="o">$</span><span class="n">betweenss</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">km</span><span class="o">$</span><span class="n">totss</span><span class="w">   </span><span class="c1"># fracción explicada entre grupos</span><span class="w">
+
+</span><span class="c1"># Medias en unidades originales (más legible)</span><span class="w">
+</span><span class="n">aggregate</span><span class="p">(</span><span class="n">USArrests</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">cluster</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">km</span><span class="o">$</span><span class="n">cluster</span><span class="p">),</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span><span class="w">
+</span></code></pre></div>      </div>
+
+    </div>
+</div>
+
+
+<div class="r-panel r-panel--output">
+  <div class="r-panel__badge" aria-hidden="true">Console output (resumen)</div>
+  <div class="r-panel__body">
+
+      <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>size: 8, 13, 16, 13 
+withinss:
+[1]  8.316061 11.952463 16.212213 19.922437
+tot.withinss: 56.40317 
+(between_SS / total_SS =  71.2 %)
+  cluster   Murder   Assault UrbanPop     Rape
+1       1 13.93750 243.62500 53.75000 21.41250
+2       2  3.60000  78.53846 52.07692 12.17692
+3       3  5.65625 138.87500 73.87500 18.78125
+4       4 10.81538 257.38462 76.00000 33.19231
+</code></pre></div>      </div>
+
+    </div>
+</div>
+
+</div>
+
+<p><em>(La salida completa incluye el vector de cluster por estado y la tabla de medias escaladas en <strong><code class="language-plaintext highlighter-rouge">km$centers</code></strong>.)</em></p>
+
+<hr />
+
+<h2 id="qué-conviene-dominar-exam--worksheet">Qué conviene dominar (exam / worksheet)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Concepto</th>
+      <th style="text-align: left">Idea clave</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">K-means</td>
+      <td style="text-align: left">Partición en <strong>K</strong> grupos por centroides y distancias</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>K</strong></td>
+      <td style="text-align: left">Número de clusters</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">scale()</code></strong></td>
+      <td style="text-align: left">Comparar variables en <strong>escala similar</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">centers</code></strong></td>
+      <td style="text-align: left">Entero <strong>K</strong> <em>o</em> matriz de centros iniciales</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">nstart</code></strong></td>
+      <td style="text-align: left">Mejor entre varias inicializaciones aleatorias</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Método del codo</strong></td>
+      <td style="text-align: left">Ayuda a elegir <strong>K</strong> (subjetivo + contexto)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">cluster</code></strong></td>
+      <td style="text-align: left">Grupo asignado a cada observación</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">centers</code></strong></td>
+      <td style="text-align: left">Centroide por cluster (en las unidades de <strong><code class="language-plaintext highlighter-rouge">x</code></strong>)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">withinss</code></strong></td>
+      <td style="text-align: left">Dispersión interna por cluster</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">tot.withinss</code></strong></td>
+      <td style="text-align: left">Suma de dispersiones internas</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">betweenss/totss</code></strong></td>
+      <td style="text-align: left">Separación relativa entre grupos</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Frase corta:</strong> K-means reparte los datos en <strong>K</strong> grupos asignando cada observación al centro más cercano y <strong>moviendo</strong> los centros hasta que la partición se estabiliza; <strong><code class="language-plaintext highlighter-rouge">scale()</code></strong> evita que una sola variable domine por magnitud.</p>
+
+<hr />
+
+<h2 id="ver-también">Ver también</h2>
+
+<ul>
+  <li><strong>K-means MacQueen, worksheet cuatro puntos (A–D)</strong> — centros iniciales como matriz y WSS a mano.</li>
+</ul>
+
+    
+      <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      // Here is an example,
+      // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
+      this.page.url = "https://qleoz12.github.io//statistics/dana-4840-kmeans-exploracion-2-usarrests/";
+      this.page.identifier = "/statistics/dana-4840-kmeans-exploracion-2-usarrests/";
+    };
+
+    // You should be able to get the following lines of code from your Disqus admin.
+    // https://disqus.com/admin/universalcode
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//qleoz12githubio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+    
+  </div>
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+  
+<script>
+  window.MathJax = {
+    loader: { load: ['[tex]/ams'] },
+    tex: {
+      packages: { '[+]': ['ams', 'noerrors', 'noundefined'] },
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],
+      processEscapes: true,
+      tags: 'ams'
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script"></script>
+
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026 Leonardo L Sanchez- Dann Brown. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

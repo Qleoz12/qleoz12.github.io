@@ -1,10 +1,10 @@
 ---
-title: "DANA 4840 — R: estructuras básicas (recordatorio) y dataset Worksheet 0a"
+title: "DANA 4840 — R: basic structures (refresher) and Worksheet 0a dataset"
 search: false
 categories:
   - Statistics
 date: 2026-05-08
-last_modified_at: 2026-05-10T18:00:00-06:00
+last_modified_at: 2026-05-11T12:00:00-06:00
 share: linkedin
 ---
 
@@ -71,7 +71,7 @@ List of 2
 ```
 {% endcapture %}
 
-## Lista
+## List
 
 <div class="r-stack">
 {% include r_panel.html kind="code" label="R code" body=d4840_list_code %}
@@ -105,7 +105,7 @@ is.matrix(mymatrix)
 ```
 {% endcapture %}
 
-## Matriz
+## Matrix
 
 <div class="r-stack">
 {% include r_panel.html kind="code" label="R code" body=d4840_mat_code %}
@@ -199,7 +199,7 @@ is.data.frame(mydataframe)
 {% include r_panel.html kind="output" label="Console output" body=d4840_df_out %}
 </div>
 
-### Sin conversión automática a factor (caracteres como texto)
+### No automatic conversion to factor (characters stay as text)
 
 {% capture d4840_strings_factors_code %}
 ```r
@@ -233,14 +233,14 @@ is.vector(mydataframe$medal)
 {% include r_panel.html kind="output" label="Console output" body=d4840_strings_factors_out %}
 </div>
 
-### Factor nominal
+### Nominal factor
 
-`factor()` sin `ordered = TRUE` define niveles **sin orden inherente**: las categorías se tratan como **nominales** (solo identidad, no “mayor/menor”). Sirve para sexo, país, tipo de sangre, etc.
+With `factor()` and **without** `ordered = TRUE`, levels have **no inherent order**: categories are **nominal** (identity only, not “greater/lesser”). Use this for sex, country, blood type, etc.
 
 {% capture d4840_fac_nom_code %}
 ```r
 # =========================
-# Factor nominal
+# Nominal factor
 # =========================
 myfactor <- factor(c("M", "F", "T", "O", "M"))
 myfactor
@@ -268,14 +268,14 @@ Levels: F M O T
 {% include r_panel.html kind="output" label="Console output" body=d4840_fac_nom_out %}
 </div>
 
-### Factor ordinal (`ordered`, `levels`)
+### Ordinal factor (`ordered`, `levels`)
 
-Con **`ordered = TRUE`** el factor es **ordinal**: los niveles tienen un **orden lógico** fijado con **`levels = c(...)`** (de menor a mayor en ese sentido). R lo guarda como entero con orden; comparaciones como `<` entre niveles respetan esa secuencia (útil para tallas, Likert, etapas).
+With **`ordered = TRUE`**, the factor is **ordinal**: levels follow a **logical order** set by **`levels = c(...)`** (low to high in that sense). R stores them as ordered integers; comparisons like `<` between levels follow that sequence (useful for sizes, Likert scales, stages).
 
 {% capture d4840_fac_ord_code %}
 ```r
 # =========================
-# Factor ordinal
+# Ordinal factor
 # =========================
 myfactor <- factor(
   c("M", "F", "T", "O", "M"),
@@ -303,9 +303,9 @@ Levels: O < M < F < T
 
 ---
 
-## Worksheet 0a — dataset
+## Worksheet 0a — example dataset
 
-Fuente: [McCaffrey — Gower distance example](https://jamesmccaffrey.wordpress.com/2020/04/21/example-of-calculating-the-gower-distance/)
+Source: [McCaffrey — Gower distance example](https://jamesmccaffrey.wordpress.com/2020/04/21/example-of-calculating-the-gower-distance/)
 
 | Age | Race | Height   | Income | IsMale | Politics     |
 |-----|------|----------|--------|--------|--------------|
@@ -319,27 +319,27 @@ Fuente: [McCaffrey — Gower distance example](https://jamesmccaffrey.wordpress.
 **Worksheet 0a — (a)**  
 For each variable above, identify if it is a categorical variable or a quantitative one. If it is a categorical variable, further classify the variable as a nominal (or binary) or ordinal.
 
-Cuantitativa vs categórica; nominal, ordinal o binaria.
+Quantitative vs categorical; nominal, ordinal, or binary.
 
-| Variable   | Tipo              | Detalle |
-|------------|-------------------|--------|
-| **Age**    | Cuantitativa      | Edad en años (numérica discreta). |
-| **Race**   | Categórica **nominal** | Códigos 1, 3, 6… sin orden inherente “mayor/menor”; solo etiquetas distintas. |
-| **Height** | Categórica **ordinal** | Niveles *Short*, *Moderate*, *Tall* admiten orden natural por estatura: Short &lt; Moderate &lt; Tall. |
-| **Income** | Cuantitativa      | Valores numéricos (aquí parecen proporciones 0–1); se trata como escala numérica, no como etiquetas. |
-| **IsMale** | Categórica **binaria** (nominal) | Solo `TRUE` / `FALSE`; dos categorías sin orden (no decimos que un sexo sea “mayor” que otro en sentido estadístico). |
-| **Politics** | Categórica **nominal** (típico en análisis) | *liberal*, *moderate*, *conservative* son etiquetas; el espectro izquierda–derecha podría argumentarse como orden, pero el orden exacto y la distancia entre etiquetas no están fijados en el dato, así que en el worksheet suele tratarse como **nominal** salvo que el curso imponga un orden explícito. |
+| Variable   | Type | Notes |
+|------------|------|--------|
+| **Age**    | Quantitative | Age in years (discrete numeric). |
+| **Race**   | **Nominal** categorical | Codes 1, 3, 6, … with no inherent “greater/lesser” order; distinct labels only. |
+| **Height** | **Ordinal** categorical | Levels *Short*, *Moderate*, *Tall* have a natural stature order: Short &lt; Moderate &lt; Tall. |
+| **Income** | Quantitative | Numeric values (here they look like proportions on 0–1); treat as a numeric scale, not as labels. |
+| **IsMale** | **Binary** categorical (nominal) | Only `TRUE` / `FALSE`; two categories with no order (we do not rank sexes in a statistical sense). |
+| **Politics** | **Nominal** categorical (typical in analyses) | *liberal*, *moderate*, *conservative* are labels; a left–right spectrum could be argued as ordered, but the exact order and spacing between labels are not fixed in the data, so the worksheet usually treats this as **nominal** unless the course specifies an explicit order. |
 
-**Resumen:** tus “numerical” → **Age**, **Income** (cuantitativas). El resto son **categóricas**; entre ellas, **Height** es la que encaja mejor como **ordinal** por el orden físico de las categorías. **Race**, **IsMale** y **Politics** (como nominal) no llevan orden obligatorio en la definición del dataset.
+**Summary:** your “numerical” variables are **Age** and **Income** (quantitative). The rest are **categorical**; among those, **Height** fits best as **ordinal** because of the physical ordering of categories. **Race**, **IsMale**, and **Politics** (as nominal) do not require an order in how this dataset is defined.
 
-Archivos de ejemplo en el repo (mismas filas que la tabla): [`dana4840_worksheet0a.txt`]({{ site.baseurl }}/assets/data/dana4840_worksheet0a.txt) (tabuladores) y [`dana4840_worksheet0a.csv`]({{ site.baseurl }}/assets/data/dana4840_worksheet0a.csv). En **(d)** el `.xlsx` se puede **generar en R** con `writexl` (ruta `assets/data/dana4840_worksheet0a.xlsx`) o crear a mano / exportar desde Excel en esa carpeta.
+Sample files in the repo (same rows as the table): [`dana4840_worksheet0a.txt`]({{ site.baseurl }}/assets/data/dana4840_worksheet0a.txt) (tab-separated) and [`dana4840_worksheet0a.csv`]({{ site.baseurl }}/assets/data/dana4840_worksheet0a.csv). For **(d)**, you can **generate** the `.xlsx` in R with `writexl` at `assets/data/dana4840_worksheet0a.xlsx`, or create / export from Excel into that folder.
 
 ### (b)
 
 **Worksheet 0a — (b)**  
 Use R to create each variable, making sure the type matches your answer in (a). Then create a data frame in R to collectively house these variables as a data set.
 
-Tipos alineados con (a): enteros/reales; `factor` nominal (Race, Politics); `ordered` (Height); `logical` (IsMale).
+Types aligned with (a): integer/double; nominal `factor` (Race, Politics); `ordered` (Height); `logical` (IsMale).
 
 {% capture d4840_ws0a_b_code %}
 ```r
@@ -384,7 +384,7 @@ str(ws0a)
 **Worksheet 0a — (c)**  
 Type the data into a text file. Use read.table() to read the contents of the text file. Is the output of read.table() a data frame or some other data structure? Do the variables match the type in part (a)? If not, how do you convert them?
 
-Por defecto devuelve un data.frame. Aquí el TXT se **genera en R** con `writeLines()` y se lee con `read.table()`. Tras leer, los tipos suelen no coincidir del todo con (a) hasta convertir Race, Height, IsMale y Politics.
+By default this returns a `data.frame`. Here the TXT file is **created in R** with `writeLines()` and read with `read.table()`. After reading, types usually do not fully match (a) until you convert Race, Height, IsMale, and Politics.
 
 {% capture d4840_ws0a_c_code %}
 ```r
@@ -498,14 +498,14 @@ df_txt
 **Worksheet 0a — (d)**  
 Type the data into an Excel file. Use read_excel() in package “readxl” to read the contents of the Excel file. Is the output a data frame or some other data structure? If it is not a data frame, how do you convert it into a data frame? Do the variables match the type in part (a)?
 
-read_excel() devuelve un tibble (tbl_df), subclase de data.frame. Usa as.data.frame() si hace falta. Aplica las mismas conversiones que en (c) para alinear con (a). El **`.xlsx` se escribe en R** con **`writexl`** (`readxl` solo lee); `fp <- "assets/data/dana4840_worksheet0a.xlsx"` alinea con el blog/repo. Instalación: `install.packages(c("writexl", "readxl"))`.
+`read_excel()` returns a tibble (`tbl_df`), a subclass of `data.frame`. Use `as.data.frame()` if you need a plain data frame. Apply the same conversions as in (c) to align with (a). The **`.xlsx` is written in R** with **`writexl`** (`readxl` only reads); `fp <- "assets/data/dana4840_worksheet0a.xlsx"` matches the blog/repo layout. Install with: `install.packages(c("writexl", "readxl"))`.
 
 {% capture d4840_ws0a_d_code %}
 ```r
 # =========================
 # Worksheet 0a — Part (d)
 # =========================
-# Crea assets/data/dana4840_worksheet0a.xlsx, luego read_excel(fp).
+# Creates assets/data/dana4840_worksheet0a.xlsx, then read_excel(fp).
 
 # =========================
 # Create Excel file (writexl)
@@ -610,7 +610,7 @@ df_xl
 **Worksheet 0a — (e)**  
 Create a CSV file using the data. Use read.csv() to read the contents of the CSV file. Is the output a data frame or some other data structure? Do the variables match the type in part (a)?
 
-read.csv() devuelve un data.frame. Aquí el CSV se **genera en R** con `write.csv()` (mismas filas que la tabla), luego se lee; con `stringsAsFactors = FALSE` los tipos suelen no coincidir con (a) hasta aplicar las mismas conversiones que en (c).
+`read.csv()` returns a `data.frame`. Here the CSV is **created in R** with `write.csv()` (same rows as the table), then read back; with `stringsAsFactors = FALSE` types usually do not match (a) until you apply the same conversions as in (c).
 
 {% capture d4840_ws0a_e_code %}
 ```r
@@ -700,4 +700,46 @@ df_csv
 <div class="r-stack">
 {% include r_panel.html kind="code" label="R code" body=d4840_ws0a_e_code %}
 {% include r_panel.html kind="output" label="Console output" body=d4840_ws0a_e_out %}
+</div>
+
+---
+
+## Teacher suggestion / última sesión — Worksheet 0a en pocas líneas
+
+En clase a veces solo se muestra **leer el `.txt` ya existente** y revisar `class()` / `str()` / `head()`, sin recrear el archivo ni todas las conversiones a factor en el mismo bloque. Tu versión larga arriba sigue siendo la referencia para **reproducir** todo el flujo.
+
+Run **part (c)** first so `dana4840_worksheet0a.txt` exists (or create that file by hand).
+
+{% capture d4840_teacher_ws0a_code %}
+```r
+fp_txt <- "dana4840_worksheet0a.txt"
+stopifnot(file.exists(fp_txt))
+df0 <- read.table(fp_txt, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
+class(df0)
+str(df0)
+head(df0)
+```
+{% endcapture %}
+
+{% capture d4840_teacher_ws0a_out %}
+```text
+[1] "data.frame"
+'data.frame':	4 obs. of  6 variables:
+ $ Age     : int  22 33 52 46
+ $ Race    : int  1 3 1 6
+ $ Height  : chr  "Tall" "Short" "Moderate" "Tall"
+ $ Income  : num  0.39 0.34 0.51 0.63
+ $ IsMale  : logi  TRUE TRUE FALSE TRUE
+ $ Politics: chr  "moderate" "liberal" "moderate" "conservative"
+  Age Race   Height Income IsMale   Politics
+1  22    1     Tall   0.39   TRUE   moderate
+2  33    3    Short   0.34   TRUE    liberal
+3  52    1 Moderate   0.51  FALSE   moderate
+4  46    6     Tall   0.63   TRUE conservative
+```
+{% endcapture %}
+
+<div class="r-stack">
+{% include r_panel.html kind="code" label="R code (teacher-style)" body=d4840_teacher_ws0a_code %}
+{% include r_panel.html kind="output" label="Console output" body=d4840_teacher_ws0a_out %}
 </div>

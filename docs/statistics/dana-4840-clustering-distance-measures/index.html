@@ -1,0 +1,793 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>DANA 4840 — Distance measures (Euclidean, Pearson correlation, Gower / daisy) - Dann Brown Adventures</title>
+<meta name="description" content="Clustering uses distances (or dissimilarities) between objects. Below: scale numeric rows, Euclidean distance with dist, Pearson-style distances between row profiles, Gower with daisy on mixed data, and an optional fviz_dist heatmap. Examples use USArrests (15 rows) and flower.">
+
+
+  <meta name="author" content="Dann brown">
+  
+  <meta property="article:author" content="Dann brown">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dann Brown Adventures">
+<meta property="og:title" content="DANA 4840 — Distance measures (Euclidean, Pearson correlation, Gower / daisy)">
+<meta property="og:url" content="/statistics/dana-4840-clustering-distance-measures/">
+
+
+  <meta property="og:description" content="Clustering uses distances (or dissimilarities) between objects. Below: scale numeric rows, Euclidean distance with dist, Pearson-style distances between row profiles, Gower with daisy on mixed data, and an optional fviz_dist heatmap. Examples use USArrests (15 rows) and flower.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-05-12T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2026-05-13T13:00:00-05:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/statistics/dana-4840-clustering-distance-measures/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Leonardo L Sanchez- Dann Brown",
+      "url": "/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dann Brown Adventures Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--archive">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Dann Brown Adventures
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/videos/">Videos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/books/reading">Reading List</a>
+            </li><li class="masthead__menu-item">
+              <a href="/reading">looking</a>
+            </li><li class="masthead__menu-item">
+              <a href="/knowledge">knowledge</a>
+            </li><li class="masthead__menu-item">
+              <a href="/certs">certs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/Languages">Languages</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#statistics" itemprop="item"><span itemprop="name">Statistics</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">DANA 4840 — Distance measures (Euclidean, Pearson correlation, Gower / daisy)</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/1577552827279.jpg" alt="Dann brown" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">Dann brown</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">CO</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/leonardo-sanchez-89590b127/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">linkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://www.youtube.com/channel/UCoROtxDQYfIgjXBDcORK5zw/videos" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-youtube" aria-hidden="true"></i><span class="label">Youtube</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Qleoz12" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kintaroloop@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="kintaroloop@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">DANA 4840 — Distance measures (Euclidean, Pearson correlation, Gower / daisy)</h1>
+    
+    <p>Clustering uses <strong>distances</strong> (or dissimilarities) between objects. Below: <strong><code class="language-plaintext highlighter-rouge">scale</code></strong> numeric rows, <strong>Euclidean</strong> distance with <strong><code class="language-plaintext highlighter-rouge">dist</code></strong>, <strong>Pearson-style</strong> distances between row profiles, <strong>Gower</strong> with <strong><code class="language-plaintext highlighter-rouge">daisy</code></strong> on mixed data, and an optional <strong><code class="language-plaintext highlighter-rouge">fviz_dist</code></strong> heatmap. Examples use <strong><code class="language-plaintext highlighter-rouge">USArrests</code></strong> (15 rows) and <strong><code class="language-plaintext highlighter-rouge">flower</code></strong>.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">set.seed()</code></strong> makes random sampling repeatable. <strong><code class="language-plaintext highlighter-rouge">sample(1:50, 15)</code></strong> chooses <strong>15 row indices</strong> from <code class="language-plaintext highlighter-rouge">USArrests</code> (whole rows, not fifteen cells from one row). <strong><code class="language-plaintext highlighter-rouge">ss</code></strong> stores those indices; <strong><code class="language-plaintext highlighter-rouge">df</code></strong> is the subset <strong><code class="language-plaintext highlighter-rouge">USArrests[ss, ]</code></strong>. Comments after <strong><code class="language-plaintext highlighter-rouge">#</code></strong> mark each step.</p>
+
+<hr />
+
+<h2 id="random-subset-of-rows-usarrests">Random subset of rows (<code class="language-plaintext highlighter-rouge">USArrests</code>)</h2>
+
+<div class="r-stack">
+
+<div class="r-panel r-panel--code">
+  <div class="r-panel__badge" aria-hidden="true">R code</div>
+  <div class="r-panel__body">
+
+      <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span><span class="w">                           </span><span class="c1"># Repetible</span><span class="w">
+</span><span class="n">ss</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="m">15</span><span class="p">)</span><span class="w">                  </span><span class="c1"># 15 filas (índices), sin repetir</span><span class="w">
+</span><span class="n">ss</span><span class="w">                                      </span><span class="c1"># números de fila en USArrests</span><span class="w">
+</span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">USArrests</span><span class="p">[</span><span class="n">ss</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="w">                   </span><span class="c1"># mismo orden que ss; sigue usando df (sin idx) para scale()</span><span class="w">
+</span><span class="n">cbind</span><span class="p">(</span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ss</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="p">)</span><span class="w">                     </span><span class="c1"># tabla de lectura: idx + estado + datos</span><span class="w">
+</span></code></pre></div>      </div>
+
+    </div>
+</div>
+
+
+<div class="r-panel r-panel--output">
+  <div class="r-panel__badge" aria-hidden="true">Console output</div>
+  <div class="r-panel__body">
+
+      <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [1] 31 15 14  3 42 43 37 48 25 26 27  5 40 28  9
+
+               idx Murder Assault UrbanPop Rape
+New Mexico      31   11.4     285       70 32.1
+Iowa            15    2.2      56       57 11.3
+Indiana         14    7.2     113       65 21.0
+Arizona          3    8.1     294       80 31.0
+Tennessee       42   13.2     188       59 26.9
+Texas           43   12.7     201       80 25.5
+Oregon          37    4.9     159       67 29.3
+West Virginia   48    5.7      81       39  9.3
+Missouri        25    9.0     178       70 28.2
+Montana         26    6.0     109       53 16.4
+Nebraska        27    4.3     102       62 16.5
+California       5    9.0     276       91 40.6
+South Carolina  40   14.4     279       48 22.5
+Nevada          28   12.2     252       81 46.0
+Florida          9   15.4     335       80 31.9
+</code></pre></div>      </div>
+
+    </div>
+</div>
+
+</div>
+
+<p>The <strong><code class="language-plaintext highlighter-rouge">idx</code></strong> column is that state’s <strong>row number in the full <code class="language-plaintext highlighter-rouge">USArrests</code> matrix</strong> (50 states, fixed order in R). Rows appear <strong>in <code class="language-plaintext highlighter-rouge">ss</code> order</strong>: first printed row matches <strong><code class="language-plaintext highlighter-rouge">ss[1]</code></strong> (31 → New Mexico), last matches <strong><code class="language-plaintext highlighter-rouge">ss[15]</code></strong> (9 → Florida). <strong><code class="language-plaintext highlighter-rouge">scale(df)</code></strong> below still uses <strong><code class="language-plaintext highlighter-rouge">df</code></strong> without <strong><code class="language-plaintext highlighter-rouge">idx</code></strong>, so only the four crime variables are scaled.</p>
+
+<hr />
+
+<h2 id="standardize-before-comparing-numeric-profiles">Standardize before comparing numeric profiles</h2>
+
+<p><strong><code class="language-plaintext highlighter-rouge">scale(df)</code></strong> subtracts each column mean and divides by its standard deviation <strong>for these rows only</strong>, so variables on different scales are more comparable.</p>
+
+<div class="r-stack">
+
+<div class="r-panel r-panel--code">
+  <div class="r-panel__badge" aria-hidden="true">R code</div>
+  <div class="r-panel__body">
+
+      <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df.scaled</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">scale</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w">                  </span><span class="c1"># Centrar y escalar cada columna</span><span class="w">
+</span><span class="n">df.scaled</span><span class="w">                               </span><span class="c1"># attr: centros y escalas usados</span><span class="w">
+</span></code></pre></div>      </div>
+
+    </div>
+</div>
+
+
+<div class="r-panel r-panel--output">
+  <div class="r-panel__badge" aria-hidden="true">Console output</div>
+  <div class="r-panel__body">
+
+      <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                    Murder     Assault    UrbanPop        Rape
+New Mexico      0.58508090  1.02300309  0.22505574  0.61101857
+Iowa           -1.70220419 -1.54760088 -0.68923319 -1.43885018
+Indiana        -0.45911447 -0.90775622 -0.12659385 -0.48290177
+Arizona        -0.23535832  1.12403120  0.92835492  0.50261205
+Tennessee       1.03259320 -0.06585536 -0.54857336  0.09855138
+Texas           0.90828422  0.08007413  0.92835492 -0.03942055
+Oregon         -1.03093574 -0.39139036  0.01406598  0.33507470
+West Virginia  -0.83204139 -1.26696726 -1.95517172 -1.63595295
+Missouri       -0.01160217 -0.17810880  0.22505574  0.22666818
+Montana        -0.75745600 -0.95265760 -0.97055287 -0.93623813
+Nebraska       -1.18010651 -1.03123501 -0.33758361 -0.92638299
+California     -0.01160217  0.92197499  1.70198401  1.44870532
+South Carolina  1.33093473  0.95565102 -1.32220246 -0.33507470
+Nevada          0.78397525  0.65256671  0.99868483  1.98088278
+Florida         1.57955267  1.58427034  0.92835492  0.59130829
+attr(,"scaled:center")
+    Murder    Assault   UrbanPop       Rape 
+  9.046667 193.866667  66.800000  25.900000 
+attr(,"scaled:scale")
+   Murder   Assault  UrbanPop      Rape 
+ 4.022236 89.084123 14.218700 10.146991 
+</code></pre></div>      </div>
+
+    </div>
+</div>
+
+</div>
+
+<hr />
+
+<h2 id="euclidean-distance-between-rows-dist">Euclidean distance between rows (<code class="language-plaintext highlighter-rouge">dist</code>)</h2>
+
+<p><code class="language-plaintext highlighter-rouge">dist()</code> computes <strong>pairwise distances between rows</strong>. The full object stores <strong><code class="language-plaintext highlighter-rouge">choose(15,2) = 105</code></strong> distances; below is the <strong><code class="language-plaintext highlighter-rouge">3×3</code></strong> corner rounded to one decimal.</p>
+
+<div class="r-stack">
+
+<div class="r-panel r-panel--code">
+  <div class="r-panel__badge" aria-hidden="true">R code</div>
+  <div class="r-panel__body">
+
+      <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dist.eucl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dist</span><span class="p">(</span><span class="n">df.scaled</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"euclidean"</span><span class="p">)</span><span class="w">
+</span><span class="nf">round</span><span class="p">(</span><span class="n">as.matrix</span><span class="p">(</span><span class="n">dist.eucl</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">],</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">             </span><span class="c1"># esquina 3×3; 105 pares en total</span><span class="w">
+</span></code></pre></div>      </div>
+
+    </div>
+</div>
+
+
+<div class="r-panel r-panel--output">
+  <div class="r-panel__badge" aria-hidden="true">Console output</div>
+  <div class="r-panel__body">
+
+      <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>           New Mexico Iowa Indiana
+New Mexico        0.0  4.1     2.5
+Iowa              4.1  0.0     1.8
+Indiana           2.5  1.8     0.0
+</code></pre></div>      </div>
+
+    </div>
+</div>
+
+</div>
+
+<p><strong>Between variables instead of rows:</strong> transpose first — <strong><code class="language-plaintext highlighter-rouge">dist(t(df.scaled))</code></strong> — so each <strong>column</strong> becomes a row profile.</p>
+
+<h3 id="manual-check-new-mexico-vs-iowa-scaled-rows">Manual check: New Mexico vs Iowa (scaled rows)</h3>
+
+<p>For two profiles <strong>x</strong> and <strong>y</strong> (here four standardized variables), Euclidean distance is:</p>
+
+<div class="math-block">
+\[
+d(\mathbf{x},\mathbf{y}) = \sqrt{\sum_{j=1}^{4} (x_j - y_j)^2}.
+\]
+</div>
+
+<p>Using the first two rows of <strong><code class="language-plaintext highlighter-rouge">df.scaled</code></strong> in this run (<strong>New Mexico</strong> then <strong>Iowa</strong>):</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Row</th>
+      <th>Murder</th>
+      <th>Assault</th>
+      <th>UrbanPop</th>
+      <th>Rape</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>New Mexico</strong></td>
+      <td>0.58508090</td>
+      <td>1.02300309</td>
+      <td>0.22505574</td>
+      <td>0.61101857</td>
+    </tr>
+    <tr>
+      <td><strong>Iowa</strong></td>
+      <td>−1.70220419</td>
+      <td>−1.54760088</td>
+      <td>−0.68923319</td>
+      <td>−1.43885018</td>
+    </tr>
+    <tr>
+      <td><strong>Difference (x_j-y_j)</strong></td>
+      <td>2.28728509</td>
+      <td>2.57060397</td>
+      <td>0.91428893</td>
+      <td>2.04986875</td>
+    </tr>
+    <tr>
+      <td><strong>Squared</strong></td>
+      <td>5.23167308</td>
+      <td>6.60800477</td>
+      <td>0.83592425</td>
+      <td>4.20196189</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Sum of squared differences ≈ <strong>16.877564</strong> → (d = \sqrt{16.877564} \approx) <strong>4.108231</strong>. That matches <strong><code class="language-plaintext highlighter-rouge">dist(df.scaled, method = "euclidean")</code></strong> between those two rows at full precision; <strong><code class="language-plaintext highlighter-rouge">round(..., 1)</code></strong> gives <strong>4.1</strong>, same as the corner matrix above.</p>
+
+<div class="r-stack">
+
+<div class="r-panel r-panel--code">
+  <div class="r-panel__badge" aria-hidden="true">R code (sanity check)</div>
+  <div class="r-panel__body">
+
+      <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">sqrt</span><span class="p">(</span><span class="nf">sum</span><span class="p">((</span><span class="n">df.scaled</span><span class="p">[</span><span class="s2">"New Mexico"</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">df.scaled</span><span class="p">[</span><span class="s2">"Iowa"</span><span class="p">,</span><span class="w"> </span><span class="p">])</span><span class="o">^</span><span class="m">2</span><span class="p">))</span><span class="w">
+</span></code></pre></div>      </div>
+
+    </div>
+</div>
+
+
+<div class="r-panel r-panel--output">
+  <div class="r-panel__badge" aria-hidden="true">Console output</div>
+  <div class="r-panel__body">
+
+      <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 4.108231
+</code></pre></div>      </div>
+
+    </div>
+</div>
+
+</div>
+
+<p><em>(Rounding in the output panel may show fewer decimals; the stored value is <strong>4.108231249</strong>.)</em></p>
+
+<hr />
+
+<h2 id="pearson-correlation-distance-between-rows">Pearson correlation distance between rows</h2>
+
+<p><strong><code class="language-plaintext highlighter-rouge">factoextra::get_dist(..., method = "pearson")</code></strong> builds distances from <strong>similarity of shape</strong> across variables (high correlation ⇒ low distance). The same idea appears in base R as <strong><code class="language-plaintext highlighter-rouge">1 − cor(t(df.scaled))</code></strong> between rows (diagonal set to zero). If you do not use <strong><code class="language-plaintext highlighter-rouge">factoextra</code></strong>, the base-R version is enough for the concept.</p>
+
+<div class="r-stack">
+
+<div class="r-panel r-panel--code">
+  <div class="r-panel__badge" aria-hidden="true">R code (factoextra)</div>
+  <div class="r-panel__body">
+
+      <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dist.cor</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">factoextra</span><span class="o">::</span><span class="n">get_dist</span><span class="p">(</span><span class="n">df.scaled</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"pearson"</span><span class="p">)</span><span class="w">
+</span><span class="nf">round</span><span class="p">(</span><span class="n">as.matrix</span><span class="p">(</span><span class="n">dist.cor</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">],</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+</span></code></pre></div>      </div>
+
+    </div>
+</div>
+
+
+<div class="r-panel r-panel--code">
+  <div class="r-panel__badge" aria-hidden="true">R code (base R)</div>
+  <div class="r-panel__body">
+
+      <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cor</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">df.scaled</span><span class="p">))</span><span class="w">
+</span><span class="n">Dpear</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">cc</span><span class="w">
+</span><span class="n">diag</span><span class="p">(</span><span class="n">Dpear</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="nf">round</span><span class="p">(</span><span class="n">Dpear</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">],</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+</span></code></pre></div>      </div>
+
+    </div>
+</div>
+
+
+<div class="r-panel r-panel--output">
+  <div class="r-panel__badge" aria-hidden="true">Console output</div>
+  <div class="r-panel__body">
+
+      <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>           New Mexico Iowa Indiana
+New Mexico        0.0  1.7     2.0
+Iowa              1.7  0.0     0.3
+Indiana           2.0  0.3     0.0
+</code></pre></div>      </div>
+
+    </div>
+</div>
+
+</div>
+
+<hr />
+
+<h2 id="gower--daisy-on-mixed-flower-data">Gower / <code class="language-plaintext highlighter-rouge">daisy()</code> on mixed <code class="language-plaintext highlighter-rouge">flower</code> data</h2>
+
+<div class="r-stack">
+
+<div class="r-panel r-panel--code">
+  <div class="r-panel__badge" aria-hidden="true">R code</div>
+  <div class="r-panel__body">
+
+      <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span><span class="w">
+</span><span class="n">data</span><span class="p">(</span><span class="n">flower</span><span class="p">)</span><span class="w">
+</span><span class="n">head</span><span class="p">(</span><span class="n">flower</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w">
+</span><span class="n">str</span><span class="p">(</span><span class="n">flower</span><span class="p">)</span><span class="w">
+
+</span><span class="n">dd</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">daisy</span><span class="p">(</span><span class="n">flower</span><span class="p">)</span><span class="w">
+</span><span class="nf">round</span><span class="p">(</span><span class="n">as.matrix</span><span class="p">(</span><span class="n">dd</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">],</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span></code></pre></div>      </div>
+
+    </div>
+</div>
+
+
+<div class="r-panel r-panel--output">
+  <div class="r-panel__badge" aria-hidden="true">Console output</div>
+  <div class="r-panel__body">
+
+      <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  V1 V2 V3 V4 V5 V6  V7 V8
+1  0  1  1  4  3 15  25 15
+2  1  0  0  2  1  3 150 50
+3  0  1  0  3  3  1 150 50
+
+'data.frame':	18 obs. of  8 variables:
+ $ V1: Factor w/ 2 levels "0","1": 1 2 1 1 1 1 1 1 2 2 ...
+ $ V2: Factor w/ 2 levels "0","1": 2 1 2 1 2 2 1 1 2 2 ...
+ $ V3: Factor w/ 2 levels "0","1": 2 1 1 2 1 1 1 2 1 1 ...
+ $ V4: Factor w/ 5 levels "1","2","3","4",..: 4 2 3 4 5 4 4 2 3 5 ...
+ $ V5: Ord.factor w/ 3 levels "1"&lt;"2"&lt;"3": 3 1 3 2 2 3 3 2 1 2 ...
+ $ V6: Ord.factor w/ 18 levels "1"&lt;"2"&lt;"3"&lt;"4"&lt;..: 15 3 1 16 2 12 13 7 4 14 ...
+ $ V7: num  25 150 150 125 20 50 40 100 25 100 ...
+ $ V8: num  15 50 50 50 15 40 20 15 15 60 ...
+
+     1    2    3
+1 0.00 0.89 0.53
+2 0.89 0.00 0.51
+3 0.53 0.51 0.00
+</code></pre></div>      </div>
+
+    </div>
+</div>
+
+</div>
+
+<hr />
+
+<h2 id="visualize-a-distance-matrix-fviz_dist">Visualize a distance matrix (<code class="language-plaintext highlighter-rouge">fviz_dist</code>)</h2>
+
+<p><strong><code class="language-plaintext highlighter-rouge">fviz_dist()</code></strong> draws the distance matrix as a heatmap (dark/light by dissimilarity). It comes from <strong><code class="language-plaintext highlighter-rouge">factoextra</code></strong> (and <strong><code class="language-plaintext highlighter-rouge">ggplot2</code></strong> underneath).</p>
+
+<div class="r-stack">
+
+<div class="r-panel r-panel--code">
+  <div class="r-panel__badge" aria-hidden="true">R code</div>
+  <div class="r-panel__body">
+
+      <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">factoextra</span><span class="o">::</span><span class="n">fviz_dist</span><span class="p">(</span><span class="n">dist.eucl</span><span class="p">)</span><span class="w">
+</span></code></pre></div>      </div>
+
+    </div>
+</div>
+
+</div>
+
+<hr />
+
+<h2 id="see-also">See also</h2>
+
+<ul>
+  <li><strong>Similarity for binary data</strong> — Simple Matching, Jaccard, and validating with <code class="language-plaintext highlighter-rouge">daisy</code> on a small example.</li>
+  <li><strong>Gower distance on mixed variables</strong> — step-by-step arithmetic before using <code class="language-plaintext highlighter-rouge">daisy</code> in code.</li>
+  <li><strong>Clustering tendency</strong> — quick checks (PCA look, Hopkins statistic, distance-matrix plot) before trusting a partition.</li>
+</ul>
+
+    
+      <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      // Here is an example,
+      // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
+      this.page.url = "https://qleoz12.github.io//statistics/dana-4840-clustering-distance-measures/";
+      this.page.identifier = "/statistics/dana-4840-clustering-distance-measures/";
+    };
+
+    // You should be able to get the following lines of code from your Disqus admin.
+    // https://disqus.com/admin/universalcode
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//qleoz12githubio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+    
+  </div>
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+  
+<script>
+  window.MathJax = {
+    loader: { load: ['[tex]/ams'] },
+    tex: {
+      packages: { '[+]': ['ams', 'noerrors', 'noundefined'] },
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],
+      processEscapes: true,
+      tags: 'ams'
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script"></script>
+
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026 Leonardo L Sanchez- Dann Brown. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

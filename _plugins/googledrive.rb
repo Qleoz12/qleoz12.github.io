@@ -1,84 +1,63 @@
 require "google_drive"
-require "debug"
 
 module Reading
-    class Generator < Jekyll::Generator
-        def generate(site)
-            if ENV["SKIP_GOOGLE_DRIVE"] == "1" || ENV["JEKYLL_SKIP_GOOGLE_DRIVE"] == "1"
-                Jekyll.logger.info "Reading:", "Skipping Google Drive generator (set SKIP_GOOGLE_DRIVE=1)."
-                return
-            end
+  class Generator < Jekyll::Generator
+    def generate(site)
+      key_path = google_credentials_path(site)
 
-            # credentials = Google::Auth::UserRefreshCredentials.new(
-            #     client_id: "-.apps.googleusercontent.com",
-            #     client_secret:"-"
-            #   )
+      unless should_fetch_google_drive?(key_path)
+        site.data["certs"] ||= {}
+        return
+      end
 
-            # session = GoogleDrive::Session.from_credentials(credentials)
-            # # print(session)
-            # # # # Gets list of remote files.
-            # session.files.each do |file|
-            #     print file.title
-            # end
-            # reading = site.pages.find { |page| page.name == 'certs.html'}
-            # puts reading
-            # # Access the data stored in the _data directory
-            # my_data = site.data['certs'] || {}
-            # puts  my_data 
-            # # Update or add your desired data
-            # my_data['key'] = 'value'
-            
-            # # Write the updated data back to the _data directory
-            # site.data['certs'] = my_data
-            # # reading.data['certs'] = ["as","as"]
+      session = GoogleDrive::Session.from_service_account_key(key_path)
 
-            # puts my_data
-            # puts site.data['certs']
-            puts Dir.pwd
+      data = {}
+      session.files.each do |file|
+        next unless file.resource_type == "folder"
 
-            session = GoogleDrive::Session.from_service_account_key("./_plugins/config.json")
+        folder_id = file.resource_id[file.resource_id.rindex(":") + 1..]
+        childs = session.files(q: "'#{folder_id}' in parents ")
 
-            # session.files.each do |file|
-            #     puts file.title
-            #     puts file.resource_id
-            #     puts file.document_feed_url
-            #     puts file.resource_type
-            #     # file.human_url=file.human_url.sub("view", "preview")
-            #     puts file.human_url
-                
-            #     if file.resource_type=='file'
-            #       # debugger
-            #       my_data.push file.human_url.sub("view", "preview")
-            #     end
-            #     # debugger
-            #     # donwload=file.download_to_string
-                
-            #     # puts donwload
-            #     puts
-            # end
-            # puts my_data
-            
-            data={}
-            session.files.each do |file|
-                if file.resource_type=='folder'
-                    puts file.resource_id,file.title
-                    puts 
-                    childs= session.files(q: "'#{file.resource_id[file.resource_id.rindex(":")+1..-1]}' in parents ")
-
-                    childstrasnformed=[]
-                    childs.each do |file|
-                        childstrasnformed.push({"human_url"=>file.human_url.sub("view", "preview"),"title"=> file.title })
-                    end
-                    # debugger
-                    data[file.title]=childstrasnformed
-                    # debugger
-                end
-            end 
-            # puts data
-            
-            # inject data into template
-            site.data['certs'] = data
-
+        children = []
+        childs.each do |child|
+          children.push(
+            "human_url" => child.human_url.sub("view", "preview"),
+            "title" => child.title
+          )
         end
+        data[file.title] = children
+      end
+
+      site.data["certs"] = data
     end
+
+    private
+
+    def google_credentials_path(site)
+      env_path = ENV["GOOGLE_DRIVE_KEY_PATH"]
+      return env_path if env_path && !env_path.strip.empty?
+
+      File.join(site.source, "_plugins", "config.json")
+    end
+
+    def should_fetch_google_drive?(key_path)
+      if ENV["SKIP_GOOGLE_DRIVE"] == "1" || ENV["JEKYLL_SKIP_GOOGLE_DRIVE"] == "1"
+        Jekyll.logger.info "Reading:", "Skipping Google Drive (SKIP_GOOGLE_DRIVE=1)."
+        return false
+      end
+
+      if ENV["JEKYLL_ENV"] == "development"
+        Jekyll.logger.info "Reading:", "Skipping Google Drive in development (jekyll serve). Build with JEKYLL_ENV=production and _plugins/config.json to refresh certs data."
+        return false
+      end
+
+      unless File.file?(key_path)
+        Jekyll.logger.warn "Reading:", "Google Drive skipped: no credentials file at #{key_path}. /certs/ will omit Drive embeds until you add the JSON (gitignored)."
+        return false
+      end
+
+      true
+    end
+  end
 end

@@ -38,7 +38,7 @@
 
 
 
-  <meta property="article:modified_time" content="2026-05-10T21:00:00-05:00">
+  <meta property="article:modified_time" content="2026-05-11T13:00:00-05:00">
 
 
 
@@ -764,6 +764,71 @@ Shopper5   0.1429   0.8571   0.2857   0.4286   1.0000
 <p><strong>Answer:</strong> <strong>Simple Matching</strong> fits better here: every <strong>0</strong> and <strong>1</strong> is meaningful, and <strong>0–0 agreements</strong> should count.</p>
 
 <p><strong>Jaccard</strong> for binary data often <strong>drops double zeros</strong> (it emphasizes joint “presence”). That makes sense when <strong>0</strong> is not comparable to <strong>1</strong>. In this worksheet both levels are symmetric categories, so <strong>SMC</strong> matches the question better.</p>
+
+<hr />
+
+<h2 id="teacher-suggestion--última-sesión--smc-con-doble-bucle-y-daisy">Teacher suggestion / última sesión — SMC con doble bucle y <code class="language-plaintext highlighter-rouge">daisy()</code></h2>
+
+<p>Lo mismo que arriba con <code class="language-plaintext highlighter-rouge">outer()</code> + <code class="language-plaintext highlighter-rouge">Vectorize()</code>, pero en <strong>forma mínima</strong> (lo que suele caber en una diapositiva): matriz binaria, <strong>doble <code class="language-plaintext highlighter-rouge">for</code></strong>, luego <strong>Gower dissimilarity on symmetric binaries</strong> → similarity <strong>= 1 − d</strong>. La salida debe coincidir con la matriz <strong>5×5</strong> del apartado (a); <strong><code class="language-plaintext highlighter-rouge">max(abs(...))</code></strong> suele ser ~<strong><code class="language-plaintext highlighter-rouge">1e-16</code></strong> y <strong><code class="language-plaintext highlighter-rouge">all.equal</code></strong> debe dar <strong><code class="language-plaintext highlighter-rouge">TRUE</code></strong>.</p>
+
+<div class="r-stack">
+
+<div class="r-panel r-panel--code">
+  <div class="r-panel__badge" aria-hidden="true">R code (teacher-style)</div>
+  <div class="r-panel__body">
+
+      <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">shop_bin</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="w">
+  </span><span class="nf">c</span><span class="p">(</span><span class="w">
+    </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w">
+    </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w">
+    </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w">
+    </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w">
+    </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="w">
+  </span><span class="p">),</span><span class="w">
+  </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w">
+  </span><span class="n">byrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span><span class="n">p</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ncol</span><span class="p">(</span><span class="n">shop_bin</span><span class="p">)</span><span class="w">
+</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">nrow</span><span class="p">(</span><span class="n">shop_bin</span><span class="p">)</span><span class="w">
+</span><span class="n">S_min</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w">
+</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nf">seq_len</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nf">seq_len</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">S_min</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">shop_bin</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">shop_bin</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="p">])</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">rownames</span><span class="p">(</span><span class="n">S_min</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">colnames</span><span class="p">(</span><span class="n">S_min</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"S"</span><span class="p">,</span><span class="w"> </span><span class="nf">seq_len</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="w">
+</span><span class="nf">round</span><span class="p">(</span><span class="n">S_min</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">)</span><span class="w">
+
+</span><span class="n">library</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span><span class="w">
+</span><span class="n">D_g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.matrix</span><span class="p">(</span><span class="n">daisy</span><span class="p">(</span><span class="n">shop_bin</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">symm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq_len</span><span class="p">(</span><span class="n">p</span><span class="p">))))</span><span class="w">
+</span><span class="n">S_daisy_min</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">D_g</span><span class="w">
+</span><span class="nf">max</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">S_min</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">S_daisy_min</span><span class="p">))</span><span class="w">
+</span><span class="n">isTRUE</span><span class="p">(</span><span class="n">all.equal</span><span class="p">(</span><span class="n">S_min</span><span class="p">,</span><span class="w"> </span><span class="n">S_daisy_min</span><span class="p">))</span><span class="w">
+</span></code></pre></div>      </div>
+
+    </div>
+</div>
+
+
+<div class="r-panel r-panel--output">
+  <div class="r-panel__badge" aria-hidden="true">Console output</div>
+  <div class="r-panel__body">
+
+      <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      S1     S2     S3     S4     S5
+S1 1.0000 0.2857 0.5714 0.7143 0.1429
+S2 0.2857 1.0000 0.4286 0.5714 0.8571
+S3 0.5714 0.4286 1.0000 0.2857 0.2857
+S4 0.7143 0.5714 0.2857 1.0000 0.4286
+S5 0.1429 0.8571 0.2857 0.4286 1.0000
+
+[1] 1.110223e-16
+[1] TRUE
+</code></pre></div>      </div>
+
+    </div>
+</div>
+
+</div>
 
     
       <div id="disqus_thread"></div>

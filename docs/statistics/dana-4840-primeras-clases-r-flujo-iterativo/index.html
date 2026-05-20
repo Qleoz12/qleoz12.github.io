@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>DANA 4840 — R: estructuras básicas (recordatorio) y dataset Worksheet 0a - Dann Brown Adventures</title>
+<!-- begin _includes/seo.html --><title>DANA 4840 — R: basic structures (refresher) and Worksheet 0a dataset - Dann Brown Adventures</title>
 <meta name="description" content="Study sheet for DANA 4840: R objects (vector, list, matrix, array, data.frame, factors) and Worksheet 0a (building the mixed dataset, reading .txt, .xlsx, and .csv, and aligning types with daisy() / Gower-style coding).">
 
 
@@ -22,7 +22,7 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Dann Brown Adventures">
-<meta property="og:title" content="DANA 4840 — R: estructuras básicas (recordatorio) y dataset Worksheet 0a">
+<meta property="og:title" content="DANA 4840 — R: basic structures (refresher) and Worksheet 0a dataset">
 <meta property="og:url" content="/statistics/dana-4840-primeras-clases-r-flujo-iterativo/">
 
 
@@ -38,7 +38,7 @@
 
 
 
-  <meta property="article:modified_time" content="2026-05-10T19:00:00-05:00">
+  <meta property="article:modified_time" content="2026-05-11T13:00:00-05:00">
 
 
 
@@ -184,7 +184,7 @@
     
       
       
-        <li class="current">DANA 4840 — R: estructuras básicas (recordatorio) y dataset Worksheet 0a</li>
+        <li class="current">DANA 4840 — R: basic structures (refresher) and Worksheet 0a dataset</li>
       
     
   </ol>
@@ -328,7 +328,7 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">DANA 4840 — R: estructuras básicas (recordatorio) y dataset Worksheet 0a</h1>
+      <h1 id="page-title" class="page__title">DANA 4840 — R: basic structures (refresher) and Worksheet 0a dataset</h1>
     
     <p>Study sheet for <strong>DANA 4840</strong>: R objects (<code class="language-plaintext highlighter-rouge">vector</code>, <code class="language-plaintext highlighter-rouge">list</code>, <code class="language-plaintext highlighter-rouge">matrix</code>, <code class="language-plaintext highlighter-rouge">array</code>, <code class="language-plaintext highlighter-rouge">data.frame</code>, factors) and <strong>Worksheet 0a</strong> (building the mixed dataset, reading <code class="language-plaintext highlighter-rouge">.txt</code>, <code class="language-plaintext highlighter-rouge">.xlsx</code>, and <code class="language-plaintext highlighter-rouge">.csv</code>, and aligning types with <code class="language-plaintext highlighter-rouge">daisy()</code> / Gower-style coding).</p>
 
@@ -372,7 +372,7 @@
 
 </div>
 
-<h2 id="lista">Lista</h2>
+<h2 id="list">List</h2>
 
 <div class="r-stack">
 
@@ -416,7 +416,7 @@
 
 </div>
 
-<h2 id="matriz">Matriz</h2>
+<h2 id="matrix">Matrix</h2>
 
 <div class="r-stack">
 
@@ -561,7 +561,7 @@
 
 </div>
 
-<h3 id="sin-conversión-automática-a-factor-caracteres-como-texto">Sin conversión automática a factor (caracteres como texto)</h3>
+<h3 id="no-automatic-conversion-to-factor-characters-stay-as-text">No automatic conversion to factor (characters stay as text)</h3>
 
 <div class="r-stack">
 
@@ -603,9 +603,9 @@
 
 </div>
 
-<h3 id="factor-nominal">Factor nominal</h3>
+<h3 id="nominal-factor">Nominal factor</h3>
 
-<p><code class="language-plaintext highlighter-rouge">factor()</code> sin <code class="language-plaintext highlighter-rouge">ordered = TRUE</code> define niveles <strong>sin orden inherente</strong>: las categorías se tratan como <strong>nominales</strong> (solo identidad, no “mayor/menor”). Sirve para sexo, país, tipo de sangre, etc.</p>
+<p>With <code class="language-plaintext highlighter-rouge">factor()</code> and <strong>without</strong> <code class="language-plaintext highlighter-rouge">ordered = TRUE</code>, levels have <strong>no inherent order</strong>: categories are <strong>nominal</strong> (identity only, not “greater/lesser”). Use this for sex, country, blood type, etc.</p>
 
 <div class="r-stack">
 
@@ -614,7 +614,7 @@
   <div class="r-panel__body">
 
       <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># =========================</span><span class="w">
-</span><span class="c1"># Factor nominal</span><span class="w">
+</span><span class="c1"># Nominal factor</span><span class="w">
 </span><span class="c1"># =========================</span><span class="w">
 </span><span class="n">myfactor</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"M"</span><span class="p">,</span><span class="w"> </span><span class="s2">"F"</span><span class="p">,</span><span class="w"> </span><span class="s2">"T"</span><span class="p">,</span><span class="w"> </span><span class="s2">"O"</span><span class="p">,</span><span class="w"> </span><span class="s2">"M"</span><span class="p">))</span><span class="w">
 </span><span class="n">myfactor</span><span class="w">
@@ -646,9 +646,9 @@ Levels: F M O T
 
 </div>
 
-<h3 id="factor-ordinal-ordered-levels">Factor ordinal (<code class="language-plaintext highlighter-rouge">ordered</code>, <code class="language-plaintext highlighter-rouge">levels</code>)</h3>
+<h3 id="ordinal-factor-ordered-levels">Ordinal factor (<code class="language-plaintext highlighter-rouge">ordered</code>, <code class="language-plaintext highlighter-rouge">levels</code>)</h3>
 
-<p>Con <strong><code class="language-plaintext highlighter-rouge">ordered = TRUE</code></strong> el factor es <strong>ordinal</strong>: los niveles tienen un <strong>orden lógico</strong> fijado con <strong><code class="language-plaintext highlighter-rouge">levels = c(...)</code></strong> (de menor a mayor en ese sentido). R lo guarda como entero con orden; comparaciones como <code class="language-plaintext highlighter-rouge">&lt;</code> entre niveles respetan esa secuencia (útil para tallas, Likert, etapas).</p>
+<p>With <strong><code class="language-plaintext highlighter-rouge">ordered = TRUE</code></strong>, the factor is <strong>ordinal</strong>: levels follow a <strong>logical order</strong> set by <strong><code class="language-plaintext highlighter-rouge">levels = c(...)</code></strong> (low to high in that sense). R stores them as ordered integers; comparisons like <code class="language-plaintext highlighter-rouge">&lt;</code> between levels follow that sequence (useful for sizes, Likert scales, stages).</p>
 
 <div class="r-stack">
 
@@ -657,7 +657,7 @@ Levels: F M O T
   <div class="r-panel__body">
 
       <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># =========================</span><span class="w">
-</span><span class="c1"># Factor ordinal</span><span class="w">
+</span><span class="c1"># Ordinal factor</span><span class="w">
 </span><span class="c1"># =========================</span><span class="w">
 </span><span class="n">myfactor</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="w">
   </span><span class="nf">c</span><span class="p">(</span><span class="s2">"M"</span><span class="p">,</span><span class="w"> </span><span class="s2">"F"</span><span class="p">,</span><span class="w"> </span><span class="s2">"T"</span><span class="p">,</span><span class="w"> </span><span class="s2">"O"</span><span class="p">,</span><span class="w"> </span><span class="s2">"M"</span><span class="p">),</span><span class="w">
@@ -689,9 +689,9 @@ Levels: O &lt; M &lt; F &lt; T
 
 <hr />
 
-<h2 id="worksheet-0a--dataset">Worksheet 0a — dataset</h2>
+<h2 id="worksheet-0a--example-dataset">Worksheet 0a — example dataset</h2>
 
-<p>Fuente: <a href="https://jamesmccaffrey.wordpress.com/2020/04/21/example-of-calculating-the-gower-distance/">McCaffrey — Gower distance example</a></p>
+<p>Source: <a href="https://jamesmccaffrey.wordpress.com/2020/04/21/example-of-calculating-the-gower-distance/">McCaffrey — Gower distance example</a></p>
 
 <table>
   <thead>
@@ -745,60 +745,60 @@ Levels: O &lt; M &lt; F &lt; T
 <p><strong>Worksheet 0a — (a)</strong><br />
 For each variable above, identify if it is a categorical variable or a quantitative one. If it is a categorical variable, further classify the variable as a nominal (or binary) or ordinal.</p>
 
-<p>Cuantitativa vs categórica; nominal, ordinal o binaria.</p>
+<p>Quantitative vs categorical; nominal, ordinal, or binary.</p>
 
 <table>
   <thead>
     <tr>
       <th>Variable</th>
-      <th>Tipo</th>
-      <th>Detalle</th>
+      <th>Type</th>
+      <th>Notes</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><strong>Age</strong></td>
-      <td>Cuantitativa</td>
-      <td>Edad en años (numérica discreta).</td>
+      <td>Quantitative</td>
+      <td>Age in years (discrete numeric).</td>
     </tr>
     <tr>
       <td><strong>Race</strong></td>
-      <td>Categórica <strong>nominal</strong></td>
-      <td>Códigos 1, 3, 6… sin orden inherente “mayor/menor”; solo etiquetas distintas.</td>
+      <td><strong>Nominal</strong> categorical</td>
+      <td>Codes 1, 3, 6, … with no inherent “greater/lesser” order; distinct labels only.</td>
     </tr>
     <tr>
       <td><strong>Height</strong></td>
-      <td>Categórica <strong>ordinal</strong></td>
-      <td>Niveles <em>Short</em>, <em>Moderate</em>, <em>Tall</em> admiten orden natural por estatura: Short &lt; Moderate &lt; Tall.</td>
+      <td><strong>Ordinal</strong> categorical</td>
+      <td>Levels <em>Short</em>, <em>Moderate</em>, <em>Tall</em> have a natural stature order: Short &lt; Moderate &lt; Tall.</td>
     </tr>
     <tr>
       <td><strong>Income</strong></td>
-      <td>Cuantitativa</td>
-      <td>Valores numéricos (aquí parecen proporciones 0–1); se trata como escala numérica, no como etiquetas.</td>
+      <td>Quantitative</td>
+      <td>Numeric values (here they look like proportions on 0–1); treat as a numeric scale, not as labels.</td>
     </tr>
     <tr>
       <td><strong>IsMale</strong></td>
-      <td>Categórica <strong>binaria</strong> (nominal)</td>
-      <td>Solo <code class="language-plaintext highlighter-rouge">TRUE</code> / <code class="language-plaintext highlighter-rouge">FALSE</code>; dos categorías sin orden (no decimos que un sexo sea “mayor” que otro en sentido estadístico).</td>
+      <td><strong>Binary</strong> categorical (nominal)</td>
+      <td>Only <code class="language-plaintext highlighter-rouge">TRUE</code> / <code class="language-plaintext highlighter-rouge">FALSE</code>; two categories with no order (we do not rank sexes in a statistical sense).</td>
     </tr>
     <tr>
       <td><strong>Politics</strong></td>
-      <td>Categórica <strong>nominal</strong> (típico en análisis)</td>
-      <td><em>liberal</em>, <em>moderate</em>, <em>conservative</em> son etiquetas; el espectro izquierda–derecha podría argumentarse como orden, pero el orden exacto y la distancia entre etiquetas no están fijados en el dato, así que en el worksheet suele tratarse como <strong>nominal</strong> salvo que el curso imponga un orden explícito.</td>
+      <td><strong>Nominal</strong> categorical (typical in analyses)</td>
+      <td><em>liberal</em>, <em>moderate</em>, <em>conservative</em> are labels; a left–right spectrum could be argued as ordered, but the exact order and spacing between labels are not fixed in the data, so the worksheet usually treats this as <strong>nominal</strong> unless the course specifies an explicit order.</td>
     </tr>
   </tbody>
 </table>
 
-<p><strong>Resumen:</strong> tus “numerical” → <strong>Age</strong>, <strong>Income</strong> (cuantitativas). El resto son <strong>categóricas</strong>; entre ellas, <strong>Height</strong> es la que encaja mejor como <strong>ordinal</strong> por el orden físico de las categorías. <strong>Race</strong>, <strong>IsMale</strong> y <strong>Politics</strong> (como nominal) no llevan orden obligatorio en la definición del dataset.</p>
+<p><strong>Summary:</strong> your “numerical” variables are <strong>Age</strong> and <strong>Income</strong> (quantitative). The rest are <strong>categorical</strong>; among those, <strong>Height</strong> fits best as <strong>ordinal</strong> because of the physical ordering of categories. <strong>Race</strong>, <strong>IsMale</strong>, and <strong>Politics</strong> (as nominal) do not require an order in how this dataset is defined.</p>
 
-<p>Archivos de ejemplo en el repo (mismas filas que la tabla): <a href="/assets/data/dana4840_worksheet0a.txt"><code class="language-plaintext highlighter-rouge">dana4840_worksheet0a.txt</code></a> (tabuladores) y <a href="/assets/data/dana4840_worksheet0a.csv"><code class="language-plaintext highlighter-rouge">dana4840_worksheet0a.csv</code></a>. En <strong>(d)</strong> el <code class="language-plaintext highlighter-rouge">.xlsx</code> se puede <strong>generar en R</strong> con <code class="language-plaintext highlighter-rouge">writexl</code> (ruta <code class="language-plaintext highlighter-rouge">assets/data/dana4840_worksheet0a.xlsx</code>) o crear a mano / exportar desde Excel en esa carpeta.</p>
+<p>Sample files in the repo (same rows as the table): <a href="/assets/data/dana4840_worksheet0a.txt"><code class="language-plaintext highlighter-rouge">dana4840_worksheet0a.txt</code></a> (tab-separated) and <a href="/assets/data/dana4840_worksheet0a.csv"><code class="language-plaintext highlighter-rouge">dana4840_worksheet0a.csv</code></a>. For <strong>(d)</strong>, you can <strong>generate</strong> the <code class="language-plaintext highlighter-rouge">.xlsx</code> in R with <code class="language-plaintext highlighter-rouge">writexl</code> at <code class="language-plaintext highlighter-rouge">assets/data/dana4840_worksheet0a.xlsx</code>, or create / export from Excel into that folder.</p>
 
 <h3 id="b">(b)</h3>
 
 <p><strong>Worksheet 0a — (b)</strong><br />
 Use R to create each variable, making sure the type matches your answer in (a). Then create a data frame in R to collectively house these variables as a data set.</p>
 
-<p>Tipos alineados con (a): enteros/reales; <code class="language-plaintext highlighter-rouge">factor</code> nominal (Race, Politics); <code class="language-plaintext highlighter-rouge">ordered</code> (Height); <code class="language-plaintext highlighter-rouge">logical</code> (IsMale).</p>
+<p>Types aligned with (a): integer/double; nominal <code class="language-plaintext highlighter-rouge">factor</code> (Race, Politics); <code class="language-plaintext highlighter-rouge">ordered</code> (Height); <code class="language-plaintext highlighter-rouge">logical</code> (IsMale).</p>
 
 <div class="r-stack">
 
@@ -851,7 +851,7 @@ Use R to create each variable, making sure the type matches your answer in (a). 
 <p><strong>Worksheet 0a — (c)</strong><br />
 Type the data into a text file. Use read.table() to read the contents of the text file. Is the output of read.table() a data frame or some other data structure? Do the variables match the type in part (a)? If not, how do you convert them?</p>
 
-<p>Por defecto devuelve un data.frame. Aquí el TXT se <strong>genera en R</strong> con <code class="language-plaintext highlighter-rouge">writeLines()</code> y se lee con <code class="language-plaintext highlighter-rouge">read.table()</code>. Tras leer, los tipos suelen no coincidir del todo con (a) hasta convertir Race, Height, IsMale y Politics.</p>
+<p>By default this returns a <code class="language-plaintext highlighter-rouge">data.frame</code>. Here the TXT file is <strong>created in R</strong> with <code class="language-plaintext highlighter-rouge">writeLines()</code> and read with <code class="language-plaintext highlighter-rouge">read.table()</code>. After reading, types usually do not fully match (a) until you convert Race, Height, IsMale, and Politics.</p>
 
 <div class="r-stack">
 
@@ -973,7 +973,7 @@ Type the data into a text file. Use read.table() to read the contents of the tex
 <p><strong>Worksheet 0a — (d)</strong><br />
 Type the data into an Excel file. Use read_excel() in package “readxl” to read the contents of the Excel file. Is the output a data frame or some other data structure? If it is not a data frame, how do you convert it into a data frame? Do the variables match the type in part (a)?</p>
 
-<p>read_excel() devuelve un tibble (tbl_df), subclase de data.frame. Usa as.data.frame() si hace falta. Aplica las mismas conversiones que en (c) para alinear con (a). El <strong><code class="language-plaintext highlighter-rouge">.xlsx</code> se escribe en R</strong> con <strong><code class="language-plaintext highlighter-rouge">writexl</code></strong> (<code class="language-plaintext highlighter-rouge">readxl</code> solo lee); <code class="language-plaintext highlighter-rouge">fp &lt;- "assets/data/dana4840_worksheet0a.xlsx"</code> alinea con el blog/repo. Instalación: <code class="language-plaintext highlighter-rouge">install.packages(c("writexl", "readxl"))</code>.</p>
+<p><code class="language-plaintext highlighter-rouge">read_excel()</code> returns a tibble (<code class="language-plaintext highlighter-rouge">tbl_df</code>), a subclass of <code class="language-plaintext highlighter-rouge">data.frame</code>. Use <code class="language-plaintext highlighter-rouge">as.data.frame()</code> if you need a plain data frame. Apply the same conversions as in (c) to align with (a). The <strong><code class="language-plaintext highlighter-rouge">.xlsx</code> is written in R</strong> with <strong><code class="language-plaintext highlighter-rouge">writexl</code></strong> (<code class="language-plaintext highlighter-rouge">readxl</code> only reads); <code class="language-plaintext highlighter-rouge">fp &lt;- "assets/data/dana4840_worksheet0a.xlsx"</code> matches the blog/repo layout. Install with: <code class="language-plaintext highlighter-rouge">install.packages(c("writexl", "readxl"))</code>.</p>
 
 <div class="r-stack">
 
@@ -984,7 +984,7 @@ Type the data into an Excel file. Use read_excel() in package “readxl” to re
       <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># =========================</span><span class="w">
 </span><span class="c1"># Worksheet 0a — Part (d)</span><span class="w">
 </span><span class="c1"># =========================</span><span class="w">
-</span><span class="c1"># Crea assets/data/dana4840_worksheet0a.xlsx, luego read_excel(fp).</span><span class="w">
+</span><span class="c1"># Creates assets/data/dana4840_worksheet0a.xlsx, then read_excel(fp).</span><span class="w">
 
 </span><span class="c1"># =========================</span><span class="w">
 </span><span class="c1"># Create Excel file (writexl)</span><span class="w">
@@ -1093,7 +1093,7 @@ Type the data into an Excel file. Use read_excel() in package “readxl” to re
 <p><strong>Worksheet 0a — (e)</strong><br />
 Create a CSV file using the data. Use read.csv() to read the contents of the CSV file. Is the output a data frame or some other data structure? Do the variables match the type in part (a)?</p>
 
-<p>read.csv() devuelve un data.frame. Aquí el CSV se <strong>genera en R</strong> con <code class="language-plaintext highlighter-rouge">write.csv()</code> (mismas filas que la tabla), luego se lee; con <code class="language-plaintext highlighter-rouge">stringsAsFactors = FALSE</code> los tipos suelen no coincidir con (a) hasta aplicar las mismas conversiones que en (c).</p>
+<p><code class="language-plaintext highlighter-rouge">read.csv()</code> returns a <code class="language-plaintext highlighter-rouge">data.frame</code>. Here the CSV is <strong>created in R</strong> with <code class="language-plaintext highlighter-rouge">write.csv()</code> (same rows as the table), then read back; with <code class="language-plaintext highlighter-rouge">stringsAsFactors = FALSE</code> types usually do not match (a) until you apply the same conversions as in (c).</p>
 
 <div class="r-stack">
 
@@ -1186,6 +1186,56 @@ Create a CSV file using the data. Use read.csv() to read the contents of the CSV
 2   33    3    Short   0.34   Male    liberal
 3   52    1 Moderate   0.51 Female   moderate
 4   46    6     Tall   0.63   Male conservative
+</code></pre></div>      </div>
+
+    </div>
+</div>
+
+</div>
+
+<hr />
+
+<h2 id="teacher-suggestion--última-sesión--worksheet-0a-en-pocas-líneas">Teacher suggestion / última sesión — Worksheet 0a en pocas líneas</h2>
+
+<p>En clase a veces solo se muestra <strong>leer el <code class="language-plaintext highlighter-rouge">.txt</code> ya existente</strong> y revisar <code class="language-plaintext highlighter-rouge">class()</code> / <code class="language-plaintext highlighter-rouge">str()</code> / <code class="language-plaintext highlighter-rouge">head()</code>, sin recrear el archivo ni todas las conversiones a factor en el mismo bloque. Tu versión larga arriba sigue siendo la referencia para <strong>reproducir</strong> todo el flujo.</p>
+
+<p>Run <strong>part (c)</strong> first so <code class="language-plaintext highlighter-rouge">dana4840_worksheet0a.txt</code> exists (or create that file by hand).</p>
+
+<div class="r-stack">
+
+<div class="r-panel r-panel--code">
+  <div class="r-panel__badge" aria-hidden="true">R code (teacher-style)</div>
+  <div class="r-panel__body">
+
+      <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fp_txt</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"dana4840_worksheet0a.txt"</span><span class="w">
+</span><span class="n">stopifnot</span><span class="p">(</span><span class="n">file.exists</span><span class="p">(</span><span class="n">fp_txt</span><span class="p">))</span><span class="w">
+</span><span class="n">df0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read.table</span><span class="p">(</span><span class="n">fp_txt</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"\t"</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+</span><span class="nf">class</span><span class="p">(</span><span class="n">df0</span><span class="p">)</span><span class="w">
+</span><span class="n">str</span><span class="p">(</span><span class="n">df0</span><span class="p">)</span><span class="w">
+</span><span class="n">head</span><span class="p">(</span><span class="n">df0</span><span class="p">)</span><span class="w">
+</span></code></pre></div>      </div>
+
+    </div>
+</div>
+
+
+<div class="r-panel r-panel--output">
+  <div class="r-panel__badge" aria-hidden="true">Console output</div>
+  <div class="r-panel__body">
+
+      <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "data.frame"
+'data.frame':	4 obs. of  6 variables:
+ $ Age     : int  22 33 52 46
+ $ Race    : int  1 3 1 6
+ $ Height  : chr  "Tall" "Short" "Moderate" "Tall"
+ $ Income  : num  0.39 0.34 0.51 0.63
+ $ IsMale  : logi  TRUE TRUE FALSE TRUE
+ $ Politics: chr  "moderate" "liberal" "moderate" "conservative"
+  Age Race   Height Income IsMale   Politics
+1  22    1     Tall   0.39   TRUE   moderate
+2  33    3    Short   0.34   TRUE    liberal
+3  52    1 Moderate   0.51  FALSE   moderate
+4  46    6     Tall   0.63   TRUE conservative
 </code></pre></div>      </div>
 
     </div>

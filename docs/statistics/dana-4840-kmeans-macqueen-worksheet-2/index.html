@@ -1,0 +1,749 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>DANA 4840 — K-means (MacQueen): Worksheet 2, two variables and WSS - Dann Brown Adventures</title>
+<meta name="description" content="K-means partitions points into k groups by alternating: assign each point to the nearest centroid, then recompute centroids as the mean of their members. With MacQueen’s rule (R option algorithm = &quot;MacQueen&quot;), updates follow that textbook sequence.">
+
+
+  <meta name="author" content="Dann brown">
+  
+  <meta property="article:author" content="Dann brown">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dann Brown Adventures">
+<meta property="og:title" content="DANA 4840 — K-means (MacQueen): Worksheet 2, two variables and WSS">
+<meta property="og:url" content="/statistics/dana-4840-kmeans-macqueen-worksheet-2/">
+
+
+  <meta property="og:description" content="K-means partitions points into k groups by alternating: assign each point to the nearest centroid, then recompute centroids as the mean of their members. With MacQueen’s rule (R option algorithm = &quot;MacQueen&quot;), updates follow that textbook sequence.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-05-18T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2026-05-19T13:00:00-05:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/statistics/dana-4840-kmeans-macqueen-worksheet-2/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Leonardo L Sanchez- Dann Brown",
+      "url": "/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dann Brown Adventures Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--archive">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Dann Brown Adventures
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/videos/">Videos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/books/reading">Reading List</a>
+            </li><li class="masthead__menu-item">
+              <a href="/reading">looking</a>
+            </li><li class="masthead__menu-item">
+              <a href="/knowledge">knowledge</a>
+            </li><li class="masthead__menu-item">
+              <a href="/certs">certs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/Languages">Languages</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#statistics" itemprop="item"><span itemprop="name">Statistics</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">DANA 4840 — K-means (MacQueen): Worksheet 2, two variables and WSS</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/1577552827279.jpg" alt="Dann brown" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">Dann brown</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">CO</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/leonardo-sanchez-89590b127/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">linkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://www.youtube.com/channel/UCoROtxDQYfIgjXBDcORK5zw/videos" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-youtube" aria-hidden="true"></i><span class="label">Youtube</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Qleoz12" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kintaroloop@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="kintaroloop@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">DANA 4840 — K-means (MacQueen): Worksheet 2, two variables and WSS</h1>
+    
+    <p><strong>K-means</strong> partitions points into <strong>k</strong> groups by alternating: assign each point to the <strong>nearest centroid</strong>, then <strong>recompute centroids</strong> as the mean of their members. With <strong>MacQueen’s</strong> rule (R option <code class="language-plaintext highlighter-rouge">algorithm = "MacQueen"</code>), updates follow that textbook sequence.</p>
+
+<p>For <strong>two centers</strong>, <code class="language-plaintext highlighter-rouge">kmeans(..., centers = 2)</code> picks starting centers <strong>at random</strong>. To fix centres <strong>exactly</strong> at observations <strong>A</strong> and <strong>C</strong>, pass <strong><code class="language-plaintext highlighter-rouge">centers</code></strong> as a <strong>2 × p matrix</strong> whose rows are those coordinates (see <code class="language-plaintext highlighter-rouge">?kmeans</code>, argument <strong><code class="language-plaintext highlighter-rouge">centers</code></strong>).</p>
+
+<h2 id="data-four-items-two-features">Data (four items, two features)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Item</th>
+      <th style="text-align: right">x1</th>
+      <th style="text-align: right">x2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">A</td>
+      <td style="text-align: right">5</td>
+      <td style="text-align: right">3</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">B</td>
+      <td style="text-align: right">−1</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">C</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">−2</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">D</td>
+      <td style="text-align: right">−3</td>
+      <td style="text-align: right">−2</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Initial centroids:</strong> row <strong>A</strong> → (5, 3); row <strong>C</strong> → (1, −2).</p>
+
+<p>Squared Euclidean distance<br />
+(d^2(\mathbf{x},\mathbf{c}) = (x_1-c_1)^2 + (x_2-c_2)^2)<br />
+gives the same nearest-centre decisions as ordinary Euclidean distance.</p>
+
+<h3 id="distances-from-each-item-to-a-and-to-c">Distances from each item to A and to C</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Item</th>
+      <th style="text-align: right">(d^2) to A (5,3)</th>
+      <th style="text-align: right">(d^2) to C (1,−2)</th>
+      <th style="text-align: left">Nearest</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">A</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">41</td>
+      <td style="text-align: left">A</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">B</td>
+      <td style="text-align: right">40</td>
+      <td style="text-align: right">13</td>
+      <td style="text-align: left">C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">C</td>
+      <td style="text-align: right">41</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">C</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">D</td>
+      <td style="text-align: right">89</td>
+      <td style="text-align: right">16</td>
+      <td style="text-align: left">C</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Example <strong>B:</strong> ((-1-5)^2 + (1-3)^2 = 36+4 = 40) to A; ((-1-1)^2 + (1+2)^2 = 4+9 = 13) to C ⇒ cluster of <strong>C</strong>.</p>
+
+<h3 id="first-assignment">First assignment</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Cluster</th>
+      <th style="text-align: left">Members</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">A</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">B, C, D</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="update-centroids">Update centroids</h3>
+
+<p>Cluster 1 mean: <strong>(5, 3)</strong> (only A).<br />
+Cluster 2 mean of B, C, D:<br />
+(\bar x_1 = \frac{-1+1-3}{3} = -1), (\bar x_2 = \frac{1-2-2}{3} = -1) → <strong>(−1, −1)</strong>.</p>
+
+<h3 id="second-assignment-same-centroids">Second assignment (same centroids)</h3>
+
+<p>Distances to <strong>(5, 3)</strong> vs <strong>(−1, −1)</strong> leave <strong>A</strong> in cluster 1 and <strong>B, C, D</strong> in cluster 2 — <strong>no moves</strong> ⇒ convergence.</p>
+
+<h3 id="final-partition">Final partition</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Item</th>
+      <th style="text-align: center">Cluster</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">A</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">B</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">C</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">D</td>
+      <td style="text-align: center">2</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Final centroids: <strong>(5, 3)</strong> and <strong>(−1, −1)</strong>.</p>
+
+<p><img src="/assets/images/graphs/dana4840-kmeans-ws2.svg" alt="Scatter: cluster 1 = A at (5,3); cluster 2 = B, C, D with centroid (-1,-1)" /></p>
+
+<p>The figure shows <strong>both centroids</strong>: a <strong>red star</strong> marks centroid <strong>1</strong> at <strong>(5, 3)</strong> (same location as <strong>A</strong>); a <strong>triangle</strong> marks centroid <strong>2</strong> at <strong>(−1, −1)</strong>.</p>
+
+<h3 id="r-code--reproduce-the-plot-base-graphics">R code — reproduce the plot (base graphics)</h3>
+
+<p>Use <strong><code class="language-plaintext highlighter-rouge">xlim</code></strong> / <strong><code class="language-plaintext highlighter-rouge">ylim</code></strong> wide enough so <strong>A (5, 3)</strong> stays inside the panel. <strong><code class="language-plaintext highlighter-rouge">asp = 1</code></strong> keeps Euclidean distances visually faithful.</p>
+
+<div class="r-stack">
+
+<div class="r-panel r-panel--code">
+  <div class="r-panel__badge" aria-hidden="true">R code (figure)</div>
+  <div class="r-panel__body">
+
+      <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">-3</span><span class="p">)</span><span class="w">
+</span><span class="n">x2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">-2</span><span class="p">,</span><span class="w"> </span><span class="m">-2</span><span class="p">)</span><span class="w">
+</span><span class="n">labs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"B"</span><span class="p">,</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w"> </span><span class="s2">"D"</span><span class="p">)</span><span class="w">
+
+</span><span class="n">plot</span><span class="p">(</span><span class="w">
+  </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w">
+  </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"n"</span><span class="p">,</span><span class="w">
+  </span><span class="n">xlim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">-4</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">),</span><span class="w">
+  </span><span class="n">ylim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">-3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">),</span><span class="w">
+  </span><span class="n">asp</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w">
+  </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"x1"</span><span class="p">,</span><span class="w">
+  </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"x2"</span><span class="p">,</span><span class="w">
+  </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Worksheet 2: K-means k=2 (MacQueen)"</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"gray90"</span><span class="p">,</span><span class="w"> </span><span class="n">lty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">## Centroidos finales: estrella = C1, triángulo = C2 (pch 8 y 17)</span><span class="w">
+</span><span class="n">points</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"darkred"</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2.2</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">points</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">17</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"darkblue"</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">## Ítems: A cluster 1 (rojo), B C D cluster 2 (azul)</span><span class="w">
+</span><span class="n">points</span><span class="p">(</span><span class="n">x1</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">x2</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"firebrick"</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1.6</span><span class="p">)</span><span class="w">
+</span><span class="n">points</span><span class="p">(</span><span class="n">x1</span><span class="p">[</span><span class="m">-1</span><span class="p">],</span><span class="w"> </span><span class="n">x2</span><span class="p">[</span><span class="m">-1</span><span class="p">],</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"steelblue"</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1.6</span><span class="p">)</span><span class="w">
+
+</span><span class="n">text</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">labs</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.45</span><span class="p">,</span><span class="w"> </span><span class="n">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+
+</span><span class="n">legend</span><span class="p">(</span><span class="w">
+  </span><span class="s2">"bottomleft"</span><span class="p">,</span><span class="w">
+  </span><span class="n">legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="w">
+    </span><span class="s2">"Centroid 1 (5, 3)"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Centroid 2 (-1, -1)"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Items cluster 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Items cluster 2"</span><span class="w">
+  </span><span class="p">),</span><span class="w">
+  </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="m">17</span><span class="p">,</span><span class="w"> </span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="m">16</span><span class="p">),</span><span class="w">
+  </span><span class="n">pt.cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1.8</span><span class="p">,</span><span class="w"> </span><span class="m">1.5</span><span class="p">,</span><span class="w"> </span><span class="m">1.2</span><span class="p">,</span><span class="w"> </span><span class="m">1.2</span><span class="p">),</span><span class="w">
+  </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"darkred"</span><span class="p">,</span><span class="w"> </span><span class="s2">"darkblue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"firebrick"</span><span class="p">,</span><span class="w"> </span><span class="s2">"steelblue"</span><span class="p">),</span><span class="w">
+  </span><span class="n">bty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"n"</span><span class="p">,</span><span class="w">
+  </span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.85</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span></code></pre></div>      </div>
+
+    </div>
+</div>
+
+</div>
+
+<hr />
+
+<h2 id="r-centers-as-a-matrix--macqueen">R: <code class="language-plaintext highlighter-rouge">centers</code> as a matrix + MacQueen</h2>
+
+<div class="r-stack">
+
+<div class="r-panel r-panel--code">
+  <div class="r-panel__badge" aria-hidden="true">R code</div>
+  <div class="r-panel__body">
+
+      <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## Tabla del enunciado</span><span class="w">
+</span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="w">
+  </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"B"</span><span class="p">,</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w"> </span><span class="s2">"D"</span><span class="p">),</span><span class="w">
+  </span><span class="n">x1</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">-1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">-3</span><span class="p">),</span><span class="w">
+  </span><span class="n">x2</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">-2</span><span class="p">,</span><span class="w"> </span><span class="m">-2</span><span class="p">),</span><span class="w">
+  </span><span class="n">stringsAsFactors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="w">
+</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">## Solo columnas numéricas; los nombres de fila etiquetan los ítems</span><span class="w">
+</span><span class="n">X</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.matrix</span><span class="p">(</span><span class="n">df</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"x1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"x2"</span><span class="p">)])</span><span class="w">
+</span><span class="n">rownames</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">item</span><span class="w">
+
+</span><span class="c1">## Matriz 2×2: fila 1 = centro inicial A, fila 2 = centro inicial C</span><span class="w">
+</span><span class="c1">## (no usar centers = 2 aquí: eso pediría puntos iniciales aleatorios)</span><span class="w">
+</span><span class="n">initial_centers</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">X</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"C"</span><span class="p">),</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">drop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">]</span><span class="w">
+
+</span><span class="n">km</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">kmeans</span><span class="p">(</span><span class="w">
+  </span><span class="n">x</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">X</span><span class="p">,</span><span class="w">
+  </span><span class="n">centers</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">initial_centers</span><span class="p">,</span><span class="w">
+  </span><span class="n">algorithm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MacQueen"</span><span class="w">
+</span><span class="p">)</span><span class="w">
+
+</span><span class="n">km</span><span class="o">$</span><span class="n">cluster</span><span class="w">   </span><span class="c1"># etiquetas 1 o 2 por fila de X</span><span class="w">
+</span><span class="n">km</span><span class="o">$</span><span class="n">centers</span><span class="w">   </span><span class="c1"># centroides finales (una fila por cluster)</span><span class="w">
+</span><span class="n">km</span><span class="o">$</span><span class="n">withinss</span><span class="w">  </span><span class="c1"># WSS dentro de cada cluster</span><span class="w">
+</span><span class="n">km</span><span class="o">$</span><span class="n">tot.withinss</span><span class="w">
+</span></code></pre></div>      </div>
+
+    </div>
+</div>
+
+
+<div class="r-panel r-panel--output">
+  <div class="r-panel__badge" aria-hidden="true">Console output</div>
+  <div class="r-panel__body">
+
+      <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A B C D 
+1 2 2 2 
+     x1 x2
+1  5  3
+2 -1 -1
+[1]  0 14
+[1] 14
+</code></pre></div>      </div>
+
+    </div>
+</div>
+
+</div>
+
+<p><strong>Reading the output:</strong> <code class="language-plaintext highlighter-rouge">cluster</code> uses integers <strong>1</strong> and <strong>2</strong> only as labels; <strong><code class="language-plaintext highlighter-rouge">centers</code></strong> rows need not follow item order A–D. <strong><code class="language-plaintext highlighter-rouge">withinss[c]</code></strong> is (\sum_{i \in \text{cluster } c} d^2(\mathbf{x}_i, \bar{\mathbf{x}}_c)) with <strong>squared</strong> Euclidean distance inside <strong><code class="language-plaintext highlighter-rouge">kmeans</code></strong>.</p>
+
+<hr />
+
+<h2 id="total-within-cluster-sum-of-squares-part-after-a">Total within-cluster sum of squares (part after (a))</h2>
+
+<div class="math-block">
+\[
+\mathrm{WSS} = \sum_{c=1}^{k} \sum_{i \in \text{cluster } c} \|\mathbf{x}_i - \bar{\mathbf{x}}_c\|^2
+\]
+</div>
+
+<p>Cluster <strong>1</strong> (only <strong>A</strong> at its centroid): contribution <strong>0</strong>.<br />
+Cluster <strong>2</strong>, centroid <strong>(−1, −1)</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Item</th>
+      <th style="text-align: right">Squared distance to (−1,−1)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">B (−1, 1)</td>
+      <td style="text-align: right">((0)^2 + (2)^2 = 4)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">C (1, −2)</td>
+      <td style="text-align: right">((2)^2 + (-1)^2 = 5)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">D (−3, −2)</td>
+      <td style="text-align: right">((-2)^2 + (-1)^2 = 5)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>WSS₂ = 4 + 5 + 5 = 14</strong>, total <strong>WSS = 0 + 14 = 14</strong>, matching <strong><code class="language-plaintext highlighter-rouge">km$tot.withinss</code></strong>.</p>
+
+<hr />
+
+<h2 id="see-also">See also</h2>
+
+<ul>
+  <li><strong>Distance measures</strong> — Euclidean setup before clustering.</li>
+  <li><strong>Clustering tendency</strong> — sanity checks before forcing <em>k</em> partitions.</li>
+</ul>
+
+    
+      <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      // Here is an example,
+      // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
+      this.page.url = "https://qleoz12.github.io//statistics/dana-4840-kmeans-macqueen-worksheet-2/";
+      this.page.identifier = "/statistics/dana-4840-kmeans-macqueen-worksheet-2/";
+    };
+
+    // You should be able to get the following lines of code from your Disqus admin.
+    // https://disqus.com/admin/universalcode
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//qleoz12githubio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+    
+  </div>
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+  
+<script>
+  window.MathJax = {
+    loader: { load: ['[tex]/ams'] },
+    tex: {
+      packages: { '[+]': ['ams', 'noerrors', 'noundefined'] },
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],
+      processEscapes: true,
+      tags: 'ams'
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script"></script>
+
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026 Leonardo L Sanchez- Dann Brown. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

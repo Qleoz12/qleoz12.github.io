@@ -172,6 +172,32 @@ Resumen del ciclo habitual: crear el post en el repo, probar en local, comprobar
 
 Posts con fórmulas MathJax: en el *front matter* del post añade `math: true` (carga condicional en `_includes/footer/custom.html`).
 
+### Certificados Google Drive (`/certs/`) — local vs sitio publicado
+
+El generador `_plugins/googledrive.rb` rellena `site.data.certs` con enlaces desde Drive **solo** cuando conviene; **no hace falta** tener el JSON de la cuenta de servicio para `jekyll serve`.
+
+| Situación | Comportamiento |
+| --- | --- |
+| `bundle exec jekyll serve` | `JEKYLL_ENV` es `development` → **no** se llama a la API de Google; `/certs/` sigue mostrando Credly; los iframes que vienen de Drive no se regeneran en esa sesión. |
+| `bundle exec jekyll build` (por defecto `JEKYLL_ENV=production`) | Si existe `_plugins/config.json` (solo en tu máquina, **nunca** en git), se consulta Drive y el HTML en `docs/` incluye esos enlaces. Luego haces `git add docs/` y push como siempre. |
+| Sin archivo de credenciales | El build continúa; la sección de Drive en `/certs/` queda vacía hasta que pongas el JSON. |
+
+1. Copia la clave JSON de Google Cloud como `_plugins/config.json` (plantilla: `_plugins/config.json.example`). Ese archivo está en **`.gitignore`** — no lo subas al remoto.
+2. Build de producción y sube el sitio generado:
+
+   ```bash
+   bundle exec jekyll build
+   git add docs/
+   git commit -m "chore: rebuild site (certs from Drive)"
+   git push origin main
+   ```
+
+3. Para forzar **no** usar Drive ni siquiera en build (por ejemplo en un CI sin secretos): `SKIP_GOOGLE_DRIVE=1 bundle exec jekyll build`.
+
+Otra ruta al JSON: variable de entorno `GOOGLE_DRIVE_KEY_PATH` apuntando al archivo.
+
+**Seguridad:** si alguna vez subiste `config.json` con clave real al historial de git, **revoca y crea una clave nueva** en Google Cloud IAM y borra el archivo del historial del repo (por ejemplo con [git filter-repo](https://github.com/newren/git-filter-repo)) además de quitarlo del último commit.
+
 ---
 
 ## Contributing
