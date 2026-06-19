@@ -1,0 +1,18 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { RoleData } from '../types';
+
+interface Props {
+  role: RoleData;
+}
+
+const { role } = Astro.props;
+---
+
+<BaseLayout
+  title={role.title}
+  description={role.tagline}
+  noindex={role.secret}
+>
+  <slot />
+</BaseLayout>

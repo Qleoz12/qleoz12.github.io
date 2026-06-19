@@ -30,3 +30,9 @@ _site
 
 # Google Drive service account (never commit)
 _plugins/config.json
+
+# Monorepo
+jekyll/.jekyll-cache/
+portfolio/node_modules/
+portfolio/.astro/
+

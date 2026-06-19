@@ -1,0 +1,46 @@
+slug: frontend
+title: Frontend Developer
+tagline: Interfaces modernas con Angular 19, React, Svelte y Web Components reutilizables.
+secret: false
+showProjects: true
+showExperience: true
+projectTags: [web-components, frontend, svelte]
+skills:
+  - Angular 19
+  - React
+  - Svelte
+  - PrimeFaces
+  - PWA
+  - Web Components
+  - TypeScript
+  - Tailwind CSS
+  - Vue
+experience:
+  - company: Inetum
+    role: Ingeniero sénior
+    stack: PrimeFaces · React · Java EE
+    bullets:
+      - Desarrollo y soporte de aplicaciones PrimeFaces (Java EE).
+      - Migración y nuevas pantallas en React.
+  - company: Stefanini LATAM
+    role: Desarrollador Pleno FullStack
+    stack: Angular · PWA · Spring Boot
+    bullets:
+      - Evolución de aplicaciones Angular y PWA.
+      - Pantallas y flujos REST/SOAP en entornos WebSphere.
+  - company: IGG
+    role: Desarrollador Java / Java EE
+    stack: PrimeFaces · JasperReports
+    bullets:
+      - Aplicaciones web Java EE con PrimeFaces.
+      - Reportes con JasperReports sobre JBoss.
+featuredPosts:
+  - title: Create Your Own CDN and Try Your Web Components Online
+    url: https://qleoz12.github.io/web/webcomponents/cdn-gittpages-webcomponents/
+    excerpt: CDN en GitHub Pages y profile-card usable en React, Svelte o HTML.
+  - title: Svelte — first steps SPA
+    url: https://qleoz12.github.io/web/svelte/svelte-first-steps-spa/
+    excerpt: Primeros pasos con Svelte por pedido de cliente.
+  - title: React — Handling API request race
+    url: https://qleoz12.github.io/devops/mysql/ha/react-Handling-API-request-race/
+    excerpt: Patrones para condiciones de carrera en peticiones React.

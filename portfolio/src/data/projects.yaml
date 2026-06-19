@@ -1,0 +1,13 @@
+projects:
+  - name: Stock Portfolio Unifier
+    description: FastAPI + Vue — screener, dividend capture score, filtros estilo Finviz.
+    url: https://github.com/Qleoz12/stock-portfolio-unifier
+    tags: [python, fastapi, vue, finance, data]
+  - name: Web Components CDN
+    description: profile-card portable servido desde GitHub Pages static.
+    url: https://qleoz12.github.io/web/webcomponents/cdn-gittpages-webcomponents/
+    tags: [web-components, frontend, svelte]
+  - name: Spring Monitoring Demo
+    description: Prometheus, Grafana y Loki con apps Spring Boot.
+    url: https://github.com/Qleoz12/spring-monitoring-demo
+    tags: [java, spring, devops, fullstack]

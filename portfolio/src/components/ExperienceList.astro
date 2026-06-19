@@ -1,0 +1,29 @@
+---
+import type { ExperienceItem } from '../types';
+
+interface Props {
+  items: ExperienceItem[];
+}
+
+const { items } = Astro.props;
+---
+
+{items.length > 0 && (
+  <section class="max-w-5xl mx-auto px-4 py-12 border-t border-white/10">
+    <h2 class="text-2xl font-semibold text-white mb-8">Experiencia destacada</h2>
+    <div class="grid gap-6 md:grid-cols-2">
+      {items.map((item) => (
+        <article class="rounded-xl bg-card border border-white/10 p-6">
+          <h3 class="text-lg font-semibold text-white">{item.company}</h3>
+          <p class="text-accent text-sm mt-1">{item.role}</p>
+          <p class="text-muted text-xs font-mono mt-2">{item.stack}</p>
+          <ul class="mt-4 space-y-2 text-sm text-gray-300 list-disc list-inside">
+            {item.bullets.map((b) => (
+              <li>{b}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+)}

@@ -1,0 +1,45 @@
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { loadPublicRoles } from '../lib/data';
+
+const roles = loadPublicRoles();
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Portfolio por rol"
+  description="Elegí el perfil que mejor encaje con la oportunidad: Python backend, frontend o full stack."
+>
+  <section class="max-w-5xl mx-auto px-4 py-16 md:py-24">
+    <p class="text-accent font-mono text-sm mb-3 uppercase tracking-widest">Leonardo L. Sanchez</p>
+    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Portfolio por rol</h1>
+    <p class="text-lg text-muted max-w-2xl mb-12">
+      Misma trayectoria, distinto énfasis. Elegí la landing según el puesto — cada una enlaza a proyectos y al blog.
+    </p>
+
+    <div class="grid gap-6 md:grid-cols-3">
+      {roles.map((role) => (
+        <article class="rounded-xl bg-card border border-white/10 p-6 flex flex-col">
+          <h2 class="text-xl font-semibold text-white">{role.title}</h2>
+          <p class="text-sm text-muted mt-3 flex-1">{role.tagline}</p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            {role.skills.slice(0, 4).map((s) => (
+              <span class="text-xs font-mono text-accent/70">#{s.split(' ')[0]}</span>
+            ))}
+          </div>
+          <a
+            href={`${base}${role.slug}/`}
+            class="mt-6 inline-flex items-center text-accent font-medium no-underline hover:underline"
+          >
+            Ver perfil →
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <p class="mt-12 text-sm text-muted">
+      Referencia completa para formularios:
+      <a href="https://qleoz12.github.io/experience/">Experience (Jekyll)</a>
+    </p>
+  </section>
+</BaseLayout>

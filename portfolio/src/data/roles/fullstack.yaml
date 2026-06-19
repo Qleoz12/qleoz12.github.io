@@ -1,0 +1,52 @@
+slug: fullstack
+title: Full Stack Developer
+tagline: De PrimeFaces y Spring Boot a React, Python y AWS — sistemas end-to-end.
+secret: false
+showProjects: true
+showExperience: true
+projectTags: [python, java, spring, fullstack, frontend]
+skills:
+  - Java · Spring Boot
+  - Python · Flask
+  - Angular 19 · React · Svelte
+  - AWS · gRPC · Serverless
+  - REST · SOAP
+  - PostgreSQL · SQL
+  - PrimeFaces · PWA
+experience:
+  - company: Inetum
+    role: Ingeniero sénior
+    stack: PrimeFaces · React · Java
+    bullets:
+      - Full stack en entornos Java EE con migración gradual a React.
+      - Backend Java y front PrimeFaces/React en producción.
+  - company: PALO IT
+    role: Backend Developer
+    stack: Java · gRPC · AWS
+    bullets:
+      - Microservicios y APIs en AWS serverless.
+      - Integración gRPC entre servicios distribuidos.
+  - company: Stefanini LATAM
+    role: Desarrollador Pleno FullStack
+    stack: Spring Boot · Angular · Python
+    bullets:
+      - WebSphere 8.5, Spring Boot, Angular y PWA.
+      - Prototipos Python (Flask) conectados al stack Java.
+  - company: IGG
+    role: Desarrollador Java / Java EE
+    stack: PrimeFaces · RESTEasy · JasperReports
+    bullets:
+      - Aplicaciones bancarias Java EE con reportes JasperReports.
+featuredPosts:
+  - title: Monitoring Spring apps with Prometheus & Grafana
+    url: https://qleoz12.github.io/java/spring/cloud/grafana-overview/Monitoring-spring-apps-with-prometheus-grafana-and-grafana-loki/
+    excerpt: Observabilidad de apps Spring con Micrometer, Prometheus y Loki.
+  - title: AWS X-Ray
+    url: https://qleoz12.github.io/aws/aws-XRay/
+    excerpt: Trazas distribuidas en servicios AWS.
+  - title: Web Components CDN
+    url: https://qleoz12.github.io/web/webcomponents/cdn-gittpages-webcomponents/
+    excerpt: Componentes portables entre frameworks.
+  - title: Dividend Yield vs Drawdown
+    url: https://qleoz12.github.io/investing/dividends/data-analysis/basic-comparisson-markets/
+    excerpt: Análisis de datos con Python en finanzas personales.

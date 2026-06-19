@@ -1,0 +1,21 @@
+slug: finance
+title: Finanzas personales
+tagline: Notas sobre dividendos, drawdown y herramientas propias — espacio editorial, no CV.
+secret: true
+showProjects: true
+showExperience: false
+projectTags: [finance, python, data]
+skills:
+  - Dividend investing
+  - Python · pandas
+  - Análisis de drawdown
+  - Screeners
+  - GitHub Actions
+experience: []
+featuredPosts:
+  - title: Dividend Yield vs Drawdown
+    url: https://qleoz12.github.io/investing/dividends/data-analysis/basic-comparisson-markets/
+    excerpt: Comparar acciones de alto dividendo sin ignorar el riesgo real.
+  - title: Stock Portfolio Unifier (repo)
+    url: https://github.com/Qleoz12/stock-portfolio-unifier
+    excerpt: Herramienta propia para unificar carteras y screener con score de dividend capture.

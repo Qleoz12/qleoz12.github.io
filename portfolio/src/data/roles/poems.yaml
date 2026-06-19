@@ -1,0 +1,10 @@
+slug: poems
+title: Poemas
+tagline: Colección personal — textos fuera del radar profesional.
+secret: true
+showProjects: false
+showExperience: false
+skills: []
+experience: []
+featuredPosts: []
+# Añadí entradas en _posts con categories: [poems] y vuelve a generar este YAML.
