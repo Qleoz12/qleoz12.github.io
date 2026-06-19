@@ -9,6 +9,8 @@ author_profile: true
 
 ## About Me
 
+**Experiencia laboral (formularios / selección):** [Experience](/experience/) — detalle por empresa y stack. Perfil completo: [LinkedIn](https://www.linkedin.com/in/leonardo-sanchez-89590b127/).
+
 ### me
 
 This is me, a person who sees life as a constant learning process. Over the years, I’ve taken different roles—student, developer, traveler—but one thing has stayed the same: my curiosity. I believe that every challenge, every new experience, is a chance to grow, and that mindset defines who I am today.
