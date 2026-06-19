@@ -1,0 +1,46 @@
+﻿slug: data-analyst
+title: Data Analyst
+tagline: PDD Data Analytics en Langara College — estadística, ML y pipelines reproducibles con R y Python.
+secret: false
+showProjects: true
+showExperience: true
+projectTags: [python, data, finance]
+skills:
+  - Langara PDD
+  - R
+  - Python
+  - pandas
+  - Statistics
+  - Machine Learning
+  - Feature selection
+  - Clustering
+experience:
+  - company: Langara College
+    role: Post-Degree Diploma (PDD) — Data Analytics
+    stack: R · Python · DANA 4830 · DANA 4840
+    bullets:
+      - Programa PDD en análisis de datos — cursos DANA 4830 (feature selection) y DANA 4840 (clustering).
+      - Trabajos con datasets reales, medidas de distancia, k-means y selección de variables en R/Python.
+  - company: Stefanini LATAM
+    role: Desarrollador Pleno FullStack
+    stack: Python · Flask · datos
+    bullets:
+      - Prototipos analíticos en Python (Conda, pandas, Flask).
+  - company: Blog / proyectos personales
+    role: Análisis aplicado
+    stack: Python · pandas · visualización
+    bullets:
+      - Posts reproducibles sobre estadística, mercados y feature selection documentados en el blog.
+featuredPosts:
+  - title: DANA 4830 — Feature selection paper overview
+    url: https://qleoz12.github.io/2026/05/22/dana-4830-feature-selection-paper-overview/
+    excerpt: MCAR/MAR/NMAR y lectura del paper de selección de variables.
+  - title: DANA 4830 — Multivariate feature selection Part 1
+    url: https://qleoz12.github.io/2026/05/24/dana-4830-multivariate-feature-selection-part1/
+    excerpt: mRMR y CFS con pipeline en Python.
+  - title: DANA 4840 — K-means (MacQueen) Worksheet 2
+    url: https://qleoz12.github.io/2026/05/18/dana-4840-kmeans-macqueen-worksheet-2/
+    excerpt: K-means, WSS y dos variables en R.
+  - title: Dividend Yield vs Drawdown
+    url: https://qleoz12.github.io/investing/dividends/data-analysis/basic-comparisson-markets/
+    excerpt: Análisis de datos financieros con Python y pandas.

@@ -8,7 +8,7 @@ const base = import.meta.env.BASE_URL;
 
 <BaseLayout
   title="Portfolio por rol"
-  description="Elegí el perfil que mejor encaje con la oportunidad: Python backend, frontend o full stack."
+  description="Elegí el perfil que mejor encaje con la oportunidad: data analyst, Python backend, frontend o full stack."
 >
   <section class="max-w-5xl mx-auto px-4 py-16 md:py-24">
     <p class="text-accent font-mono text-sm mb-3 uppercase tracking-widest">Leonardo L. Sanchez</p>
@@ -17,7 +17,7 @@ const base = import.meta.env.BASE_URL;
       Misma trayectoria, distinto énfasis. Elegí la landing según el puesto — cada una enlaza a proyectos y al blog.
     </p>
 
-    <div class="grid gap-6 md:grid-cols-3">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {roles.map((role) => (
         <article class="rounded-xl bg-card border border-white/10 p-6 flex flex-col">
           <h2 class="text-xl font-semibold text-white">{role.title}</h2>
@@ -43,3 +43,4 @@ const base = import.meta.env.BASE_URL;
     </p>
   </section>
 </BaseLayout>
+

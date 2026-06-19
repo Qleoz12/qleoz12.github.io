@@ -15,4 +15,8 @@ $css = Get-ChildItem "$Root\docs\portfolio\_astro\*.css" -ErrorAction SilentlyCo
 if (-not $css) {
   Write-Error "Missing docs/portfolio/_astro/*.css"
 }
+if (-not (Test-Path "$Root\docs\.nojekyll")) {
+  New-Item -ItemType File -Path "$Root\docs\.nojekyll" -Force | Out-Null
+}
 Write-Host "==> OK. CSS: $($css.Name)"
+
