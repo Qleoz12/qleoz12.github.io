@@ -1,0 +1,865 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>DANA 4830 — Univariate feature selection: Chi2, ANOVA, MI, Pearson, ReliefF - Dann Brown Adventures</title>
+<meta name="description" content="Univariate feature selection ranks one column at a time. The paper (Zouhri et al., 2024) uses five univariate filters, then keeps the top 20%, 40%, or 60% of ranked features.">
+
+
+  <meta name="author" content="Dann brown">
+  
+  <meta property="article:author" content="Dann brown">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dann Brown Adventures">
+<meta property="og:title" content="DANA 4830 — Univariate feature selection: Chi2, ANOVA, MI, Pearson, ReliefF">
+<meta property="og:url" content="/statistics/machine%20learning/dana-4830-univariate-feature-selection/">
+
+
+  <meta property="og:description" content="Univariate feature selection ranks one column at a time. The paper (Zouhri et al., 2024) uses five univariate filters, then keeps the top 20%, 40%, or 60% of ranked features.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-05-23T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2026-05-23T13:00:00-05:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/statistics/machine%20learning/dana-4830-univariate-feature-selection/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Leonardo L Sanchez- Dann Brown",
+      "url": "/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dann Brown Adventures Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--archive">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Dann Brown Adventures
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/portfolio/">Portfolio</a>
+            </li><li class="masthead__menu-item">
+              <a href="/experience/">Experience</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/videos/">Videos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/books/reading">Reading List</a>
+            </li><li class="masthead__menu-item">
+              <a href="/reading">looking</a>
+            </li><li class="masthead__menu-item">
+              <a href="/knowledge">knowledge</a>
+            </li><li class="masthead__menu-item">
+              <a href="/certs">certs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/Languages">Languages</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#statistics" itemprop="item"><span itemprop="name">Statistics</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#machine-learning" itemprop="item"><span itemprop="name">Machine learning</span></a>
+          <meta itemprop="position" content="3" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">DANA 4830 — Univariate feature selection: Chi2, ANOVA, MI, Pearson, ReliefF</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/1577552827279.jpg" alt="Dann brown" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">Dann brown</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">CO</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/leonardo-sanchez-89590b127/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">linkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://www.youtube.com/channel/UCoROtxDQYfIgjXBDcORK5zw/videos" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-youtube" aria-hidden="true"></i><span class="label">Youtube</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Qleoz12" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kintaroloop@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="kintaroloop@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">DANA 4830 — Univariate feature selection: Chi2, ANOVA, MI, Pearson, ReliefF</h1>
+    
+    <p><strong>Univariate</strong> feature selection ranks <strong>one column at a time</strong>. The paper (Zouhri et al., 2024) uses five univariate <strong>filters</strong>, then keeps the top <strong>20%, 40%, or 60%</strong> of ranked features.</p>
+
+<p>This post covers <strong>what each method asks</strong>, <strong>when to use it</strong>, and <strong>Python</strong> you can run on a public fraud dataset.</p>
+
+<p>Previous: <a href="/2026/05/22/dana-4830-feature-selection-paper-overview/">paper overview and MCAR/MAR/NMAR</a>.</p>
+
+<hr />
+
+<h2 id="univariate-vs-multivariate-one-line">Univariate vs multivariate (one line)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Looks at</th>
+      <th style="text-align: left">Paper methods</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Univariate</strong></td>
+      <td style="text-align: left">Each feature <strong>alone</strong></td>
+      <td style="text-align: left">Chi2, ANOVA, MI, Pearson, ReliefF</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Multivariate</strong></td>
+      <td style="text-align: left"><strong>Subsets</strong> of features together</td>
+      <td style="text-align: left">CFS, CON, DISR</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Univariate methods are fast and good as a <strong>first pass</strong>. They <strong>do not</strong> remove redundancy between two strong but similar columns (e.g. <code class="language-plaintext highlighter-rouge">V12</code> and <code class="language-plaintext highlighter-rouge">V14</code> in fraud data).</p>
+
+<hr />
+
+<h2 id="shared-pipeline-matches-the-paper">Shared pipeline (matches the paper)</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Raw data
+  → drop duplicates, handle missing values
+  → encode categoricals (if any)
+  → scale numeric columns when required (Chi2, SVM)
+  → score each feature (univariate filter)
+  → keep top 20% / 40% / 60%
+  → train classifier (RF, XGB, SVM)
+  → cross-validate: Precision, Recall, F1, AUC
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="dataset-for-practice">Dataset for practice</h2>
+
+<p><strong>Starter:</strong> <a href="https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud">Credit Card Fraud Detection</a> — 284,807 rows, 30 numeric features, target <code class="language-plaintext highlighter-rouge">Class</code> (0/1). Conceptually similar to IDS (attack vs benign).</p>
+
+<p><strong>Assignment scale:</strong> IEEE-CIS Fraud — more columns, categoricals, missing values (see MCAR/MAR/NMAR in the overview post).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"creditcard.csv"</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">"Class"</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">"Class"</span><span class="p">]</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="1-chi-square-k">1. Chi-square (K)</h2>
+
+<p><strong>Question:</strong> Is this feature <strong>statistically dependent</strong> on the class?</p>
+
+<p><strong>Best for:</strong> categorical or <strong>non-negative</strong> numeric features (after scaling to ([0,1])).</p>
+
+<p><strong>IDS example:</strong> does <code class="language-plaintext highlighter-rouge">protocol = TCP</code> appear more often in attacks than in benign traffic?</p>
+
+<p><strong>Fraud example:</strong> after one-hot encoding <code class="language-plaintext highlighter-rouge">card4 = visa/master/...</code>, does one card type co-occur with fraud?</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SelectKBest</span><span class="p">,</span> <span class="n">chi2</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+
+<span class="c1"># Chi2 requires non-negative values
+</span><span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">X_train_pos</span> <span class="o">=</span> <span class="n">scaler</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_pos</span> <span class="o">=</span> <span class="n">scaler</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.4</span> <span class="o">*</span> <span class="n">X_train</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>  <span class="c1"># 40% threshold like the paper
+</span><span class="n">chi_selector</span> <span class="o">=</span> <span class="n">SelectKBest</span><span class="p">(</span><span class="n">score_func</span><span class="o">=</span><span class="n">chi2</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+<span class="n">X_train_chi</span> <span class="o">=</span> <span class="n">chi_selector</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_pos</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">X_test_chi</span> <span class="o">=</span> <span class="n">chi_selector</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test_pos</span><span class="p">)</span>
+
+<span class="n">selected</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">columns</span><span class="p">[</span><span class="n">chi_selector</span><span class="p">.</span><span class="n">get_support</span><span class="p">()]</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Chi2 top features:"</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">selected</span><span class="p">[:</span><span class="mi">10</span><span class="p">]))</span>
+</code></pre></div></div>
+
+<p><strong>Note:</strong> use <code class="language-plaintext highlighter-rouge">MinMaxScaler</code>, not <code class="language-plaintext highlighter-rouge">StandardScaler</code> (negative values break Chi2).</p>
+
+<hr />
+
+<h2 id="2-anova--f-test-a">2. ANOVA / F-test (A)</h2>
+
+<p><strong>Question:</strong> Do <strong>class means</strong> differ significantly for this numeric feature?</p>
+
+<p><strong>Best for:</strong> continuous variables (<code class="language-plaintext highlighter-rouge">TransactionAmt</code>, <code class="language-plaintext highlighter-rouge">Amount</code>, <code class="language-plaintext highlighter-rouge">V1</code>…<code class="language-plaintext highlighter-rouge">V28</code>).</p>
+
+<p><strong>Fraud example:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Class</th>
+      <th style="text-align: right">Mean Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">0 (normal)</td>
+      <td style="text-align: right">88</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1 (fraud)</td>
+      <td style="text-align: right">122</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>ANOVA asks: is that difference larger than random noise?</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SelectKBest</span><span class="p">,</span> <span class="n">f_classif</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.4</span> <span class="o">*</span> <span class="n">X_train</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">anova_selector</span> <span class="o">=</span> <span class="n">SelectKBest</span><span class="p">(</span><span class="n">score_func</span><span class="o">=</span><span class="n">f_classif</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+<span class="n">X_train_anova</span> <span class="o">=</span> <span class="n">anova_selector</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">scores</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">(</span><span class="n">anova_selector</span><span class="p">.</span><span class="n">scores_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="p">.</span><span class="n">columns</span><span class="p">).</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">scores</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><strong>Chi2 vs ANOVA</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"> </th>
+      <th style="text-align: left">Chi-square</th>
+      <th style="text-align: left">ANOVA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Typical input</td>
+      <td style="text-align: left">Categorical / non-negative</td>
+      <td style="text-align: left">Numeric continuous</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Tests</td>
+      <td style="text-align: left">Dependence</td>
+      <td style="text-align: left">Difference of means</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Needs positive values</td>
+      <td style="text-align: left">Yes</td>
+      <td style="text-align: left">No</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For IEEE-CIS: ANOVA on <code class="language-plaintext highlighter-rouge">TransactionAmt</code>, <code class="language-plaintext highlighter-rouge">D1</code>–<code class="language-plaintext highlighter-rouge">D15</code>; Chi2 on one-hot <code class="language-plaintext highlighter-rouge">ProductCD</code>, <code class="language-plaintext highlighter-rouge">card4</code>, etc.</p>
+
+<hr />
+
+<h2 id="3-mutual-information-mi">3. Mutual Information (MI)</h2>
+
+<p><strong>Question:</strong> How much does this feature <strong>reduce uncertainty</strong> about the class?</p>
+
+<p><strong>Best for:</strong> <strong>non-linear</strong> relationships ANOVA or Pearson can miss.</p>
+
+<p><strong>Intuition:</strong> if knowing <code class="language-plaintext highlighter-rouge">V17</code> makes the class much more predictable, MI is high — even without a straight-line correlation.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">mutual_info_classif</span><span class="p">,</span> <span class="n">SelectKBest</span>
+
+<span class="n">mi_scores</span> <span class="o">=</span> <span class="n">mutual_info_classif</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">mi_rank</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">(</span><span class="n">mi_scores</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="p">.</span><span class="n">columns</span><span class="p">).</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="n">mi_selector</span> <span class="o">=</span> <span class="n">SelectKBest</span><span class="p">(</span>
+    <span class="n">score_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">mutual_info_classif</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="n">k</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.4</span> <span class="o">*</span> <span class="n">X_train</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="p">)</span>
+<span class="n">X_train_mi</span> <span class="o">=</span> <span class="n">mi_selector</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">mi_rank</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="4-pearson-correlation-c">4. Pearson correlation (C)</h2>
+
+<p><strong>Question:</strong> How <strong>linearly</strong> correlated is the feature with the target?</p>
+
+<p><strong>Best for:</strong> quick scan; interpretable sign (+ / −).</p>
+
+<p><strong>Limit:</strong> misses non-linear patterns that MI or tree models catch.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pearson</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Class</span><span class="o">=</span><span class="n">y_train</span><span class="p">).</span><span class="n">corr</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="s">"Class"</span><span class="p">].</span><span class="n">drop</span><span class="p">(</span><span class="s">"Class"</span><span class="p">)</span>
+<span class="n">pearson_abs</span> <span class="o">=</span> <span class="n">pearson</span><span class="p">.</span><span class="nb">abs</span><span class="p">().</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pearson_abs</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="n">top40</span> <span class="o">=</span> <span class="n">pearson_abs</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.4</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">pearson_abs</span><span class="p">)))).</span><span class="n">index</span><span class="p">.</span><span class="n">tolist</span><span class="p">()</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="5-relieff-rl">5. ReliefF (RL)</h2>
+
+<p><strong>Paper idea:</strong> a feature is good if it has <strong>similar values</strong> for neighbors of the <strong>same class</strong> and <strong>different values</strong> for neighbors of the <strong>other class</strong>.</p>
+
+<p><strong>Best for:</strong> local structure; can capture interactions better than raw correlation.</p>
+
+<p>Python (needs <code class="language-plaintext highlighter-rouge">skrebate</code> or <code class="language-plaintext highlighter-rouge">sklearn-feature-selection</code> package):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># pip install skrebate
+</span><span class="kn">from</span> <span class="nn">skrebate</span> <span class="kn">import</span> <span class="n">ReliefF</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">sample_n</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">5000</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span>  <span class="c1"># ReliefF can be slow on full data
+</span><span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">).</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">),</span> <span class="n">sample_n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="n">relief</span> <span class="o">=</span> <span class="n">ReliefF</span><span class="p">(</span><span class="n">n_features_to_select</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">relief</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">values</span><span class="p">,</span> <span class="n">y_train</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">values</span><span class="p">)</span>
+
+<span class="n">relief_rank</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">(</span><span class="n">relief</span><span class="p">.</span><span class="n">top_features_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="p">.</span><span class="n">columns</span><span class="p">).</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">relief_rank</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>If you cannot install ReliefF, treat <strong>MI + ANOVA</strong> as your univariate baseline — the paper ranks ReliefF highly on several IDS subsets.</p>
+
+<hr />
+
+<h2 id="thresholds-20-40-60">Thresholds: 20%, 40%, 60%</h2>
+
+<p>The paper keeps the <strong>top fraction</strong> of the ranking list.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Threshold</th>
+      <th style="text-align: left">30 features (Credit Card)</th>
+      <th style="text-align: left">Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">20%</td>
+      <td style="text-align: left">6 features</td>
+      <td style="text-align: left">Aggressive reduction; risk losing signal</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">40%</td>
+      <td style="text-align: left">12 features</td>
+      <td style="text-align: left">Middle ground</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">60%</td>
+      <td style="text-align: left">18 features</td>
+      <td style="text-align: left">Mild reduction</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">top_fraction</span><span class="p">(</span><span class="n">scores</span><span class="p">:</span> <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">frac</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">frac</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">scores</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">scores</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">).</span><span class="n">head</span><span class="p">(</span><span class="n">k</span><span class="p">).</span><span class="n">index</span><span class="p">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">frac</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">]:</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">frac</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="si">}</span><span class="s">%:"</span><span class="p">,</span> <span class="n">top_fraction</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">frac</span><span class="p">)[:</span><span class="mi">5</span><span class="p">],</span> <span class="s">"..."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="compare-univariate-methods-with-one-classifier">Compare univariate methods with one classifier</h2>
+
+<p>Same split, same model — only the feature set changes. That mirrors the paper’s controlled comparison.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">roc_auc_score</span>
+
+<span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">X_tr</span><span class="p">,</span> <span class="n">X_te</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">,</span> <span class="n">y_te</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span>
+        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">class_weight</span><span class="o">=</span><span class="s">"balanced"</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>
+    <span class="p">)</span>
+    <span class="n">clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tr</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">)</span>
+    <span class="n">prob</span> <span class="o">=</span> <span class="n">clf</span><span class="p">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_te</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="se">\n</span><span class="s">=== </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s"> ==="</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_te</span><span class="p">,</span> <span class="n">clf</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_te</span><span class="p">),</span> <span class="n">digits</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"ROC-AUC:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_te</span><span class="p">,</span> <span class="n">prob</span><span class="p">),</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">evaluate</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="s">"All features"</span><span class="p">)</span>
+<span class="n">evaluate</span><span class="p">(</span><span class="n">X_train_chi</span><span class="p">,</span> <span class="n">X_test_chi</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="s">"Chi2 40%"</span><span class="p">)</span>
+<span class="n">evaluate</span><span class="p">(</span><span class="n">X_train_anova</span><span class="p">,</span> <span class="n">X_test_anova</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="s">"ANOVA 40%"</span><span class="p">)</span>
+<span class="n">evaluate</span><span class="p">(</span><span class="n">X_train_mi</span><span class="p">,</span> <span class="n">mi_selector</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">),</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="s">"MI 40%"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>What to expect (aligned with paper):</strong></p>
+
+<ul>
+  <li>FS often helps <strong>SVM</strong> more than <strong>XGB</strong>.</li>
+  <li>On Credit Card Fraud, <strong>XGB with all features</strong> is already strong; FS may <strong>not</strong> improve AUC much.</li>
+  <li>For fraud, watch <strong>Recall</strong> and <strong>PR-AUC</strong>, not Accuracy (severe imbalance).</li>
+</ul>
+
+<hr />
+
+<h2 id="type-i-error-when-testing-many-features">Type I error when testing many features</h2>
+
+<p>Each univariate test at (\alpha = 0.05) has a 5% false-positive rate. With <strong>339</strong> V-features in IEEE-CIS, ~17 may look “significant” by luck.</p>
+
+<p><strong>Mitigation (what the paper does):</strong></p>
+
+<ol>
+  <li>Rank features, do not trust a single p-value cutoff blindly.</li>
+  <li>Validate with <strong>cross-validated classifier performance</strong>.</li>
+  <li>Compare multiple metrics (Precision, Recall, F1, AUC).</li>
+</ol>
+
+<hr />
+
+<h2 id="univariate-eda-exploratory-before-fs">Univariate EDA (exploratory, before FS)</h2>
+
+<p>Feature selection is not the same as EDA, but you should still look at each variable alone:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Analysis</th>
+      <th style="text-align: left">Tool</th>
+      <th style="text-align: left">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Distribution per class</td>
+      <td style="text-align: left">histogram / KDE</td>
+      <td style="text-align: left">see separation</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Missing rate</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">isna().mean()</code></td>
+      <td style="text-align: left">MCAR/MAR check</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Outliers</td>
+      <td style="text-align: left">boxplot</td>
+      <td style="text-align: left">bad scaling / leakage</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">feat</span> <span class="o">=</span> <span class="s">"V14"</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"Class"</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s">"density"</span><span class="p">,</span> <span class="n">common_norm</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s">"Univariate view: </span><span class="si">{</span><span class="n">feat</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="summary-table">Summary table</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Method</th>
+      <th style="text-align: left">Code</th>
+      <th style="text-align: left">Use when</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Chi-square</td>
+      <td style="text-align: left">K</td>
+      <td style="text-align: left">Categorical / one-hot / non-negative</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">ANOVA</td>
+      <td style="text-align: left">A</td>
+      <td style="text-align: left">Numeric continuous</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Mutual Information</td>
+      <td style="text-align: left">MI</td>
+      <td style="text-align: left">Non-linear, flexible</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Pearson</td>
+      <td style="text-align: left">C</td>
+      <td style="text-align: left">Quick linear scan</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">ReliefF</td>
+      <td style="text-align: left">RL</td>
+      <td style="text-align: left">Local neighbor structure</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Next:</strong> <a href="/2026/05/24/dana-4830-multivariate-feature-selection-part1/">Multivariate FS Part 1 — CFS and mRMR logic</a> (features as a <strong>team</strong>, not solo players).</p>
+
+<hr />
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>Zouhri et al. (2024) — §2.1 Univariate methods</li>
+  <li><code class="language-plaintext highlighter-rouge">sklearn.feature_selection</code>: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectKBest.html">SelectKBest</a></li>
+</ul>
+
+    
+      <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      // Here is an example,
+      // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
+      this.page.url = "https://qleoz12.github.io//statistics/machine%20learning/dana-4830-univariate-feature-selection/";
+      this.page.identifier = "/statistics/machine%20learning/dana-4830-univariate-feature-selection/";
+    };
+
+    // You should be able to get the following lines of code from your Disqus admin.
+    // https://disqus.com/admin/universalcode
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//qleoz12githubio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+    
+  </div>
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+  
+<script>
+  window.MathJax = {
+    loader: { load: ['[tex]/ams'] },
+    tex: {
+      packages: { '[+]': ['ams', 'noerrors', 'noundefined'] },
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],
+      processEscapes: true,
+      tags: 'ams'
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script"></script>
+
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026 Leonardo L Sanchez- Dann Brown. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,950 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>DANA 4830 — Feature selection paper: how to read it, MCAR/MAR/NMAR, and the big ideas - Dann Brown Adventures</title>
+<meta name="description" content="Study notes for DANA 4830 on the paper:">
+
+
+  <meta name="author" content="Dann brown">
+  
+  <meta property="article:author" content="Dann brown">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dann Brown Adventures">
+<meta property="og:title" content="DANA 4830 — Feature selection paper: how to read it, MCAR/MAR/NMAR, and the big ideas">
+<meta property="og:url" content="/statistics/machine%20learning/dana-4830-feature-selection-paper-overview/">
+
+
+  <meta property="og:description" content="Study notes for DANA 4830 on the paper:">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-05-22T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2026-05-22T13:00:00-05:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/statistics/machine%20learning/dana-4830-feature-selection-paper-overview/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Leonardo L Sanchez- Dann Brown",
+      "url": "/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dann Brown Adventures Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--archive">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Dann Brown Adventures
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/portfolio/">Portfolio</a>
+            </li><li class="masthead__menu-item">
+              <a href="/experience/">Experience</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/videos/">Videos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/books/reading">Reading List</a>
+            </li><li class="masthead__menu-item">
+              <a href="/reading">looking</a>
+            </li><li class="masthead__menu-item">
+              <a href="/knowledge">knowledge</a>
+            </li><li class="masthead__menu-item">
+              <a href="/certs">certs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/Languages">Languages</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#statistics" itemprop="item"><span itemprop="name">Statistics</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#machine-learning" itemprop="item"><span itemprop="name">Machine learning</span></a>
+          <meta itemprop="position" content="3" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">DANA 4830 — Feature selection paper: how to read it, MCAR/MAR/NMAR, and the big ideas</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/1577552827279.jpg" alt="Dann brown" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">Dann brown</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">CO</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/leonardo-sanchez-89590b127/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">linkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://www.youtube.com/channel/UCoROtxDQYfIgjXBDcORK5zw/videos" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-youtube" aria-hidden="true"></i><span class="label">Youtube</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Qleoz12" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kintaroloop@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="kintaroloop@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">DANA 4830 — Feature selection paper: how to read it, MCAR/MAR/NMAR, and the big ideas</h1>
+    
+    <p>Study notes for <strong>DANA 4830</strong> on the paper:</p>
+
+<blockquote>
+  <p><strong>Evaluating the impact of filter-based feature selection in intrusion detection systems</strong><br />
+Zouhri, Idri &amp; Ratnani (2024), <em>International Journal of Information Security</em><br />
+<a href="https://doi.org/10.1007/s10207-023-00767-y">DOI 10.1007/s10207-023-00767-y</a></p>
+</blockquote>
+
+<p>The paper is <strong>not</strong> a book chapter. You do not read it top-to-bottom on the first pass. The goal is to extract a <strong>pipeline</strong>: problem → data → methods → results → limits.</p>
+
+<hr />
+
+<h2 id="how-to-read-this-paper-5-minute-first-pass">How to read this paper (5-minute first pass)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Step</th>
+      <th style="text-align: left">Section</th>
+      <th style="text-align: left">Goal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">Title</td>
+      <td style="text-align: left">Topic: feature selection in intrusion detection</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">Abstract</td>
+      <td style="text-align: left">One-paragraph summary of everything</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">Research questions</td>
+      <td style="text-align: left">What they actually test</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">Figures / tables</td>
+      <td style="text-align: left">What won and what did not</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">Methodology (§5)</td>
+      <td style="text-align: left">Experimental pipeline</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">6</td>
+      <td style="text-align: left">Introduction</td>
+      <td style="text-align: left">Context (read last)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Translation of the title:</strong> they compare <strong>filter-based feature selection</strong> methods and ask whether reducing variables helps <strong>classifiers</strong> detect cyber-attacks.</p>
+
+<hr />
+
+<h2 id="the-core-problem-in-one-sentence">The core problem in one sentence</h2>
+
+<p>IDS datasets have <strong>many features</strong> (packet size, duration, protocol, bytes sent, …). Too many irrelevant or redundant features can cause <strong>overfitting</strong>, slower training, and worse generalization. The paper asks: <strong>which filter methods + which classifiers + which thresholds work best?</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">IDS concept</th>
+      <th style="text-align: left">Fraud-detection analogue (your assignment angle)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Attack vs benign</td>
+      <td style="text-align: left">Fraud vs legitimate transaction</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Network traffic features</td>
+      <td style="text-align: left">TransactionAmt, card type, device info, V1–V339</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">High false alarm rate</td>
+      <td style="text-align: left">High false positives on normal users</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="research-questions-this-is-the-map-of-the-whole-paper">Research questions (this is the map of the whole paper)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">RQ</th>
+      <th style="text-align: left">Question (plain English)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>RQ1</strong></td>
+      <td style="text-align: left">Does reducing features help or hurt classification?</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>RQ2</strong></td>
+      <td style="text-align: left">Do <strong>univariate</strong> filters beat <strong>multivariate</strong> filters?</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>RQ3</strong></td>
+      <td style="text-align: left">Which <strong>filter + classifier</strong> combinations work best?</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>RQ4</strong></td>
+      <td style="text-align: left">Are there features useful across <strong>all</strong> attack types?</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>They test <strong>228 model variants</strong>:</p>
+
+<p>[
+228 = 4\ \text{classifiers} \times 3\ \text{datasets} \times (5\ \text{univariate} \times 3\ \text{thresholds} + 3\ \text{multivariate} + \text{full feature set})
+]</p>
+
+<hr />
+
+<h2 id="feature-selection-vs-feature-extraction-pca-connection">Feature selection vs feature extraction (PCA connection)</h2>
+
+<p>This distinction appears early in the paper and matters for your assignment.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Approach</th>
+      <th style="text-align: left">What it does</th>
+      <th style="text-align: left">Keeps original columns?</th>
+      <th style="text-align: left">Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Feature selection</strong></td>
+      <td style="text-align: left">Picks a <strong>subset</strong> of existing variables</td>
+      <td style="text-align: left">Yes</td>
+      <td style="text-align: left">Keep <code class="language-plaintext highlighter-rouge">TransactionAmt</code>, drop <code class="language-plaintext highlighter-rouge">V47</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Feature extraction</strong></td>
+      <td style="text-align: left"><strong>Creates new</strong> variables from combinations</td>
+      <td style="text-align: left">No</td>
+      <td style="text-align: left">PCA: (PC_1 = 0.7X_1 + 0.3X_2)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>PCA is not feature selection.</strong> PCA builds new components; filters like Chi-square or CFS <strong>remove or rank original columns</strong>.</p>
+
+<hr />
+
+<h2 id="three-families-of-feature-selection">Three families of feature selection</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Idea</th>
+      <th style="text-align: left">Speed</th>
+      <th style="text-align: left">Depends on classifier?</th>
+      <th style="text-align: left">Paper examples</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Filter</strong></td>
+      <td style="text-align: left">Statistical score per feature or subset</td>
+      <td style="text-align: left">Fast</td>
+      <td style="text-align: left">No</td>
+      <td style="text-align: left">Chi2, ANOVA, MI, Pearson, ReliefF, CFS, CON, DISR</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Wrapper</strong></td>
+      <td style="text-align: left">Train model, try subsets, keep what improves performance</td>
+      <td style="text-align: left">Slow</td>
+      <td style="text-align: left">Yes</td>
+      <td style="text-align: left">RFE (mentioned in related work, not main experiment)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Embedded</strong></td>
+      <td style="text-align: left">Selection inside the model</td>
+      <td style="text-align: left">Medium</td>
+      <td style="text-align: left">Built-in</td>
+      <td style="text-align: left">XGBoost split importance, RF impurity</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Your intuition about XGBoost:</strong> partly correct. XGB is <strong>not</strong> a wrapper in this paper’s taxonomy, but it <strong>does</strong> learn which splits matter internally. That is why external FS <strong>sometimes does not help XGB</strong> — it may already ignore noise, or FS may remove useful joint information.</p>
+
+<hr />
+
+<h2 id="filters-used-in-the-paper">Filters used in the paper</h2>
+
+<h3 id="univariate-one-feature-at-a-time">Univariate (one feature at a time)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Code</th>
+      <th style="text-align: left">Method</th>
+      <th style="text-align: left">Question it answers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>K</strong></td>
+      <td style="text-align: left">Chi-square</td>
+      <td style="text-align: left">Is this feature <strong>dependent</strong> on the class?</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>A</strong></td>
+      <td style="text-align: left">ANOVA (F-test)</td>
+      <td style="text-align: left">Do <strong>class means</strong> differ for this numeric feature?</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>MI</strong></td>
+      <td style="text-align: left">Mutual information</td>
+      <td style="text-align: left">Does knowing the feature <strong>reduce uncertainty</strong> about the class?</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>RL</strong></td>
+      <td style="text-align: left">ReliefF</td>
+      <td style="text-align: left">Does the feature separate <strong>near neighbors</strong> of different classes?</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>C</strong></td>
+      <td style="text-align: left">Pearson correlation</td>
+      <td style="text-align: left">Linear correlation feature ↔ target</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Thresholds: keep top <strong>20%, 40%, or 60%</strong> of ranked features.</p>
+
+<h3 id="multivariate-subset-at-a-time">Multivariate (subset at a time)</h3>
+
+<p>Based on <strong>mRMR</strong> (Maximum Relevance, Minimum Redundancy):</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Method</th>
+      <th style="text-align: left">Logic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>CFS</strong></td>
+      <td style="text-align: left">High correlation with target, <strong>low</strong> correlation among selected features</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>CON</strong></td>
+      <td style="text-align: left">Subset with <strong>minimal inconsistency</strong> (same feature values but different class)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>DISR</strong></td>
+      <td style="text-align: left">Features that together carry <strong>more information</strong> than the sum of parts</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="classifiers-compared">Classifiers compared</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Model</th>
+      <th style="text-align: left">How it learns</th>
+      <th style="text-align: left">Paper takeaway</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>SVM</strong></td>
+      <td style="text-align: left">Maximum-margin boundary; sensitive to scale and noise</td>
+      <td style="text-align: left">Often <strong>benefits</strong> from FS</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>MLP</strong></td>
+      <td style="text-align: left">Neural network; needs tuning and enough data</td>
+      <td style="text-align: left">FS helps inconsistently</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>RF</strong></td>
+      <td style="text-align: left">Many trees vote on random subsets</td>
+      <td style="text-align: left">Strong baseline; FS often helps</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>XGB</strong></td>
+      <td style="text-align: left">Sequential trees fix previous errors</td>
+      <td style="text-align: left">Very strong; FS <strong>not always</strong> needed</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>RF vs XGB (simple analogy):</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Random Forest:     Tree1 ┐
+                     Tree2 ├── vote
+                     Tree3 ┘
+
+XGBoost:           Tree1 → errors → Tree2 → errors → Tree3 → …
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="benchmark-scottknott-borda-count">Benchmark, Scott–Knott, Borda Count</h2>
+
+<ul>
+  <li><strong>Benchmark</strong> here = same rules for everyone: same datasets, CV, metrics, hyperparameter search.</li>
+  <li><strong>Scott–Knott (SK):</strong> groups models whose performance differences are <strong>not statistically meaningful</strong> into clusters.</li>
+  <li><strong>Borda Count (BC):</strong> ranks models across <strong>Accuracy, Precision, Recall, F1, AUC</strong> so one metric does not dominate.</li>
+</ul>
+
+<p>Example naming from the paper: <code class="language-plaintext highlighter-rouge">SVMRL40</code> = SVM trained on features selected by <strong>ReliefF</strong> at the <strong>40%</strong> threshold; <code class="language-plaintext highlighter-rouge">SVM100</code> = all original features.</p>
+
+<hr />
+
+<h2 id="main-result-short-version">Main result (short version)</h2>
+
+<blockquote>
+  <p>Filter-based FS can reduce features without hurting detection, but <strong>not always</strong>. <strong>XGBoost</strong> and <strong>Random Forest</strong> with <strong>multivariate</strong> filters (<strong>CON</strong>, <strong>DISR</strong>) often perform very well. FS helps <strong>SVM</strong> and <strong>RF</strong> more often than <strong>XGB</strong> or <strong>MLP</strong>.</p>
+</blockquote>
+
+<p>Feature selection is <strong>not</strong> universally better — it depends on <strong>method + model + dataset</strong>.</p>
+
+<hr />
+
+<h2 id="mcar-mar-nmar--before-you-select-features">MCAR, MAR, NMAR — before you select features</h2>
+
+<p>The paper’s Step 1 is <strong>cleaning</strong>: remove missing values, duplicates, irrelevant columns. The paper does <strong>not</strong> define missing-data mechanisms, but you <strong>must</strong> understand them when applying the pipeline to <strong>IEEE-CIS Fraud</strong> or <strong>Credit Card Fraud</strong>.</p>
+
+<p>These three terms describe <strong>why</strong> data are missing — not how to impute them.</p>
+
+<h3 id="mcar--missing-completely-at-random">MCAR — Missing Completely At Random</h3>
+
+<p>Missingness has <strong>nothing to do</strong> with observed or unobserved values.</p>
+
+<p><strong>Example (credit card):</strong> a logging server crashes for 2 hours; <strong>random</strong> transactions lose <code class="language-plaintext highlighter-rouge">TransactionAmt</code>. Fraud and non-fraud rows are equally affected.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>isFraud   TransactionAmt
+0         120
+1         450
+0         NA    ← random outage, not related to fraud
+</code></pre></div></div>
+
+<p><strong>What you can do:</strong> listwise deletion or simple imputation is less biased (still check sample size).</p>
+
+<h3 id="mar--missing-at-random">MAR — Missing At Random</h3>
+
+<p>Missingness depends on <strong>observed</strong> variables, not on the missing value itself.</p>
+
+<p><strong>Example:</strong> <code class="language-plaintext highlighter-rouge">P_emaildomain</code> is missing <strong>more often</strong> when <code class="language-plaintext highlighter-rouge">ProductCD = 'WP'</code> (web purchase) — and you <strong>see</strong> <code class="language-plaintext highlighter-rouge">ProductCD</code> in the table. Missingness is explained by something you observe.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ProductCD   P_emaildomain   isFraud
+WP          NA              0
+W           user@gmail.com  0
+WP          NA              1
+</code></pre></div></div>
+
+<p><strong>What you can do:</strong> impute using other columns (group medians, models). Still need care in evaluation.</p>
+
+<h3 id="nmar--not-missing-at-random">NMAR — Not Missing At Random</h3>
+
+<p>Missingness depends on the <strong>missing value itself</strong> (or unobserved causes tied to it).</p>
+
+<p><strong>Example:</strong> very <strong>large</strong> <code class="language-plaintext highlighter-rouge">TransactionAmt</code> values are missing because high-value channels use a <strong>different system</strong> that was not merged into the dataset. The fact that the amount is large <strong>causes</strong> it to be missing.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TransactionAmt   isFraud
+NA               1        ← amount might be 50,000; you never see it
+85               0
+120              0
+</code></pre></div></div>
+
+<p><strong>What you can do:</strong> hardest case. Deleting rows or mean imputation can <strong>bias</strong> the model. You may need domain knowledge, sensitivity analysis, or separate modeling.</p>
+
+<h3 id="quick-reference">Quick reference</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Mechanism</th>
+      <th style="text-align: left">Missingness depends on…</th>
+      <th style="text-align: left">Risk if ignored</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>MCAR</strong></td>
+      <td style="text-align: left">Nothing systematic</td>
+      <td style="text-align: left">Lower bias</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>MAR</strong></td>
+      <td style="text-align: left">Observed columns</td>
+      <td style="text-align: left">Moderate; use informed imputation</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>NMAR</strong></td>
+      <td style="text-align: left">The hidden value itself</td>
+      <td style="text-align: left">High bias; FS and models can look good on wrong data</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Type I error reminder (from univariate tests):</strong> if you run ANOVA or t-tests on <strong>400 features</strong> at (\alpha = 0.05), you expect ~20 false positives by chance. That is one reason the paper validates with <strong>classifiers + cross-validation</strong>, not only p-values.</p>
+
+<hr />
+
+<h2 id="mental-template-for-any-ml-paper">Mental template for any ML paper</h2>
+
+<ol>
+  <li>What problem do they have?</li>
+  <li>What data do they use?</li>
+  <li>What methods do they compare?</li>
+  <li>How do they measure success?</li>
+  <li>What won?</li>
+  <li>What are the limitations?</li>
+</ol>
+
+<p>For this paper:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">#</th>
+      <th style="text-align: left">Answer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">Too many IDS features; need FS</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: left">CIC-IDS2017, CSE-CIC-IDS2018, CIC-ToN-IoT</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: left">5 univariate + 3 multivariate filters × 4 classifiers</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: left">10-fold CV; Accuracy, Precision, Recall, F1, AUC; SK + Borda</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: left">RF/XGB + multivariate filters often strong</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">6</td>
+      <td style="text-align: left">Old-style IDS focus; no universal FS winner</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="my-reproduction-plan-finance--fraud">My reproduction plan (finance / fraud)</h2>
+
+<p>Same pipeline, different domain:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Public fraud dataset (Credit Card or IEEE-CIS)
+    → cleaning + MCAR/MAR check
+    → encoding
+    → scaling (for SVM / PCA)
+    → univariate FS (Chi2, ANOVA, MI, Pearson, ReliefF)
+    → multivariate FS (CFS-like, CON concept, DISR concept)
+    → RF, XGB, SVM
+    → metrics (Precision, Recall, F1, ROC-AUC, PR-AUC)
+    → compare
+</code></pre></div></div>
+
+<p>Follow-up posts in this series:</p>
+
+<ul>
+  <li><a href="/2026/05/23/dana-4830-univariate-feature-selection/">Univariate feature selection (Chi2, ANOVA, MI, Pearson, ReliefF)</a></li>
+  <li><a href="/2026/05/24/dana-4830-multivariate-feature-selection-part1/">Multivariate feature selection — Part 1 (CFS, mRMR)</a></li>
+  <li><a href="/2026/05/25/dana-4830-multivariate-feature-selection-part2/">Multivariate feature selection — Part 2 (CON, DISR, full pipeline)</a></li>
+</ul>
+
+<hr />
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>Zouhri, H., Idri, A., &amp; Ratnani, A. (2024). Evaluating the impact of filter-based feature selection in intrusion detection systems. <em>International Journal of Information Security</em>, 23, 759–785.</li>
+  <li>Course paper PDF: <code class="language-plaintext highlighter-rouge">W2_Sec1_Feature_Selection_Paper_1.pdf</code></li>
+  <li>Kaggle — <a href="https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud">Credit Card Fraud Detection</a> (good starter size)</li>
+  <li>Kaggle — <a href="https://www.kaggle.com/c/ieee-fraud-detection">IEEE-CIS Fraud Detection</a> (assignment-scale dataset)</li>
+</ul>
+
+    
+      <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      // Here is an example,
+      // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
+      this.page.url = "https://qleoz12.github.io//statistics/machine%20learning/dana-4830-feature-selection-paper-overview/";
+      this.page.identifier = "/statistics/machine%20learning/dana-4830-feature-selection-paper-overview/";
+    };
+
+    // You should be able to get the following lines of code from your Disqus admin.
+    // https://disqus.com/admin/universalcode
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//qleoz12githubio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+    
+  </div>
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+  
+<script>
+  window.MathJax = {
+    loader: { load: ['[tex]/ams'] },
+    tex: {
+      packages: { '[+]': ['ams', 'noerrors', 'noundefined'] },
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],
+      processEscapes: true,
+      tags: 'ams'
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script"></script>
+
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026 Leonardo L Sanchez- Dann Brown. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

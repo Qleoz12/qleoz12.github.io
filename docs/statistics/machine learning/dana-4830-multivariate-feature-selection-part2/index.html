@@ -1,0 +1,904 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>DANA 4830 — Multivariate feature selection Part 2: CON, DISR, and fraud dataset pipeline - Dann Brown Adventures</title>
+<meta name="description" content="Part 2 of multivariate (bivariate-and-beyond) feature selection from Zouhri et al. (2024): CON, DISR, how they differ from CFS, and a full Python pipeline you can run on public fraud data (same logic as IEEE-CIS for your assignment).">
+
+
+  <meta name="author" content="Dann brown">
+  
+  <meta property="article:author" content="Dann brown">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dann Brown Adventures">
+<meta property="og:title" content="DANA 4830 — Multivariate feature selection Part 2: CON, DISR, and fraud dataset pipeline">
+<meta property="og:url" content="/statistics/machine%20learning/dana-4830-multivariate-feature-selection-part2/">
+
+
+  <meta property="og:description" content="Part 2 of multivariate (bivariate-and-beyond) feature selection from Zouhri et al. (2024): CON, DISR, how they differ from CFS, and a full Python pipeline you can run on public fraud data (same logic as IEEE-CIS for your assignment).">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-05-25T00:00:00-05:00">
+
+
+
+  <meta property="article:modified_time" content="2026-05-25T13:00:00-05:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/statistics/machine%20learning/dana-4830-multivariate-feature-selection-part2/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Leonardo L Sanchez- Dann Brown",
+      "url": "/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dann Brown Adventures Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--archive">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Dann Brown Adventures
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/portfolio/">Portfolio</a>
+            </li><li class="masthead__menu-item">
+              <a href="/experience/">Experience</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/videos/">Videos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/books/reading">Reading List</a>
+            </li><li class="masthead__menu-item">
+              <a href="/reading">looking</a>
+            </li><li class="masthead__menu-item">
+              <a href="/knowledge">knowledge</a>
+            </li><li class="masthead__menu-item">
+              <a href="/certs">certs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/Languages">Languages</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#statistics" itemprop="item"><span itemprop="name">Statistics</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#machine-learning" itemprop="item"><span itemprop="name">Machine learning</span></a>
+          <meta itemprop="position" content="3" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">DANA 4830 — Multivariate feature selection Part 2: CON, DISR, and fraud dataset pipeline</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/1577552827279.jpg" alt="Dann brown" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">Dann brown</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">CO</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/leonardo-sanchez-89590b127/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">linkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://www.youtube.com/channel/UCoROtxDQYfIgjXBDcORK5zw/videos" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-youtube" aria-hidden="true"></i><span class="label">Youtube</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Qleoz12" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kintaroloop@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="kintaroloop@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">DANA 4830 — Multivariate feature selection Part 2: CON, DISR, and fraud dataset pipeline</h1>
+    
+    <p>Part 2 of multivariate (<strong>bivariate-and-beyond</strong>) feature selection from Zouhri et al. (2024): <strong>CON</strong>, <strong>DISR</strong>, how they differ from <strong>CFS</strong>, and a <strong>full Python pipeline</strong> you can run on public fraud data (same logic as IEEE-CIS for your assignment).</p>
+
+<p>Previous: <a href="/2026/05/24/dana-4830-multivariate-feature-selection-part1/">Part 1 — mRMR and CFS</a> · <a href="/2026/05/23/dana-4830-univariate-feature-selection/">Univariate</a> · <a href="/2026/05/22/dana-4830-feature-selection-paper-overview/">Paper overview</a></p>
+
+<hr />
+
+<h2 id="multivariate-methods-in-the-paper-recap">Multivariate methods in the paper (recap)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Method</th>
+      <th style="text-align: left">Core idea</th>
+      <th style="text-align: left">One-line</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>CFS</strong></td>
+      <td style="text-align: left">High target correlation, low inter-feature correlation</td>
+      <td style="text-align: left">No duplicate teammates</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>CON</strong></td>
+      <td style="text-align: left">Minimize <strong>inconsistency</strong> in the subset</td>
+      <td style="text-align: left">Same X-values should not split across classes</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>DISR</strong></td>
+      <td style="text-align: left"><strong>Joint</strong> information beats sum of parts</td>
+      <td style="text-align: left">Synergy between features</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Paper result: <strong>XGBoost</strong> and <strong>Random Forest</strong> with <strong>CON</strong> and <strong>DISR</strong> subsets often matched or beat full feature sets on IDS data.</p>
+
+<hr />
+
+<h2 id="con--consistency-based-subset-selection">CON — Consistency-based subset selection</h2>
+
+<p><strong>Paper (§2.2b):</strong> the best subset has the <strong>lowest inconsistency rate</strong>.</p>
+
+<p>A subset is <strong>inconsistent</strong> when two rows have the <strong>same values on all selected features</strong> but belong to <strong>different classes</strong>.</p>
+
+<h3 id="example-toy-fraud-table">Example (toy fraud table)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Row</th>
+      <th style="text-align: right"><code class="language-plaintext highlighter-rouge">Amount</code></th>
+      <th style="text-align: right"><code class="language-plaintext highlighter-rouge">Hour</code></th>
+      <th style="text-align: center"><code class="language-plaintext highlighter-rouge">isFraud</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: right">100</td>
+      <td style="text-align: right">14</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: right">100</td>
+      <td style="text-align: right">14</td>
+      <td style="text-align: center"><strong>1</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: right">500</td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: center">1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If you select <code class="language-plaintext highlighter-rouge">{Amount, Hour}</code> only, rows 1 and 2 are <strong>identical</strong> on those features but different class → <strong>inconsistent</strong>.</p>
+
+<p>CON searches for subsets where matching feature vectors usually imply the <strong>same class</strong>.</p>
+
+<h3 id="why-it-matters-for-ids--fraud">Why it matters for IDS / fraud</h3>
+
+<p>Attack traffic (or fraud) sometimes shares surface stats with benign rows. CON pushes toward feature sets that <strong>separate classes cleanly</strong> in the training space — related to <strong>decision boundary clarity</strong>, not just marginal correlation.</p>
+
+<h3 id="practical-python-proxy">Practical Python proxy</h3>
+
+<p>Exact CON uses search over subsets (expensive). For learning, use a <strong>consistency score</strong> on candidate features from mRMR/CFS:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="k">def</span> <span class="nf">inconsistency_rate</span><span class="p">(</span><span class="n">X_sub</span><span class="p">:</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="s">"""Fraction of duplicate feature rows that disagree on class."""</span>
+    <span class="n">grouped</span> <span class="o">=</span> <span class="n">X_sub</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">_y</span><span class="o">=</span><span class="n">y</span><span class="p">).</span><span class="n">groupby</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">X_sub</span><span class="p">.</span><span class="n">columns</span><span class="p">))[</span><span class="s">"_y"</span><span class="p">]</span>
+    <span class="n">bad</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">grouped</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="n">n</span>
+            <span class="n">bad</span> <span class="o">+=</span> <span class="n">labels</span><span class="p">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">bad</span> <span class="o">/</span> <span class="n">total</span> <span class="k">if</span> <span class="n">total</span> <span class="k">else</span> <span class="mf">0.0</span>
+
+<span class="c1"># Example on Credit Card subset
+</span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"creditcard.csv"</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">"Class"</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">"Class"</span><span class="p">]</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span>
+<span class="p">)</span>
+
+<span class="n">candidate</span> <span class="o">=</span> <span class="p">[</span><span class="s">"V14"</span><span class="p">,</span> <span class="s">"V12"</span><span class="p">,</span> <span class="s">"V10"</span><span class="p">,</span> <span class="s">"V17"</span><span class="p">,</span> <span class="s">"V4"</span><span class="p">,</span> <span class="s">"V3"</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Inconsistency:"</span><span class="p">,</span> <span class="n">inconsistency_rate</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">candidate</span><span class="p">],</span> <span class="n">y_train</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>For assignments: compare inconsistency <strong>before</strong> FS (all features binned) vs <strong>after</strong> CFS/mRMR subset — lower is better <strong>if</strong> AUC holds.</p>
+
+<hr />
+
+<h2 id="disr--double-input-symmetric-relevance">DISR — Double Input Symmetric Relevance</h2>
+
+<p><strong>Paper (§2.2c):</strong> a set of variables together can carry <strong>more information</strong> about the class than the sum of each variable alone.</p>
+
+<h3 id="intuition">Intuition</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Feature alone</th>
+      <th style="text-align: left">Joint with partner</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">country = US</code> → weak fraud signal</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">country = US</code> <strong>and</strong> <code class="language-plaintext highlighter-rouge">email_domain missing</code> → strong signal</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Amount</code> moderate</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Amount</code> high <strong>and</strong> <code class="language-plaintext highlighter-rouge">new_device = 1</code> → strong signal</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>DISR targets <strong>synergy</strong> — classic <strong>bivariate interaction</strong> that univariate ANOVA misses.</p>
+
+<h3 id="practical-proxy-interaction--tree-importance">Practical proxy: interaction + tree importance</h3>
+
+<p>Full DISR needs specialized libraries. Two assignment-friendly proxies:</p>
+
+<p><strong>1. Add explicit interaction terms for top pairs</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">top</span> <span class="o">=</span> <span class="p">[</span><span class="s">"V14"</span><span class="p">,</span> <span class="s">"V12"</span><span class="p">,</span> <span class="s">"V10"</span><span class="p">]</span>
+<span class="n">X_int</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">top</span><span class="p">].</span><span class="n">copy</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">top</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">top</span><span class="p">)):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">top</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s">_x_</span><span class="si">{</span><span class="n">top</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="si">}</span><span class="s">"</span>
+        <span class="n">X_int</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">top</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">*</span> <span class="n">X_train</span><span class="p">[</span><span class="n">top</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<p><strong>2. Let XGBoost reveal joint splits (embedded FS)</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">xgboost</span> <span class="k">as</span> <span class="n">xgb</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">xgb</span><span class="p">.</span><span class="n">XGBClassifier</span><span class="p">(</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">max_depth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">scale_pos_weight</span><span class="o">=</span><span class="p">(</span><span class="n">y_train</span> <span class="o">==</span> <span class="mi">0</span><span class="p">).</span><span class="nb">sum</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="n">y_train</span> <span class="o">==</span> <span class="mi">1</span><span class="p">).</span><span class="nb">sum</span><span class="p">(),</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="n">eval_metric</span><span class="o">=</span><span class="s">"logloss"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">imp</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">Series</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="p">.</span><span class="n">columns</span><span class="p">).</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">top_disr_proxy</span> <span class="o">=</span> <span class="n">imp</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">).</span><span class="n">index</span><span class="p">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">top_disr_proxy</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Report this as: <strong>“DISR concept — joint relevance approximated via interaction terms / XGB split gains.”</strong></p>
+
+<hr />
+
+<h2 id="bivariate-analysis-on-your-fraud-dataset">Bivariate analysis on your fraud dataset</h2>
+
+<p>Before multivariate FS, run <strong>pair-level</strong> EDA on the subset you kept in Part 1.</p>
+
+<h3 id="correlation-with-target-bivariate-numeric">Correlation with target (bivariate numeric)</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s">"V14"</span><span class="p">,</span> <span class="s">"V12"</span><span class="p">,</span> <span class="s">"V10"</span><span class="p">,</span> <span class="s">"V17"</span><span class="p">,</span> <span class="s">"V4"</span><span class="p">]</span>
+<span class="n">plot_df</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">features</span><span class="p">].</span><span class="n">assign</span><span class="p">(</span><span class="n">isFraud</span><span class="o">=</span><span class="n">y_train</span><span class="p">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="p">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">plot_df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"isFraud"</span><span class="p">,</span> <span class="n">corner</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">plot_kws</span><span class="o">=</span><span class="p">{</span><span class="s">"alpha"</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span> <span class="s">"s"</span><span class="p">:</span> <span class="mi">8</span><span class="p">})</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s">"Bivariate EDA: pairwise views"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="cross-tab-bivariate-categorical--ieee-cis-style">Cross-tab (bivariate categorical — IEEE-CIS style)</h3>
+
+<p>After encoding:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Example pattern for IEEE-CIS
+# pd.crosstab(df["ProductCD"], df["isFraud"], normalize="index")
+</span></code></pre></div></div>
+
+<p>Read: if fraud rate changes sharply across categories, Chi2/univariate FS will rank that column high; CON/DISR ask whether <strong>combinations</strong> add separation.</p>
+
+<hr />
+
+<h2 id="full-reproduction-pipeline-paper--fraud-domain">Full reproduction pipeline (paper → fraud domain)</h2>
+
+<p>Mirrors paper §5 — Steps 1–4 simplified without Bayesian optimization.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌─────────────────────────────────────────────────────────┐
+│ 1. Clean: missing, duplicates, drop ID columns          │
+│ 2. Encode categoricals (IEEE-CIS)                       │
+│ 3. Univariate FS: Chi2 / ANOVA / MI @ 20%, 40%, 60%   │
+│ 4. Multivariate FS: CFS-like, mRMR, CON proxy, DISR proxy│
+│ 5. Models: RF, XGB, SVM (same CV folds)                 │
+│ 6. Metrics: Precision, Recall, F1, ROC-AUC, PR-AUC    │
+│ 7. Compare: full features vs each subset              │
+└─────────────────────────────────────────────────────────┘
+</code></pre></div></div>
+
+<h3 id="end-to-end-script-skeleton">End-to-end script skeleton</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span><span class="p">,</span> <span class="n">cross_validate</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">MinMaxScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SelectKBest</span><span class="p">,</span> <span class="n">f_classif</span><span class="p">,</span> <span class="n">mutual_info_classif</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">import</span> <span class="nn">xgboost</span> <span class="k">as</span> <span class="n">xgb</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"creditcard.csv"</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">"Class"</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">"Class"</span><span class="p">]</span>
+
+<span class="c1"># --- Multivariate: CFS-like (from Part 1) ---
+</span><span class="n">rel</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">corrwith</span><span class="p">(</span><span class="n">y</span><span class="p">).</span><span class="nb">abs</span><span class="p">().</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">pool</span> <span class="o">=</span> <span class="n">rel</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">0.6</span> <span class="o">*</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])).</span><span class="n">index</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">pool</span><span class="p">].</span><span class="n">corr</span><span class="p">().</span><span class="nb">abs</span><span class="p">()</span>
+<span class="n">upper</span> <span class="o">=</span> <span class="n">cm</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">triu</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">(</span><span class="n">cm</span><span class="p">.</span><span class="n">shape</span><span class="p">),</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">).</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">))</span>
+<span class="n">drop</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">upper</span><span class="p">.</span><span class="n">columns</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">upper</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.9</span><span class="p">)}</span>
+<span class="n">cfs_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">pool</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">drop</span><span class="p">]</span>
+
+<span class="c1"># --- Univariate 40% ---
+</span><span class="n">k</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.4</span> <span class="o">*</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">anova</span> <span class="o">=</span> <span class="n">SelectKBest</span><span class="p">(</span><span class="n">f_classif</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">).</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">anova_cols</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">columns</span><span class="p">[</span><span class="n">anova</span><span class="p">.</span><span class="n">get_support</span><span class="p">()].</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="n">subsets</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"all_100"</span><span class="p">:</span> <span class="n">X</span><span class="p">.</span><span class="n">columns</span><span class="p">.</span><span class="n">tolist</span><span class="p">(),</span>
+    <span class="s">"anova_40"</span><span class="p">:</span> <span class="n">anova_cols</span><span class="p">,</span>
+    <span class="s">"cfs"</span><span class="p">:</span> <span class="n">cfs_cols</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"RF"</span><span class="p">:</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">class_weight</span><span class="o">=</span><span class="s">"balanced"</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span>
+    <span class="s">"XGB"</span><span class="p">:</span> <span class="n">xgb</span><span class="p">.</span><span class="n">XGBClassifier</span><span class="p">(</span>
+        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">scale_pos_weight</span><span class="o">=</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">).</span><span class="nb">sum</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">).</span><span class="nb">sum</span><span class="p">(),</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">eval_metric</span><span class="o">=</span><span class="s">"logloss"</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="s">"SVM"</span><span class="p">:</span> <span class="n">Pipeline</span><span class="p">([</span>
+        <span class="p">(</span><span class="s">"scale"</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+        <span class="p">(</span><span class="s">"svc"</span><span class="p">,</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">"rbf"</span><span class="p">,</span> <span class="n">class_weight</span><span class="o">=</span><span class="s">"balanced"</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)),</span>
+    <span class="p">]),</span>
+<span class="p">}</span>
+
+<span class="n">cv</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">scoring</span> <span class="o">=</span> <span class="p">[</span><span class="s">"accuracy"</span><span class="p">,</span> <span class="s">"precision"</span><span class="p">,</span> <span class="s">"recall"</span><span class="p">,</span> <span class="s">"f1"</span><span class="p">,</span> <span class="s">"roc_auc"</span><span class="p">]</span>
+
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">sub_name</span><span class="p">,</span> <span class="n">cols</span> <span class="ow">in</span> <span class="n">subsets</span><span class="p">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">X_sub</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_sub</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">scoring</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">rows</span><span class="p">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s">"subset"</span><span class="p">:</span> <span class="n">sub_name</span><span class="p">,</span>
+            <span class="s">"model"</span><span class="p">:</span> <span class="n">model_name</span><span class="p">,</span>
+            <span class="s">"n_features"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">cols</span><span class="p">),</span>
+            <span class="o">**</span><span class="p">{</span><span class="n">m</span><span class="p">:</span> <span class="n">scores</span><span class="p">[</span><span class="sa">f</span><span class="s">"test_</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s">"</span><span class="p">].</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">scoring</span><span class="p">},</span>
+        <span class="p">})</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">).</span><span class="n">sort_values</span><span class="p">(</span><span class="s">"roc_auc"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">results</span><span class="p">.</span><span class="nb">round</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h3 id="how-to-read-your-table-paper-style">How to read your table (paper-style)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Pattern</th>
+      <th style="text-align: left">Interpretation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SVM</code> + <code class="language-plaintext highlighter-rouge">anova_40</code> » <code class="language-plaintext highlighter-rouge">SVM</code> + <code class="language-plaintext highlighter-rouge">all_100</code></td>
+      <td style="text-align: left">FS helps SVM (noise reduction)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">XGB</code> + <code class="language-plaintext highlighter-rouge">all_100</code> ≈ <code class="language-plaintext highlighter-rouge">XGB</code> + <code class="language-plaintext highlighter-rouge">cfs</code></td>
+      <td style="text-align: left">XGB already handles weak features</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">RF</code> + <code class="language-plaintext highlighter-rouge">cfs</code> ≥ <code class="language-plaintext highlighter-rouge">RF</code> + <code class="language-plaintext highlighter-rouge">all_100</code> on IEEE-CIS-like data</td>
+      <td style="text-align: left">Redundancy removed, speed up</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">High Accuracy but low Recall on fraud</td>
+      <td style="text-align: left">Wrong metric focus — use PR-AUC</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="scottknott-and-borda-simplified-for-your-assignment">Scott–Knott and Borda (simplified for your assignment)</h2>
+
+<p>You may not implement SK test on day one. Use this workflow:</p>
+
+<ol>
+  <li>Run 5-fold CV for each <code class="language-plaintext highlighter-rouge">(subset, model)</code> pair.</li>
+  <li>Group rows within <strong>0.5% ROC-AUC</strong> as “same cluster”.</li>
+  <li>Inside the best cluster, rank by <strong>average rank</strong> across Precision, Recall, F1, AUC (Borda idea).</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">best</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">results</span><span class="p">[</span><span class="s">"roc_auc"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">results</span><span class="p">[</span><span class="s">"roc_auc"</span><span class="p">].</span><span class="nb">max</span><span class="p">()</span> <span class="o">-</span> <span class="mf">0.005</span><span class="p">]</span>
+<span class="n">best</span><span class="p">[</span><span class="s">"borda"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">best</span><span class="p">[[</span><span class="s">"precision"</span><span class="p">,</span> <span class="s">"recall"</span><span class="p">,</span> <span class="s">"f1"</span><span class="p">,</span> <span class="s">"roc_auc"</span><span class="p">]]</span>
+    <span class="p">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">best</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">"borda"</span><span class="p">))</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="pca-side-experiment-paper-contrast">PCA side experiment (paper contrast)</h2>
+
+<p>Same folds, compare <strong>selection vs extraction</strong>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">12</span>  <span class="c1"># match CFS subset size
+</span><span class="n">pca_pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s">"scale"</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s">"pca"</span><span class="p">,</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s">"rf"</span><span class="p">,</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">class_weight</span><span class="o">=</span><span class="s">"balanced"</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)),</span>
+<span class="p">])</span>
+
+<span class="n">pca_scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">pca_pipe</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">scoring</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">({</span><span class="n">m</span><span class="p">:</span> <span class="n">pca_scores</span><span class="p">[</span><span class="sa">f</span><span class="s">"test_</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s">"</span><span class="p">].</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">scoring</span><span class="p">})</span>
+</code></pre></div></div>
+
+<p>Write-up sentence:</p>
+
+<blockquote>
+  <p>PCA reduced dimensionality by constructing new components, while CFS preserved interpretable original features; on fraud data, CFS-like selection retained column names for analysis while PCA absorbed redundancy into latent factors.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="ieee-cis-assignment-checklist">IEEE-CIS assignment checklist</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Step</th>
+      <th style="text-align: left">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Download</td>
+      <td style="text-align: left"><a href="https://www.kaggle.com/c/ieee-fraud-detection">IEEE-CIS Fraud Detection</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Merge</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">train_transaction</code> + <code class="language-plaintext highlighter-rouge">train_identity</code> on <code class="language-plaintext highlighter-rouge">TransactionID</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Target</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">isFraud</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Missing</td>
+      <td style="text-align: left">Report MCAR/MAR/NMAR per column group (D, V, C blocks)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Univariate</td>
+      <td style="text-align: left">ANOVA on numeric; Chi2 on one-hot categoricals</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Multivariate</td>
+      <td style="text-align: left">CFS on V-block; interaction proxy for DISR</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Models</td>
+      <td style="text-align: left">RF, XGB, SVM — same as paper</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Metrics</td>
+      <td style="text-align: left"><strong>Recall</strong>, <strong>PR-AUC</strong> primary; Accuracy secondary</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Compare</td>
+      <td style="text-align: left">228 variants is optional; start with 12–20 key combos</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="what-the-paper-teaches-final-takeaway">What the paper teaches (final takeaway)</h2>
+
+<ol>
+  <li><strong>Feature selection is not always an improvement</strong> — especially for <strong>XGB</strong>.</li>
+  <li><strong>Multivariate filters</strong> (CON, DISR) can match full feature performance with <strong>fewer columns</strong> on high-dimensional IDS data.</li>
+  <li><strong>Univariate</strong> methods rank fast but keep redundancy.</li>
+  <li><strong>Benchmark discipline</strong> (same CV, multiple metrics, ranking) matters more than one lucky train/test split.</li>
+  <li>For <strong>fraud</strong>, connect IDS logic: attacks ≈ fraud, benign ≈ normal transactions.</li>
+</ol>
+
+<hr />
+
+<h2 id="series-index">Series index</h2>
+
+<ol>
+  <li><a href="/2026/05/22/dana-4830-feature-selection-paper-overview/">Paper overview + MCAR/MAR/NMAR</a></li>
+  <li><a href="/2026/05/23/dana-4830-univariate-feature-selection/">Univariate FS</a></li>
+  <li><a href="/2026/05/24/dana-4830-multivariate-feature-selection-part1/">Multivariate Part 1 — CFS / mRMR</a></li>
+  <li><strong>This post</strong> — CON, DISR, full pipeline</li>
+</ol>
+
+<hr />
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>Zouhri et al. (2024) — §2.2, §5 Experimental design, §6 Results</li>
+  <li>Dash, M., &amp; Liu, H. (1997). Consistency-based search in feature selection (CON)</li>
+  <li>IEEE-CIS Fraud Detection competition data</li>
+  <li>Credit Card Fraud Detection (Kaggle) — practice dataset</li>
+</ul>
+
+    
+      <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      // Here is an example,
+      // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
+      this.page.url = "https://qleoz12.github.io//statistics/machine%20learning/dana-4830-multivariate-feature-selection-part2/";
+      this.page.identifier = "/statistics/machine%20learning/dana-4830-multivariate-feature-selection-part2/";
+    };
+
+    // You should be able to get the following lines of code from your Disqus admin.
+    // https://disqus.com/admin/universalcode
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//qleoz12githubio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+    
+  </div>
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+  
+<script>
+  window.MathJax = {
+    loader: { load: ['[tex]/ams'] },
+    tex: {
+      packages: { '[+]': ['ams', 'noerrors', 'noundefined'] },
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],
+      processEscapes: true,
+      tags: 'ams'
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script"></script>
+
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026 Leonardo L Sanchez- Dann Brown. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
