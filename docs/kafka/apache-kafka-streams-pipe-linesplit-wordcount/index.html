@@ -1,0 +1,627 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Apache Kafka Streams — Pipe, LineSplit, WordCount - Dann Brown Adventures</title>
+<meta name="description" content="Case 08 in my lab, aligned with the official Kafka Streams tutorial.">
+
+
+  <meta name="author" content="Dann brown">
+  
+  <meta property="article:author" content="Dann brown">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dann Brown Adventures">
+<meta property="og:title" content="Apache Kafka Streams — Pipe, LineSplit, WordCount">
+<meta property="og:url" content="/kafka/apache-kafka-streams-pipe-linesplit-wordcount/">
+
+
+  <meta property="og:description" content="Case 08 in my lab, aligned with the official Kafka Streams tutorial.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-09-02T00:00:00-05:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/kafka/apache-kafka-streams-pipe-linesplit-wordcount/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Leonardo L Sanchez- Dann Brown",
+      "url": "/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dann Brown Adventures Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--archive">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Dann Brown Adventures
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/learning/">Learning</a>
+            </li><li class="masthead__menu-item">
+              <a href="/projects/">Projects</a>
+            </li><li class="masthead__menu-item">
+              <a href="/portfolio/">Portfolio</a>
+            </li><li class="masthead__menu-item">
+              <a href="/experience/">Experience</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/videos/">Videos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/books/reading">Reading List</a>
+            </li><li class="masthead__menu-item">
+              <a href="/reading">Currently Reading</a>
+            </li><li class="masthead__menu-item">
+              <a href="/knowledge">Knowledge</a>
+            </li><li class="masthead__menu-item">
+              <a href="/certs">Certs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/Languages">Languages</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#kafka" itemprop="item"><span itemprop="name">Kafka</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Apache Kafka Streams — Pipe, LineSplit, WordCount</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/1577552827279.jpg" alt="Dann brown" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">Dann brown</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">CO</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/leonardo-sanchez-89590b127/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">linkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://www.youtube.com/channel/UCoROtxDQYfIgjXBDcORK5zw/videos" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-youtube" aria-hidden="true"></i><span class="label">Youtube</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Qleoz12" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kintaroloop@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="kintaroloop@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">Apache Kafka Streams — Pipe, LineSplit, WordCount</h1>
+    
+    <p>Case <strong>08</strong> in my lab, aligned with the <a href="https://kafka.apache.org/documentation/streams/">official Kafka Streams tutorial</a>.</p>
+
+<p><strong>Module:</strong> <code class="language-plaintext highlighter-rouge">str-streams/</code> (plain Java, <code class="language-plaintext highlighter-rouge">KafkaStreams</code> + <code class="language-plaintext highlighter-rouge">main()</code> — not Spring Boot).</p>
+
+<hr />
+
+<h2 id="spring-kafka-vs-kafka-streams">Spring Kafka vs Kafka Streams</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Casos 01–07</th>
+      <th>Caso 08</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>API</td>
+      <td><code class="language-plaintext highlighter-rouge">KafkaTemplate</code>, <code class="language-plaintext highlighter-rouge">@KafkaListener</code></td>
+      <td><code class="language-plaintext highlighter-rouge">StreamsBuilder</code>, <code class="language-plaintext highlighter-rouge">KStream</code>, <code class="language-plaintext highlighter-rouge">KTable</code></td>
+    </tr>
+    <tr>
+      <td>Model</td>
+      <td>Message in → handler</td>
+      <td><strong>Topology</strong> of processors</td>
+    </tr>
+    <tr>
+      <td>Runtime</td>
+      <td>str-consumer :8197</td>
+      <td>str-streams (separate process)</td>
+    </tr>
+    <tr>
+      <td>HTTP ingress</td>
+      <td>str-producer :8097</td>
+      <td>str-producer :8097 (same rule)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="topology-basics">Topology basics</h2>
+
+<p>A <strong>topology</strong> is a graph of stream processors:</p>
+
+<ul>
+  <li><strong>Source processor</strong> — reads from Kafka topics</li>
+  <li><strong>Stream processor</strong> — transforms records (map, filter, flatMap, aggregate)</li>
+  <li><strong>Sink processor</strong> — writes to Kafka topics</li>
+</ul>
+
+<pre><code class="language-mermaid">flowchart LR
+    Source["SourceProcessor"]
+    Proc["StreamProcessor"]
+    Sink["SinkProcessor"]
+    Source --&gt; Proc --&gt; Sink
+</code></pre>
+
+<p>Each app has a unique <code class="language-plaintext highlighter-rouge">APPLICATION_ID</code> (consumer group for Streams).</p>
+
+<hr />
+
+<h2 id="case-08a--pipe-stateless-passthrough">Case 08a — Pipe (stateless passthrough)</h2>
+
+<p><strong>Topology:</strong> <code class="language-plaintext highlighter-rouge">streams-plaintext-input</code> → <code class="language-plaintext highlighter-rouge">streams-pipe-output</code></p>
+
+<pre><code class="language-mermaid">flowchart LR
+    In["streams-plaintext-input"]
+  Out["streams-pipe-output"]
+    In --&gt; Out
+</code></pre>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">builder</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="s">"streams-plaintext-input"</span><span class="o">).</span><span class="na">to</span><span class="o">(</span><span class="s">"streams-pipe-output"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p><strong>Run:</strong> <code class="language-plaintext highlighter-rouge">run-streams-pipe.bat</code><br />
+<strong>Publish:</strong> <code class="language-plaintext highlighter-rouge">POST /casos/08a-pipe</code></p>
+
+<h3 id="kstream">KStream</h3>
+
+<p><strong>Definition:</strong> An unbounded, ordered, replayable sequence of key-value records.</p>
+
+<p><strong>Why it matters:</strong> The core abstraction for stream processing in Kafka Streams.</p>
+
+<p><strong>In my project:</strong> <code class="language-plaintext highlighter-rouge">builder.stream(StreamsTopics.INPUT)</code> in all three apps.</p>
+
+<p><strong>Interview version:</strong> A KStream represents a continuously updating data set from a Kafka topic, processed record by record.</p>
+
+<hr />
+
+<h2 id="case-08b--linesplit-flatmapvalues">Case 08b — LineSplit (flatMapValues)</h2>
+
+<p><strong>Topology:</strong> split text into words → <code class="language-plaintext highlighter-rouge">streams-linesplit-output</code></p>
+
+<pre><code class="language-mermaid">flowchart LR
+    In["streams-plaintext-input"]
+    FlatMap["flatMapValues split"]
+    Out["streams-linesplit-output"]
+    In --&gt; FlatMap --&gt; Out
+</code></pre>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">source</span><span class="o">.</span><span class="na">flatMapValues</span><span class="o">(</span><span class="n">value</span> <span class="o">-&gt;</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">value</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">"\\W+"</span><span class="o">)))</span>
+      <span class="o">.</span><span class="na">to</span><span class="o">(</span><span class="s">"streams-linesplit-output"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p><strong>Run:</strong> <code class="language-plaintext highlighter-rouge">run-streams-linesplit.bat</code><br />
+<strong>Publish:</strong> <code class="language-plaintext highlighter-rouge">POST /casos/08b-linesplit</code></p>
+
+<p>One input line can produce <strong>multiple</strong> output records (1 → N).</p>
+
+<hr />
+
+<h2 id="case-08c--wordcount-stateful-aggregation">Case 08c — WordCount (stateful aggregation)</h2>
+
+<p><strong>Topology:</strong> split → lowercase → groupBy word → count → KTable changelog → output</p>
+
+<pre><code class="language-mermaid">flowchart LR
+    In["streams-plaintext-input"]
+    Split["flatMapValues"]
+    Group["groupBy word"]
+    Count["count"]
+    Out["streams-wordcount-output"]
+    In --&gt; Split --&gt; Group --&gt; Count --&gt; Out
+</code></pre>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">source</span><span class="o">.</span><span class="na">flatMapValues</span><span class="o">(</span><span class="n">value</span> <span class="o">-&gt;</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">value</span><span class="o">.</span><span class="na">toLowerCase</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">"\\W+"</span><span class="o">)))</span>
+      <span class="o">.</span><span class="na">groupBy</span><span class="o">((</span><span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">value</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">count</span><span class="o">(</span><span class="nc">Materialized</span><span class="o">.</span><span class="na">as</span><span class="o">(</span><span class="s">"counts-store"</span><span class="o">))</span>
+      <span class="o">.</span><span class="na">toStream</span><span class="o">()</span>
+      <span class="o">.</span><span class="na">to</span><span class="o">(</span><span class="s">"streams-wordcount-output"</span><span class="o">,</span> <span class="nc">Produced</span><span class="o">.</span><span class="na">with</span><span class="o">(</span><span class="nc">Serdes</span><span class="o">.</span><span class="na">String</span><span class="o">(),</span> <span class="nc">Serdes</span><span class="o">.</span><span class="na">Long</span><span class="o">()));</span>
+</code></pre></div></div>
+
+<p><strong>Run:</strong> <code class="language-plaintext highlighter-rouge">run-streams-wordcount.bat</code><br />
+<strong>Publish:</strong> <code class="language-plaintext highlighter-rouge">POST /casos/08c-wordcount</code></p>
+
+<h3 id="ktable">KTable</h3>
+
+<p><strong>Definition:</strong> A changelog stream where each key maps to the latest value (table view of a stream).</p>
+
+<p><strong>Why it matters:</strong> Enables aggregations, joins, and materialized state.</p>
+
+<p><strong>In my project:</strong> <code class="language-plaintext highlighter-rouge">.count()</code> returns a <code class="language-plaintext highlighter-rouge">KTable&lt;String, Long&gt;</code> backed by state store <code class="language-plaintext highlighter-rouge">counts-store</code>.</p>
+
+<p><strong>Interview version:</strong> A KTable is the table view of a stream — updates overwrite prior values per key, ideal for counts and aggregates.</p>
+
+<h3 id="state-store">State Store</h3>
+
+<p><strong>Definition:</strong> Embedded key-value storage inside the Streams app for stateful operations.</p>
+
+<p><strong>Why it matters:</strong> Fault-tolerant local state for windowed joins and aggregations.</p>
+
+<p><strong>In my project:</strong> <code class="language-plaintext highlighter-rouge">counts-store</code> in WordCount; visible in <code class="language-plaintext highlighter-rouge">topology.describe()</code>.</p>
+
+<p><strong>Interview version:</strong> State stores let Kafka Streams persist aggregation state locally with changelog backup to Kafka.</p>
+
+<h3 id="application_id">APPLICATION_ID</h3>
+
+<p><strong>Definition:</strong> Unique identifier for a Streams application instance group.</p>
+
+<p><strong>Why it matters:</strong> Kafka uses it for consumer groups, offset commits, and rebalancing.</p>
+
+<p><strong>In my project:</strong> <code class="language-plaintext highlighter-rouge">streams-pipe</code>, <code class="language-plaintext highlighter-rouge">streams-linesplit</code>, <code class="language-plaintext highlighter-rouge">streams-wordcount</code> — run <strong>one at a time</strong>.</p>
+
+<p><strong>Interview version:</strong> APPLICATION_ID is like a consumer group ID for Streams — it defines who shares state and offsets.</p>
+
+<hr />
+
+<h2 id="startup-order-case-08">Startup order (Case 08)</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. docker compose up -d
+2. run-streams-&lt;pipe|linesplit|wordcount&gt;.bat   (pick ONE)
+3. run-producer.bat
+4. curl /casos/08a|08b|08c
+5. Inspect output topic in Kafdrop :19000
+</code></pre></div></div>
+
+<p>The consumer (8197) is <strong>not required</strong> for Case 08.</p>
+
+<hr />
+
+<h2 id="stream-table-duality-brief">Stream-table duality (brief)</h2>
+
+<ul>
+  <li>A <strong>stream</strong> is a sequence of events</li>
+  <li>A <strong>table</strong> is the latest value per key</li>
+  <li>Aggregations like <code class="language-plaintext highlighter-rouge">count()</code> produce a <strong>KTable</strong> changelog stream</li>
+</ul>
+
+<hr />
+
+<h2 id="processing-guarantees-brief">Processing guarantees (brief)</h2>
+
+<p>Kafka Streams supports <code class="language-plaintext highlighter-rouge">at_least_once</code> (default) and <code class="language-plaintext highlighter-rouge">exactly_once</code> via <code class="language-plaintext highlighter-rouge">processing.guarantee</code>. This lab uses defaults; production apps may enable exactly-once for critical pipelines.</p>
+
+<hr />
+
+<h2 id="related">Related</h2>
+
+<ul>
+  <li><a href="/kafka/kafka-lab-try-it-yourself/">Try it yourself (cURL)</a></li>
+  <li><a href="/kafka/apache-kafka-lab-architecture/">Lab architecture</a></li>
+  <li><a href="/kafka/apache-kafka-concepts-i-learned/">Concepts</a></li>
+  <li><a href="/kafka/lab-setup-windows/">Windows setup</a></li>
+</ul>
+
+    
+      <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      // Here is an example,
+      // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
+      this.page.url = "https://qleoz12.github.io//kafka/apache-kafka-streams-pipe-linesplit-wordcount/";
+      this.page.identifier = "/kafka/apache-kafka-streams-pipe-linesplit-wordcount/";
+    };
+
+    // You should be able to get the following lines of code from your Disqus admin.
+    // https://disqus.com/admin/universalcode
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//qleoz12githubio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+    
+  </div>
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026 Leonardo L Sanchez- Dann Brown. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

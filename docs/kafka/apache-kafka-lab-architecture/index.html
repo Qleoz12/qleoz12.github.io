@@ -1,0 +1,657 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Apache Kafka Lab — Architecture - Dann Brown Adventures</title>
+<meta name="description" content="Architecture of my str-producer / str-consumer Spring Boot laboratory.">
+
+
+  <meta name="author" content="Dann brown">
+  
+  <meta property="article:author" content="Dann brown">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dann Brown Adventures">
+<meta property="og:title" content="Apache Kafka Lab — Architecture">
+<meta property="og:url" content="/kafka/apache-kafka-lab-architecture/">
+
+
+  <meta property="og:description" content="Architecture of my str-producer / str-consumer Spring Boot laboratory.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-09-02T00:00:00-05:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/kafka/apache-kafka-lab-architecture/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Leonardo L Sanchez- Dann Brown",
+      "url": "/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dann Brown Adventures Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--archive">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Dann Brown Adventures
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/learning/">Learning</a>
+            </li><li class="masthead__menu-item">
+              <a href="/projects/">Projects</a>
+            </li><li class="masthead__menu-item">
+              <a href="/portfolio/">Portfolio</a>
+            </li><li class="masthead__menu-item">
+              <a href="/experience/">Experience</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/videos/">Videos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/books/reading">Reading List</a>
+            </li><li class="masthead__menu-item">
+              <a href="/reading">Currently Reading</a>
+            </li><li class="masthead__menu-item">
+              <a href="/knowledge">Knowledge</a>
+            </li><li class="masthead__menu-item">
+              <a href="/certs">Certs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/Languages">Languages</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#kafka" itemprop="item"><span itemprop="name">Kafka</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Apache Kafka Lab — Architecture</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/1577552827279.jpg" alt="Dann brown" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">Dann brown</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">CO</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/leonardo-sanchez-89590b127/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">linkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://www.youtube.com/channel/UCoROtxDQYfIgjXBDcORK5zw/videos" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-youtube" aria-hidden="true"></i><span class="label">Youtube</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Qleoz12" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kintaroloop@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="kintaroloop@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">Apache Kafka Lab — Architecture</h1>
+    
+    <p>Architecture of my <strong>str-producer / str-consumer</strong> Spring Boot laboratory.</p>
+
+<h2 id="components-and-ports">Components and ports</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Service</th>
+      <th>Port</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>str-producer</td>
+      <td>8097</td>
+      <td>REST ingress → Kafka</td>
+    </tr>
+    <tr>
+      <td>Kafka broker</td>
+      <td>9092</td>
+      <td>Message log</td>
+    </tr>
+    <tr>
+      <td>str-consumer</td>
+      <td>8197</td>
+      <td>Kafka → processing (<code class="language-plaintext highlighter-rouge">@KafkaListener</code>)</td>
+    </tr>
+    <tr>
+      <td>str-streams</td>
+      <td>—</td>
+      <td>Kafka Streams topologies (Case 08)</td>
+    </tr>
+    <tr>
+      <td>Kafdrop</td>
+      <td>19000</td>
+      <td>Web UI to inspect topics</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="normal-flow-cases-0107">Normal flow (Cases 01–07)</h2>
+
+<p>Business ingress is <strong>HTTP → Kafka → consumer</strong>. The producer is the only service that accepts external HTTP for publishing lab messages.</p>
+
+<h2 id="case-08-flow-kafka-streams">Case 08 flow (Kafka Streams)</h2>
+
+<p>For stream processing, <strong>str-streams</strong> replaces the Spring consumer. HTTP still goes only to the producer.</p>
+
+<pre><code class="language-mermaid">flowchart LR
+    Client["HTTP Client"]
+    Producer["str-producer :8097"]
+    Input["streams-plaintext-input"]
+    Streams["str-streams\nPipe | LineSplit | WordCount"]
+    Output["output topic"]
+    Kafdrop["Kafdrop :19000"]
+
+    Client --&gt;|"POST /casos/08x"| Producer
+    Producer --&gt; Input
+    Input --&gt; Streams
+    Streams --&gt; Output
+    Kafdrop -.-&gt; Input
+    Kafdrop -.-&gt; Output
+</code></pre>
+
+<p>Run <strong>one</strong> Streams app at a time. See <a href="/kafka/apache-kafka-streams-pipe-linesplit-wordcount/">Kafka Streams tutorial post</a>.</p>
+
+<h2 id="normal-flow-diagram-cases-0107">Normal flow diagram (Cases 01–07)</h2>
+
+<pre><code class="language-mermaid">flowchart LR
+    Client["HTTP Client"]
+    Producer["str-producer :8097"]
+    Kafka["Kafka :9092"]
+    Consumer["str-consumer :8197"]
+    Kafdrop["Kafdrop :19000"]
+
+    Client --&gt;|"POST REST"| Producer
+    Producer --&gt;|"KafkaTemplate.send"| Kafka
+    Kafka --&gt;|"@KafkaListener"| Consumer
+    Kafdrop -.-&gt;|"inspect"| Kafka
+</code></pre>
+
+<h3 id="producer-responsibility">Producer responsibility</h3>
+
+<ul>
+  <li>Receives HTTP (REST controller)</li>
+  <li>Serializes payload (String or JSON depending on lab)</li>
+  <li>Publishes to the target topic via <code class="language-plaintext highlighter-rouge">KafkaTemplate</code></li>
+</ul>
+
+<h3 id="consumer-responsibility">Consumer responsibility</h3>
+
+<ul>
+  <li>Subscribes with <code class="language-plaintext highlighter-rouge">@KafkaListener</code></li>
+  <li>Runs domain logic: log, transform, filter, persist to DB (lab 07)</li>
+  <li>Does <strong>not</strong> replace the producer as the main HTTP entry point</li>
+</ul>
+
+<h2 id="important-exception-kafkatemplate-in-the-consumer">Important exception: KafkaTemplate in the consumer</h2>
+
+<p>The consumer may also use <code class="language-plaintext highlighter-rouge">KafkaTemplate</code>. That does <strong>not</strong> make it the primary business producer.</p>
+
+<p>Typical infrastructure uses in <strong>str-consumer</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Use case</th>
+      <th>Why</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Retry topic</td>
+      <td>Republish failed records for backoff retry</td>
+    </tr>
+    <tr>
+      <td>DLT</td>
+      <td>Forward poison messages after retries exhausted</td>
+    </tr>
+    <tr>
+      <td>Request-reply</td>
+      <td>Send correlated reply to a reply topic</td>
+    </tr>
+  </tbody>
+</table>
+
+<pre><code class="language-mermaid">flowchart LR
+    Kafka["Main topic"]
+    Consumer["str-consumer"]
+    Retry["Retry topic"]
+    DLT["Dead letter topic"]
+    Reply["Reply topic"]
+
+    Kafka --&gt; Consumer
+    Consumer --&gt;|"failure, retryable"| Retry
+    Retry --&gt; Consumer
+    Consumer --&gt;|"failure, exhausted"| DLT
+    Consumer --&gt;|"request-reply"| Reply
+</code></pre>
+
+<p>Lab <strong>04</strong> covers retry + DLT. Lab <strong>05</strong> covers request-reply.</p>
+
+<h2 id="request-reply-flow">Request-reply flow</h2>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    participant C as HTTP Client
+    participant P as str-producer
+    participant K as Kafka
+    participant S as str-consumer
+  participant R as Reply topic
+
+    C-&gt;&gt;P: POST request
+    P-&gt;&gt;K: publish request + correlationId
+    K-&gt;&gt;S: @KafkaListener
+    S-&gt;&gt;R: KafkaTemplate reply (same correlationId)
+    R-&gt;&gt;P: optional sync wait / async handler
+    P--&gt;&gt;C: HTTP response (when applicable)
+</code></pre>
+
+<p>Correlation ID links the reply record to the original request.</p>
+
+<h2 id="lab-map">Lab map</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lab</th>
+      <th>Flow highlight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>01 Basic message</td>
+      <td>Producer REST → topic → listener logs</td>
+    </tr>
+    <tr>
+      <td>02 Message key</td>
+      <td>Key chooses partition; order per key</td>
+    </tr>
+    <tr>
+      <td>03 JSON events</td>
+      <td>Typed JSON serialization</td>
+    </tr>
+    <tr>
+      <td>04 Retry + DLT</td>
+      <td>Failure → retry topic → DLT</td>
+    </tr>
+    <tr>
+      <td>05 Request-reply</td>
+      <td>correlationId + reply topic</td>
+    </tr>
+    <tr>
+      <td>06 Filter / interceptor</td>
+      <td><code class="language-plaintext highlighter-rouge">RecordInterceptor</code> before listener</td>
+    </tr>
+    <tr>
+      <td>07 Inventory / DB</td>
+      <td>Consumer persists side effect</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="try-it-yourself-labs">Try it yourself (labs)</h2>
+
+<p>For each lab, verify:</p>
+
+<ol>
+  <li>HTTP request to producer <strong>8097</strong> returns expected status</li>
+  <li>Message appears in Kafdrop (<strong>19000</strong>) on the correct topic</li>
+  <li>Consumer logs or DB reflect processing on <strong>8197</strong></li>
+</ol>
+
+<p>Operational setup (JDK 17, Maven, Windows/JEnv) belongs in separate runbooks — not mixed with these concepts. See <a href="/kafka/apache-kafka-concepts-i-learned/">Concepts I Learned</a> for definitions.</p>
+
+<h2 id="mental-model">Mental model</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTP Client
+     |
+     v
+Producer :8097   ← only main HTTP ingress for publishing
+     |
+     v
+Kafka :9092
+     |
+     v
+Consumer :8197   ← processing; may use KafkaTemplate for retry/DLT/reply only
+</code></pre></div></div>
+
+<h2 id="related">Related</h2>
+
+<ul>
+  <li><a href="/kafka/apache-kafka-concepts-i-learned/">Apache Kafka — Concepts I Learned</a></li>
+  <li><a href="/learning/">Learning hub</a></li>
+</ul>
+
+    
+      <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      // Here is an example,
+      // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
+      this.page.url = "https://qleoz12.github.io//kafka/apache-kafka-lab-architecture/";
+      this.page.identifier = "/kafka/apache-kafka-lab-architecture/";
+    };
+
+    // You should be able to get the following lines of code from your Disqus admin.
+    // https://disqus.com/admin/universalcode
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//qleoz12githubio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+    
+  </div>
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026 Leonardo L Sanchez- Dann Brown. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

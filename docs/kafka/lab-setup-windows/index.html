@@ -1,0 +1,587 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Kafka Lab — Windows Setup - Dann Brown Adventures</title>
+<meta name="description" content="An amazing website.">
+
+
+  <meta name="author" content="Dann brown">
+  
+  <meta property="article:author" content="Dann brown">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dann Brown Adventures">
+<meta property="og:title" content="Kafka Lab — Windows Setup">
+<meta property="og:url" content="/kafka/lab-setup-windows/">
+
+
+  <meta property="og:description" content="An amazing website.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-09-02T00:00:00-05:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/kafka/lab-setup-windows/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Leonardo L Sanchez- Dann Brown",
+      "url": "/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dann Brown Adventures Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Dann Brown Adventures
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/learning/">Learning</a>
+            </li><li class="masthead__menu-item">
+              <a href="/projects/">Projects</a>
+            </li><li class="masthead__menu-item">
+              <a href="/portfolio/">Portfolio</a>
+            </li><li class="masthead__menu-item">
+              <a href="/experience/">Experience</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/videos/">Videos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/books/reading">Reading List</a>
+            </li><li class="masthead__menu-item">
+              <a href="/reading">Currently Reading</a>
+            </li><li class="masthead__menu-item">
+              <a href="/knowledge">Knowledge</a>
+            </li><li class="masthead__menu-item">
+              <a href="/certs">Certs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/Languages">Languages</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/kafka" itemprop="item"><span itemprop="name">Kafka</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Kafka Lab — Windows Setup</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/1577552827279.jpg" alt="Dann brown" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">Dann brown</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">CO</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/leonardo-sanchez-89590b127/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">linkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://www.youtube.com/channel/UCoROtxDQYfIgjXBDcORK5zw/videos" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-youtube" aria-hidden="true"></i><span class="label">Youtube</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Qleoz12" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kintaroloop@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="kintaroloop@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Kafka Lab — Windows Setup">
+    
+    <meta itemprop="datePublished" content="2026-09-02T00:00:00-05:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="/kafka/lab-setup-windows/" class="u-url" itemprop="url">Kafka Lab — Windows Setup
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#requirements">Requirements</a></li><li><a href="#ports">Ports</a></li><li><a href="#java-17-one-time">Java 17 (one time)</a></li><li><a href="#startup-order">Startup order</a></li><li><a href="#common-pitfalls">Common pitfalls</a></li><li><a href="#what-this-lab-uses-and-does-not">What this lab uses (and does not)</a></li><li><a href="#related">Related</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>Operational guide to run the lab locally on Windows. For curls and test cases see <a href="/kafka/kafka-lab-try-it-yourself/">Try it yourself</a>.</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+  <li>Docker (<code class="language-plaintext highlighter-rouge">docker compose</code>)</li>
+  <li>JDK <strong>17</strong> (Spring Boot 3)</li>
+  <li>Maven (<code class="language-plaintext highlighter-rouge">mvn</code> — do not use <code class="language-plaintext highlighter-rouge">mvnw</code> in this lab)</li>
+  <li>JEnv (optional; lab scripts use it)</li>
+</ul>
+
+<h2 id="ports">Ports</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Service</th>
+      <th>Port</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Producer</td>
+      <td>8097</td>
+    </tr>
+    <tr>
+      <td>Consumer</td>
+      <td>8197</td>
+    </tr>
+    <tr>
+      <td>Kafdrop</td>
+      <td>19000</td>
+    </tr>
+    <tr>
+      <td>Kafka</td>
+      <td>9092</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="java-17-one-time">Java 17 (one time)</h2>
+
+<pre><code class="language-cmd">cd D:\Backup\develop\curso-apache-kafka-master
+jenv local jdk17
+java -version
+</code></pre>
+
+<p>If Maven still reports Java 8, set <code class="language-plaintext highlighter-rouge">JAVA_HOME</code> explicitly:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$</span><span class="nn">env</span><span class="p">:</span><span class="nv">JAVA_HOME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"D:\java\corretto-17.0.13-2"</span><span class="w">
+</span><span class="n">mvn</span><span class="w"> </span><span class="nt">-version</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="startup-order">Startup order</h2>
+
+<ol>
+  <li><strong>Kafka stack:</strong> <code class="language-plaintext highlighter-rouge">docker compose up -d</code> → verify with <code class="language-plaintext highlighter-rouge">docker compose ps</code></li>
+  <li><strong>Consumer</strong> (terminal 1): <code class="language-plaintext highlighter-rouge">run-consumer.bat</code> or <code class="language-plaintext highlighter-rouge">mvn spring-boot:run</code> in <code class="language-plaintext highlighter-rouge">str-consumer</code></li>
+  <li><strong>Producer</strong> (terminal 2): <code class="language-plaintext highlighter-rouge">run-producer.bat</code> or <code class="language-plaintext highlighter-rouge">mvn spring-boot:run</code> in <code class="language-plaintext highlighter-rouge">str-producer</code></li>
+  <li><strong>Test:</strong> <code class="language-plaintext highlighter-rouge">curl -X POST http://localhost:8097/casos/01-basico -H "Content-Type: text/plain" -d "Hola Kafka"</code></li>
+</ol>
+
+<p>Kafdrop UI: http://localhost:19000</p>
+
+<h2 id="common-pitfalls">Common pitfalls</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Problem</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mvnw</code> fails</td>
+      <td>Use <code class="language-plaintext highlighter-rouge">mvn</code> or <code class="language-plaintext highlighter-rouge">run-*.bat</code> scripts</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">java -version</code> ≠ Maven Java</td>
+      <td>Set <code class="language-plaintext highlighter-rouge">JAVA_HOME</code> to JDK 17</td>
+    </tr>
+    <tr>
+      <td>JEnv broken global</td>
+      <td><code class="language-plaintext highlighter-rouge">jenv local jdk17</code> in project root</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="what-this-lab-uses-and-does-not">What this lab uses (and does not)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Included</th>
+      <th>Not in this lab</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Spring Kafka (Cases 01–07)</td>
+      <td>ksqlDB</td>
+    </tr>
+    <tr>
+      <td>Kafka Streams (Case 08 — <code class="language-plaintext highlighter-rouge">str-streams</code>)</td>
+      <td>Spring <code class="language-plaintext highlighter-rouge">@EnableKafkaStreams</code> (uses plain <code class="language-plaintext highlighter-rouge">KafkaStreams</code> API)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="related">Related</h2>
+
+<ul>
+  <li>
+    <p><a href="/kafka/apache-kafka-streams-pipe-linesplit-wordcount/">Kafka Streams — Pipe, LineSplit, WordCount</a></p>
+  </li>
+  <li><a href="/kafka/kafka-lab-try-it-yourself/">Try it yourself (cURL)</a></li>
+  <li><a href="/kafka/apache-kafka-lab-architecture/">Lab architecture</a></li>
+  <li><a href="/kafka/apache-kafka-concepts-i-learned/">Concepts</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#backend" class="page__taxonomy-item p-category" rel="tag">Backend</a><span class="sep">, </span>
+    
+      <a href="/categories/#kafka" class="page__taxonomy-item p-category" rel="tag">Kafka</a><span class="sep">, </span>
+    
+      <a href="/categories/#labs" class="page__taxonomy-item p-category" rel="tag">Labs</a><span class="sep">, </span>
+    
+      <a href="/categories/#learning" class="page__taxonomy-item p-category" rel="tag">Learning</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2026-09-02T00:00:00-05:00">September 2, 2026</time></p>
+
+      </footer>
+
+      
+
+      
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026 Leonardo L Sanchez- Dann Brown. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

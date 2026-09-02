@@ -2,6 +2,13 @@
 main:
   - title: "About"
     url: /about/
+<<<<<<< HEAD
+=======
+  - title: "Learning"
+    url: /learning/
+  - title: "Projects"
+    url: /projects/
+>>>>>>> 2e687011 (Publish Kafka learning series and restructure site for GitHub Pages.)
   - title: "Portfolio"
     url: /portfolio/
   - title: "Experience"
@@ -12,11 +19,11 @@ main:
     url: /videos/
   - title: "Reading List"
     url: /books/reading
-  - title: "looking"
+  - title: "Currently Reading"
     url: /reading
-  - title: "knowledge"
+  - title: "Knowledge"
     url: /knowledge
-  - title: "certs"
+  - title: "Certs"
     url: /certs
   - title: "Languages"
     url: /Languages

@@ -5,8 +5,13 @@
     <description></description>
     <link></link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
+<<<<<<< HEAD
     <pubDate>Thu, 18 Jun 2026 23:47:16 -0500</pubDate>
     <lastBuildDate>Thu, 18 Jun 2026 23:47:16 -0500</lastBuildDate>
+=======
+    <pubDate>Wed, 02 Sep 2026 01:07:21 -0500</pubDate>
+    <lastBuildDate>Wed, 02 Sep 2026 01:07:21 -0500</lastBuildDate>
+>>>>>>> 2e687011 (Publish Kafka learning series and restructure site for GitHub Pages.)
     <generator>Jekyll v4.2.2</generator>
     
 

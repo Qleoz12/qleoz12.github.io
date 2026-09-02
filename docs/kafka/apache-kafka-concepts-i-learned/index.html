@@ -1,0 +1,791 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Apache Kafka — Concepts I Learned - Dann Brown Adventures</title>
+<meta name="description" content="Notes from my str-producer / str-consumer Spring Boot lab: HTTP ingress on port 8097, Kafka on 9092, consumer on 8197, Kafdrop on 19000.">
+
+
+  <meta name="author" content="Dann brown">
+  
+  <meta property="article:author" content="Dann brown">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dann Brown Adventures">
+<meta property="og:title" content="Apache Kafka — Concepts I Learned">
+<meta property="og:url" content="/kafka/apache-kafka-concepts-i-learned/">
+
+
+  <meta property="og:description" content="Notes from my str-producer / str-consumer Spring Boot lab: HTTP ingress on port 8097, Kafka on 9092, consumer on 8197, Kafdrop on 19000.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-09-02T00:00:00-05:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/kafka/apache-kafka-concepts-i-learned/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Leonardo L Sanchez- Dann Brown",
+      "url": "/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dann Brown Adventures Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--archive">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Dann Brown Adventures
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/learning/">Learning</a>
+            </li><li class="masthead__menu-item">
+              <a href="/projects/">Projects</a>
+            </li><li class="masthead__menu-item">
+              <a href="/portfolio/">Portfolio</a>
+            </li><li class="masthead__menu-item">
+              <a href="/experience/">Experience</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Archive</a>
+            </li><li class="masthead__menu-item">
+              <a href="/videos/">Videos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/books/reading">Reading List</a>
+            </li><li class="masthead__menu-item">
+              <a href="/reading">Currently Reading</a>
+            </li><li class="masthead__menu-item">
+              <a href="/knowledge">Knowledge</a>
+            </li><li class="masthead__menu-item">
+              <a href="/certs">Certs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/Languages">Languages</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#kafka" itemprop="item"><span itemprop="name">Kafka</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Apache Kafka — Concepts I Learned</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="/">
+        <img src="/assets/images/1577552827279.jpg" alt="Dann brown" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">Dann brown</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">CO</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/leonardo-sanchez-89590b127/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">linkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://www.youtube.com/channel/UCoROtxDQYfIgjXBDcORK5zw/videos" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-youtube" aria-hidden="true"></i><span class="label">Youtube</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/Qleoz12" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:kintaroloop@gmail.com" rel="me" class="u-email">
+            <meta itemprop="email" content="kintaroloop@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">Apache Kafka — Concepts I Learned</h1>
+    
+    <p>Notes from my <strong>str-producer / str-consumer</strong> Spring Boot lab: HTTP ingress on port <strong>8097</strong>, Kafka on <strong>9092</strong>, consumer on <strong>8197</strong>, Kafdrop on <strong>19000</strong>.</p>
+
+<hr />
+
+<h3 id="broker">Broker</h3>
+
+<p><strong>Definition:</strong> A Kafka server that stores topics, serves producers and consumers, and coordinates partitions.</p>
+
+<p><strong>Why it matters:</strong> Brokers are the runtime of Kafka; clustering them gives fault tolerance and scale.</p>
+
+<p><strong>In my project:</strong> Kafka listens on <strong>9092</strong>; Kafdrop (<strong>19000</strong>) connects to the same cluster for inspection.</p>
+
+<p><strong>Example:</strong> <code class="language-plaintext highlighter-rouge">localhost:9092</code> in Spring <code class="language-plaintext highlighter-rouge">application.yml</code> bootstrap servers.</p>
+
+<p><strong>Interview version:</strong> A Kafka broker is a node that persists topic partitions and handles produce/fetch requests. A production cluster runs multiple brokers for replication and availability.</p>
+
+<hr />
+
+<h3 id="topic">Topic</h3>
+
+<p><strong>Definition:</strong> A named, append-only log category where producers publish and consumers subscribe.</p>
+
+<p><strong>Why it matters:</strong> Topics decouple producers from consumers and let many services share the same event stream.</p>
+
+<p><strong>In my project:</strong> Each lab case uses its own topic (basic message, keyed messages, JSON events, retry/DLT, request-reply, filter, inventory).</p>
+
+<p><strong>Example:</strong> Producer REST receives HTTP, then publishes to the configured topic via <code class="language-plaintext highlighter-rouge">KafkaTemplate</code>.</p>
+
+<p><strong>Interview version:</strong> A topic is a logical channel of records. Producers write to topics; consumers read from them without knowing who produced the data.</p>
+
+<hr />
+
+<h3 id="partition">Partition</h3>
+
+<p><strong>Definition:</strong> A topic is split into ordered partitions; each partition is an ordered, immutable sequence of records.</p>
+
+<p><strong>Why it matters:</strong> Partitions enable parallelism: multiple consumers in a group can read different partitions at once.</p>
+
+<p><strong>In my project:</strong> Lab <strong>02</strong> demonstrates message keys and ordering <strong>within</strong> a partition.</p>
+
+<p><strong>Example:</strong> Three keys → three partition streams; same key → same partition → order preserved per key.</p>
+
+<p><strong>Interview version:</strong> Partitions are Kafka’s unit of parallelism. Ordering is guaranteed per partition, not globally across a topic.</p>
+
+<hr />
+
+<h3 id="offset">Offset</h3>
+
+<p><strong>Definition:</strong> A monotonically increasing ID of a record within a partition.</p>
+
+<p><strong>Why it matters:</strong> Consumers track offsets to know what they have processed and to replay if needed.</p>
+
+<p><strong>In my project:</strong> Visible in Kafdrop and consumer logs when processing lab messages.</p>
+
+<p><strong>Example:</strong> After consuming partition 0 up to offset 42, the consumer commits offset 43 as the next read position.</p>
+
+<p><strong>Interview version:</strong> An offset is the position of a message in a partition. Consumer groups commit offsets to resume after restarts without reprocessing everything.</p>
+
+<hr />
+
+<h3 id="producer">Producer</h3>
+
+<p><strong>Definition:</strong> A client that sends records to Kafka topics.</p>
+
+<p><strong>Why it matters:</strong> Producers are the entry point for event-driven systems.</p>
+
+<p><strong>In my project:</strong> <strong>str-producer</strong> (Spring Boot, port <strong>8097</strong>) exposes REST; HTTP requests become Kafka records.</p>
+
+<p><strong>Example:</strong> <code class="language-plaintext highlighter-rouge">POST</code> to producer REST → message published to topic.</p>
+
+<p><strong>Interview version:</strong> A producer serializes records and sends them to a topic partition, optionally using a key for routing.</p>
+
+<hr />
+
+<h3 id="consumer">Consumer</h3>
+
+<p><strong>Definition:</strong> A client that reads records from Kafka topics.</p>
+
+<p><strong>Why it matters:</strong> Consumers implement business logic reacting to events asynchronously.</p>
+
+<p><strong>In my project:</strong> <strong>str-consumer</strong> (port <strong>8197</strong>) uses <code class="language-plaintext highlighter-rouge">@KafkaListener</code> to process messages from topics.</p>
+
+<p><strong>Example:</strong> Listener method receives <code class="language-plaintext highlighter-rouge">ConsumerRecord</code> and applies domain logic (log, transform, persist).</p>
+
+<p><strong>Interview version:</strong> A consumer subscribes to topics, fetches records, processes them, and commits offsets.</p>
+
+<hr />
+
+<h3 id="consumer-group">Consumer Group</h3>
+
+<p><strong>Definition:</strong> A set of consumers that cooperate to consume a topic; each partition is assigned to at most one consumer in the group.</p>
+
+<p><strong>Why it matters:</strong> Groups scale consumption horizontally without duplicate processing per partition.</p>
+
+<p><strong>In my project:</strong> Consumer <code class="language-plaintext highlighter-rouge">group-id</code> in Spring config defines which group processes lab topics.</p>
+
+<p><strong>Example:</strong> Two instances with the same <code class="language-plaintext highlighter-rouge">group-id</code> split partitions; two different groups each get a full copy of the stream.</p>
+
+<p><strong>Interview version:</strong> Consumer groups enable scalable consumption. Kafka assigns each partition to one consumer in the group at a time.</p>
+
+<hr />
+
+<h3 id="message-key">Message Key</h3>
+
+<p><strong>Definition:</strong> Optional bytes sent with a record used to choose the target partition.</p>
+
+<p><strong>Why it matters:</strong> Keys colocate related events for ordered processing per entity.</p>
+
+<p><strong>In my project:</strong> Lab <strong>02</strong> — same key → same partition → order per key.</p>
+
+<p><strong>Example:</strong> Key <code class="language-plaintext highlighter-rouge">order-123</code> always lands in the same partition.</p>
+
+<p><strong>Interview version:</strong> Message keys route related events to the same partition so ordering holds for that key.</p>
+
+<hr />
+
+<h3 id="serialization">Serialization</h3>
+
+<p><strong>Definition:</strong> Converting an object or payload into bytes for Kafka.</p>
+
+<p><strong>Why it matters:</strong> Kafka only stores bytes; serializers define the on-wire format.</p>
+
+<p><strong>In my project:</strong> String serializer for simple labs; JSON serializer for event payloads (lab <strong>03</strong>).</p>
+
+<p><strong>Example:</strong> <code class="language-plaintext highlighter-rouge">JsonSerializer</code> on <code class="language-plaintext highlighter-rouge">KafkaTemplate</code> for typed events.</p>
+
+<p><strong>Interview version:</strong> Serialization turns application objects into bytes. Producer and consumer must agree on format and schema.</p>
+
+<hr />
+
+<h3 id="deserialization">Deserialization</h3>
+
+<p><strong>Definition:</strong> Converting Kafka bytes back into application objects.</p>
+
+<p><strong>Why it matters:</strong> Consumers need compatible deserializers with producers.</p>
+
+<p><strong>In my project:</strong> <code class="language-plaintext highlighter-rouge">@KafkaListener</code> methods deserialize JSON events in lab <strong>03</strong>.</p>
+
+<p><strong>Example:</strong> <code class="language-plaintext highlighter-rouge">JsonDeserializer</code> configured with trusted packages for Spring Kafka.</p>
+
+<p><strong>Interview version:</strong> Deserialization is the inverse of serialization at the consumer. Mismatched serializers cause poison messages or failures.</p>
+
+<hr />
+
+<h3 id="kafkatemplate">KafkaTemplate</h3>
+
+<p><strong>Definition:</strong> Spring abstraction for sending messages to Kafka.</p>
+
+<p><strong>Why it matters:</strong> Simplifies sync/async sends, headers, and topic selection.</p>
+
+<p><strong>In my project:</strong> Primary send path in <strong>str-producer</strong>; also used in <strong>str-consumer</strong> for retry, DLT, and reply (infrastructure, not main business ingress).</p>
+
+<p><strong>Example:</strong> <code class="language-plaintext highlighter-rouge">kafkaTemplate.send(topic, key, payload)</code>.</p>
+
+<p><strong>Interview version:</strong> <code class="language-plaintext highlighter-rouge">KafkaTemplate</code> is Spring’s producer API. Having it in a consumer service usually means retry, DLT, or reply — not that the service is the main HTTP producer.</p>
+
+<hr />
+
+<h3 id="kafkalistener">@KafkaListener</h3>
+
+<p><strong>Definition:</strong> Spring annotation declaring a method as a Kafka message handler.</p>
+
+<p><strong>Why it matters:</strong> Declarative consumption with container-managed threading and acks.</p>
+
+<p><strong>In my project:</strong> Core pattern in <strong>str-consumer</strong> for all seven lab cases.</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@KafkaListener</span><span class="o">(</span><span class="n">topics</span> <span class="o">=</span> <span class="s">"my-topic"</span><span class="o">,</span> <span class="n">groupId</span> <span class="o">=</span> <span class="s">"my-group"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">listen</span><span class="o">(</span><span class="nc">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>Interview version:</strong> <code class="language-plaintext highlighter-rouge">@KafkaListener</code> registers a consumer method. Spring Kafka manages polling, deserialization, and error handling hooks.</p>
+
+<hr />
+
+<h3 id="retry-topic">Retry Topic</h3>
+
+<p><strong>Definition:</strong> A secondary topic where failed messages are republished for delayed reprocessing.</p>
+
+<p><strong>Why it matters:</strong> Retries transient failures without blocking the main consumer thread indefinitely.</p>
+
+<p><strong>In my project:</strong> Lab <strong>04</strong> — retry flow before sending to DLT.</p>
+
+<p><strong>Example:</strong> Processing fails → message routed to retry topic → consumer retries with backoff.</p>
+
+<p><strong>Interview version:</strong> Retry topics decouple immediate failure from re-attempts, often with backoff, instead of infinite in-process retries.</p>
+
+<hr />
+
+<h3 id="dead-letter-topic-dlt">Dead Letter Topic (DLT)</h3>
+
+<p><strong>Definition:</strong> A topic that stores messages that failed after retries, for manual inspection or alternate handling.</p>
+
+<p><strong>Why it matters:</strong> Prevents poison messages from blocking the pipeline forever.</p>
+
+<p><strong>In my project:</strong> Lab <strong>04</strong> — final destination when retries are exhausted.</p>
+
+<p><strong>Example:</strong> <code class="language-plaintext highlighter-rouge">@DltHandler</code> or Spring Kafka non-blocking retry sends to <code class="language-plaintext highlighter-rouge">*.DLT</code> topic.</p>
+
+<p><strong>Interview version:</strong> A DLT quarantines messages that cannot be processed. Operators fix data or replay after correcting the bug.</p>
+
+<hr />
+
+<h3 id="request-reply">Request-Reply</h3>
+
+<p><strong>Definition:</strong> A pattern where a consumer sends a reply record correlated to the original request, often via a reply topic.</p>
+
+<p><strong>Why it matters:</strong> Enables RPC-style workflows over Kafka while keeping async transport.</p>
+
+<p><strong>In my project:</strong> Lab <strong>05</strong> — correlation between request and response topics.</p>
+
+<p><strong>Example:</strong> Request carries <code class="language-plaintext highlighter-rouge">correlationId</code> header; reply producer uses the same id.</p>
+
+<p><strong>Interview version:</strong> Request-reply over Kafka uses correlation IDs and reply topics. It simulates RPC but remains event-driven at the broker level.</p>
+
+<hr />
+
+<h3 id="correlation-id">Correlation ID</h3>
+
+<p><strong>Definition:</strong> An identifier linking a request message to its reply.</p>
+
+<p><strong>Why it matters:</strong> Essential when many in-flight request-reply pairs share topics.</p>
+
+<p><strong>In my project:</strong> Lab <strong>05</strong> request-reply flow.</p>
+
+<p><strong>Example:</strong> Header <code class="language-plaintext highlighter-rouge">kafka_correlationId</code> matches pending client callback.</p>
+
+<p><strong>Interview version:</strong> Correlation IDs let clients match asynchronous replies to the original request in request-reply patterns.</p>
+
+<hr />
+
+<h3 id="recordinterceptor">RecordInterceptor</h3>
+
+<p><strong>Definition:</strong> Hook that inspects or modifies records (or headers) before listener invocation.</p>
+
+<p><strong>Why it matters:</strong> Cross-cutting concerns: filtering, MDC logging, metrics, dropping bad records.</p>
+
+<p><strong>In my project:</strong> Lab <strong>06</strong> — text filter / interceptor behavior.</p>
+
+<p><strong>Example:</strong> Interceptor drops or flags messages that fail a text rule before <code class="language-plaintext highlighter-rouge">@KafkaListener</code> runs.</p>
+
+<p><strong>Interview version:</strong> Record interceptors implement cross-cutting consumer logic without polluting every listener method.</p>
+
+<hr />
+
+<h3 id="event-driven-architecture">Event-driven architecture</h3>
+
+<p><strong>Definition:</strong> Services communicate by producing and consuming events instead of synchronous direct calls.</p>
+
+<p><strong>Why it matters:</strong> Loose coupling, independent scaling, and temporal decoupling.</p>
+
+<p><strong>In my project:</strong> HTTP → producer → Kafka → consumer replaces a single monolithic request chain.</p>
+
+<p><strong>Example:</strong> Inventory update event consumed asynchronously (lab <strong>07</strong>).</p>
+
+<p><strong>Interview version:</strong> Event-driven architecture uses a broker so producers and consumers evolve independently and scale on different axes.</p>
+
+<hr />
+
+<h3 id="decoupling">Decoupling</h3>
+
+<p><strong>Definition:</strong> Reducing direct dependencies between services so changes on one side do not ripple immediately to the other.</p>
+
+<p><strong>Why it matters:</strong> Kafka buffers and persists; consumers can be down without losing events (within retention).</p>
+
+<p><strong>In my project:</strong> Producer does not call consumer HTTP; only Kafka sits between them.</p>
+
+<p><strong>Example:</strong> Spike in HTTP traffic is absorbed by the broker while consumers catch up.</p>
+
+<p><strong>Interview version:</strong> Kafka decouples producers and consumers in time and space — they only share topic contracts, not deployment or availability.</p>
+
+<hr />
+
+<h3 id="horizontal-scaling">Horizontal scaling</h3>
+
+<p><strong>Definition:</strong> Adding more instances instead of bigger machines.</p>
+
+<p><strong>Why it matters:</strong> Kafka scales reads via partitions + consumer groups; writes via more partitions and brokers.</p>
+
+<p><strong>In my project:</strong> Run multiple consumer instances with the same <code class="language-plaintext highlighter-rouge">group-id</code> to parallelize partition processing.</p>
+
+<p><strong>Example:</strong> 6 partitions, 3 consumers → ~2 partitions each.</p>
+
+<p><strong>Interview version:</strong> Horizontal scaling in Kafka means more partitions and more consumers in a group, bounded by partition count.</p>
+
+<hr />
+
+<h2 id="lab-index-my-eight-cases">Lab index (my eight cases)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Topic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>01</td>
+      <td>Basic Kafka message</td>
+    </tr>
+    <tr>
+      <td>02</td>
+      <td>Message key and partition ordering</td>
+    </tr>
+    <tr>
+      <td>03</td>
+      <td>JSON events</td>
+    </tr>
+    <tr>
+      <td>04</td>
+      <td>Retry + Dead Letter Topic</td>
+    </tr>
+    <tr>
+      <td>05</td>
+      <td>Request-reply</td>
+    </tr>
+    <tr>
+      <td>06</td>
+      <td>Text filter / interceptor</td>
+    </tr>
+    <tr>
+      <td>07</td>
+      <td>Kafka → inventory / DB persistence</td>
+    </tr>
+    <tr>
+      <td>08</td>
+      <td>Kafka Streams (Pipe, LineSplit, WordCount)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>See <a href="/kafka/apache-kafka-lab-architecture/">Lab architecture</a> for diagrams and ports.</p>
+
+<h3 id="kafka-streams-concepts-case-08">Kafka Streams concepts (Case 08)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Concept</th>
+      <th>Where</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>KStream</td>
+      <td><code class="language-plaintext highlighter-rouge">str-streams</code> — <code class="language-plaintext highlighter-rouge">builder.stream()</code></td>
+    </tr>
+    <tr>
+      <td>KTable</td>
+      <td>WordCount — <code class="language-plaintext highlighter-rouge">.count()</code></td>
+    </tr>
+    <tr>
+      <td>Topology</td>
+      <td><code class="language-plaintext highlighter-rouge">topology.describe()</code> on startup</td>
+    </tr>
+    <tr>
+      <td>State Store</td>
+      <td><code class="language-plaintext highlighter-rouge">counts-store</code> in WordCount</td>
+    </tr>
+    <tr>
+      <td>APPLICATION_ID</td>
+      <td><code class="language-plaintext highlighter-rouge">streams-pipe</code>, <code class="language-plaintext highlighter-rouge">streams-linesplit</code>, <code class="language-plaintext highlighter-rouge">streams-wordcount</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Full walkthrough: <a href="/kafka/apache-kafka-streams-pipe-linesplit-wordcount/">Kafka Streams — Pipe, LineSplit, WordCount</a>.</p>
+
+    
+      <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      // Here is an example,
+      // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
+      this.page.url = "https://qleoz12.github.io//kafka/apache-kafka-concepts-i-learned/";
+      this.page.identifier = "/kafka/apache-kafka-concepts-i-learned/";
+    };
+
+    // You should be able to get the following lines of code from your Disqus admin.
+    // https://disqus.com/admin/universalcode
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//qleoz12githubio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+    
+  </div>
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026 Leonardo L Sanchez- Dann Brown. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
