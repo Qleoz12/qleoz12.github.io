@@ -369,9 +369,17 @@
   </tbody>
 </table>
 
-<p>The lab code is mine; the explanations above lean on those creators for structure and motivation.</p>
+<p>The lab code is mine; the explanations below lean on those creators for structure and motivation.</p>
 
 <hr />
+
+<h2 id="1-core-architecture">1. Core architecture</h2>
+
+<p><strong>Producer → Broker → Topic → Partitions → Consumer</strong> — the minimum mental model before touching Spring code.</p>
+
+<p><img src="/assets/images/kafka/kafka-01-architecture.png" alt="Kafka core architecture: producer, broker, topic, partitions, and consumer" /></p>
+
+<p><em>Figure 1 — Basic data flow from publish to consume.</em></p>
 
 <h3 id="broker">Broker</h3>
 
@@ -385,8 +393,6 @@
 
 <p><strong>Interview version:</strong> A Kafka broker is a node that persists topic partitions and handles produce/fetch requests. A production cluster runs multiple brokers for replication and availability.</p>
 
-<hr />
-
 <h3 id="topic">Topic</h3>
 
 <p><strong>Definition:</strong> A named, append-only log category where producers publish and consumers subscribe.</p>
@@ -398,8 +404,6 @@
 <p><strong>Example:</strong> Producer REST receives HTTP, then publishes to the configured topic via <code class="language-plaintext highlighter-rouge">KafkaTemplate</code>.</p>
 
 <p><strong>Interview version:</strong> A topic is a logical channel of records. Producers write to topics; consumers read from them without knowing who produced the data.</p>
-
-<hr />
 
 <h3 id="partition">Partition</h3>
 
@@ -413,22 +417,6 @@
 
 <p><strong>Interview version:</strong> Partitions are Kafka’s unit of parallelism. Ordering is guaranteed per partition, not globally across a topic.</p>
 
-<hr />
-
-<h3 id="offset">Offset</h3>
-
-<p><strong>Definition:</strong> A monotonically increasing ID of a record within a partition.</p>
-
-<p><strong>Why it matters:</strong> Consumers track offsets to know what they have processed and to replay if needed.</p>
-
-<p><strong>In my project:</strong> Visible in Kafdrop and consumer logs when processing lab messages.</p>
-
-<p><strong>Example:</strong> After consuming partition 0 up to offset 42, the consumer commits offset 43 as the next read position.</p>
-
-<p><strong>Interview version:</strong> An offset is the position of a message in a partition. Consumer groups commit offsets to resume after restarts without reprocessing everything.</p>
-
-<hr />
-
 <h3 id="producer">Producer</h3>
 
 <p><strong>Definition:</strong> A client that sends records to Kafka topics.</p>
@@ -440,8 +428,6 @@
 <p><strong>Example:</strong> <code class="language-plaintext highlighter-rouge">POST</code> to producer REST → message published to topic.</p>
 
 <p><strong>Interview version:</strong> A producer serializes records and sends them to a topic partition, optionally using a key for routing.</p>
-
-<hr />
 
 <h3 id="consumer">Consumer</h3>
 
@@ -457,19 +443,25 @@
 
 <hr />
 
-<h3 id="consumer-group">Consumer Group</h3>
+<h2 id="2-position-and-order-offset--message-key">2. Position and order: Offset + Message Key</h2>
 
-<p><strong>Definition:</strong> A set of consumers that cooperate to consume a topic; each partition is assigned to at most one consumer in the group.</p>
+<p>Offsets mark <em>where</em> you are in a partition; keys decide <em>which</em> partition a message lands in.</p>
 
-<p><strong>Why it matters:</strong> Groups scale consumption horizontally without duplicate processing per partition.</p>
+<p><img src="/assets/images/kafka/kafka-02-offset-message-key.png" alt="Kafka offset and message key: position within a partition and routing by key" /></p>
 
-<p><strong>In my project:</strong> Consumer <code class="language-plaintext highlighter-rouge">group-id</code> in Spring config defines which group processes lab topics.</p>
+<p><em>Figure 2 — Same key always maps to the same partition; there is no global order across partitions.</em></p>
 
-<p><strong>Example:</strong> Two instances with the same <code class="language-plaintext highlighter-rouge">group-id</code> split partitions; two different groups each get a full copy of the stream.</p>
+<h3 id="offset">Offset</h3>
 
-<p><strong>Interview version:</strong> Consumer groups enable scalable consumption. Kafka assigns each partition to one consumer in the group at a time.</p>
+<p><strong>Definition:</strong> A monotonically increasing ID of a record within a partition.</p>
 
-<hr />
+<p><strong>Why it matters:</strong> Consumers track offsets to know what they have processed and to replay if needed.</p>
+
+<p><strong>In my project:</strong> Visible in Kafdrop and consumer logs when processing lab messages.</p>
+
+<p><strong>Example:</strong> After consuming partition 0 up to offset 42, the consumer commits offset 43 as the next read position.</p>
+
+<p><strong>Interview version:</strong> An offset is the position of a message in a partition. Consumer groups commit offsets to resume after restarts without reprocessing everything.</p>
 
 <h3 id="message-key">Message Key</h3>
 
@@ -485,6 +477,48 @@
 
 <hr />
 
+<h2 id="3-scalable-consumption-consumer-group">3. Scalable consumption: Consumer Group</h2>
+
+<p>Consumer groups are how Kafka scales reads without processing the same partition twice in one group.</p>
+
+<p><img src="/assets/images/kafka/kafka-03-consumer-group.png" alt="Kafka consumer group: partition assignment and horizontal scaling" /></p>
+
+<p><em>Figure 3 — Each partition goes to at most one consumer in the group; parallelism is capped by partition count.</em></p>
+
+<h3 id="consumer-group">Consumer Group</h3>
+
+<p><strong>Definition:</strong> A set of consumers that cooperate to consume a topic; each partition is assigned to at most one consumer in the group.</p>
+
+<p><strong>Why it matters:</strong> Groups scale consumption horizontally without duplicate processing per partition.</p>
+
+<p><strong>In my project:</strong> Consumer <code class="language-plaintext highlighter-rouge">group-id</code> in Spring config defines which group processes lab topics.</p>
+
+<p><strong>Example:</strong> Two instances with the same <code class="language-plaintext highlighter-rouge">group-id</code> split partitions; two different groups each get a full copy of the stream.</p>
+
+<p><strong>Interview version:</strong> Consumer groups enable scalable consumption. Kafka assigns each partition to one consumer in the group at a time.</p>
+
+<h3 id="horizontal-scaling">Horizontal scaling</h3>
+
+<p><strong>Definition:</strong> Adding more instances instead of bigger machines.</p>
+
+<p><strong>Why it matters:</strong> Kafka scales reads via partitions + consumer groups; writes via more partitions and brokers.</p>
+
+<p><strong>In my project:</strong> Run multiple consumer instances with the same <code class="language-plaintext highlighter-rouge">group-id</code> to parallelize partition processing.</p>
+
+<p><strong>Example:</strong> 6 partitions, 3 consumers → ~2 partitions each.</p>
+
+<p><strong>Interview version:</strong> Horizontal scaling in Kafka means more partitions and more consumers in a group, bounded by partition count.</p>
+
+<hr />
+
+<h2 id="4-serialization-and-deserialization">4. Serialization and deserialization</h2>
+
+<p>Kafka stores <strong>bytes</strong>, not Java objects. Producer and consumer must agree on the format.</p>
+
+<p><img src="/assets/images/kafka/kafka-04-serialization.png" alt="Kafka serialization flow: Java object to bytes via JsonSerializer and back via JsonDeserializer" /></p>
+
+<p><em>Figure 4 — Producer serializes before send; consumer deserializes on read (lab <strong>03</strong> uses JSON).</em></p>
+
 <h3 id="serialization">Serialization</h3>
 
 <p><strong>Definition:</strong> Converting an object or payload into bytes for Kafka.</p>
@@ -496,8 +530,6 @@
 <p><strong>Example:</strong> <code class="language-plaintext highlighter-rouge">JsonSerializer</code> on <code class="language-plaintext highlighter-rouge">KafkaTemplate</code> for typed events.</p>
 
 <p><strong>Interview version:</strong> Serialization turns application objects into bytes. Producer and consumer must agree on format and schema.</p>
-
-<hr />
 
 <h3 id="deserialization">Deserialization</h3>
 
@@ -513,6 +545,18 @@
 
 <hr />
 
+<h2 id="5-in-my-spring-boot-lab">5. In my Spring Boot lab</h2>
+
+<p>This is how the concepts above map to runnable services in <a href="https://github.com/Qleoz12/curso-apache-kafka-master">curso-apache-kafka-master</a>.</p>
+
+<p><img src="/assets/images/kafka/kafka-05-lab-spring-boot.png" alt="Spring Boot Kafka lab: HTTP ingress, str-producer, Kafka cluster, str-consumer, and Kafdrop" /></p>
+
+<p><em>Figure 5 — HTTP on <strong>8097</strong> publishes; <strong>8197</strong> consumes; Kafdrop on <strong>19000</strong> inspects topics.</em></p>
+
+<p><strong>Golden rule:</strong> to <em>publish</em> a lab message, always call <strong>str-producer (8097)</strong>. The consumer is for processing and Case 07 GET queries — not for sending messages.</p>
+
+<p>See also <a href="/kafka/apache-kafka-lab-architecture/">Lab architecture</a> for Mermaid diagrams and Case 08 (Kafka Streams).</p>
+
 <h3 id="kafkatemplate">KafkaTemplate</h3>
 
 <p><strong>Definition:</strong> Spring abstraction for sending messages to Kafka.</p>
@@ -525,15 +569,13 @@
 
 <p><strong>Interview version:</strong> <code class="language-plaintext highlighter-rouge">KafkaTemplate</code> is Spring’s producer API. Having it in a consumer service usually means retry, DLT, or reply — not that the service is the main HTTP producer.</p>
 
-<hr />
-
 <h3 id="kafkalistener">@KafkaListener</h3>
 
 <p><strong>Definition:</strong> Spring annotation declaring a method as a Kafka message handler.</p>
 
 <p><strong>Why it matters:</strong> Declarative consumption with container-managed threading and acks.</p>
 
-<p><strong>In my project:</strong> Core pattern in <strong>str-consumer</strong> for all seven lab cases.</p>
+<p><strong>In my project:</strong> Core pattern in <strong>str-consumer</strong> for all seven Spring consumer cases.</p>
 
 <p><strong>Example:</strong></p>
 
@@ -544,6 +586,10 @@
 <p><strong>Interview version:</strong> <code class="language-plaintext highlighter-rouge">@KafkaListener</code> registers a consumer method. Spring Kafka manages polling, deserialization, and error handling hooks.</p>
 
 <hr />
+
+<h2 id="6-resilience-and-integration-patterns">6. Resilience and integration patterns</h2>
+
+<p>These patterns show up in Cases <strong>04–06</strong> of the lab.</p>
 
 <h3 id="retry-topic">Retry Topic</h3>
 
@@ -557,8 +603,6 @@
 
 <p><strong>Interview version:</strong> Retry topics decouple immediate failure from re-attempts, often with backoff, instead of infinite in-process retries.</p>
 
-<hr />
-
 <h3 id="dead-letter-topic-dlt">Dead Letter Topic (DLT)</h3>
 
 <p><strong>Definition:</strong> A topic that stores messages that failed after retries, for manual inspection or alternate handling.</p>
@@ -570,8 +614,6 @@
 <p><strong>Example:</strong> <code class="language-plaintext highlighter-rouge">@DltHandler</code> or Spring Kafka non-blocking retry sends to <code class="language-plaintext highlighter-rouge">*.DLT</code> topic.</p>
 
 <p><strong>Interview version:</strong> A DLT quarantines messages that cannot be processed. Operators fix data or replay after correcting the bug.</p>
-
-<hr />
 
 <h3 id="request-reply">Request-Reply</h3>
 
@@ -585,8 +627,6 @@
 
 <p><strong>Interview version:</strong> Request-reply over Kafka uses correlation IDs and reply topics. It simulates RPC but remains event-driven at the broker level.</p>
 
-<hr />
-
 <h3 id="correlation-id">Correlation ID</h3>
 
 <p><strong>Definition:</strong> An identifier linking a request message to its reply.</p>
@@ -598,8 +638,6 @@
 <p><strong>Example:</strong> Header <code class="language-plaintext highlighter-rouge">kafka_correlationId</code> matches pending client callback.</p>
 
 <p><strong>Interview version:</strong> Correlation IDs let clients match asynchronous replies to the original request in request-reply patterns.</p>
-
-<hr />
 
 <h3 id="recordinterceptor">RecordInterceptor</h3>
 
@@ -615,6 +653,8 @@
 
 <hr />
 
+<h2 id="7-why-kafka-in-system-design">7. Why Kafka in system design</h2>
+
 <h3 id="event-driven-architecture">Event-driven architecture</h3>
 
 <p><strong>Definition:</strong> Services communicate by producing and consuming events instead of synchronous direct calls.</p>
@@ -626,8 +666,6 @@
 <p><strong>Example:</strong> Inventory update event consumed asynchronously (lab <strong>07</strong>).</p>
 
 <p><strong>Interview version:</strong> Event-driven architecture uses a broker so producers and consumers evolve independently and scale on different axes.</p>
-
-<hr />
 
 <h3 id="decoupling">Decoupling</h3>
 
@@ -643,17 +681,11 @@
 
 <hr />
 
-<h3 id="horizontal-scaling">Horizontal scaling</h3>
+<h2 id="quick-recap-all-concepts">Quick recap (all concepts)</h2>
 
-<p><strong>Definition:</strong> Adding more instances instead of bigger machines.</p>
+<p><img src="/assets/images/kafka/kafka-06-concepts-summary.png" alt="Kafka concepts cheat sheet: broker, topic, partition, offset, producer, consumer, group, key, serialization" /></p>
 
-<p><strong>Why it matters:</strong> Kafka scales reads via partitions + consumer groups; writes via more partitions and brokers.</p>
-
-<p><strong>In my project:</strong> Run multiple consumer instances with the same <code class="language-plaintext highlighter-rouge">group-id</code> to parallelize partition processing.</p>
-
-<p><strong>Example:</strong> 6 partitions, 3 consumers → ~2 partitions each.</p>
-
-<p><strong>Interview version:</strong> Horizontal scaling in Kafka means more partitions and more consumers in a group, bounded by partition count.</p>
+<p><em>Figure 6 — One-page summary. Producer serializes before send; consumer deserializes on read.</em></p>
 
 <hr />
 
