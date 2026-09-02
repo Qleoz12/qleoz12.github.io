@@ -6,19 +6,25 @@ author_profile: true
 toc: true
 ---
 
-Technical projects documented on this site.
+Technical projects documented on this site — with **source repos** and **runnable examples** where available.
 
 ## Portfolio (interactive)
 
 Role-based CV and project highlights: [Portfolio](/portfolio/).
 
+## Hands-on labs
+
+| Project | Repo | Hub |
+|---------|------|-----|
+| **Apache Kafka lab** (8 cases) | [curso-apache-kafka-master](https://github.com/Qleoz12/curso-apache-kafka-master) | [Learning hub — full case index](/learning/#apache-kafka-lab-featured) |
+
 ## Documented on the blog
 
 | Area | Where to start |
 |------|----------------|
-| Apache Kafka lab | [Lab architecture](/kafka/apache-kafka-lab-architecture/) · [Try it yourself](/kafka/kafka-lab-try-it-yourself/) · [Kafka Streams](/kafka/apache-kafka-streams-pipe-linesplit-wordcount/) |
-| AWS notes | [AWS hub posts](/categories/#aws) |
-| Data analytics | [Data posts](/categories/) |
+| Apache Kafka | [Learning hub](/learning/) → architecture, concepts, curls, Streams |
+| AWS | [AWS posts](/categories/#aws) |
+| Data / statistics | [Year archive](/year-archive/) |
 
 ## Adding a project
 

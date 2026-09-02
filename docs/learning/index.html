@@ -92,7 +92,7 @@
 
   </head>
 
-  <body class="layout--archive">
+  <body class="layout--single">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -318,32 +318,324 @@
 
 
 
-  <div class="archive">
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Learning">
     
-      <h1 id="page-title" class="page__title">Learning</h1>
     
-    <p>Study notes and concept guides from hands-on labs and courses.</p>
+    
 
-<h2 id="backend--messaging">Backend &amp; messaging</h2>
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="/learning/" class="u-url" itemprop="url">Learning
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#apache-kafka-lab-featured">Apache Kafka Lab (featured)</a><ul><li><a href="#what-is-in-the-repo">What is in the repo?</a></li><li><a href="#all-cases--what-each-one-does">All cases — what each one does</a></li><li><a href="#suggested-reading-order-kafka">Suggested reading order (Kafka)</a></li><li><a href="#quick-start-local">Quick start (local)</a></li></ul></li><li><a href="#data--statistics-course-notes">Data &amp; statistics (course notes)</a></li><li><a href="#sql--fundamentals">SQL &amp; fundamentals</a></li><li><a href="#how-these-posts-are-written">How these posts are written</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>Hands-on study notes from <strong>labs and courses I actually built and ran</strong> — not theory in a vacuum.<br />
+Each track links to <strong>source code</strong>, <strong>how to run it</strong>, and <strong>what each example proves</strong>.</p>
+
+<hr />
+
+<h2 id="apache-kafka-lab-featured">Apache Kafka Lab (featured)</h2>
+
+<p>A local lab with <strong>8 practical cases</strong> (Spring Boot + Kafka Streams).<br />
+You can clone it, run it, and match every blog post to real code.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Resource</th>
+      <th>Link</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Source code (GitHub)</strong></td>
+      <td><a href="https://github.com/Qleoz12/curso-apache-kafka-master">Qleoz12/curso-apache-kafka-master</a></td>
+    </tr>
+    <tr>
+      <td><strong>Run on Windows</strong></td>
+      <td><a href="/kafka/lab-setup-windows/">Kafka Lab — Windows Setup</a></td>
+    </tr>
+    <tr>
+      <td><strong>Copy-paste cURL</strong></td>
+      <td><a href="/kafka/kafka-lab-try-it-yourself/">Try It Yourself</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="what-is-in-the-repo">What is in the repo?</h3>
+
+<p>Three runnable modules:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Module</th>
+      <th>Port</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>str-producer</strong></td>
+      <td>8097</td>
+      <td>REST API — you send HTTP here; it publishes to Kafka</td>
+    </tr>
+    <tr>
+      <td><strong>str-consumer</strong></td>
+      <td>8197</td>
+      <td><code class="language-plaintext highlighter-rouge">@KafkaListener</code> — processes messages (Cases 01–07)</td>
+    </tr>
+    <tr>
+      <td><strong>str-streams</strong></td>
+      <td>—</td>
+      <td>Kafka Streams topologies (Case 08a/b/c)</td>
+    </tr>
+    <tr>
+      <td><strong>Kafka + Kafdrop</strong></td>
+      <td>9092 / 19000</td>
+      <td>Broker + UI to inspect topics</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTP (curl/Postman) → str-producer :8097 → Kafka :9092 → str-consumer :8197
+                                              ↓
+                                    str-streams (Case 08 only)
+</code></pre></div></div>
+
+<p><strong>Golden rule:</strong> to <em>publish</em> a message, always call the <strong>producer (8097)</strong>.<br />
+The consumer (8197) is for logs and Case 07 GET queries — not for sending lab messages.</p>
+
+<h3 id="all-cases--what-each-one-does">All cases — what each one does</h3>
+
+<p>Use this table to find the example you need. Full curls are in <a href="/kafka/kafka-lab-try-it-yourself/">Try It Yourself</a>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Case</th>
+      <th>What you learn</th>
+      <th>HTTP endpoint</th>
+      <th>Kafka topic</th>
+      <th>What to verify</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>01</strong></td>
+      <td>Basic producer/consumer, partitions, consumer groups</td>
+      <td><code class="language-plaintext highlighter-rouge">POST /casos/01-basico</code></td>
+      <td><code class="language-plaintext highlighter-rouge">str-topic</code></td>
+      <td>Producer logs partition/offset; consumer logs <code class="language-plaintext highlighter-rouge">[CASO-01]</code></td>
+    </tr>
+    <tr>
+      <td><strong>02</strong></td>
+      <td>Message <strong>key</strong> → same key, same partition, order per entity</td>
+      <td><code class="language-plaintext highlighter-rouge">POST /casos/02-con-key</code></td>
+      <td><code class="language-plaintext highlighter-rouge">order-topic</code></td>
+      <td>Same <code class="language-plaintext highlighter-rouge">orderId</code> always same partition</td>
+    </tr>
+    <tr>
+      <td><strong>03</strong></td>
+      <td><strong>JSON events</strong>, typed serialization</td>
+      <td><code class="language-plaintext highlighter-rouge">POST /casos/03-evento-json</code></td>
+      <td><code class="language-plaintext highlighter-rouge">user-event-topic</code></td>
+      <td>Consumer logs user action (<code class="language-plaintext highlighter-rouge">LOGIN</code>, etc.)</td>
+    </tr>
+    <tr>
+      <td><strong>04</strong></td>
+      <td><strong>Retry + Dead Letter Topic</strong> on invalid data</td>
+      <td><code class="language-plaintext highlighter-rouge">POST /casos/04-pago</code></td>
+      <td><code class="language-plaintext highlighter-rouge">payment-topic</code></td>
+      <td>Valid payment succeeds; negative amount → DLT after retries</td>
+    </tr>
+    <tr>
+      <td><strong>05</strong></td>
+      <td><strong>Request-reply</strong> over Kafka (sync HTTP, async broker)</td>
+      <td><code class="language-plaintext highlighter-rouge">POST /casos/05-request-reply</code></td>
+      <td><code class="language-plaintext highlighter-rouge">request-topic</code> / <code class="language-plaintext highlighter-rouge">reply-topic</code></td>
+      <td>HTTP body <code class="language-plaintext highlighter-rouge">Echo: ...</code></td>
+    </tr>
+    <tr>
+      <td><strong>06</strong></td>
+      <td><strong>RecordInterceptor</strong> — filter/transform before listener</td>
+      <td><code class="language-plaintext highlighter-rouge">POST /casos/06-texto-filtro</code></td>
+      <td><code class="language-plaintext highlighter-rouge">text-filter-topic</code></td>
+      <td>Tabulated analysis in consumer logs</td>
+    </tr>
+    <tr>
+      <td><strong>07</strong></td>
+      <td>Kafka → <strong>SQLite</strong> persistence + REST read API</td>
+      <td><code class="language-plaintext highlighter-rouge">POST /casos/07-inventario</code></td>
+      <td><code class="language-plaintext highlighter-rouge">inventory-topic</code></td>
+      <td><code class="language-plaintext highlighter-rouge">GET /casos/07-inventario/resumen</code> on <strong>8197</strong></td>
+    </tr>
+    <tr>
+      <td><strong>08a</strong></td>
+      <td>Kafka Streams <strong>Pipe</strong> (passthrough topology)</td>
+      <td><code class="language-plaintext highlighter-rouge">POST /casos/08a-pipe</code></td>
+      <td><code class="language-plaintext highlighter-rouge">streams-plaintext-input</code> → <code class="language-plaintext highlighter-rouge">streams-pipe-output</code></td>
+      <td>Run <code class="language-plaintext highlighter-rouge">run-streams-pipe.bat</code>; check Kafdrop</td>
+    </tr>
+    <tr>
+      <td><strong>08b</strong></td>
+      <td>Kafka Streams <strong>LineSplit</strong> (<code class="language-plaintext highlighter-rouge">flatMapValues</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">POST /casos/08b-linesplit</code></td>
+      <td>→ <code class="language-plaintext highlighter-rouge">streams-linesplit-output</code></td>
+      <td>One line becomes many words in output topic</td>
+    </tr>
+    <tr>
+      <td><strong>08c</strong></td>
+      <td>Kafka Streams <strong>WordCount</strong> (<code class="language-plaintext highlighter-rouge">groupBy</code> + <code class="language-plaintext highlighter-rouge">count</code> + KTable)</td>
+      <td><code class="language-plaintext highlighter-rouge">POST /casos/08c-wordcount</code></td>
+      <td>→ <code class="language-plaintext highlighter-rouge">streams-wordcount-output</code></td>
+      <td>Word counts in Kafdrop; state store <code class="language-plaintext highlighter-rouge">counts-store</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Case 08:</strong> start <strong>one</strong> Streams app (<code class="language-plaintext highlighter-rouge">run-streams-pipe.bat</code>, <code class="language-plaintext highlighter-rouge">linesplit</code>, or <code class="language-plaintext highlighter-rouge">wordcount</code>). Consumer (8197) is <strong>not</strong> required for Case 08.</p>
+
+<h3 id="suggested-reading-order-kafka">Suggested reading order (Kafka)</h3>
+
+<p>Read in this order if you are new to the lab:</p>
+
+<ol>
+  <li><a href="/kafka/apache-kafka-lab-architecture/">Architecture</a> — who does what (producer vs consumer vs streams)</li>
+  <li><a href="/kafka/apache-kafka-concepts-i-learned/">Concepts I Learned</a> — broker, topic, partition, DLT, interview notes</li>
+  <li><a href="/kafka/kafka-lab-try-it-yourself/">Try It Yourself</a> — run every case with cURL</li>
+  <li><a href="/kafka/apache-kafka-streams-pipe-linesplit-wordcount/">Kafka Streams — Pipe, LineSplit, WordCount</a> — Case 08 deep dive</li>
+</ol>
+
+<h3 id="quick-start-local">Quick start (local)</h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. git clone https://github.com/Qleoz12/curso-apache-kafka-master
+2. docker compose up -d
+3. run-consumer.bat          (Cases 01–07; skip for 08)
+4. run-producer.bat
+5. curl → see Try It Yourself post
+6. Kafdrop → http://localhost:19000
+</code></pre></div></div>
+
+<p>For JDK 17 / JEnv on Windows: <a href="/kafka/lab-setup-windows/">setup guide</a>.</p>
+
+<hr />
+
+<h2 id="data--statistics-course-notes">Data &amp; statistics (course notes)</h2>
+
+<p>Notes from <strong>DANA 4830 / 4840</strong> and related coursework — R, clustering, feature selection.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Topic</th>
+      <th>Start here</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Feature selection (paper overview)</td>
+      <td><a href="/statistics/machine%20learning/dana-4830-feature-selection-paper-overview/">DANA 4830 — Feature selection paper</a></td>
+    </tr>
+    <tr>
+      <td>Univariate selection</td>
+      <td><a href="/statistics/machine%20learning/dana-4830-univariate-feature-selection/">Chi2, ANOVA, MI, Pearson, ReliefF</a></td>
+    </tr>
+    <tr>
+      <td>Multivariate (mRMR, CFS)</td>
+      <td><a href="/statistics/machine%20learning/dana-4830-multivariate-feature-selection-part1/">Part 1</a> · <a href="/statistics/machine%20learning/dana-4830-multivariate-feature-selection-part2/">Part 2</a></td>
+    </tr>
+    <tr>
+      <td>Clustering &amp; distances</td>
+      <td><a href="/year-archive/">Year archive</a> — filter posts tagged statistics</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="sql--fundamentals">SQL &amp; fundamentals</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Topic</th>
+      <th>Post</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SQL (HackerRank review)</td>
+      <td><a href="/sql/fundamentals-sql-hackerRank/">Fundamentals SQL</a></td>
+    </tr>
+    <tr>
+      <td>Testing basics</td>
+      <td><a href="/statistics/fundamentals-testing/">Fundamentals testing</a></td>
+    </tr>
+    <tr>
+      <td>Correlations &amp; p-values</td>
+      <td><a href="/statistics/stats-correlations-and-pvalue-models/">Stats correlations</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>More: <a href="/year-archive/">year archive</a> or <a href="/categories/">categories</a>.</p>
+
+<hr />
+
+<h2 id="how-these-posts-are-written">How these posts are written</h2>
+
+<p>Each technical post tries to answer:</p>
 
 <ul>
-  <li><a href="/kafka/apache-kafka-concepts-i-learned/">Apache Kafka — Concepts I Learned</a></li>
-  <li><a href="/kafka/apache-kafka-lab-architecture/">Apache Kafka Lab — Architecture</a></li>
-  <li><a href="/kafka/kafka-lab-try-it-yourself/">Apache Kafka Lab — Try It Yourself (cURL)</a></li>
-  <li><a href="/kafka/apache-kafka-streams-pipe-linesplit-wordcount/">Apache Kafka Streams — Pipe, LineSplit, WordCount</a></li>
-  <li><a href="/kafka/lab-setup-windows/">Kafka Lab — Windows Setup</a></li>
+  <li><strong>What</strong> is the concept?</li>
+  <li><strong>Why</strong> does it exist?</li>
+  <li><strong>Where</strong> does it appear in my lab or project?</li>
+  <li><strong>Example</strong> you can run</li>
+  <li><strong>Interview version</strong> — 1–3 sentences</li>
 </ul>
 
-<h2 id="data--analytics">Data &amp; analytics</h2>
+<p>If you only want runnable examples, use the <strong>case table</strong> above and <a href="/kafka/kafka-lab-try-it-yourself/">Try It Yourself</a>.</p>
 
-<p>Browse posts tagged <strong>statistics</strong>, <strong>sql</strong>, or <strong>data</strong> in the <a href="/year-archive/">year archive</a>.</p>
+        
+      </section>
 
-<h2 id="how-i-use-this-section">How I use this section</h2>
+      <footer class="page__meta">
+        
+        
 
-<p>Each learning post follows a repeatable format: definition, why it matters, where it appears in my projects, a small example, and a short interview answer.</p>
+
+        
+
+      </footer>
+
+      
+
+      
+    </div>
 
     
-  </div>
+  </article>
+
+  
   
 </div>
     </div>
