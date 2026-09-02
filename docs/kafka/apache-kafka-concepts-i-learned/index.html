@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Apache Kafka — Concepts I Learned - Dann Brown Adventures</title>
-<meta name="description" content="Notes from my str-producer / str-consumer Spring Boot lab: HTTP ingress on port 8097, Kafka on 9092, consumer on 8197, Kafdrop on 19000.">
+<meta name="description" content="Practice repo: github.com/Qleoz12/curso-apache-kafka-master — clone it, run the eight cases, and map each concept below to real code.">
 
 
   <meta name="author" content="Dann brown">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="/kafka/apache-kafka-concepts-i-learned/">
 
 
-  <meta property="og:description" content="Notes from my str-producer / str-consumer Spring Boot lab: HTTP ingress on port 8097, Kafka on 9092, consumer on 8197, Kafdrop on 19000.">
+  <meta property="og:description" content="Practice repo: github.com/Qleoz12/curso-apache-kafka-master — clone it, run the eight cases, and map each concept below to real code.">
 
 
 
@@ -336,7 +336,40 @@
     
       <h1 id="page-title" class="page__title">Apache Kafka — Concepts I Learned</h1>
     
-    <p>Notes from my <strong>str-producer / str-consumer</strong> Spring Boot lab: HTTP ingress on port <strong>8097</strong>, Kafka on <strong>9092</strong>, consumer on <strong>8197</strong>, Kafdrop on <strong>19000</strong>.</p>
+    <p><strong>Practice repo:</strong> <a href="https://github.com/Qleoz12/curso-apache-kafka-master">github.com/Qleoz12/curso-apache-kafka-master</a> — clone it, run the eight cases, and map each concept below to real code.</p>
+
+<p>I first heard about Apache Kafka around <strong>2019</strong>. I understood the basics (broker, topic, producer, consumer), but I had not sat down to <strong>practice</strong> it end-to-end in a while. RabbitMQ was already familiar — queues, exchanges, routing — and Kafka feels related: both are about moving messages between services without tight coupling. In real backends you constantly touch <strong>APIs, microservices, and queues</strong>; Kafka keeps showing up in job posts and system diagrams, so skipping hands-on practice did not make sense.</p>
+
+<p>I retook it with a local Spring Boot lab (<strong>str-producer</strong> on <strong>8097</strong>, <strong>str-consumer</strong> on <strong>8197</strong>, Kafka on <strong>9092</strong>, Kafdrop on <strong>19000</strong>). This page is my cheat sheet while running that repo. For curls and every endpoint, see <a href="/kafka/kafka-lab-try-it-yourself/">Try It Yourself</a>; for the full case index, see the <a href="/learning/#apache-kafka-lab-featured">Learning hub</a>.</p>
+
+<h3 id="references-credit-where-i-refreshed-ideas">References (credit where I refreshed ideas)</h3>
+
+<p>These videos helped me reconnect theory with practice — especially the Spring Kafka course:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Video</th>
+      <th>Channel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://www.youtube.com/watch?v=KY7dH3ksf2s">#1 Qué es Apache Kafka — Curso Spring Kafka de Cero a Experto</a></td>
+      <td><a href="https://www.youtube.com/@davinchicoder">DavinchiCoder</a></td>
+    </tr>
+    <tr>
+      <td><a href="https://youtu.be/l4-wAvFYKCY">Domina Apache Kafka y multiplica tus oportunidades laborales</a></td>
+      <td><a href="https://www.youtube.com/@latecnologiaavanza">La Tecnología Avanza</a></td>
+    </tr>
+    <tr>
+      <td><a href="https://youtu.be/_nJfL-AwW80">Kafka en 10 minutos — Conceptos esenciales y arquitectura</a></td>
+      <td><a href="https://www.youtube.com/@pirobits">pirobits</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The lab code is mine; the explanations above lean on those creators for structure and motivation.</p>
 
 <hr />
 

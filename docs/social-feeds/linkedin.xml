@@ -5,8 +5,8 @@
     <description>I am an Senior Fullstack Software Developer working in my skills and learning new stuffs about tech daily</description>
     <link></link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 02 Sep 2026 14:28:26 -0500</pubDate>
-    <lastBuildDate>Wed, 02 Sep 2026 14:28:26 -0500</lastBuildDate>
+    <pubDate>Wed, 02 Sep 2026 16:22:52 -0500</pubDate>
+    <lastBuildDate>Wed, 02 Sep 2026 16:22:52 -0500</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
     
     
@@ -927,7 +927,40 @@ Consumer :8197   ← processing; may use KafkaTemplate for retry/DLT/reply only
         
         <item>
             <title>Apache Kafka — Concepts I Learned</title>
-            <description>&lt;p&gt;Notes from my &lt;strong&gt;str-producer / str-consumer&lt;/strong&gt; Spring Boot lab: HTTP ingress on port &lt;strong&gt;8097&lt;/strong&gt;, Kafka on &lt;strong&gt;9092&lt;/strong&gt;, consumer on &lt;strong&gt;8197&lt;/strong&gt;, Kafdrop on &lt;strong&gt;19000&lt;/strong&gt;.&lt;/p&gt;
+            <description>&lt;p&gt;&lt;strong&gt;Practice repo:&lt;/strong&gt; &lt;a href=&quot;https://github.com/Qleoz12/curso-apache-kafka-master&quot;&gt;github.com/Qleoz12/curso-apache-kafka-master&lt;/a&gt; — clone it, run the eight cases, and map each concept below to real code.&lt;/p&gt;
+
+&lt;p&gt;I first heard about Apache Kafka around &lt;strong&gt;2019&lt;/strong&gt;. I understood the basics (broker, topic, producer, consumer), but I had not sat down to &lt;strong&gt;practice&lt;/strong&gt; it end-to-end in a while. RabbitMQ was already familiar — queues, exchanges, routing — and Kafka feels related: both are about moving messages between services without tight coupling. In real backends you constantly touch &lt;strong&gt;APIs, microservices, and queues&lt;/strong&gt;; Kafka keeps showing up in job posts and system diagrams, so skipping hands-on practice did not make sense.&lt;/p&gt;
+
+&lt;p&gt;I retook it with a local Spring Boot lab (&lt;strong&gt;str-producer&lt;/strong&gt; on &lt;strong&gt;8097&lt;/strong&gt;, &lt;strong&gt;str-consumer&lt;/strong&gt; on &lt;strong&gt;8197&lt;/strong&gt;, Kafka on &lt;strong&gt;9092&lt;/strong&gt;, Kafdrop on &lt;strong&gt;19000&lt;/strong&gt;). This page is my cheat sheet while running that repo. For curls and every endpoint, see &lt;a href=&quot;/kafka/kafka-lab-try-it-yourself/&quot;&gt;Try It Yourself&lt;/a&gt;; for the full case index, see the &lt;a href=&quot;/learning/#apache-kafka-lab-featured&quot;&gt;Learning hub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;references-credit-where-i-refreshed-ideas&quot;&gt;References (credit where I refreshed ideas)&lt;/h3&gt;
+
+&lt;p&gt;These videos helped me reconnect theory with practice — especially the Spring Kafka course:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Video&lt;/th&gt;
+      &lt;th&gt;Channel&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=KY7dH3ksf2s&quot;&gt;#1 Qué es Apache Kafka — Curso Spring Kafka de Cero a Experto&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.youtube.com/@davinchicoder&quot;&gt;DavinchiCoder&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://youtu.be/l4-wAvFYKCY&quot;&gt;Domina Apache Kafka y multiplica tus oportunidades laborales&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.youtube.com/@latecnologiaavanza&quot;&gt;La Tecnología Avanza&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://youtu.be/_nJfL-AwW80&quot;&gt;Kafka en 10 minutos — Conceptos esenciales y arquitectura&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.youtube.com/@pirobits&quot;&gt;pirobits&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The lab code is mine; the explanations above lean on those creators for structure and motivation.&lt;/p&gt;
 
 &lt;hr /&gt;
 

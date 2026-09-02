@@ -10,7 +10,23 @@ toc: true
 author_profile: true
 ---
 
-Notes from my **str-producer / str-consumer** Spring Boot lab: HTTP ingress on port **8097**, Kafka on **9092**, consumer on **8197**, Kafdrop on **19000**.
+**Practice repo:** [github.com/Qleoz12/curso-apache-kafka-master](https://github.com/Qleoz12/curso-apache-kafka-master) — clone it, run the eight cases, and map each concept below to real code.
+
+I first heard about Apache Kafka around **2019**. I understood the basics (broker, topic, producer, consumer), but I had not sat down to **practice** it end-to-end in a while. RabbitMQ was already familiar — queues, exchanges, routing — and Kafka feels related: both are about moving messages between services without tight coupling. In real backends you constantly touch **APIs, microservices, and queues**; Kafka keeps showing up in job posts and system diagrams, so skipping hands-on practice did not make sense.
+
+I retook it with a local Spring Boot lab (**str-producer** on **8097**, **str-consumer** on **8197**, Kafka on **9092**, Kafdrop on **19000**). This page is my cheat sheet while running that repo. For curls and every endpoint, see [Try It Yourself](/kafka/kafka-lab-try-it-yourself/); for the full case index, see the [Learning hub](/learning/#apache-kafka-lab-featured).
+
+### References (credit where I refreshed ideas)
+
+These videos helped me reconnect theory with practice — especially the Spring Kafka course:
+
+| Video | Channel |
+|-------|---------|
+| [#1 Qué es Apache Kafka — Curso Spring Kafka de Cero a Experto](https://www.youtube.com/watch?v=KY7dH3ksf2s) | [DavinchiCoder](https://www.youtube.com/@davinchicoder) |
+| [Domina Apache Kafka y multiplica tus oportunidades laborales](https://youtu.be/l4-wAvFYKCY) | [La Tecnología Avanza](https://www.youtube.com/@latecnologiaavanza) |
+| [Kafka en 10 minutos — Conceptos esenciales y arquitectura](https://youtu.be/_nJfL-AwW80) | [pirobits](https://www.youtube.com/@pirobits) |
+
+The lab code is mine; the explanations above lean on those creators for structure and motivation.
 
 ---
 
